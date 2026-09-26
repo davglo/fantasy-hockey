@@ -73,6 +73,7 @@ def load(path: Path = config.RANKINGS_XLSX) -> list:
         out.append({
             "name": name, "key": norm_name(name), "team": norm_team(r[col["TEAM"]]), "pos": r[col["POS"]],
             "fp": float(fp), "gp": gp if isinstance(gp, (int, float)) else None,
+            "g": r[col["G"]] if not is_g and isinstance(r[col["G"]], (int, float)) else 0.0,
             "sheet_rank": r[col["RK"]], "sheet_adp": r[col["ADP"]] if isinstance(r[col["ADP"]], (int, float)) else None,
             "boost": r[col["ADJ"]] if r[col["ADJ"]] not in (0, None) else "",
         })

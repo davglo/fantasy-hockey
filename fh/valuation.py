@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import logging
+import math
 from dataclasses import dataclass
 
 from fh import config
@@ -53,6 +54,32 @@ def _group(slots: list, default_pos: int) -> str:
     return "F"
 
 
+HAT = 28  # hat tricks: neither the workbook nor ESPN projections include them
+
+
+def p_hat_trick(goals: float, gp: float) -> float:
+    """P(3+ goals in a game), goals per game ~ Poisson(goals/gp)."""
+    lam = goals / gp
+    return 1 - math.exp(-lam) * (1 + lam + lam * lam / 2)
+
+
+def hat_trick_calibration(pool: list) -> float:
+    """Actual / Poisson-predicted hat tricks over last season's skater actuals (computed each build)."""
+    actual = pred = 0.0
+    for entry in pool:
+        pl = entry["player"]
+        if pl.get("defaultPositionId") == 5:
+            continue
+        st = next((s["stats"] for s in pl.get("stats", []) if s.get("seasonId") == config.SEASON - 1
+                   and s.get("statSourceId") == 0 and s.get("statSplitTypeId") == 0), None)
+        gp = (st or {}).get("34") or 0
+        if gp:
+            actual += st.get(str(HAT), 0)
+            pred += gp * p_hat_trick(st.get("13", 0), gp)
+    k = actual / pred if pred > 20 else 1.0
+    return min(max(k, 0.5), 2.0)
+
+
 def _sheet_group(pos: str) -> str:
     return pos if pos in ("G", "D") else "F"
 
@@ -65,6 +92,10 @@ def build_players(pool: list, sheet: list, league: League, pro_teams: dict) -> l
     by_initial = {}
     for r in sheet:
         by_initial.setdefault((initial_key(r["name"]), r["team"]), []).append(r)
+    hat_pts = league.scoring.get(HAT, 0)
+    hat_k = hat_trick_calibration(pool) if hat_pts else 0.0
+    if hat_pts:
+        log.info("hat tricks: +%g pts each, Poisson calibration k=%.2f vs last season", hat_pts, hat_k)
     players, matched = [], 0
     for entry in pool:
         pl = entry["player"]
@@ -87,11 +118,15 @@ def build_players(pool: list, sheet: list, league: League, pro_teams: dict) -> l
         own = pl.get("ownership", {}) or {}
         rank = (pl.get("draftRanksByRankType", {}) or {}).get("STANDARD", {}).get("rank")
         gp = row["gp"] if row else (proj.get("34") or proj.get("30") if proj else None)
+        goals = row["g"] if row else (proj or {}).get("13", 0)
+        hat = hat_pts * hat_k * gp * p_hat_trick(goals, gp) if hat_pts and gp and goals else 0.0
+        if proj and str(HAT) in proj:
+            espn_fp -= hat_pts * proj[str(HAT)]  # avoid double counting if ESPN ever projects it
         pos = "/".join(config.SLOT_NAMES[s] for s in sorted(slots) if s in (0, 1, 2, 4, 5)) or group
         players.append(Player(
             id=pl["id"], name=pl["fullName"], group=group, positions=pos, team=team,
             injury=pl.get("injuryStatus") or "ACTIVE",
-            fp=row["fp"] if row else espn_fp, source="sheet" if row else "espn", espn_fp=espn_fp,
+            fp=(row["fp"] if row else espn_fp) + hat, source="sheet" if row else "espn", espn_fp=espn_fp + hat,
             gp=gp, espn_rank=rank, espn_adp=own.get("averageDraftPosition") or None,
             sheet_rank=row["sheet_rank"] if row else None, boost=row["boost"] if row else "",
             pct_owned=own.get("percentOwned", 0.0),
