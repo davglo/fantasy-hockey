@@ -1,0 +1,136 @@
+"""ESPN fantasy hockey co-GM. Phase 1: draft board + live draft co-pilot.
+
+  python3 build.py                 league summary + output/draft_board.html
+  python3 build.py --draft-live    poll the live draft every 5s, alert on my turn
+  python3 build.py --simulate      offline mock draft through the live pipeline (plumbing test)
+"""
+from __future__ import annotations
+
+import argparse
+import logging
+import random
+import sys
+
+from fh import board, config, draft, espn, live, rankings, valuation
+
+log = logging.getLogger("build")
+
+
+def setup_logging() -> None:
+    config.STATE.mkdir(exist_ok=True)
+    fmt = logging.Formatter("%(asctime)s %(levelname)s %(message)s", "%H:%M:%S")
+    root = logging.getLogger()
+    root.setLevel(logging.INFO)
+    for h in (logging.StreamHandler(sys.stdout), logging.FileHandler(config.STATE / "build.log")):
+        h.setFormatter(fmt)
+        root.addHandler(h)
+
+
+def load_all():
+    env = espn.load_env()
+    lg = espn.parse_league(espn.fetch_league(), env["ESPN_SWID"])
+    sheet = rankings.load()
+    pro = espn.fetch_pro_teams()
+    players = valuation.build_players(espn.fetch_pool(), sheet, lg, pro)
+    repl = valuation.value(players, lg)
+
+    def resolve(ids):
+        extra = valuation.build_players(espn.fetch_players_by_id(ids), sheet, lg, pro)
+        for p in extra:
+            p.vor = p.fp - repl[p.group]
+        return extra
+
+    return env, lg, players, repl, resolve
+
+
+def summary(lg: espn.League, repl: dict) -> None:
+    log.info("League: %s | %s | %d teams | playoffs: top %d", lg.name, lg.scoring_type, lg.size, lg.playoff_teams)
+    log.info("Scoring: %s", ", ".join("%s %g" % (config.STAT_NAMES.get(k, k), v) for k, v in lg.scoring.items()))
+    log.info("Roster slots: %s | limits: %s", lg.slots, lg.pos_limits)
+    dt = lg.draft_time.astimezone(board.ET).strftime("%a %b %-d %-I:%M %p ET") if lg.draft_time else "?"
+    log.info("Draft: %s, %d rounds, %ds/pick, %s | in progress: %s, done: %s",
+             lg.draft_type, lg.rounds, lg.time_per_pick, dt, lg.in_progress, lg.drafted)
+    log.info("Me: team %s '%s' | slot %s of %d | picks %s", lg.my_team_id, lg.teams.get(lg.my_team_id),
+             lg.my_slot, lg.size, ", ".join(map(str, lg.my_picks)))
+    if not lg.in_progress and not lg.drafted:
+        log.info("NOTE: draft order is re-randomized 1 hr before the draft; slot above is provisional.")
+    log.info("Replacement FP: %s", ", ".join("%s %.1f" % kv for kv in repl.items()))
+
+
+def check_scoring(lg: espn.League) -> None:
+    issues = rankings.check_scoring(lg.scoring)
+    hard = [i for i in issues if "can't model" not in i]
+    for i in issues:
+        (log.warning if i in hard else log.info)("Workbook scoring check: %s", i)
+    if not hard:
+        log.info("Workbook scoring check: all modeled stats match ESPN league settings")
+
+
+def simulate(lg, players, repl, swid) -> None:
+    """Mock draft: every team picks near ADP (with noise); I take the top recommendation."""
+    rng = random.Random(7)
+    raw = espn.fetch_league()
+    picks = sorted(raw["draftDetail"]["picks"], key=lambda p: p["overallPickNumber"])
+    for p in picks:
+        p["playerId"] = -1
+    raw["draftDetail"].update(inProgress=True, drafted=False)
+    t = [0.0]
+    alerts = []
+    ld = live.LiveDraft(list(players), repl, swid, clock=lambda: t[0], alert=lambda a, b: alerts.append(b),
+                        out_path=config.OUTPUT / "draft_board_sim.html", refresh=0)
+    taken = set()
+    for p in picks:
+        for e in ld.update(raw):
+            log.info(e)
+        avail = [x for x in players if x.id not in taken]
+        if p["teamId"] == ld.league.my_team_id:
+            mine = [x for x in players if x.id in taken and ld.seen.get(x.id, (0, 0))[1] == ld.league.my_team_id]
+            choice = draft.recommend(avail, mine, ld.league, p["overallPickNumber"], n=1)[0].player
+        else:
+            choice = min(avail, key=lambda x: x.market + rng.gauss(0, max(2, 0.2 * x.market)))
+        p["playerId"] = choice.id
+        taken.add(choice.id)
+        t[0] += 30
+    raw["draftDetail"].update(inProgress=False, drafted=True)
+    for e in ld.update(raw):
+        log.info(e)
+    ld.write_board()
+    mine = [ld.by_id[pid] for pid, (_, tm) in ld.seen.items() if tm == ld.league.my_team_id]
+    log.info("SIM done: %d picks, %d alerts, my roster: %s", len(ld.seen), len(alerts),
+             ", ".join("%s(%s)" % (x.name, x.group) for x in mine))
+    log.info("SIM my projected FP (top 18 non-bench approx): %.0f", sum(sorted((x.fp for x in mine), reverse=True)[:18]))
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--draft-live", action="store_true")
+    ap.add_argument("--simulate", action="store_true")
+    ap.add_argument("--interval", type=float, default=config.POLL_SECONDS)
+    ap.add_argument("--polls", type=int, default=None, help="stop live mode after N polls (testing)")
+    args = ap.parse_args()
+    setup_logging()
+    try:
+        env, lg, players, repl, resolve = load_all()
+    except espn.FetchError as e:
+        log.error("STOP: %s", e)
+        return 1
+    summary(lg, repl)
+    check_scoring(lg)
+    if args.simulate:
+        simulate(lg, players, repl, env["ESPN_SWID"])
+        return 0
+    if args.draft_live:
+        ld = live.LiveDraft(players, repl, env["ESPN_SWID"], resolve=resolve)
+        log.info("Live draft co-pilot: polling every %.0fs. Board: %s (auto-refreshes)", args.interval, ld.out_path)
+        live.run(ld, espn.fetch_draft_live, interval=args.interval, max_polls=args.polls)
+        return 0
+    drafted = {pid: (ov, t) for ov, t, pid in lg.picks}
+    out = config.OUTPUT / "draft_board.html"
+    config.OUTPUT.mkdir(exist_ok=True)
+    out.write_text(board.render(lg, players, drafted, len(lg.picks) + 1, repl))
+    log.info("Board written: %s", out)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

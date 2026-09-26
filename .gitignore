@@ -1,0 +1,16 @@
+# ESPN login cookies — never commit
+.env
+
+# OS / Python
+.DS_Store
+__pycache__/
+*.pyc
+
+# Regenerable caches and generated output
+state/*_cache.json
+state/*.log
+state/context.json
+output/
+
+# Licensed projections workbook - keep local
+*.xlsx
