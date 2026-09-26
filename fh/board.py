@@ -94,7 +94,7 @@ th{{color:var(--mute);font-weight:500;cursor:pointer;position:sticky;top:0;backg
 .alert{{margin:10px 16px 0;padding:10px 14px;border-radius:8px;font-weight:600;font-size:16px}}
 .alert.clock{{background:#3a1212;border:1px solid var(--bad);color:#ffd6d6}}.alert.soon{{background:#3a2c0c;border:1px solid var(--warn)}}
 .alert.warn{{background:#3a2c0c;border:1px solid var(--warn);font-size:14px}}.alert.info{{background:#10243a;border:1px solid var(--acc);font-size:14px}}
-.note{{margin:10px 16px 0;color:var(--warn)}}.inj{{color:var(--bad);font-size:11px}}.gone{{color:var(--mute)}}.hi{{color:var(--good)}}.lo{{color:var(--bad)}}
+.note{{margin:10px 16px 0;color:var(--warn)}}.inj{{color:#1a0d0d;background:var(--warn);font-size:11px;font-weight:700;padding:1px 5px;border-radius:4px}}.gone{{color:var(--mute)}}.hi{{color:var(--good)}}.lo{{color:var(--bad)}}
 .big{{grid-column:1/-1;max-height:75vh}}.ctl{{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}}
 input,select{{background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:5px 8px}}
 ul{{margin:0;padding-left:18px}}

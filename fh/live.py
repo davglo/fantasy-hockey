@@ -122,8 +122,10 @@ class LiveDraft:
         recs = draft.recommend(avail, mine, lg, cur, n=5)
         lines = [">>> " + msg]
         for i, r in enumerate(recs, 1):
-            lines.append("    %d. %-24s %s  FP %.0f  VOR %+.0f  drop %+.0f  back %d%%"
-                         % (i, r.player.name, r.player.group, r.player.fp, r.player.vor, r.dropoff, round(r.p_next * 100)))
+            inj = "" if r.player.injury == "ACTIVE" else "  [%s - check news]" % r.player.injury
+            lines.append("    %d. %-24s %s  FP %.0f  VOR %+.0f  drop %+.0f  back %d%%%s"
+                         % (i, r.player.name, r.player.group, r.player.fp, r.player.vor, r.dropoff,
+                            round(r.p_next * 100), inj))
         return lines
 
     def write_board(self) -> None:
