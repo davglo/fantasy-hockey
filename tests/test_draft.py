@@ -115,6 +115,17 @@ class TestLive(unittest.TestCase):
         ld.update(raw_league(made=[1, 2], in_progress=True))
         self.assertNotIn("stale", ld.status)
 
+    def test_no_stale_while_lobby_open(self):
+        ld = self.make()
+        self.t[0] = 1790555400.0 - 2400   # 40 min before draft, ESPN already says in progress
+        ld.update(raw_league(in_progress=True))
+        self.t[0] += 600
+        ld.update(raw_league(in_progress=True))
+        self.assertNotIn("stale", ld.status)
+        self.t[0] = 1790555400.0 + 100    # draft started 100s ago, still no pick
+        ld.update(raw_league(in_progress=True))
+        self.assertIn("No new pick", ld.status["stale"])
+
     def test_unreachable(self):
         ld = self.make()
         ld.update(raw_league())

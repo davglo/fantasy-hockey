@@ -89,7 +89,11 @@ class LiveDraft:
         lg = self.league
         if lg.drafted:
             return
-        if lg.in_progress and now - self.last_pick_at > lg.time_per_pick + LAG_GRACE:
+        started = bool(lg.picks) or (lg.draft_time and now >= lg.draft_time.timestamp())
+        if started and not lg.picks and lg.draft_time:
+            self.last_pick_at = max(self.last_pick_at, lg.draft_time.timestamp())  # clock starts at draft time
+        # ESPN flags the draft "in progress" when the lobby opens (~1 hr early), so only time lags once started.
+        if lg.in_progress and started and now - self.last_pick_at > lg.time_per_pick + LAG_GRACE:
             self.status["stale"] = ("No new pick in %ds (timer is %ds) - ESPN feed may be lagging; trust the draft room."
                                     % (now - self.last_pick_at, lg.time_per_pick))
         elif (not lg.in_progress and not lg.picks and lg.draft_time
