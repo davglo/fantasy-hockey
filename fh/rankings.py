@@ -19,6 +19,12 @@ LABEL_TO_STAT = {
     "goals against": 4,
 }
 
+# 'The List' stat columns -> ESPN stat IDs (used to re-score workbook FP under league points).
+LIST_COLS = {"G": 13, "A": 14, "PTS": 16, "SOG": 29, "PPG": 18, "PPP": 38, "SHG": 20, "SHP": 39, "BLK": 32,
+             "HIT": 31, "+/-": 15, "PIM": 17, "GWG": 22, "FOW": 23, "FOL": 24,
+             "W": 1, "L": 2, "OTL": 9, "SO": 7, "SV": 6, "GA": 4}
+GOALIE_STATS = {1, 2, 9, 7, 6, 4}
+
 NAME_ALIASES = {  # sheet spelling -> ESPN spelling (normalized); extend as mismatches show up
 }
 
@@ -74,6 +80,9 @@ def load(path: Path = config.RANKINGS_XLSX) -> list:
             "name": name, "key": norm_name(name), "team": norm_team(r[col["TEAM"]]), "pos": r[col["POS"]],
             "fp": float(fp), "gp": gp if isinstance(gp, (int, float)) else None,
             "g": r[col["G"]] if not is_g and isinstance(r[col["G"]], (int, float)) else 0.0,
+            "stats": {sid: float(r[col[h]]) for h, sid in LIST_COLS.items()
+                      if h in col and isinstance(r[col[h]], (int, float))
+                      and (sid in GOALIE_STATS) == is_g},
             "sheet_rank": r[col["RK"]], "sheet_adp": r[col["ADP"]] if isinstance(r[col["ADP"]], (int, float)) else None,
             "boost": r[col["ADJ"]] if r[col["ADJ"]] not in (0, None) else "",
         })
@@ -82,18 +91,24 @@ def load(path: Path = config.RANKINGS_XLSX) -> list:
     return out
 
 
+def sheet_scoring(path: Path = config.RANKINGS_XLSX) -> dict:
+    """Workbook Settings 'Points' column as {ESPN statId: points}."""
+    ws = _open(path)["Settings"]
+    sheet = {}
+    for label, pts, *_ in ws.iter_rows(min_col=1, max_col=2, values_only=True):
+        if isinstance(label, str) and label.strip().lower() in LABEL_TO_STAT:
+            sheet[LABEL_TO_STAT[label.strip().lower()]] = float(pts) if isinstance(pts, (int, float)) else 0.0
+    return sheet
+
+
 def check_scoring(league_scoring: dict, path: Path = config.RANKINGS_XLSX) -> list:
     """Compare the workbook's Points column with ESPN league scoring. Returns human-readable issues."""
     if not path.exists():
         return ["rankings workbook not found"]
     try:
-        ws = _open(path)["Settings"]
+        sheet = sheet_scoring(path)
     except Exception as e:  # noqa: BLE001
         return ["could not read Settings sheet: %s" % e]
-    sheet = {}
-    for label, pts, *_ in ws.iter_rows(min_col=1, max_col=2, values_only=True):
-        if isinstance(label, str) and label.strip().lower() in LABEL_TO_STAT:
-            sheet[LABEL_TO_STAT[label.strip().lower()]] = float(pts) if isinstance(pts, (int, float)) else 0.0
     issues = []
     for stat in sorted(set(sheet) | set(league_scoring)):
         want, have = float(league_scoring.get(stat, 0)), sheet.get(stat)

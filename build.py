@@ -31,11 +31,16 @@ def load_all():
     lg = espn.parse_league(espn.fetch_league(), env["ESPN_SWID"])
     sheet = rankings.load()
     pro = espn.fetch_pro_teams()
-    players = valuation.build_players(espn.fetch_pool(), sheet, lg, pro)
+    try:
+        sheet_pts = rankings.sheet_scoring()
+    except Exception as e:  # noqa: BLE001 - no workbook -> no rescoring needed
+        log.warning("workbook scoring unreadable (%s); workbook FP used as-is", e)
+        sheet_pts = {}
+    players = valuation.build_players(espn.fetch_pool(), sheet, lg, pro, sheet_pts)
     repl = valuation.value(players, lg)
 
     def resolve(ids):
-        extra = valuation.build_players(espn.fetch_players_by_id(ids), sheet, lg, pro)
+        extra = valuation.build_players(espn.fetch_players_by_id(ids), sheet, lg, pro, sheet_pts)
         for p in extra:
             p.vor = p.fp - repl[p.group]
         return extra
@@ -61,7 +66,11 @@ def check_scoring(lg: espn.League) -> None:
     issues = rankings.check_scoring(lg.scoring)
     hard = [i for i in issues if "can't model" not in i]
     for i in issues:
-        (log.warning if i in hard else log.info)("Workbook scoring check: %s", i)
+        note = "" if i not in hard else " -> workbook FP re-scored from its stat columns"
+        log.info("Workbook scoring check: %s%s", i, note)
+    if config.SCORING_OVERRIDES:
+        log.info("Scoring overrides (not yet in ESPN): %s", ", ".join(
+            "%s %g" % (config.STAT_NAMES.get(k, k), v) for k, v in config.SCORING_OVERRIDES.items()))
     if not hard:
         log.info("Workbook scoring check: all modeled stats match ESPN league settings")
 

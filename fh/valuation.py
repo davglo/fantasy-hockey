@@ -84,7 +84,14 @@ def _sheet_group(pos: str) -> str:
     return pos if pos in ("G", "D") else "F"
 
 
-def build_players(pool: list, sheet: list, league: League, pro_teams: dict) -> list:
+def rescore_delta(row: dict, league_scoring: dict, sheet_scoring: dict) -> float:
+    """FP change for a workbook row when league points differ from the workbook's points."""
+    return sum((league_scoring.get(sid, 0) - sheet_scoring.get(sid, 0)) * v
+               for sid, v in row.get("stats", {}).items() if sid in sheet_scoring)
+
+
+def build_players(pool: list, sheet: list, league: League, pro_teams: dict,
+                  sheet_scoring: dict | None = None) -> list:
     by_key_team = {(r["key"], r["team"]): r for r in sheet}
     by_key = {}
     for r in sheet:
@@ -126,7 +133,7 @@ def build_players(pool: list, sheet: list, league: League, pro_teams: dict) -> l
         players.append(Player(
             id=pl["id"], name=pl["fullName"], group=group, positions=pos, team=team,
             injury=pl.get("injuryStatus") or "ACTIVE",
-            fp=(row["fp"] if row else espn_fp) + hat, source="sheet" if row else "espn", espn_fp=espn_fp + hat,
+            fp=(row["fp"] + rescore_delta(row, league.scoring, sheet_scoring or {}) if row else espn_fp) + hat, source="sheet" if row else "espn", espn_fp=espn_fp + hat,
             gp=gp, espn_rank=rank, espn_adp=own.get("averageDraftPosition") or None,
             sheet_rank=row["sheet_rank"] if row else None, boost=row["boost"] if row else "",
             pct_owned=own.get("percentOwned", 0.0),

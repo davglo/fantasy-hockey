@@ -163,7 +163,7 @@ def parse_league(raw: dict, swid: str | None = None) -> League:
     date_ms = ds.get("date")
     return League(
         name=s["name"], size=s["size"], scoring_type=sc["scoringType"],
-        scoring={i["statId"]: i["points"] for i in sc["scoringItems"]},
+        scoring={**{i["statId"]: i["points"] for i in sc["scoringItems"]}, **config.SCORING_OVERRIDES},
         slots=slots,
         pos_limits={config.SLOT_NAMES.get(int(k), k): v for k, v in rs.get("positionLimits", {}).items() if v > 0},
         draft_type=ds["type"],

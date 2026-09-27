@@ -28,3 +28,7 @@ STAT_NAMES = {
 }
 
 POLL_SECONDS = 5
+
+# Scoring changes agreed in the league but not yet reflected in ESPN settings (statId -> points).
+# Harmless once ESPN matches. 2026-09-27: saves cut from 0.2 to 0.1.
+SCORING_OVERRIDES = {6: 0.1}
