@@ -42,6 +42,8 @@ def lineup_check(mine: list, league: League, cal: Calendar, period: int) -> tupl
     for p in starters:
         if plays(p) and p.injury == "OUT":
             issues.append(LineupIssue("fix", "%s is starting but listed OUT." % p.name))
+        elif plays(p) and p.injury not in ("ACTIVE", "DAY_TO_DAY"):
+            issues.append(LineupIssue("check", "%s is starting but listed %s - confirm he's eligible tonight." % (p.name, p.injury)))
         if p.group == "G" and can_play(p):
             issues.append(LineupIssue("check", "Confirm %s starts in net (no confirmed-starter feed)." % p.name))
     actual = sum(p.exp_game() for p in starters if can_play(p))
