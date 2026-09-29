@@ -36,7 +36,7 @@ class Calendar:
         return sum(1 for p in periods if p in g)
 
 
-def build_calendar(pro_raw: dict, n_matchups: int, final_period: int) -> Calendar:
+def build_calendar(pro_raw: dict, n_matchups: int, final_period: int, weekly: bool = False) -> Calendar:
     abbrev = {t["id"]: t["abbrev"] for t in pro_raw["settings"]["proTeams"]}
     team_games, opponents, start = {}, {}, None
     for t in pro_raw["settings"]["proTeams"]:
@@ -51,8 +51,14 @@ def build_calendar(pro_raw: dict, n_matchups: int, final_period: int) -> Calenda
     # Matchup weeks: the last one holds the final period and starts on that week's Monday; earlier
     # ones step back 7 days; matchup 1 absorbs the opening partial week (ESPN: Sep 29-Oct 11).
     cal = Calendar(start=start, final_period=final_period, team_games=team_games, opponents=opponents, matchups={})
-    last_monday = cal.period_of(cal.date_of(final_period) - timedelta(days=cal.date_of(final_period).weekday()))
-    starts = {m: last_monday - 7 * (n_matchups - m) for m in range(1, n_matchups + 1)}
+    if weekly:
+        # Matchup 1 runs through the first Sunday; then Monday-Sunday weeks.
+        first_monday = 1 + (7 - cal.start.weekday()) % 7 or 8
+        starts = {m: first_monday + 7 * (m - 2) for m in range(2, n_matchups + 1)}
+        final_period = min(final_period, starts[n_matchups] + 6)
+    else:
+        last_monday = cal.period_of(cal.date_of(final_period) - timedelta(days=cal.date_of(final_period).weekday()))
+        starts = {m: last_monday - 7 * (n_matchups - m) for m in range(1, n_matchups + 1)}
     starts[1] = 1
     for m in range(1, n_matchups + 1):
         end = starts[m + 1] - 1 if m < n_matchups else final_period
@@ -131,4 +137,4 @@ def fetch_calendar(state: LeagueState) -> Calendar:
     while n > 1:
         rounds, n = rounds + 1, n // 2
     final = max(int(p) for t in pro["settings"]["proTeams"] for p in (t.get("proGamesByScoringPeriod") or {}))
-    return build_calendar(pro, state.regular_matchups + rounds, final)
+    return build_calendar(pro, state.regular_matchups + rounds, final, config.WEEKLY_MATCHUPS)

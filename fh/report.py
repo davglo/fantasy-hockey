@@ -47,6 +47,8 @@ def _drop_caution(drop, mine: list) -> str:
 def build(swid: str) -> dict:
     state = season.fetch_state(swid)
     cal = season.fetch_calendar(state)
+    if config.WEEKLY_MATCHUPS:   # our week boundaries, not ESPN's (its opening matchup is 13 days)
+        state.current_matchup = cal.matchup_of(state.today_period) or state.current_matchup
     lg = state.league
     me = lg.my_team_id
     sheet = rankings.load()

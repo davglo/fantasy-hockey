@@ -36,6 +36,14 @@ class TestCalendar(unittest.TestCase):
         self.assertEqual(cal.matchup_of(14), 2)
 
 
+    def test_weekly_matchups(self):
+        cal = season.build_calendar(pro_raw(), 27, 194, weekly=True)
+        self.assertEqual(cal.date_of(cal.matchups[1][-1]), date(2026, 10, 4))    # through first Sunday
+        self.assertEqual(cal.date_of(cal.matchups[2][0]), date(2026, 10, 5))
+        self.assertTrue(all(len(cal.matchups[m]) == 7 for m in range(2, 28)))
+        self.assertEqual(cal.date_of(cal.matchups[27][-1]), date(2027, 4, 4))
+
+
 class TestLineups(unittest.TestCase):
     def setUp(self):
         self.lg = espn.parse_league(raw_league(), SWID)
@@ -107,6 +115,16 @@ class TestMovesAndTrades(unittest.TestCase):
         tv[theirs[0].id] = 100.0                     # market loves him: nothing of mine is worth it
         recs = advice.trades({5: mine, 2: theirs}, 5, [], self.value, tv, {2: 0.5})
         self.assertFalse(any(theirs[0].id in [p.id for p in t.get] for t in recs))
+
+    def test_trade_keeps_goalie_floor(self):
+        mine = self.roster()
+        mine[-3].base.injury = "SUSPENSION"           # 2 healthy goalies left
+        theirs = [pl(300 + i, "F", rate=4.0) for i in range(3)]
+        for p in theirs:
+            p.owner = 2
+        tv = {p.id: 1.0 for p in mine + theirs}
+        recs = advice.trades({5: mine, 2: theirs}, 5, [], self.value, tv, {2: 0.5})
+        self.assertFalse(any(p.group == "G" for t in recs for p in t.give))
 
     def test_stream_plan_respects_adds_left(self):
         fas = [pl(500 + i, "F", team="BUF", rate=5.0, slot=None) for i in range(5)]

@@ -298,6 +298,8 @@ def trades(rosters: dict, me: int, fas: list, value: Valuer, tv: dict, odds: dic
             elif len(new_mine) < len(mine) and best_fa:   # 2-for-1: backfill from free agency
                 back = best_fa
                 new_mine = new_mine + [best_fa]
+            if healthy_goalies(new_mine) < min(2, healthy_goalies(mine)):
+                continue    # same goalie floor as drops
             if screen(new_mine) - base_screen[me] <= 0:
                 continue
             cands.append((screen(new_mine) - base_screen[me], t, give, get, back, tv_give, tv_get, new_mine))

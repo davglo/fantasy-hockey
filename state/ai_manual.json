@@ -1,16 +1,37 @@
 {
   "date": "2026-09-28",
   "playoff_odds": 0.87,
-  "my_players": ["Macklin Celebrini", "Evan Bouchard", "Moritz Seider", "Jack Hughes", "Cutter Gauthier", "Dylan Guenther",
-                 "Jakob Chychrun", "Alex Tuch", "Jeremy Swayman", "Brandt Clarke", "Tom Wilson", "Connor Bedard",
-                 "Connor Hellebuyck", "Pavel Dorofeyev", "Mark Stone", "Justin Faulk", "Jet Greaves", "Gavin McKenna",
-                 "Alex Laferriere", "Shea Theodore", "Joel Eriksson Ek", "Jimmy Snuggerud", "Pavel Zacha"],
+  "my_players": [
+    "Macklin Celebrini",
+    "Evan Bouchard",
+    "Moritz Seider",
+    "Jack Hughes",
+    "Cutter Gauthier",
+    "Dylan Guenther",
+    "Jakob Chychrun",
+    "Alex Tuch",
+    "Jeremy Swayman",
+    "Brandt Clarke",
+    "Tom Wilson",
+    "Connor Bedard",
+    "Connor Hellebuyck",
+    "Pavel Dorofeyev",
+    "Mark Stone",
+    "Justin Faulk",
+    "Jet Greaves",
+    "Gavin McKenna",
+    "Alex Laferriere",
+    "Shea Theodore",
+    "Joel Eriksson Ek",
+    "Jimmy Snuggerud",
+    "Pavel Zacha"
+  ],
   "takes": {
     "overview": "The draft room went sideways but the roster didn't: this projects as the strongest team in the league, level with Al Dente, once Bedard returns from IR. The edge is the D corps (Seider, Bouchard, Clarke, Chychrun), which this blocks-heavy scoring rewards. The soft spot is the back of the forwards (Laferriere, Zacha, McKenna): that's where adds and trade chips should go. Watch Hellebuyck's suspension this week.",
-    "matchup": "Week 1 is a 13-day opener, and Angie's has about 12 more projected starts - that's the whole gap. Volume fixes it: use the Streaming tab's adds on your many open skater slots early in the window.",
+    "matchup": "Opening week is six days (Sep 29-Oct 4) and Angie's has more starts (61 vs 53), which is most of the gap. Use the Streaming tab's adds on your open skater slots early in the week.",
     "roster": "Hold the four top D; they're the edge. Bedard sits on IR, so his slot costs nothing now and he's worth a lot once back. Hellebuyck is starting in net while listed SUSPENSION: confirm before each game and slide Greaves in if he can't go.",
     "free_agents": "Hartman for Laferriere is the clean rest-of-season upgrade: more points and a full playoff-week schedule. Keep all three goalies until Hellebuyck's status is clear.",
-    "trades": "The best realistic idea is Tuch + Chychrun to Torts for Makar: consolidation into a star, and Torts gains depth too, so it's a pitch they can say yes to. Tuch is the chip to sell - ESPN ranks him far higher than your projections do.",
-    "playoffs": "Your playoff weeks look average (6-7 games for most of the roster). Gauthier, Dorofeyev and McKenna have light schedules (5 games) - if you move forwards later, move them first."
+    "trades": "Tuch is the chip to sell: ESPN ranks him far higher than your projections do. Tuch to Matt's for Hischier + Marchenko is the best balanced idea (both sides gain). Keep both healthy goalies until Hellebuyck's status is clear.",
+    "playoffs": "Your playoff weeks (Mar 22-Apr 4) are a strength: you project first in playoff-week points. Chychrun, Tuch and Wilson get 8 games; Guenther and Hellebuyck only 5, so they're the first to move if you shuffle late in the season."
   }
 }
