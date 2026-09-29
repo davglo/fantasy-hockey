@@ -1,6 +1,8 @@
-"""ESPN fantasy hockey co-GM. Phase 1: draft board + live draft co-pilot.
+"""ESPN fantasy hockey co-GM.
 
-  python3 build.py                 league summary + output/draft_board.html
+  python3 build.py                 in-season dashboard -> output/index.html + state/context.json
+  python3 build.py --lineup-check  today's lineup problems (Mac notification if any); advice only
+  python3 build.py --draft-board   draft big board -> output/draft_board.html
   python3 build.py --draft-live    poll the live draft every 5s, alert on my turn
   python3 build.py --simulate      offline mock draft through the live pipeline (plumbing test)
 """
@@ -11,7 +13,7 @@ import logging
 import random
 import sys
 
-from fh import board, config, draft, espn, live, rankings, valuation
+from fh import analysis, board, config, dashboard, draft, espn, live, rankings, report, valuation
 
 log = logging.getLogger("build")
 
@@ -110,14 +112,50 @@ def simulate(lg, players, repl, swid) -> None:
     log.info("SIM my projected FP (top 18 non-bench approx): %.0f", sum(sorted((x.fp for x in mine), reverse=True)[:18]))
 
 
+def build_dashboard(swid: str) -> dict:
+    ctx = report.build(swid)
+    report.write_context(ctx)
+    manual = analysis.load_manual()
+    log.info("Analysis check: %s", "; ".join(analysis.check(ctx, manual)))
+    config.OUTPUT.mkdir(exist_ok=True)
+    out = config.OUTPUT / "index.html"
+    out.write_text(dashboard.render(ctx, manual))
+    me = ctx["me"]
+    log.info("%s | grade %s | playoff odds %.0f%% | urgent: %s", me["name"], me["grade"], me["playoff_odds"] * 100, me["urgent"])
+    log.info("Dashboard written: %s", out)
+    return ctx
+
+
+def lineup_check(ctx: dict) -> None:
+    today = ctx["lineup"]["today"]
+    fixes = [i["text"] for i in today["issues"] if i["severity"] == "fix"]
+    for i in today["issues"]:
+        log.info("Lineup %s [%s] %s", today["date"], i["severity"], i["text"])
+    if fixes:
+        live.notify("Lineup check %s" % today["date"], "%d fix%s: %s" % (len(fixes), "es" * (len(fixes) > 1), fixes[0]))
+    else:
+        log.info("Lineup %s: no fixes needed", today["date"])
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
+    ap.add_argument("--draft-board", action="store_true")
     ap.add_argument("--draft-live", action="store_true")
     ap.add_argument("--simulate", action="store_true")
+    ap.add_argument("--lineup-check", action="store_true")
     ap.add_argument("--interval", type=float, default=config.POLL_SECONDS)
     ap.add_argument("--polls", type=int, default=None, help="stop live mode after N polls (testing)")
     args = ap.parse_args()
     setup_logging()
+    if not (args.draft_board or args.draft_live or args.simulate):
+        try:
+            ctx = build_dashboard(espn.load_env()["ESPN_SWID"])
+        except espn.FetchError as e:
+            log.error("STOP: %s", e)
+            return 1
+        if args.lineup_check:
+            lineup_check(ctx)
+        return 0
     try:
         env, lg, players, repl, resolve = load_all()
     except espn.FetchError as e:
