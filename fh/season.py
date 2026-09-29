@@ -70,6 +70,7 @@ class Team:
     points_for: float
     points_against: float
     roster: list = field(default_factory=list)   # [(playerPoolEntry dict, lineupSlotId)]
+    adds_by_matchup: dict = field(default_factory=dict)  # matchup period -> acquisitions made
 
 
 @dataclass
@@ -105,7 +106,9 @@ def fetch_state(swid: str) -> LeagueState:
         teams[t["id"]] = Team(
             id=t["id"], name=t.get("name") or t.get("abbrev"), wins=rec.get("wins", 0), losses=rec.get("losses", 0),
             ties=rec.get("ties", 0), points_for=rec.get("pointsFor", 0.0), points_against=rec.get("pointsAgainst", 0.0),
-            roster=[(e["playerPoolEntry"], e["lineupSlotId"]) for e in t.get("roster", {}).get("entries", [])])
+            roster=[(e["playerPoolEntry"], e["lineupSlotId"]) for e in t.get("roster", {}).get("entries", [])],
+            adds_by_matchup={int(k): v for k, v in
+                             ((t.get("transactionCounter") or {}).get("matchupAcquisitionTotals") or {}).items()})
     sched = [Matchup(period=m["matchupPeriodId"], home=m["home"]["teamId"], away=m.get("away", {}).get("teamId"),
                      home_pts=m["home"].get("totalPoints", 0.0), away_pts=m.get("away", {}).get("totalPoints", 0.0),
                      winner=m.get("winner", "UNDECIDED"), playoff=m.get("playoffTierType", "NONE") != "NONE")

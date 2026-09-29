@@ -3,7 +3,7 @@ from __future__ import annotations
 import unittest
 from datetime import date
 
-from fh import advice, analysis, engine, espn, season
+from fh import advice, analysis, engine, espn, market, season
 from fh.engine import P
 from tests.test_draft import SWID, mk, raw_league
 
@@ -68,6 +68,58 @@ class TestLineups(unittest.TestCase):
     def test_win_prob(self):
         self.assertAlmostEqual(engine.win_prob(100, 100), 0.5)
         self.assertGreater(engine.win_prob(120, 100), 0.75)
+
+
+class TestMovesAndTrades(unittest.TestCase):
+    def setUp(self):
+        self.lg = espn.parse_league(raw_league(), SWID)
+        self.cal = season.build_calendar(pro_raw(), 27, 194)
+        self.value = advice.Valuer(self.lg, self.cal, range(1, 30), range(182, 195))
+
+    def roster(self):
+        ps = [pl(i, "F", rate=3.0 - i * 0.1) for i in range(12)] + [pl(100 + i, "D", rate=2.0) for i in range(6)]
+        ps += [pl(200, "G", rate=2.5, slot=5), pl(201, "G", rate=1.0, slot=5), pl(202, "G", rate=0.5, slot=7)]
+        return ps
+
+    def test_droppable_protects_ir_flagged_and_goalie_floor(self):
+        ps = self.roster()
+        ps[11].slot = advice.IR_SLOT                 # IR: never dropped
+        ps[10].base.injury = "SUSPENSION"            # flagged: never dropped
+        ps[-3].base.injury = "SUSPENSION"            # only 2 healthy goalies left -> both protected
+        ids = {p.id for p in advice.droppable(ps, self.value, k=30)}
+        self.assertNotIn(ps[11].id, ids)
+        self.assertNotIn(ps[10].id, ids)
+        self.assertNotIn(201, ids)
+        self.assertNotIn(202, ids)
+
+    def test_ir_counts_rest_of_season(self):
+        ps = self.roster()
+        before = self.value(ps)
+        ps[0].slot = advice.IR_SLOT
+        self.assertAlmostEqual(self.value(ps), before)   # no discount for IR over the rest of the season
+
+    def test_trade_requires_market_fairness(self):
+        mine, theirs = self.roster(), [pl(300 + i, "F", rate=2.0) for i in range(12)] + [pl(400 + i, "D", rate=2.0) for i in range(6)]
+        for p in theirs:
+            p.owner = 2
+        theirs[0].rate = 4.0                         # their star
+        tv = {p.id: 1.0 for p in mine + theirs}
+        tv[theirs[0].id] = 100.0                     # market loves him: nothing of mine is worth it
+        recs = advice.trades({5: mine, 2: theirs}, 5, [], self.value, tv, {2: 0.5})
+        self.assertFalse(any(theirs[0].id in [p.id for p in t.get] for t in recs))
+
+    def test_stream_plan_respects_adds_left(self):
+        fas = [pl(500 + i, "F", team="BUF", rate=5.0, slot=None) for i in range(5)]
+        self.assertEqual(advice.stream_plan(self.roster(), fas, self.value, [2], adds_left=0), [])
+        self.assertLessEqual(len(advice.stream_plan(self.roster(), fas, self.value, [2], adds_left=1)), 1)
+
+    def test_market_values_superlinear(self):
+        ps = self.roster()
+        for i, p in enumerate(ps):
+            p.base.espn_adp = i + 1
+        tv = market.trade_values(ps, {}, lambda p: 100.0 - p.base.espn_adp * 3)
+        # rank 1 sits 60 pts over replacement, rank 11 sits 30: one star > two halves (consolidation premium)
+        self.assertGreater(tv[ps[0].id], 2 * tv[ps[10].id])
 
 
 class TestAnalysisCheck(unittest.TestCase):

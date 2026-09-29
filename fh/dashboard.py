@@ -93,28 +93,67 @@ def render(ctx: dict, manual: dict) -> str:
             key.title(), _e(d["date"]), iss, '<p class="mute">Points left on the table: %.1f</p>' % d["gain"] if d["gain"] > 0.05 else "", playing))
     tabs.append(("lineup", "Lineup", '<p class="mute">Advice only - nothing here changes your ESPN lineup.</p>' + "".join(lu)))
 
-    # Free agents
-    fa = [[_e(p["name"]) + _inj(p), _e(p["pos"]), _e(p["team"]), "%.1f" % p["score"], "%+.0f" % p["ros_gain"], "%+.1f" % p["week_gain"],
-           "%d / %d" % (p["g_this"], p["g_next"]), "%+.1f" % p["own_chg"], _e(p["drop"]), _e(p["luck"])] for p in ctx["free_agents"]]
-    s = ctx["streaming"]
-    gm = [[_e(g["team"]), g["this"], g["next"]] for g in s["games"][:12]]
-    gs = [[_e(p["name"]) + _inj(p), _e(p["team"]), p["games"], "%.1f" % p["exp"], _e(", ".join(p["opps"]))] for p in s["goalies"]]
+    # Free agents (rest of season)
+    fa = [[_e(p["name"]) + _inj(p) + (' <span class="tag">waivers</span>' if p["status"] == "WAIVERS" else ""), _e(p["pos"]),
+           _e(p["team"]), "%+.1f" % p["gain"], "%d" % p["po_games"], "%+.1f" % p["week_gain"], "%+.1f" % p["own_chg"],
+           _e(p["drop"]), _e(p["luck"])] for p in ctx["free_agents"]]
     tabs.append(("fa", "Free Agents", """{take}
-<div class="card"><h3>Top adds</h3><ul>{summ}</ul>{fa}
-<p class="mute">Score = ROS points gained (day-by-day optimal lineups) + half the next-two-weeks gain + ownership trend. Drop = the player whose loss costs the least.</p></div>
-<div class="grid"><div class="card"><h3>Games per team (this wk / next)</h3>{gm}</div>
-<div class="card"><h3>Goalie streams this week</h3>{gs}</div></div>""".format(
+<div class="card"><h3>Best rest-of-season adds</h3><ul>{summ}</ul>{fa}
+<p class="mute">Gain = projected points added over the rest of the season with day-by-day optimal lineups, playoff weeks counted x{w:g}, using the best drop for each player.
+Drops never include IR or injury/suspension-flagged players, and never leave you under 2 healthy goalies. Short-term pickups live on the Streaming tab.</p></div>""".format(
         take=_take(manual, "free_agents"), summ="".join("<li>%s</li>" % _e(t) for t in ctx["fa_summary"]),
-        fa=_table(["Player", "Pos", "Team", "Score", "ROS", "2 wks", "Games", "Own chg", "Drop", "Signal"], fa),
-        gm=_table(["Team", "This", "Next"], gm), gs=_table(["Goalie", "Team", "Games", "Exp pts", "Opponents"], gs))))
+        w=ctx["playoffs"]["weight"],
+        fa=_table(["Player", "Pos", "Team", "Gain", "Playoff gms", "Next 2 wks", "Own chg", "Drop", "Signal"], fa))))
+
+    # Streaming (matchup to matchup)
+    s = ctx["streaming"]
+    parts = ['<p class="mute">Adds used this matchup: <b>%d of %d</b>. Plans are greedy: each step takes the pickup that adds the most '
+             'projected points for that matchup; your top 14 players are never dropped.</p>' % (s["adds_used"], s["adds_limit"])]
+    for key in ("this", "next"):
+        blk = s[key]
+        mv = [["%d" % (i + 1), _e(m["add"]) + (' <span class="tag">claim</span>' if m["waivers"] else ""), _e(m["add_pos"]),
+               _e(m["add_team"]), _e(m["drop"]), "%+.1f" % m["gain"], _e(", ".join(m["days"]))] for i, m in enumerate(blk["moves"])]
+        heat = "".join('<div class="day"><div>%s</div><div class="%s">G %d</div><div class="%s">Sk %d</div></div>' % (
+            _e(o["date"][:3] + " " + o["date"].split()[-1]), "hot" if o["G"] else "", o["G"], "hot" if o["skater"] >= 3 else "", o["skater"])
+            for o in blk["open"])
+        parts.append('<div class="card"><h3>%s</h3><div class="days">%s</div><p class="mute">Open lineup slots per day with your current roster '
+                     '(G = goalie slots, Sk = skater slots). Highlighted days are where a streamer scores.</p>%s</div>' % (
+                         _e(blk["label"]), heat, _table(["#", "Add", "Pos", "Team", "Drop", "Gain", "Game days"], mv)))
+    gm = [[_e(g["team"]), g["this"], g["next"]] for g in s["games"][:12]]
+    gs = [[_e(p["name"]) + _inj(p) + (' <span class="tag">waivers</span>' if p["status"] == "WAIVERS" else ""), _e(p["team"]),
+           p["games"], "%.1f" % p["exp"], _e(", ".join(p["opps"]))] for p in s["goalies"]]
+    parts.append('<div class="grid"><div class="card"><h3>Most games (this wk / next)</h3>%s</div>'
+                 '<div class="card"><h3>Goalie streams this week</h3>%s<p class="mute">Saves are 0.1 here, so a streamed start can go negative - '
+                 'only stream volume, not hope.</p></div></div>' % (_table(["Team", "This", "Next"], gm),
+                                                                    _table(["Goalie", "Team", "Games", "Exp pts", "Opponents"], gs)))
+    tabs.append(("stream", "Streaming", "".join(parts)))
+
+    # Playoffs
+    po = ctx["playoffs"]
+    wk_h = [w.split(" (")[0] for w in po["weeks"]]
+    pt = [["<b>%s</b>" % _e(t["name"]) if t["me"] else _e(t["name"])] + ["%.0f" % x for x in t["weeks"]] + ["%.0f" % t["total"], _pct(t["odds"])]
+          for t in po["teams"]]
+    pm = [[_e(r["name"]), r["group"], _e(r["team"])] + [str(x) for x in r["weeks"]] +
+          ['<span class="%s">%d</span>' % ("bad" if r["total"] < po["avg_games"] - 0.5 else "good" if r["total"] > po["avg_games"] + 0.5 else "", r["total"])]
+          for r in po["mine"]]
+    pn = [[_e(r["team"])] + [str(x) for x in r["weeks"]] + [str(r["total"])] for r in po["nhl"]]
+    tabs.append(("playoffs", "Playoffs", """{take}
+<p class="mute">Fantasy playoffs: {weeks}. Every add and trade on this site already counts playoff-week points x{w:g}.</p>
+<div class="card"><h3>Projected playoff-week points (current rosters)</h3>{pt}</div>
+<div class="grid"><div class="card"><h3>My players' playoff games (avg {avg})</h3>{pm}<p class="mute">Red = light playoff schedule: first to go in a trade or drop late in the season.</p></div>
+<div class="card"><h3>NHL teams: playoff-week games</h3>{pn}</div></div>""".format(
+        take=_take(manual, "playoffs"), weeks=_e(", ".join(po["weeks"])), w=po["weight"], avg=po["avg_games"],
+        pt=_table(["Team"] + wk_h + ["Total", "Playoff odds"], pt), pm=_table(["Player", "Pos", "Team"] + wk_h + ["Total"], pm),
+        pn=_table(["Team"] + wk_h + ["Total"], pn))))
 
     # Trades
     tr = [[_e(t["partner"]), _e(" + ".join(t["give"])), _e(" + ".join(t["get"])), "%+.1f" % t["my_gain"], "%+.1f" % t["their_gain"],
-           _pct(t["partner_odds"])] for t in ctx["trades"]]
+           "%.0f / %.0f" % (t["market_give"], t["market_get"]), _e(t["backfill"]), _pct(t["partner_odds"])] for t in ctx["trades"]]
     tabs.append(("trades", "Trade Finder", _take(manual, "trades") + '<div class="card">' + _table(
-        ["Partner", "I give", "I get", "My gain", "Their gain", "Their odds"], tr) +
-        '<p class="mute">Gains = change in rest-of-season projected points with optimal daily lineups, recomputed every build. '
-        'Only deals where they don\'t lose meaningfully; teams with slipping playoff odds rank first.</p></div>'))
+        ["Partner", "I give", "I get", "My gain", "Their gain", "Market give / get", "Roster move", "Their odds"], tr) +
+        '<p class="mute">Shown only if the partner would accept on ESPN market value (what they see: ESPN rank/ADP, shifting to ESPN\'s season '
+        'player rater as games are played, stars weighted up) and doesn\'t lose more than %.0f projected points. Gains = rest-of-season + playoff-week '
+        'points with optimal daily lineups, recomputed every build.</p></div>' % 10))
 
     # Standings
     sr = [["<b>%s</b>" % _e(s["name"]) if s["id"] == myid else _e(s["name"]), "%d-%d%s" % (s["w"], s["l"], "-%d" % s["t"] if s["t"] else ""),
@@ -142,7 +181,7 @@ nav button.on{background:var(--acc);border-color:var(--acc);color:#081018;font-w
 main{padding:12px 16px 40px;max-width:1100px;margin:0 auto}section{display:none}section.on{display:block}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:0 0 12px}
 h3{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}
-.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}.grid .card{margin:0 0 12px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}.grid .card{margin:0 0 12px}
 .hero{display:flex;gap:14px;align-items:center;margin:4px 0 14px}.grade{font-size:34px;font-weight:800;min-width:70px;text-align:center;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px}
 .hl{font-size:17px;font-weight:600}.kpis{display:flex;flex-wrap:wrap;gap:4px 16px;color:var(--mute);margin-top:4px}.kpis b{color:var(--fg)}
 .urgent{border-color:var(--warn)}.urgent p{margin:0;font-weight:600}
@@ -151,6 +190,9 @@ h3{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;c
 th,td{text-align:left;padding:5px 8px;border-bottom:1px solid var(--line);white-space:nowrap}th{color:var(--mute);font-weight:500}
 .inj{background:var(--warn);color:#1a0f00;font-size:11px;font-weight:700;padding:1px 5px;border-radius:4px}
 .good{color:var(--good)}.bad{color:var(--bad)}ul{margin:0 0 8px;padding-left:18px}
+.tag{border:1px solid var(--line);color:var(--mute);font-size:11px;padding:0 5px;border-radius:4px}
+.days{display:flex;gap:6px;overflow-x:auto;margin-bottom:6px}.day{min-width:62px;text-align:center;border:1px solid var(--line);border-radius:8px;padding:4px;font-size:12px}
+.day .hot{color:var(--good);font-weight:700}
 .issues li.fix{color:var(--bad)}.issues li.check{color:var(--warn)}.issues li.ok{color:var(--good)}
 </style></head><body>
 <header><h1>{{TEAM}}</h1><span class="mute">{{LEAGUE}} &middot; {{WEEK}} &middot; updated {{UPDATED}} ET</span></header>

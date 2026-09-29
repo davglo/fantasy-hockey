@@ -32,3 +32,9 @@ POLL_SECONDS = 5
 # Scoring changes agreed in the league but not yet reflected in ESPN settings (statId -> points).
 # Harmless once ESPN matches. 2026-09-27: saves cut from 0.2 to 0.1.
 SCORING_OVERRIDES = {6: 0.1}
+
+# League rules not (or not reliably) in ESPN settings. 2026-09-28: Dave confirmed 6 adds per matchup.
+ADDS_PER_MATCHUP = 6
+
+# Playoff-week points count this many times a regular-season point when valuing moves.
+PLAYOFF_WEIGHT = 2.0

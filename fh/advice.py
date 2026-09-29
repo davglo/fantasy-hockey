@@ -4,7 +4,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from itertools import combinations
 
-from fh import engine
+from fh import config, engine
 from fh.espn import League
 from fh.season import BENCH_SLOT, IR_SLOT, Calendar
 
@@ -65,13 +65,59 @@ def needs(mine: list, league: League, cal: Calendar, periods, pool: list) -> dic
     return out
 
 
-# ---- free agents -------------------------------------------------------------
+# ---- shared: roster value + safe drops ------------------------------------
+
+HEALTHY = ("ACTIVE", "DAY_TO_DAY")
+
+
+class Valuer:
+    """Exact roster value = ROS regular-season points + PLAYOFF_WEIGHT x playoff-week points,
+    both from day-by-day optimal lineups. Memoized by roster membership."""
+
+    def __init__(self, league: League, cal: Calendar, ros_periods, po_periods):
+        self.league, self.cal, self.ros, self.po = league, cal, list(ros_periods), list(po_periods)
+        self.memo = {}
+
+    def __call__(self, roster: list) -> float:
+        key = frozenset(p.id for p in roster)
+        if key not in self.memo:
+            self.memo[key] = (engine.projected_points(roster, self.league, self.cal, self.ros, include_ir=True)
+                              + config.PLAYOFF_WEIGHT * engine.projected_points(roster, self.league, self.cal, self.po,
+                                                                                include_ir=True))
+        return self.memo[key]
+
+    def quick(self, p) -> float:
+        """Per-player ROS + weighted playoff points (for sorting/screening)."""
+        return p.ros(self.cal, self.ros) + config.PLAYOFF_WEIGHT * p.ros(self.cal, self.po)
+
+
+def healthy_goalies(roster: list) -> int:
+    return sum(1 for p in roster if p.group == "G" and p.slot != IR_SLOT and p.injury in HEALTHY)
+
+
+def droppable(mine: list, value: Valuer, k: int = 6, protect_top: int = 0) -> list:
+    """Low-value players I could cut: never IR or injury/suspension-flagged (status isn't proof of a long
+    absence), never below 2 healthy goalies, never my top `protect_top`."""
+    ranked = sorted((p for p in mine if p.slot != IR_SLOT and p.injury in HEALTHY), key=value.quick)
+    top = {p.id for p in ranked[::-1][:protect_top]}
+    out = []
+    for p in ranked:
+        if p.id in top:
+            continue
+        if p.group == "G" and p.injury in HEALTHY and healthy_goalies(mine) <= 2:
+            continue
+        out.append(p)
+    return out[:k]
+
+
+# ---- free agents (rest of season) --------------------------------------------
 
 @dataclass
 class FARec:
     p: object
-    ros_gain: float      # change in my season lineup value if added (dropping my least valuable player)
-    week_gain: float     # change in projected points this week + next
+    gain: float          # ROS + weighted playoff points gained with the best drop
+    week_gain: float     # this week + next (info)
+    po_games: int
     drop: object
     score: float
     games_this: int
@@ -92,29 +138,85 @@ def luck_flag(p) -> str:
     return ""
 
 
-def free_agents(mine: list, fas: list, league: League, cal: Calendar, ros_periods, this_week, next_week, n=25) -> list:
-    """Score FAs by exact day-by-day projected points gained (ROS and next two weeks), dropping my least valuable player."""
-    ros = {p.id: p.ros(cal, ros_periods) for p in list(mine) + list(fas)}
-    base = engine.projected_points(mine, league, cal, ros_periods)
+def free_agents(mine: list, fas: list, value: Valuer, this_week, next_week, n=25) -> list:
+    """Rest-of-season adds: exact lineup gain (ROS + playoff weeks x weight), best drop chosen per player."""
+    cal, lg = value.cal, value.league
+    base = value(mine)
+    drops = droppable(mine, value)
     short = list(this_week) + list(next_week)
-    base_short = engine.projected_points(mine, league, cal, short)
-    # Drop candidates: my 3 lowest-ROS players, judged by actual lineup impact.
-    drop_pool = sorted(engine.active(mine), key=lambda p: ros[p.id])[:4]
-    drop_cost = {d.id: base - engine.projected_points([p for p in mine if p.id != d.id], league, cal, ros_periods)
-                 for d in drop_pool}
-    drop = min(drop_pool, key=lambda d: drop_cost[d.id])
-    cands = sorted(fas, key=lambda p: -ros[p.id])[:50]
+    cands = sorted(fas, key=lambda p: -value.quick(p))[:40]
     recs = []
     for fa in cands:
-        roster = [p for p in mine if p.id != drop.id] + [fa]
-        g = engine.projected_points(roster, league, cal, ros_periods) - base
-        w = engine.projected_points(roster, league, cal, short) - base_short
-        trend = max(-5.0, min(5.0, fa.pct_change)) * 0.5
-        recs.append(FARec(p=fa, ros_gain=g, week_gain=w, drop=drop, score=g + 0.5 * w + trend,
-                          games_this=cal.games(fa.team, this_week), games_next=cal.games(fa.team, next_week),
-                          luck=luck_flag(fa)))
+        best = None
+        for d in drops:
+            if fa.group != "G" and d.group == "G" and healthy_goalies([p for p in mine if p.id != d.id]) < 2:
+                continue
+            g = value([p for p in mine if p.id != d.id] + [fa]) - base
+            if best is None or g > best[0]:
+                best = (g, d)
+        if best is None:
+            continue
+        g, d = best
+        roster = [p for p in mine if p.id != d.id] + [fa]
+        w = engine.projected_points(roster, lg, cal, short) - engine.projected_points(mine, lg, cal, short)
+        trend = max(-5.0, min(5.0, fa.pct_change)) * 0.2
+        recs.append(FARec(p=fa, gain=g, week_gain=w, po_games=cal.games(fa.team, value.po), drop=d,
+                          score=g + trend, games_this=cal.games(fa.team, this_week),
+                          games_next=cal.games(fa.team, next_week), luck=luck_flag(fa)))
     recs.sort(key=lambda r: -r.score)
     return recs[:n]
+
+
+# ---- streaming (matchup to matchup) ------------------------------------------
+
+def open_slots(roster: list, league: League, cal: Calendar, periods) -> list:
+    """Per day: how many lineup slots my roster can't fill (by position) = where a streamer adds points."""
+    out = []
+    for d in periods:
+        _, st = engine.best_lineup(engine.active(roster), league.slots,
+                                   lambda p: p.exp_game() if d in cal.team_games.get(p.team, ()) and p.injury != "OUT" else 0.0)
+        cnt = {g: sum(1 for p in st if p.group == g) for g in ("F", "D", "G")}
+        util = sum(league.slots.get(g, 0) for g in ("F", "D", "UTIL")) - cnt["F"] - cnt["D"]
+        out.append({"period": d, "date": cal.date_of(d).strftime("%a %b %-d"), "G": league.slots.get("G", 0) - cnt["G"],
+                    "skater": max(0, util), "starts": len(st)})
+    return out
+
+
+@dataclass
+class StreamMove:
+    add: object
+    drop: object
+    gain: float
+    days: list
+
+
+def stream_plan(mine: list, fas: list, value: Valuer, periods, adds_left: int, core: int = 14, steps: int = 4) -> list:
+    """Greedy adds for one matchup: each step picks the (free agent, drop) pair that adds the most projected
+    points over `periods`. My top `core` players (ROS + playoffs) are never dropped. Waiver players need a claim."""
+    lg, cal = value.league, value.cal
+    pool = sorted(fas, key=lambda p: -(p.exp_game() * cal.games(p.team, periods)))[:40]
+    roster, moves, used = list(mine), [], set()
+    for _ in range(min(adds_left, steps)):
+        base = engine.projected_points(roster, lg, cal, periods)
+        drops = droppable(roster, value, k=5, protect_top=core)
+        best = None
+        for fa in pool:
+            if fa.id in used or not cal.games(fa.team, periods):
+                continue
+            for d in drops:
+                if fa.group != "G" and d.group == "G" and healthy_goalies([p for p in roster if p.id != d.id]) < 2:
+                    continue
+                trial = [p for p in roster if p.id != d.id] + [fa]
+                g = engine.projected_points(trial, lg, cal, periods) - base
+                if best is None or g > best.gain:
+                    best = StreamMove(add=fa, drop=d, gain=g,
+                                      days=[cal.date_of(x).strftime("%a %-d") for x in periods if x in cal.team_games.get(fa.team, ())])
+        if best is None or best.gain < 1.0:
+            break
+        moves.append(best)
+        used.add(best.add.id)
+        roster = [p for p in roster if p.id != best.drop.id] + [best.add]
+    return moves
 
 
 def streaming(fas: list, cal: Calendar, this_week, next_week, n=8) -> dict:
@@ -128,7 +230,23 @@ def streaming(fas: list, cal: Calendar, this_week, next_week, n=8) -> dict:
     return {"games": games, "goalies": g_rows}
 
 
-# ---- trades ------------------------------------------------------------------
+# ---- playoffs ---------------------------------------------------------------
+
+def playoff_schedule(rosters: dict, me: int, league: League, cal: Calendar, po_weeks: dict) -> dict:
+    """Games per NHL team in each playoff week + each fantasy team's projected playoff-week points."""
+    teams = sorted(cal.team_games)
+    nhl = [{"team": t, "weeks": [cal.games(t, ps) for ps in po_weeks.values()],
+            "total": sum(cal.games(t, ps) for ps in po_weeks.values())} for t in teams]
+    nhl.sort(key=lambda r: -r["total"])
+    avg = sum(r["total"] for r in nhl) / len(nhl) if nhl else 0
+    proj = {tid: [engine.projected_points(ps, league, cal, per) for per in po_weeks.values()] for tid, ps in rosters.items()}
+    mine = [{"p": p, "weeks": [cal.games(p.team, per) for per in po_weeks.values()]} for p in rosters[me]]
+    return {"nhl": nhl, "avg_games": avg, "proj": proj, "mine": mine}
+
+
+# ---- trades -----------------------------------------------------------------
+
+MAX_PARTNER_LOSS = 10.0   # ROS+playoff points a partner can lose (by projection) and still plausibly accept
 
 @dataclass
 class Trade:
@@ -137,53 +255,84 @@ class Trade:
     get: list
     my_gain: float
     their_gain: float
+    market_give: float   # trade value (ESPN market) I send
+    market_get: float    # trade value I receive
     partner_odds: float
+    backfill: object = None   # FA I add (2-for-1) or player I drop (1-for-2)
 
 
-def trades(rosters: dict, me: int, league: League, cal: Calendar, periods, odds: dict, n=12) -> list:
-    ros = {p.id: p.ros(cal, periods) for ps in rosters.values() for p in ps}
-    base = {t: engine.season_value(ps, league, cal, periods, ros) for t, ps in rosters.items()}
+def trades(rosters: dict, me: int, fas: list, value: Valuer, tv: dict, odds: dict, n=15,
+           fairness: float = 1.0) -> list:
+    """Packages the partner should accept on ESPN market value (they receive >= what they send) that raise my
+    ROS + playoff projection. tv: playerId -> market trade value (superlinear, so stars cost more)."""
     mine = rosters[me]
-    my_top = sorted(mine, key=lambda p: -ros[p.id])[:16]
-    out = []
+    quick = {p.id: value.quick(p) for ps in rosters.values() for p in ps}
+    for p in fas:
+        quick[p.id] = value.quick(p)
+    best_fa = max((p for p in fas if p.group != "G"), key=lambda p: quick[p.id], default=None)
+    lg, cal = value.league, value.cal
+
+    def screen(roster):
+        return engine.season_value(roster, lg, cal, value.ros, quick)
+
+    base_screen = {t: screen(ps) for t, ps in rosters.items()}
+    my_top = sorted(mine, key=lambda p: -quick[p.id])[:16]
+    cands = []
     for t, theirs in rosters.items():
         if t == me:
             continue
-        their_top = sorted(theirs, key=lambda p: -ros[p.id])[:14]
-        gives = [[a] for a in my_top] + [list(c) for c in combinations(my_top[:12], 2)]
-        for give in gives:
-            give_ids = {p.id for p in give}
-            for b in their_top:
-                if len(give) == 2 and ros[b.id] < max(ros[p.id] for p in give):
-                    continue  # 2-for-1 only as a consolidation up
-                new_mine = [p for p in mine if p.id not in give_ids] + [b]
-                new_theirs = [p for p in theirs if p.id != b.id] + give
-                mg = engine.season_value(new_mine, league, cal, periods, ros) - base[me]
-                tg = engine.season_value(new_theirs, league, cal, periods, ros) - base[t]
-                if mg > 3 and tg > -2:   # I gain; they don't lose meaningfully (fair enough to propose)
-                    out.append(Trade(partner=t, give=give, get=[b], my_gain=mg, their_gain=tg,
-                                     partner_odds=odds.get(t, 0.5)))
-    # Screened with the fast season shortcut; re-score the best 30 with exact daily projections.
-    out.sort(key=lambda x: -(x.my_gain + min(x.their_gain, 5)))
-    exact = {t: engine.projected_points(ps, league, cal, periods) for t, ps in rosters.items()}
-    confirmed = []
-    for x in out[:30]:
-        give_ids = {p.id for p in x.give}
-        new_mine = [p for p in mine if p.id not in give_ids] + x.get
-        new_theirs = [p for p in rosters[x.partner] if p.id != x.get[0].id] + x.give
-        x.my_gain = engine.projected_points(new_mine, league, cal, periods) - exact[me]
-        x.their_gain = engine.projected_points(new_theirs, league, cal, periods) - exact[x.partner]
-        if x.my_gain > 3 and x.their_gain > -2:
-            confirmed.append(x)
-    out = confirmed
-    # Prefer partners whose season is slipping (sellers), then my gain.
-    out.sort(key=lambda x: -(x.my_gain * (1.3 - x.partner_odds) + min(x.their_gain, 5)))
-    seen, best = set(), []
-    for x in out:
-        key = (x.partner, tuple(sorted(p.id for p in x.give)))
-        if key in seen:
+        their_top = sorted(theirs, key=lambda p: -quick[p.id])[:14]
+        packages = [([a], [b]) for a in my_top for b in their_top]
+        packages += [(list(g), [b]) for g in combinations(my_top[:12], 2) for b in their_top]
+        packages += [([a], list(g)) for a in my_top for g in combinations(their_top[:10], 2)]
+        for give, get in packages:
+            tv_give, tv_get = sum(tv.get(p.id, 0) for p in give), sum(tv.get(p.id, 0) for p in get)
+            if tv_give < fairness * tv_get or tv_get <= 0:
+                continue    # partner loses market value: they won't take it
+            gi, ge = {p.id for p in give}, {p.id for p in get}
+            new_mine = [p for p in mine if p.id not in gi] + get
+            back = None
+            if len(new_mine) > len(mine):          # 1-for-2: cut my weakest
+                back = droppable(new_mine, value, k=1)[0]
+                new_mine = [p for p in new_mine if p.id != back.id]
+            elif len(new_mine) < len(mine) and best_fa:   # 2-for-1: backfill from free agency
+                back = best_fa
+                new_mine = new_mine + [best_fa]
+            if screen(new_mine) - base_screen[me] <= 0:
+                continue
+            cands.append((screen(new_mine) - base_screen[me], t, give, get, back, tv_give, tv_get, new_mine))
+    cands.sort(key=lambda c: -c[0])
+    base_me = value(mine)
+    base_them = {}
+    out = []
+    for _, t, give, get, back, tv_give, tv_get, new_mine in cands[:250]:
+        mg = value(new_mine) - base_me
+        if mg <= 3:
             continue
-        seen.add(key)
+        theirs = rosters[t]
+        if t not in base_them:
+            base_them[t] = value(theirs)
+        ge = {p.id for p in get}
+        new_theirs = [p for p in theirs if p.id not in ge] + give
+        if len(new_theirs) < len(theirs) and best_fa:   # they got 1 for 2: they refill from free agency too
+            new_theirs.append(best_fa)
+        elif len(new_theirs) > len(theirs):              # they got 2 for 1: they cut their weakest
+            cut = min((p for p in new_theirs if p.slot != IR_SLOT), key=value.quick)
+            new_theirs = [p for p in new_theirs if p.id != cut.id]
+        tg = value(new_theirs) - base_them[t]
+        if tg < -MAX_PARTNER_LOSS:
+            continue    # market-fair but a clear lineup downgrade for them: they'd see it and pass
+        out.append(Trade(partner=t, give=give, get=get, my_gain=mg, their_gain=tg, market_give=tv_give,
+                         market_get=tv_get, partner_odds=odds.get(t, 0.5), backfill=back))
+    # Most likely to be accepted first: partner also gains points or is out of the race, then my gain.
+    out.sort(key=lambda x: -(x.my_gain + max(-30.0, min(x.their_gain, 15.0)) + 10 * (0.5 - x.partner_odds)))
+    per_partner, per_player, best = {}, {}, []
+    for x in out:   # variety: at most 2 ideas per partner and per player I'd send
+        if per_partner.get(x.partner, 0) >= 2 or any(per_player.get(p.id, 0) >= 2 for p in x.give):
+            continue
+        per_partner[x.partner] = per_partner.get(x.partner, 0) + 1
+        for p in x.give:
+            per_player[p.id] = per_player.get(p.id, 0) + 1
         best.append(x)
         if len(best) >= n:
             break

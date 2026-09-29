@@ -32,6 +32,7 @@ class P:
     pct_change: float
     owner: int | None = None
     slot: int | None = None
+    status: str = ""     # FREEAGENT / WAIVERS for free agents
 
     @property
     def id(self): return self.base.id
@@ -76,7 +77,7 @@ def make_players(entries: list, base_players: list, league: League, owners: dict
         o = (owners or {}).get(pl["id"], (None, None))
         out.append(P(base=b, rate=rate, share=min(1.0, pre_gp / NHL_GAMES), act_gp=gp, act_fp=afp,
                      act_g=act.get("13", 0.0), act_sog=act.get("29", 0.0), pct_change=own.get("percentChange", 0.0),
-                     owner=o[0], slot=o[1]))
+                     owner=o[0], slot=o[1], status=e.get("status", "")))
     return out
 
 
@@ -98,9 +99,10 @@ def active(players: list) -> list:
     return [p for p in players if p.slot != IR_SLOT]
 
 
-def projected_points(players: list, league: League, cal: Calendar, periods) -> float:
-    """Sum of optimal daily lineups over the given scoring periods (manager sets the best lineup)."""
-    act = active(players)
+def projected_points(players: list, league: League, cal: Calendar, periods, include_ir: bool = False) -> float:
+    """Sum of optimal daily lineups over the given scoring periods (manager sets the best lineup).
+    include_ir: count IR players (rest-of-season: they return at an unknown date, so no discount)."""
+    act = list(players) if include_ir else active(players)
     total = 0.0
     for d in periods:
         total += best_lineup(act, league.slots,
@@ -149,7 +151,7 @@ def project(state: LeagueState, cal: Calendar, rosters: dict) -> Projection:
     for m in range(state.current_matchup, state.regular_matchups + 1):
         periods = [d for d in cal.matchups[m] if d >= today]
         for tid, ps in rosters.items():
-            week_mu[(tid, m)] = projected_points(ps, lg, cal, periods)
+            week_mu[(tid, m)] = projected_points(ps, lg, cal, periods, include_ir=m > state.current_matchup)
     for mt in state.schedule:   # add points already banked in the current matchup
         if mt.period == state.current_matchup:
             week_mu[(mt.home, mt.period)] = week_mu.get((mt.home, mt.period), 0) + mt.home_pts

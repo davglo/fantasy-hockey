@@ -1,15 +1,16 @@
 {
   "date": "2026-09-28",
-  "playoff_odds": 0.68,
+  "playoff_odds": 0.87,
   "my_players": ["Macklin Celebrini", "Evan Bouchard", "Moritz Seider", "Jack Hughes", "Cutter Gauthier", "Dylan Guenther",
                  "Jakob Chychrun", "Alex Tuch", "Jeremy Swayman", "Brandt Clarke", "Tom Wilson", "Connor Bedard",
                  "Connor Hellebuyck", "Pavel Dorofeyev", "Mark Stone", "Justin Faulk", "Jet Greaves", "Gavin McKenna",
                  "Alex Laferriere", "Shea Theodore", "Joel Eriksson Ek", "Jimmy Snuggerud", "Pavel Zacha"],
   "takes": {
-    "overview": "The draft room went sideways but the roster didn't: second-strongest team on paper, built on the D corps (Seider, Bouchard, Clarke, Chychrun all top-40 D by ROS) that this blocks-heavy scoring rewards. The soft spot is the back half of the forwards - Zacha, Laferriere and McKenna are below a typical league starter, so forward depth is where every waiver dollar and trade chip should go. Goalies are fine for now at 0.1 per save, but Hellebuyck's suspension is the one thing to watch this week.",
-    "matchup": "Week 1 is a 13-day opener and Angie's has about 12 more projected starts, which is the whole gap. You can't fix schedule volume with lineup tweaks alone - the fastest lever is swapping a low-game forward for a free agent whose team plays 6-7 times in the window.",
-    "roster": "Hold all four top D - they're the edge. Bedard is on IR, so his slot costs you nothing yet. Hellebuyck is starting in G while listed SUSPENSION: confirm his status before each game and slide Greaves in if he's out.",
-    "free_agents": "The model wants a forward (Hartman, Frondell, Cuylle) for Swayman. I'd make that move with Zacha or Laferriere as the drop instead while Hellebuyck's suspension is unresolved - keep three goalies until you know how many games he misses.",
-    "trades": "Matt's Monstrous Team is the natural partner: they're thin on D and deep at forward. Clarke for Jason Robertson is the cleanest ask (+22 ROS for you, they still gain a little). Don't sell Seider or Bouchard for forwards - the D gap to replacement is bigger here than the F gap."
+    "overview": "The draft room went sideways but the roster didn't: this projects as the strongest team in the league, level with Al Dente, once Bedard returns from IR. The edge is the D corps (Seider, Bouchard, Clarke, Chychrun), which this blocks-heavy scoring rewards. The soft spot is the back of the forwards (Laferriere, Zacha, McKenna): that's where adds and trade chips should go. Watch Hellebuyck's suspension this week.",
+    "matchup": "Week 1 is a 13-day opener, and Angie's has about 12 more projected starts - that's the whole gap. Volume fixes it: use the Streaming tab's adds on your many open skater slots early in the window.",
+    "roster": "Hold the four top D; they're the edge. Bedard sits on IR, so his slot costs nothing now and he's worth a lot once back. Hellebuyck is starting in net while listed SUSPENSION: confirm before each game and slide Greaves in if he can't go.",
+    "free_agents": "Hartman for Laferriere is the clean rest-of-season upgrade: more points and a full playoff-week schedule. Keep all three goalies until Hellebuyck's status is clear.",
+    "trades": "The best realistic idea is Tuch + Chychrun to Torts for Makar: consolidation into a star, and Torts gains depth too, so it's a pitch they can say yes to. Tuch is the chip to sell - ESPN ranks him far higher than your projections do.",
+    "playoffs": "Your playoff weeks look average (6-7 games for most of the roster). Gauthier, Dorofeyev and McKenna have light schedules (5 games) - if you move forwards later, move them first."
   }
 }
