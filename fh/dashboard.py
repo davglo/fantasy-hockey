@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import html
 
+from fh import engine
+
 
 def _e(x) -> str:
     return html.escape(str(x))
@@ -177,7 +179,9 @@ def _roster(ctx, manual):
                      "%d / %d" % (p["g_this"], p["g_next"]), "%d" % p["gp"], "%.1f" % p["fp"], _e(p["luck"]), news_cell])
     return _take(manual, "roster") + '<div class="card">' + _table(
         ["Player", "Slot", "Pos", "Team", "ROS pts", "Pts/GP", "Games wk/next", "GP", "Pts", "Signal", "Latest news"], rows, "wrap") + \
-        '<p class="mute">Sorted by rest-of-season points. Pts/GP blends the preseason projection (worth 15 games) with this season. News: Rotowire via ESPN.</p></div>'
+        ('<p class="mute">Sorted by rest-of-season points. Pts/GP blends the preseason projection with this season\'s actual '
+         'results: actuals count 0%% through game 5, then %s. News: Rotowire via ESPN.</p></div>'
+         % ", ".join("%d%% at %d" % (round(w * 100), g) for g, w in engine.ACTUAL_WEIGHT_CURVE[2:]))
 
 
 def _trades(ctx, manual):

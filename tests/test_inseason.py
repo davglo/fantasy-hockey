@@ -44,6 +44,14 @@ class TestCalendar(unittest.TestCase):
         self.assertEqual(cal.date_of(cal.matchups[27][-1]), date(2027, 4, 4))
 
 
+class TestBlend(unittest.TestCase):
+    def test_actual_weight_curve(self):
+        w = engine.actual_weight
+        self.assertEqual([round(w(g), 2) for g in (0, 3, 5, 10, 15, 20, 30, 40, 60, 82)],
+                         [0, 0, 0, 0.25, 0.40, 0.50, 0.75, 0.90, 0.97, 0.97])
+        self.assertAlmostEqual(w(25), 0.625)
+
+
 class TestLineups(unittest.TestCase):
     def setUp(self):
         self.lg = espn.parse_league(raw_league(), SWID)
