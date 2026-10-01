@@ -12,6 +12,7 @@ state/*.log
 state/context.json
 state/status_snapshot.json
 state/rumors_archive.json
+state/projection_log/
 output/
 
 # Licensed projections workbook - keep local

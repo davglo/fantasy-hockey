@@ -141,10 +141,16 @@ def where_you_rank(rosters: dict, me: int, league: League, cal: Calendar, ros_pe
         r = {t: ros[t][g] for t in rosters}
         out[g] = {"quality": q[me], "quality_rank": rank(q, me), "ros": r[me], "ros_rank": rank(r, me),
                   "ros_best": max(r.values())}
+    cons = {t: {g: sum(sorted(((p.consensus or 0) * p.share for p in ps if p.group == g), reverse=True)[:n[g]]) for g in n}
+            for t, ps in rosters.items()}
+    for g in ("F", "D", "G"):
+        c = {t: cons[t][g] for t in rosters}
+        out[g]["cons_rank"] = rank(c, me)
     tq = {t: sum(quality[t].values()) for t in rosters}
     tr = {t: sum(ros[t].values()) for t in rosters}
+    tc = {t: sum(cons[t].values()) for t in rosters}
     out["Total"] = {"quality": tq[me], "quality_rank": rank(tq, me), "ros": tr[me], "ros_rank": rank(tr, me),
-                    "ros_best": max(tr.values())}
+                    "ros_best": max(tr.values()), "cons_rank": rank(tc, me)}
     return out
 
 

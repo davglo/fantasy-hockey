@@ -5,18 +5,22 @@ import json
 import logging
 from datetime import datetime
 
-from fh import advice, config, engine, espn, market, news, rankings, rumors, season, valuation
+from fh import accuracy, advice, config, engine, espn, market, news, rankings, rumors, season, valuation
 from fh.espn import fantasy_points
 from fh.board import ET
 
 log = logging.getLogger(__name__)
 
 GRADES = ["A", "A-", "B+", "B", "C+", "C", "D+", "D"]
+DISAGREE = 0.25   # flag a player when his projection sources differ by more than this share of the consensus
 
 
 def _pl(p, cal=None, periods=None, extra=None) -> dict:
+    src = p.sources or {}
     d = {"id": p.id, "name": p.name, "pos": p.base.positions, "group": p.group, "team": p.team,
          "injury": "" if p.injury == "ACTIVE" else p.injury, "rate": round(p.rate, 2),
+         "src": {k: (round(v, 2) if v is not None else None) for k, v in src.items()},
+         "cons": round(p.consensus, 2) if p.consensus is not None else None, "dis": round(p.disagreement, 2),
          "exp_game": round(p.exp_game(), 2), "gp": p.act_gp, "fp": round(p.act_fp, 1)}
     if cal is not None:
         d["ros"] = round(p.ros(cal, periods), 1)
@@ -124,6 +128,8 @@ def build(swid: str) -> dict:
     fas = engine.make_players(state.free_agents, base, lg)
     rosters = {tid: [p for p in players if p.owner == tid] for tid in state.teams}
     mine = rosters[me]
+    accuracy.log_snapshot(players + fas, cal.date_of(state.today_period))
+    acc = accuracy.evaluate(cal.date_of(state.today_period))
 
     today = state.today_period
     cm = state.current_matchup
@@ -394,6 +400,9 @@ def build(swid: str) -> dict:
         "days_to_deadline": (state.trade_deadline.date() - cal.date_of(today)).days if state.trade_deadline else None,
         "cadence": {"takes_days": "Mon & Thu", "daily_at": "12:00 PM and 5:00 PM ET"},
         "calendar_warning": cal_warning,
+        "accuracy": acc,
+        "flags": {p.name: round(p.disagreement, 2) for p in players + fas if p.disagreement > DISAGREE},
+        "disagree_threshold": DISAGREE,
         "rosters": {state.teams[tid].name: [p.name for p in sorted(ps, key=lambda p: -p.ros(cal, ros_periods))]
                     for tid, ps in rosters.items()},
     }

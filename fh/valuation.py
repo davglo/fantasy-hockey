@@ -31,6 +31,7 @@ class Player:
     pct_owned: float
     vor: float = 0.0
     overall: int = 0         # rank by VOR
+    espn_gp: float | None = None    # ESPN's projected games (for its per-game rate)
 
     @property
     def fp_per_gp(self) -> float | None:
@@ -139,7 +140,7 @@ def build_players(pool: list, sheet: list, league: League, pro_teams: dict,
             id=pl["id"], name=pl["fullName"], group=group, positions=pos, team=team,
             injury=pl.get("injuryStatus") or "ACTIVE",
             fp=(row["fp"] + rescore_delta(row, league.scoring, sheet_scoring or {}) if row else espn_fp) + hat, source="sheet" if row else "espn", espn_fp=espn_fp + hat,
-            gp=gp, espn_rank=rank, espn_adp=own.get("averageDraftPosition") or None,
+            gp=gp, espn_gp=(proj.get("34") or proj.get("30")) if proj else None, espn_rank=rank, espn_adp=own.get("averageDraftPosition") or None,
             sheet_rank=row["sheet_rank"] if row else None, boost=row["boost"] if row else "",
             pct_owned=own.get("percentOwned", 0.0),
         ))

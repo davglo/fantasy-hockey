@@ -25,6 +25,46 @@ def _inj(p: dict) -> str:
     return ' <span class="inj">%s</span>' % _e(p["injury"]) if p.get("injury") else ""
 
 
+SRC_LABELS = (("model", "Model"), ("espn", "ESPN"), ("pace", "Pace"), ("l15", "L15"))
+
+
+def _v(x) -> str:
+    return "%.2f" % x if x is not None else '<span class="mute">-</span>'
+
+
+def _flag(p: dict, ctx: dict) -> str:
+    """Warning marker when a player's projection sources disagree."""
+    if p.get("dis", 0) <= ctx.get("disagree_threshold", 0.25):
+        return ""
+    tip = ", ".join("%s %.2f" % (lab, p["src"][k]) for k, lab in SRC_LABELS if p["src"].get(k) is not None)
+    return ' <span class="flag" title="Sources disagree by %d%%: %s">&#9888;</span>' % (round(p["dis"] * 100), _e(tip))
+
+
+def _name_flag(name: str, ctx: dict) -> str:
+    d = ctx.get("flags", {}).get(name)
+    return ' <span class="flag" title="Projection sources disagree by %d%%">&#9888;</span>' % round(d * 100) if d else ""
+
+
+def _accuracy_card(ctx: dict) -> str:
+    a = ctx["accuracy"]
+    names = {"model": "Model (sheet + curve)", "sheet": "Spreadsheet only", "espn": "ESPN projection",
+             "pace": "Season pace", "l15": "Last 15 days", "consensus": "Consensus"}
+    if not a["windows"]:
+        body = ('<p>Collecting data: snapshot %d logged. First grades on <b>%s</b> (each prediction is checked against the '
+                'next 7 days of games), and it gets more reliable every week after.</p>' % (a["snapshots"], _e(a["first_grade"])))
+    else:
+        rows = []
+        for k, lab in names.items():
+            t = a["table"][k]
+            if t["all"] is None:
+                continue
+            best = ' <span class="good">best</span>' if k == a["best"] else ""
+            rows.append([lab + best] + [_v(t[g]) for g in ("all", "F", "D", "G")] + ["%d" % a["games"][k]])
+        body = _table(["Source", "Error/game", "F", "D", "G", "Player-games"], rows) + \
+            '<p class="mute">Average miss in fantasy points per game over the following 7 days (lower is better), %d weekly windows so far.</p>' % a["windows"]
+    return '<div class="card"><h3>Which projection is winning</h3>%s</div>' % body
+
+
 def _take(manual: dict, key: str) -> str:
     t = (manual.get("takes") or {}).get(key)
     if not t:
@@ -48,7 +88,7 @@ def _overview(ctx, manual):
     wyr = ctx["where_you_rank"]
     size = ctx["league"]["size"]
     rk = lambda r: '<span class="%s">#%d</span>' % ("good" if r <= 2 else "bad" if r >= size - 1 else "", r)
-    rank_rows = [[g, rk(d["quality_rank"]), "%.1f" % d["quality"], rk(d["ros_rank"]), "%.0f" % d["ros"], "%.0f" % d["ros_best"]]
+    rank_rows = [[g, rk(d["quality_rank"]), rk(d["cons_rank"]), "%.1f" % d["quality"], rk(d["ros_rank"]), "%.0f" % d["ros"], "%.0f" % d["ros_best"]]
                  for g, d in wyr.items()]
     rum = "".join('<li><b>%s</b>: <a href="%s" target="_blank" rel="noopener">%s</a> <span class="cred">Yahoo Sports &middot; %s</span></li>' % (
         _e(", ".join(r["players"])), _e(r["link"]), _e(r["title"]), _e(r["date"])) for r in ctx.get("rumors", []))
@@ -97,7 +137,7 @@ def _overview(ctx, manual):
         gt=_table(["Goalie", "Team", "Opp", "Start", "Exp pts", "Opp GF", "Waivers"], gt),
         nw=nw or "<li class=mute>No fresh news on your players in the last 72h.</li>",
         sw='<h3 style="margin-top:10px">Status watch</h3><ul class="news">%s</ul>' % sw if sw else "",
-        ranks=_table(["Group", "Quality", "Pts/game", "Rest of season", "ROS pts", "League best"], rank_rows), weakest=weakest or "-",
+        ranks=_table(["Group", "Quality (model)", "Quality (consensus)", "Pts/game", "Rest of season", "ROS pts", "League best"], rank_rows), weakest=weakest or "-",
         rum='<h3 style="margin-top:10px">Rumors &amp; reports</h3><ul class="news">%s</ul>' % rum if rum else "",
         land=_table(["Team", "Record", "PF", "Strength", "Playoff odds"], land))
 
@@ -148,13 +188,16 @@ def _free_agents(ctx, manual):
                                                                     ", " + _e(b["waiver"]) if b["waiver"] else "") for b in o["beneficiaries"]),
         _e(o["news"]["credit"]), _e(o["news"]["link"]), _e(o["news"]["summary"])) for o in ctx["opportunities"])
     rec = ctx["recent"]
-    perf = lambda rows: _table(["Player", "Pos", "Team", "Pts", "Line", "Own chg"], [
-        [_e(r["name"]) + _inj(r), _e(r["pos"]), _e(r["team"]), "%.1f" % r["pts"], _e(r["line"]), "%+.1f" % r["own_chg"]] for r in rows])
-    fa = [[_e(p["name"]) + _inj(p) + (' <span class="tag">%s</span>' % _e(p["waiver"]) if p["waiver"] else ""), _e(p["pos"]),
-           _e(p["team"]), "%+.1f" % p["gain"], "%d" % p["po_games"], "%+.1f" % p["week_gain"], "%+.1f" % p["own_chg"],
+    perf = lambda rows: _table(["Player", "Pos", "Team", "Pts", "Line", "Model/gm", "Consensus", "Own chg"], [
+        [_e(r["name"]) + _inj(r) + _flag(r, ctx), _e(r["pos"]), _e(r["team"]), "%.1f" % r["pts"], _e(r["line"]),
+         _v(r["src"].get("model")), _v(r["cons"]), "%+.1f" % r["own_chg"]] for r in rows])
+    fa = [[_e(p["name"]) + _inj(p) + _flag(p, ctx) + (' <span class="tag">%s</span>' % _e(p["waiver"]) if p["waiver"] else ""), _e(p["pos"]),
+           _e(p["team"]), "%+.1f" % p["gain"], _v(p["src"].get("model")), _v(p["src"].get("espn")), _v(p["cons"]),
+           "%d" % p["po_games"], "%+.1f" % p["week_gain"], "%+.1f" % p["own_chg"],
            _e(p["drop"]) + ('<br><span class="mute">or %s</span>' % _e(", ".join(p["alt_drops"])) if p["alt_drops"] else ""),
            _e(p["luck"])] for p in ctx["free_agents"]]
-    dr = [["%d" % (i + 1), _e(d["name"]), d["group"], _e(d["team"]), "%.0f" % d["cost"], "%.0f" % d["ros"], "%.1f" % d["last7"], d["po_games"]]
+    dr = [["%d" % (i + 1), _e(d["name"]) + _flag(d, ctx), d["group"], _e(d["team"]), "%.0f" % d["cost"], "%.0f" % d["ros"],
+           _v(d["src"].get("model")), _v(d["cons"]), "%.1f" % d["last7"], d["po_games"]]
           for i, d in enumerate(ctx["drop_ranking"])]
     return """{take}
 <div class="card"><h3>Opportunity alerts</h3><ul class="news">{opp}</ul><p class="mute">News that opens a role for a free agent: injuries, suspensions, trades and demotions on players across the league, matched to free agents named in the report or on the same team and position. Gains are before any role bump - the news is the edge.</p></div>
@@ -165,8 +208,8 @@ def _free_agents(ctx, manual):
         take=_take(manual, "free_agents"), opp=opp or "<li class=mute>No league news creating free-agent value right now.</li>",
         yd=_e(rec["yesterday"]), pd=perf(rec["day"]), pw=perf(rec["week"]),
         summ="".join("<li>%s</li>" % _e(t) for t in ctx["fa_summary"]), w=ctx["playoffs"]["weight"],
-        fa=_table(["Player", "Pos", "Team", "Gain", "Playoff gms", "Next 2 wks", "Own chg", "Drop", "Signal"], fa),
-        dr=_table(["#", "Player", "Pos", "Team", "Pts lost", "ROS", "Last 7", "Playoff gms"], dr))
+        fa=_table(["Player", "Pos", "Team", "Gain", "Model/gm", "ESPN/gm", "Consensus", "Playoff gms", "Next 2 wks", "Own chg", "Drop", "Signal"], fa),
+        dr=_table(["#", "Player", "Pos", "Team", "Pts lost", "ROS", "Model/gm", "Consensus", "Last 7", "Playoff gms"], dr))
 
 
 def _roster(ctx, manual):
@@ -177,17 +220,23 @@ def _roster(ctx, manual):
         news_cell = ('<span class="mute">%s:</span> %s <a href="%s" target="_blank" rel="noopener">more</a>' % (
             _e(n["date"].split()[0] + " " + n["date"].split()[1]), _e(n["summary"][:110] + ("..." if len(n["summary"]) > 110 else "")), _e(n["link"]))
             if n else "")
-        rows.append([_e(p["name"]) + _inj(p), _e(p["slot"]), _e(p["pos"]), _e(p["team"]), "%.0f" % p["ros"], "%.2f" % p["rate"],
+        rows.append([_e(p["name"]) + _inj(p) + _flag(p, ctx), _e(p["slot"]), _e(p["pos"]), _e(p["team"]), "%.0f" % p["ros"]]
+                    + [_v(p["src"].get(k)) for k, _ in SRC_LABELS] + ["<b>%s</b>" % _v(p["cons"]),
                      "%d / %d" % (p["g_this"], p["g_next"]), "%d" % p["gp"], "%.1f" % p["fp"], _e(p["luck"]), news_cell])
-    return _take(manual, "roster") + '<div class="card">' + _table(
-        ["Player", "Slot", "Pos", "Team", "ROS pts", "Pts/GP", "Games wk/next", "GP", "Pts", "Signal", "Latest news"], rows, "wrap") + \
+    return _take(manual, "roster") + _accuracy_card(ctx) + '<div class="card">' + _table(
+        ["Player", "Slot", "Pos", "Team", "ROS pts", "Model", "ESPN", "Pace", "L15", "Consensus", "Games wk/next", "GP", "Pts", "Signal", "Latest news"],
+        rows, "wrap") + \
+        '<p class="mute">Points per game by source. Model = your spreadsheet blended with actual results (drives every recommendation). '\
+        'ESPN = ESPN\'s projection scored with your league\'s rules. Pace = this season, L15 = last 15 days (shown after 3 games). '\
+        'Consensus = median of the available sources. &#9888; = sources differ by more than 25%%; hover for the numbers.</p>' + \
         ('<p class="mute">Sorted by rest-of-season points. Pts/GP blends the preseason projection with this season\'s actual '
          'results: actuals count 5%% through game 5, then %s. News: Rotowire via ESPN.</p></div>'
          % ", ".join("%d%% at %d" % (round(w * 100), g) for g, w in engine.ACTUAL_WEIGHT_CURVE[3:]))
 
 
 def _trades(ctx, manual):
-    tr = [[_e(t["partner"]), _e(" + ".join(t["give"])), _e(" + ".join(t["get"])), "%+.1f" % t["my_gain"], "%+.1f" % t["their_gain"],
+    names = lambda ns: " + ".join(_e(n) + _name_flag(n, ctx) for n in ns)
+    tr = [[_e(t["partner"]), names(t["give"]), names(t["get"]), "%+.1f" % t["my_gain"], "%+.1f" % t["their_gain"],
            "%.0f / %.0f" % (t["market_give"], t["market_get"]), _e(t["backfill"]), _pct(t["partner_odds"])] for t in ctx["trades"]]
     dl = ""
     if ctx.get("trade_deadline"):
@@ -270,7 +319,7 @@ h3{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;c
 .tw{overflow-x:auto}table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:14px}
 th,td{text-align:left;padding:5px 8px;border-bottom:1px solid var(--line);white-space:nowrap}th{color:var(--mute);font-weight:500}
 .inj{background:var(--warn);color:#1a0f00;font-size:11px;font-weight:700;padding:1px 5px;border-radius:4px}
-.good{color:var(--good)}.warnc{color:var(--warn)}.bad{color:var(--bad)}ul{margin:0 0 8px;padding-left:18px}
+.good{color:var(--good)}.warnc{color:var(--warn)}.flag{color:var(--warn);cursor:help}.bad{color:var(--bad)}ul{margin:0 0 8px;padding-left:18px}
 .tag{border:1px solid var(--line);color:var(--mute);font-size:11px;padding:0 5px;border-radius:4px}
 .days{display:flex;gap:6px;overflow-x:auto;margin-bottom:6px}.day{min-width:62px;text-align:center;border:1px solid var(--line);border-radius:8px;padding:4px;font-size:12px}
 .day .hot{color:var(--good);font-weight:700}

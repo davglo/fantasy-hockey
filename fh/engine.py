@@ -45,6 +45,22 @@ class P:
     owner: int | None = None
     slot: int | None = None
     status: str = ""     # FREEAGENT / WAIVERS for free agents
+    sources: dict = None # per-game points by source: sheet / model / espn / pace / l15 (None = not enough data)
+
+    @property
+    def consensus(self) -> float | None:
+        vals = sorted(v for k, v in (self.sources or {}).items() if v is not None and k != "sheet")
+        if not vals:
+            return None
+        mid = len(vals) // 2
+        return vals[mid] if len(vals) % 2 else (vals[mid - 1] + vals[mid]) / 2
+
+    @property
+    def disagreement(self) -> float:
+        """Spread of the sources relative to the consensus (0.25 = sources differ by 25%)."""
+        vals = [v for k, v in (self.sources or {}).items() if v is not None and k != "sheet"]
+        c = self.consensus
+        return (max(vals) - min(vals)) / c if len(vals) >= 2 and c else 0.0
 
     @property
     def id(self): return self.base.id
@@ -63,6 +79,15 @@ class P:
 
     def ros(self, cal: Calendar, periods) -> float:
         return self.exp_game() * cal.games(self.team, periods)
+
+
+MIN_SAMPLE_GP = 3       # actual-results sources need this many games before they're shown
+
+
+def _split(pl: dict, split: int) -> dict:
+    """This season's actuals: split 1 = last 7 days, 2 = last 15, 3 = last 30."""
+    return next((s["stats"] for s in pl.get("stats", []) if s.get("seasonId") == config.SEASON
+                 and s.get("statSourceId") == 0 and s.get("statSplitTypeId") == split), {}) or {}
 
 
 def _season_actuals(pl: dict) -> dict:
@@ -88,9 +113,18 @@ def make_players(entries: list, base_players: list, league: League, owners: dict
         rate = (1 - w) * pre_rate + w * (afp / gp if gp else pre_rate)
         own = pl.get("ownership", {}) or {}
         o = (owners or {}).get(pl["id"], (None, None))
+        l15 = _split(pl, 2)
+        l15_gp = int(l15.get("30") or l15.get("34") or 0)
+        sources = {
+            "sheet": pre_rate if b.source == "sheet" else None,
+            "model": rate,
+            "espn": (b.espn_fp / b.espn_gp) if b.espn_gp else None,
+            "pace": afp / gp if gp >= MIN_SAMPLE_GP else None,
+            "l15": fantasy_points(l15, league.scoring) / l15_gp if l15_gp >= MIN_SAMPLE_GP else None,
+        }
         out.append(P(base=b, rate=rate, share=min(1.0, pre_gp / NHL_GAMES), act_gp=gp, act_fp=afp,
                      act_g=act.get("13", 0.0), act_sog=act.get("29", 0.0), pct_change=own.get("percentChange", 0.0),
-                     owner=o[0], slot=o[1], status=e.get("status", "")))
+                     owner=o[0], slot=o[1], status=e.get("status", ""), sources=sources))
     return out
 
 
