@@ -74,7 +74,7 @@ def _overview(ctx, manual):
     return """
 <div class="hero"><div class="grade">{grade}</div><div><div class="hl">{headline}</div>
 <div class="kpis"><span><b>{odds}</b> playoff odds</span><span><b>#{rank}</b> of {size} strength</span><span>{posture}</span></div></div></div>
-<div class="card urgent"><h3>Most urgent</h3><p>{urgent}</p></div>
+{calwarn}<div class="card urgent"><h3>Most urgent</h3><p>{urgent}</p></div>
 <div class="card"><h3>Today's notes</h3><ul>{notes}</ul><p class="mute">Numbers and these notes refresh daily at {daily}. Written analysis below is updated {takes} (last: {tdate}).</p></div>
 <div class="card"><h3>News that matters</h3><ul class="news">{nw}</ul>{sw}{rum}</div>
 {take}
@@ -88,7 +88,9 @@ def _overview(ctx, manual):
 <div class="card"><h3>League landscape</h3>{land}</div>
 </div>""".format(
         grade=_e(me["grade"]), headline=_e(me["headline"]), odds=_pct(me["playoff_odds"]), rank=me["rank"], size=size,
-        posture=_e(me["posture"]), urgent=_e(me["urgent"]), notes="".join("<li>%s</li>" % _e(n) for n in ctx["notes"]),
+        posture=_e(me["posture"]), urgent=_e(me["urgent"]),
+        calwarn='<div class="card urgent"><h3>Calendar check failed</h3><p>%s. Week-based numbers may be off until fixed.</p></div>'
+                % _e(ctx["calendar_warning"]) if ctx.get("calendar_warning") else "", notes="".join("<li>%s</li>" % _e(n) for n in ctx["notes"]),
         daily=_e(cad["daily_at"]), takes=_e(cad["takes_days"]), tdate=_e(manual.get("date", "never")),
         take=_take(manual, "overview"), adds=adds or "<li class=mute>No add clears the bar today.</li>",
         drops=drops or "<li class=mute>Nothing to cut.</li>",
@@ -180,8 +182,8 @@ def _roster(ctx, manual):
     return _take(manual, "roster") + '<div class="card">' + _table(
         ["Player", "Slot", "Pos", "Team", "ROS pts", "Pts/GP", "Games wk/next", "GP", "Pts", "Signal", "Latest news"], rows, "wrap") + \
         ('<p class="mute">Sorted by rest-of-season points. Pts/GP blends the preseason projection with this season\'s actual '
-         'results: actuals count 0%% through game 5, then %s. News: Rotowire via ESPN.</p></div>'
-         % ", ".join("%d%% at %d" % (round(w * 100), g) for g, w in engine.ACTUAL_WEIGHT_CURVE[2:]))
+         'results: actuals count 5%% through game 5, then %s. News: Rotowire via ESPN.</p></div>'
+         % ", ".join("%d%% at %d" % (round(w * 100), g) for g, w in engine.ACTUAL_WEIGHT_CURVE[3:]))
 
 
 def _trades(ctx, manual):

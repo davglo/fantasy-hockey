@@ -345,7 +345,7 @@ def trades(rosters: dict, me: int, fas: list, value: Valuer, tv: dict, odds: dic
     quick = {p.id: value.quick(p) for ps in rosters.values() for p in ps}
     for p in fas:
         quick[p.id] = value.quick(p)
-    best_fa = max((p for p in fas if p.group != "G"), key=lambda p: quick[p.id], default=None)
+    best_fa = max((p for p in fas if p.group != "G" and p.injury in HEALTHY), key=lambda p: quick[p.id], default=None)
     lg, cal = value.league, value.cal
 
     def screen(roster):

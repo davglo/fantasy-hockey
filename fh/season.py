@@ -100,6 +100,8 @@ class LeagueState:
     schedule: list
     free_agents: list    # playerPoolEntry-like dicts
     trade_deadline: datetime | None = None
+    espn_matchup: int = 1                          # ESPN's own currentMatchupPeriod
+    espn_days: dict = field(default_factory=dict)  # ESPN matchup -> scored scoring periods
 
 
 def fetch_state(swid: str) -> LeagueState:
@@ -116,6 +118,10 @@ def fetch_state(swid: str) -> LeagueState:
             roster=[(e["playerPoolEntry"], e["lineupSlotId"]) for e in t.get("roster", {}).get("entries", [])],
             adds_by_matchup={int(k): v for k, v in
                              ((t.get("transactionCounter") or {}).get("matchupAcquisitionTotals") or {}).items()})
+    espn_days = {}   # ESPN matchup -> scoring periods it has scored so far (for the calendar self-check)
+    for m in raw.get("schedule", []):
+        espn_days.setdefault(m["matchupPeriodId"], set()).update(
+            int(k) for k in (m["home"].get("pointsByScoringPeriod") or {}))
     sched = [Matchup(period=m["matchupPeriodId"], home=m["home"]["teamId"], away=m.get("away", {}).get("teamId"),
                      home_pts=m["home"].get("totalPoints", 0.0), away_pts=m.get("away", {}).get("totalPoints", 0.0),
                      winner=m.get("winner", "UNDECIDED"), playoff=m.get("playoffTierType", "NONE") != "NONE")
@@ -129,6 +135,7 @@ def fetch_state(swid: str) -> LeagueState:
         current_matchup=raw["status"].get("currentMatchupPeriod", 1),
         regular_matchups=raw["settings"]["scheduleSettings"]["matchupPeriodCount"],
         teams=teams, schedule=sched, free_agents=fa["players"],
+        espn_matchup=raw["status"].get("currentMatchupPeriod", 1), espn_days=espn_days,
         trade_deadline=datetime.fromtimestamp(raw["settings"]["tradeSettings"]["deadlineDate"] / 1000, tz=ET)
         if raw["settings"].get("tradeSettings", {}).get("deadlineDate") else None)
 
@@ -183,3 +190,15 @@ def fetch_goals_for() -> dict:
         gf, gp = now.get(t, (0, 0))
         out[t] = (gf + (lgf / lgp if lgp else 3.0) * 10) / (gp + 10)
     return out
+
+
+def calendar_mismatch(state: LeagueState, cal: Calendar) -> str:
+    """Empty if our week boundaries agree with ESPN's scored days and current matchup; else a warning."""
+    ours = cal.matchup_of(state.today_period)
+    if ours != state.espn_matchup:
+        return "ESPN says matchup %d is live but the dashboard calendar says %d" % (state.espn_matchup, ours)
+    for m, days in state.espn_days.items():
+        stray = sorted(d for d in days if cal.matchup_of(d) != m)
+        if stray:
+            return "ESPN scored day(s) %s in matchup %d, outside the dashboard's week" % (stray[:3], m)
+    return ""

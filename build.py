@@ -117,6 +117,8 @@ def build_dashboard(swid: str) -> dict:
     report.write_context(ctx)
     manual = analysis.load_manual()
     log.info("Analysis check: %s", "; ".join(analysis.check(ctx, manual)))
+    errs = analysis.sanity(ctx)
+    (log.warning if errs else log.info)("Sanity check: %s", "; ".join(errs) if errs else "all invariants hold")
     config.OUTPUT.mkdir(exist_ok=True)
     out = config.OUTPUT / "index.html"
     out.write_text(dashboard.render(ctx, manual))

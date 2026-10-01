@@ -80,8 +80,13 @@ def hat_trick_calibration(pool: list) -> float:
     return min(max(k, 0.5), 2.0)
 
 
-def _sheet_group(pos: str) -> str:
-    return pos if pos in ("G", "D") else "F"
+def _sheet_group(row: dict) -> str:
+    """F/D/G for a workbook row. A 'D' who takes faceoffs is a forward (the sheet labels VAN's C Elias Pettersson 'D')."""
+    if row["pos"] == "G":
+        return "G"
+    if row["pos"] == "D" and row.get("faceoffs", 0) < 100:
+        return "D"
+    return "F"
 
 
 def rescore_delta(row: dict, league_scoring: dict, sheet_scoring: dict) -> float:
@@ -92,13 +97,13 @@ def rescore_delta(row: dict, league_scoring: dict, sheet_scoring: dict) -> float
 
 def build_players(pool: list, sheet: list, league: League, pro_teams: dict,
                   sheet_scoring: dict | None = None) -> list:
-    by_key_team = {(r["key"], r["team"]): r for r in sheet}
-    by_key = {}
+    # Keys include the position group: same-name teammates exist (VAN has a C and a D named Elias Pettersson).
+    by_key_team, by_key, by_initial = {}, {}, {}
     for r in sheet:
-        by_key.setdefault(r["key"], []).append(r)
-    by_initial = {}
-    for r in sheet:
-        by_initial.setdefault((initial_key(r["name"]), r["team"]), []).append(r)
+        g = _sheet_group(r)
+        by_key_team.setdefault((r["key"], r["team"], g), []).append(r)
+        by_key.setdefault((r["key"], g), []).append(r)
+        by_initial.setdefault((initial_key(r["name"]), r["team"], g), []).append(r)
     hat_pts = league.scoring.get(HAT, 0)
     hat_k = hat_trick_calibration(pool) if hat_pts else 0.0
     if hat_pts:
@@ -112,15 +117,15 @@ def build_players(pool: list, sheet: list, league: League, pro_teams: dict,
         espn_fp = fantasy_points(proj, league.scoring) if proj else 0.0
         team = norm_team(pro_teams.get(pl.get("proTeamId"), ""))
         key = norm_name(pl["fullName"])
-        row = by_key_team.get((key, team))
-        if row is None and len(by_key.get(key, [])) == 1:
-            row = by_key[key][0]  # team changed since the sheet was made
-        if row is None and len(by_initial.get((initial_key(pl["fullName"]), team), [])) == 1:
-            row = by_initial[(initial_key(pl["fullName"]), team)][0]
         slots = pl.get("eligibleSlots", [])
         group = _group(slots, pl.get("defaultPositionId"))
-        if row is not None and _sheet_group(row["pos"]) != group:
-            row = None  # same name/initial, different player (e.g. Jordie vs Jamie Benn)
+        row = None
+        for cands in (by_key_team.get((key, team, group), []),
+                      by_key.get((key, group), []),            # team changed since the sheet was made
+                      by_initial.get((initial_key(pl["fullName"]), team, group), [])):   # Alex vs Alexander
+            if len(cands) == 1:
+                row = cands[0]
+                break
         matched += row is not None
         own = pl.get("ownership", {}) or {}
         rank = (pl.get("draftRanksByRankType", {}) or {}).get("STANDARD", {}).get("rank")

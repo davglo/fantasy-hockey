@@ -8,13 +8,13 @@ from dataclasses import dataclass
 
 from fh import config
 from fh.espn import League, fantasy_points
-from fh.season import BENCH_SLOT, IR_SLOT, Calendar, LeagueState
+from fh.season import IR_SLOT, Calendar, LeagueState
 
 log = logging.getLogger(__name__)
 
 # Weight on this season's actual pts/GP vs the preseason projection, by games played (Dave, 2026-10-01):
-# ignore the first 5 games, then 25% @10, 40% @15, 50% @20, 75% @30, 90% @40, 97% from 60 on. Linear between.
-ACTUAL_WEIGHT_CURVE = [(0, 0.0), (5, 0.0), (10, 0.25), (15, 0.40), (20, 0.50), (30, 0.75), (40, 0.90), (60, 0.97)]
+# 5% through game 5, then 30% @10, 50% @15, 70% @20, 85% @25, 95% from 30 on. Linear between.
+ACTUAL_WEIGHT_CURVE = [(0, 0.0), (1, 0.05), (5, 0.05), (10, 0.30), (15, 0.50), (20, 0.70), (25, 0.85), (30, 0.95)]
 
 
 def actual_weight(gp: int) -> float:
@@ -161,8 +161,9 @@ def project(state: LeagueState, cal: Calendar, rosters: dict) -> Projection:
     lg = state.league
     today = state.today_period
     week_mu = {}
-    for m in range(state.current_matchup, state.regular_matchups + 1):
-        periods = [d for d in cal.matchups[m] if d >= today]
+    # Through the last matchup on the calendar (playoff weeks too), so the live matchup always has a projection.
+    for m in range(state.current_matchup, max(cal.matchups) + 1):
+        periods = [d for d in cal.matchups.get(m, []) if d >= today]
         for tid, ps in rosters.items():
             week_mu[(tid, m)] = projected_points(ps, lg, cal, periods, include_ir=m > state.current_matchup)
     for mt in state.schedule:   # add points already banked in the current matchup

@@ -5,7 +5,7 @@ import json
 import logging
 from datetime import datetime
 
-from fh import advice, analysis, config, engine, espn, market, news, rankings, rumors, season, valuation
+from fh import advice, config, engine, espn, market, news, rankings, rumors, season, valuation
 from fh.espn import fantasy_points
 from fh.board import ET
 
@@ -97,8 +97,13 @@ def _drop_caution(drop, mine: list) -> str:
 def build(swid: str) -> dict:
     state = season.fetch_state(swid)
     cal = season.fetch_calendar(state)
-    if config.WEEKLY_MATCHUPS:   # our week boundaries, not ESPN's (its opening matchup is 13 days)
+    if config.WEEKLY_MATCHUPS:   # Mon-Sun weeks (ESPN settings: periodTypeId week, 1 week per matchup)
         state.current_matchup = cal.matchup_of(state.today_period) or state.current_matchup
+    cal_warning = season.calendar_mismatch(state, cal)
+    if cal_warning:
+        # ESPN decides who you play and what's banked; follow its live matchup and say so loudly.
+        log.warning("CALENDAR MISMATCH: %s - following ESPN's live matchup; fix config.WEEKLY_MATCHUPS", cal_warning)
+        state.current_matchup = state.espn_matchup
     lg = state.league
     me = lg.my_team_id
     sheet = rankings.load()
@@ -388,6 +393,7 @@ def build(swid: str) -> dict:
         "trade_deadline": state.trade_deadline.strftime("%b %-d, %Y") if state.trade_deadline else "",
         "days_to_deadline": (state.trade_deadline.date() - cal.date_of(today)).days if state.trade_deadline else None,
         "cadence": {"takes_days": "Mon & Thu", "daily_at": "12:00 PM and 5:00 PM ET"},
+        "calendar_warning": cal_warning,
         "rosters": {state.teams[tid].name: [p.name for p in sorted(ps, key=lambda p: -p.ros(cal, ros_periods))]
                     for tid, ps in rosters.items()},
     }

@@ -10,7 +10,7 @@ SWID = "{AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA}"
 
 def raw_league(order=(4, 3, 8, 7, 6, 1, 2, 5), made=(), in_progress=False, drafted=False, rounds=23):
     """Minimal ESPN league payload shaped like the real mSettings+mTeam+mDraftDetail response."""
-    teams = snake = espn.snake_order(list(order), rounds)
+    snake = espn.snake_order(list(order), rounds)
     picks = [{"overallPickNumber": i + 1, "teamId": t, "playerId": made[i] if i < len(made) else -1}
              for i, t in enumerate(snake)]
     return {

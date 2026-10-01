@@ -30,6 +30,8 @@ NAME_ALIASES = {  # sheet spelling -> ESPN spelling (normalized); extend as mism
 
 
 def norm_name(name: str) -> str:
+    name = re.sub(r"\([^)]*\)", " ", name)                 # sheet disambiguators: "Elias Pettersson (D)"
+    name = re.sub(r"(?<=\s)[A-Z]\.(?=\s)", " ", name)       # middle initials: ESPN's "Elias N. Pettersson"
     s = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode().lower()
     s = re.sub(r"\b(jr|sr|ii|iii)\b", "", s)
     s = re.sub(r"[^a-z]", "", s)
@@ -80,6 +82,7 @@ def load(path: Path = config.RANKINGS_XLSX) -> list:
             "name": name, "key": norm_name(name), "team": norm_team(r[col["TEAM"]]), "pos": r[col["POS"]],
             "fp": float(fp), "gp": gp if isinstance(gp, (int, float)) else None,
             "g": r[col["G"]] if not is_g and isinstance(r[col["G"]], (int, float)) else 0.0,
+            "faceoffs": sum(r[col[h]] for h in ("FOW", "FOL") if h in col and isinstance(r[col[h]], (int, float))),
             "stats": {sid: float(r[col[h]]) for h, sid in LIST_COLS.items()
                       if h in col and isinstance(r[col[h]], (int, float))
                       and (sid in GOALIE_STATS) == is_g},

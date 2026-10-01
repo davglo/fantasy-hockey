@@ -44,12 +44,39 @@ class TestCalendar(unittest.TestCase):
         self.assertEqual(cal.date_of(cal.matchups[27][-1]), date(2027, 4, 4))
 
 
+class TestCalendarCheck(unittest.TestCase):
+    def state(self, espn_matchup, days):
+        lg = espn.parse_league(raw_league(), SWID)
+        return season.LeagueState(league=lg, today_period=7, current_matchup=espn_matchup, regular_matchups=25,
+                                  teams={}, schedule=[], free_agents=[], espn_matchup=espn_matchup, espn_days=days)
+
+    def test_weekly_agrees(self):
+        cal = season.build_calendar(pro_raw(), 27, 194, weekly=True)          # day 7 = Mon Oct 5 = matchup 2
+        self.assertEqual(season.calendar_mismatch(self.state(2, {1: set(range(1, 7)), 2: {7}}), cal), "")
+
+    def test_long_espn_week_detected(self):
+        cal = season.build_calendar(pro_raw(), 27, 194, weekly=True)
+        self.assertIn("matchup 1 is live", season.calendar_mismatch(self.state(1, {1: set(range(1, 8))}), cal))
+
+
+class TestPlayoffWeekProjection(unittest.TestCase):
+    def test_live_playoff_matchup_has_projection(self):
+        lg = espn.parse_league(raw_league(), SWID)
+        cal = season.build_calendar(pro_raw(), 27, 194, weekly=True)
+        teams = {5: season.Team(5, "Me", 15, 10, 0, 0, 0), 2: season.Team(2, "Them", 14, 11, 0, 0, 0)}
+        sched = [season.Matchup(period=26, home=5, away=2, home_pts=0, away_pts=0, winner="UNDECIDED", playoff=True)]
+        st = season.LeagueState(league=lg, today_period=cal.matchups[26][0], current_matchup=26, regular_matchups=25,
+                                teams=teams, schedule=sched, free_agents=[])
+        proj = engine.project(st, cal, {5: [pl(1, "F")], 2: [pl(2, "F")]})
+        self.assertIn((5, 26), proj.week_mu)
+
+
 class TestBlend(unittest.TestCase):
     def test_actual_weight_curve(self):
         w = engine.actual_weight
-        self.assertEqual([round(w(g), 2) for g in (0, 3, 5, 10, 15, 20, 30, 40, 60, 82)],
-                         [0, 0, 0, 0.25, 0.40, 0.50, 0.75, 0.90, 0.97, 0.97])
-        self.assertAlmostEqual(w(25), 0.625)
+        self.assertEqual([round(w(g), 2) for g in (0, 1, 3, 5, 10, 15, 20, 25, 30, 82)],
+                         [0, 0.05, 0.05, 0.05, 0.30, 0.50, 0.70, 0.85, 0.95, 0.95])
+        self.assertAlmostEqual(w(12), 0.38)
 
 
 class TestLineups(unittest.TestCase):
