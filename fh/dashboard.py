@@ -45,8 +45,11 @@ def _overview(ctx, manual):
     me, myid = ctx["me"], ctx["me"]["id"]
     wyr = ctx["where_you_rank"]
     size = ctx["league"]["size"]
-    rank_rows = [[g, "%.0f" % d["mine"], '<span class="%s">#%d</span>' % ("good" if d["rank"] <= 2 else "bad" if d["rank"] >= size - 1 else "", d["rank"]),
-                  "%.0f" % d["median"], "%.0f" % d["best"]] for g, d in wyr.items()]
+    rk = lambda r: '<span class="%s">#%d</span>' % ("good" if r <= 2 else "bad" if r >= size - 1 else "", r)
+    rank_rows = [[g, rk(d["quality_rank"]), "%.1f" % d["quality"], rk(d["ros_rank"]), "%.0f" % d["ros"], "%.0f" % d["ros_best"]]
+                 for g, d in wyr.items()]
+    rum = "".join('<li><b>%s</b>: <a href="%s" target="_blank" rel="noopener">%s</a> <span class="cred">Yahoo Sports &middot; %s</span></li>' % (
+        _e(", ".join(r["players"])), _e(r["link"]), _e(r["title"]), _e(r["date"])) for r in ctx.get("rumors", []))
     weakest = ", ".join("%s (%s, %.0f)" % (_e(p["name"]), p["group"], p["ros"]) for p in ctx["weakest_starters"])
     adds = "".join("<li><b>%s</b> (%s, %s) +%.0f ROS for %s%s</li>" % (
         _e(a["name"]), _e(a["pos"]), _e(a["team"]), a["gain"], _e(a["drop"]), " &middot; " + _e(a["waiver"]) if a["waiver"] else "")
@@ -70,15 +73,15 @@ def _overview(ctx, manual):
 <div class="kpis"><span><b>{odds}</b> playoff odds</span><span><b>#{rank}</b> of {size} strength</span><span>{posture}</span></div></div></div>
 <div class="card urgent"><h3>Most urgent</h3><p>{urgent}</p></div>
 <div class="card"><h3>Today's notes</h3><ul>{notes}</ul><p class="mute">Numbers and these notes refresh daily at {daily}. Written analysis below is updated {takes} (last: {tdate}).</p></div>
+<div class="card"><h3>News that matters</h3><ul class="news">{nw}</ul>{sw}{rum}</div>
 {take}
 <div class="grid">
 <div class="card"><h3>Add alerts</h3><ul>{adds}</ul></div>
 <div class="card"><h3>Drop watch</h3><ul>{drops}</ul><p class="mute">Full ranking on Free Agents.</p></div>
 </div>
 <div class="card"><h3>Goalies to add today</h3>{gt}<p class="mute">Free-agent goalies whose team plays today. Confirmed = a "slated to start" report in the last 20h. Opp GF = opponent goals per game (this season, steadied with last season).</p></div>
-<div class="card"><h3>News that matters</h3><ul class="news">{nw}</ul>{sw}</div>
 <div class="grid">
-<div class="card"><h3>Where you rank (projected pts/week)</h3>{ranks}<p class="mute">Starter points from optimal daily lineups over a full week, vs all {size} teams. Weakest starters (ROS): {weakest}.</p></div>
+<div class="card"><h3>Where you rank</h3>{ranks}<p class="mute">Quality = per-game points of your top starters at each position (IR included, schedule ignored) - how roster rankers like Lineup Experts judge teams. Rest of season = starter points from optimal daily lineups with the real schedule; D ranks lower here because UTIL slots usually go to forwards. Weakest starters (ROS): {weakest}.</p></div>
 <div class="card"><h3>League landscape</h3>{land}</div>
 </div>""".format(
         grade=_e(me["grade"]), headline=_e(me["headline"]), odds=_pct(me["playoff_odds"]), rank=me["rank"], size=size,
@@ -89,7 +92,8 @@ def _overview(ctx, manual):
         gt=_table(["Goalie", "Team", "Opp", "Start", "Exp pts", "Opp GF", "Waivers"], gt),
         nw=nw or "<li class=mute>No fresh news on your players in the last 72h.</li>",
         sw='<h3 style="margin-top:10px">Status watch</h3><ul class="news">%s</ul>' % sw if sw else "",
-        ranks=_table(["Group", "Mine", "Rank", "Median", "Best"], rank_rows), weakest=weakest or "-",
+        ranks=_table(["Group", "Quality", "Pts/game", "Rest of season", "ROS pts", "League best"], rank_rows), weakest=weakest or "-",
+        rum='<h3 style="margin-top:10px">Rumors &amp; reports</h3><ul class="news">%s</ul>' % rum if rum else "",
         land=_table(["Team", "Record", "PF", "Strength", "Playoff odds"], land))
 
 

@@ -112,27 +112,39 @@ def underperformers(mine: list, min_gp: int = 10, ratio: float = 0.75) -> list:
     return out
 
 
-def group_points(roster: list, league: League, cal: Calendar, periods) -> dict:
+def group_points(roster: list, league: League, cal: Calendar, periods, include_ir: bool = True) -> dict:
     """Projected points by position group from optimal daily lineups (UTIL counted with the player's group)."""
     out = {"F": 0.0, "D": 0.0, "G": 0.0}
+    pool = list(roster) if include_ir else engine.active(roster)
     for d in periods:
         f = lambda p, d=d: p.exp_game() if d in cal.team_games.get(p.team, ()) else 0.0
-        for p in engine.best_lineup(engine.active(roster), league.slots, f)[1]:
+        for p in engine.best_lineup(pool, league.slots, f)[1]:
             out[p.group] += f(p)
     return out
 
 
-def where_you_rank(rosters: dict, me: int, league: League, cal: Calendar, week) -> dict:
-    """Per group: my weekly starter points, rank among teams, league median and best."""
-    pts = {t: group_points(ps, league, cal, week) for t, ps in rosters.items()}
+def where_you_rank(rosters: dict, me: int, league: League, cal: Calendar, ros_periods) -> dict:
+    """Per group, two yardsticks (rank 1 = best):
+    quality = per-game points of the top-N players at the group (N = starting slots; IR included, schedule-free),
+              which is how most roster rankers (e.g. Lineup Experts) judge a team;
+    ros     = rest-of-season starter points from optimal daily lineups (schedule-adjusted, UTIL counted by group)."""
+    n = {g: league.slots.get(g, 0) for g in ("F", "D", "G")}
+    quality = {t: {g: sum(sorted((p.exp_game() for p in ps if p.group == g), reverse=True)[:n[g]]) for g in n}
+               for t, ps in rosters.items()}
+    ros = {t: group_points(ps, league, cal, ros_periods) for t, ps in rosters.items()}
+
+    def rank(vals, t):
+        return sorted(vals.values(), reverse=True).index(vals[t]) + 1
     out = {}
     for g in ("F", "D", "G"):
-        vals = sorted((pts[t][g] for t in pts), reverse=True)
-        out[g] = {"mine": pts[me][g], "rank": vals.index(pts[me][g]) + 1, "median": vals[len(vals) // 2],
-                  "best": vals[0]}
-    tot = sorted((sum(v.values()) for v in pts.values()), reverse=True)
-    out["Total"] = {"mine": sum(pts[me].values()), "rank": tot.index(sum(pts[me].values())) + 1,
-                    "median": tot[len(tot) // 2], "best": tot[0]}
+        q = {t: quality[t][g] for t in rosters}
+        r = {t: ros[t][g] for t in rosters}
+        out[g] = {"quality": q[me], "quality_rank": rank(q, me), "ros": r[me], "ros_rank": rank(r, me),
+                  "ros_best": max(r.values())}
+    tq = {t: sum(quality[t].values()) for t in rosters}
+    tr = {t: sum(ros[t].values()) for t in rosters}
+    out["Total"] = {"quality": tq[me], "quality_rank": rank(tq, me), "ros": tr[me], "ros_rank": rank(tr, me),
+                    "ros_best": max(tr.values())}
     return out
 
 
@@ -163,8 +175,8 @@ def goalies_today(fas: list, cal: Calendar, period: int, starting: dict, opp_gf:
     Expected points use his full per-start rate when confirmed, else rate x share of starts."""
     out = []
     for p in fas:
-        if p.group != "G" or period not in cal.team_games.get(p.team, ()):
-            continue
+        if p.group != "G" or period not in cal.team_games.get(p.team, ()) or p.injury not in HEALTHY:
+            continue    # IR / out goalies aren't starting (e.g. Demko)
         opp = cal.opponents.get((p.team, period), "")
         conf = starting.get(p.id, False)
         out.append({"p": p, "opp": opp, "confirmed": conf, "opp_gf": opp_gf.get(opp),
@@ -257,7 +269,7 @@ def stream_plan(mine: list, fas: list, value: Valuer, periods, adds_left: int, c
     """Greedy adds for one matchup: each step picks the (free agent, drop) pair that adds the most projected
     points over `periods`. My top `core` players (ROS + playoffs) are never dropped. Waiver players need a claim."""
     lg, cal = value.league, value.cal
-    pool = sorted(fas, key=lambda p: -(p.exp_game() * cal.games(p.team, periods)))[:40]
+    pool = sorted((p for p in fas if p.injury in HEALTHY), key=lambda p: -(p.exp_game() * cal.games(p.team, periods)))[:40]
     roster, moves, used = list(mine), [], set()
     for _ in range(min(adds_left, steps)):
         base = engine.projected_points(roster, lg, cal, periods)
@@ -285,7 +297,7 @@ def stream_plan(mine: list, fas: list, value: Valuer, periods, adds_left: int, c
 def streaming(fas: list, cal: Calendar, this_week, next_week, n=8) -> dict:
     teams = sorted(cal.team_games)
     games = {t: (cal.games(t, this_week), cal.games(t, next_week)) for t in teams}
-    goalies = sorted((p for p in fas if p.group == "G"),
+    goalies = sorted((p for p in fas if p.group == "G" and p.injury in HEALTHY),
                      key=lambda p: -(p.exp_game() * cal.games(p.team, this_week)))[:n]
     g_rows = [{"p": p, "exp": p.exp_game() * cal.games(p.team, this_week), "games": cal.games(p.team, this_week),
                "opps": [cal.opponents.get((p.team, d), "") for d in this_week if d in cal.team_games.get(p.team, ())]}

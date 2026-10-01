@@ -11,6 +11,7 @@ state/*_cache.json
 state/*.log
 state/context.json
 state/status_snapshot.json
+state/rumors_archive.json
 output/
 
 # Licensed projections workbook - keep local

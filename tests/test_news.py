@@ -91,3 +91,39 @@ class TestPlayoffAndDrops(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestRumors(unittest.TestCase):
+    def setUp(self):
+        import tempfile
+        from pathlib import Path
+        from fh import rumors
+        self.rumors = rumors
+        self.tmp = Path(tempfile.mkdtemp()) / "arch.json"
+        self.orig_arch, self.orig_fetch = rumors.ARCHIVE, rumors._fetch_feed
+        rumors.ARCHIVE = self.tmp
+        now = datetime.now(timezone.utc)
+        rumors._fetch_feed = lambda: [
+            {"title": "Oilers trade pitch adds Connor Hellebuyck", "link": "https://x/1", "date": now.isoformat()},
+            {"title": "Hellebuyck trade saga takes a turn", "link": "https://x/2", "date": now.isoformat()},
+            {"title": "Islanders release jersey schedule", "link": "https://x/3", "date": now.isoformat()},
+            {"title": "Old Hellebuyck trade note", "link": "https://x/4", "date": (now - timedelta(days=20)).isoformat()}]
+
+    def tearDown(self):
+        self.rumors.ARCHIVE, self.rumors._fetch_feed = self.orig_arch, self.orig_fetch
+
+    def test_matches_names_and_keeps_archive(self):
+        out = self.rumors.refresh(["Connor Hellebuyck"])
+        self.assertEqual([r["link"] for r in out], ["https://x/1", "https://x/2"])   # last-name match; old item expired
+        self.rumors._fetch_feed = lambda: []                                         # feed rolled over
+        self.assertEqual(len(self.rumors.refresh(["Connor Hellebuyck"])), 2)          # still shown from archive
+
+
+class TestGoaliesToday(unittest.TestCase):
+    def test_ir_goalie_excluded(self):
+        cal = season.build_calendar(pro_raw(), 27, 194)
+        healthy = pl(1, "G", team="BOS", slot=None)
+        hurt = pl(2, "G", team="BOS", slot=None)
+        hurt.base.injury = "INJURY_RESERVE"
+        rows = advice.goalies_today([healthy, hurt], cal, 1, {}, {})
+        self.assertEqual([r["p"].id for r in rows], [1])

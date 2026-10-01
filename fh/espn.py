@@ -34,6 +34,10 @@ def load_env(path: Path = config.ENV_FILE) -> dict:
 
 
 def _curl(url: str, headers: dict | None = None, auth: bool = False, timeout: int = 20) -> dict:
+    return json.loads(_curl_text(url, headers, auth, timeout))
+
+
+def _curl_text(url: str, headers: dict | None = None, auth: bool = False, timeout: int = 20) -> str:
     # Headers go through a curl config on stdin so cookies never appear in argv / ps output.
     lines = ['url = "%s"' % url, "silent", "show-error", "compressed", "max-time = %d" % timeout,
              'write-out = "\\n%{http_code}"']
@@ -57,7 +61,7 @@ def _curl(url: str, headers: dict | None = None, auth: bool = False, timeout: in
         raise FetchError("401 from ESPN: cookies in .env rejected or expired")
     if code != "200":
         raise FetchError("HTTP %s for %s" % (code, url.split("?")[0]))
-    return json.loads(body)
+    return body
 
 
 def cached(name: str, ttl: float, fn):

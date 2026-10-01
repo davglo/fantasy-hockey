@@ -5,7 +5,7 @@ import json
 import logging
 from datetime import datetime
 
-from fh import advice, analysis, config, engine, espn, market, news, rankings, season, valuation
+from fh import advice, analysis, config, engine, espn, market, news, rankings, rumors, season, valuation
 from fh.espn import fantasy_points
 from fh.board import ET
 
@@ -64,6 +64,11 @@ def _last7(p, state) -> float:
 def _po_targets(fas, players, me, teams, cal, po_periods, state) -> list:
     """Players whose playoff-week games land on my open-slot days (FAs to grab, others to trade for)."""
     rows = []
+    # Realistic trade tier: nobody moves a franchise player. Skip the top 60 by ESPN market (ADP/rank) and each
+    # team's own top 5 by projection.
+    core = set()
+    for tid in {q.owner for q in players if q.owner not in (None, me)}:
+        core |= {q.id for q in sorted((q for q in players if q.owner == tid), key=lambda q: -q.exp_game())[:5]}
     for p in list(fas) + [q for q in players if q.owner != me]:
         t = teams.get(p.team)
         if not t:
@@ -72,9 +77,11 @@ def _po_targets(fas, players, me, teams, cal, po_periods, state) -> list:
         if fit:
             rows.append({"name": p.name, "team": p.team, "group": p.group, "fit": fit, "games": t["games"],
                          "usable_pts": round(fit * p.exp_game(), 1),
-                         "owner": "FA" if p.owner is None else state.teams[p.owner].name})
+                         "owner": "FA" if p.owner is None else state.teams[p.owner].name,
+                         "tradeable": p.owner is not None and p.base.market > 60 and p.id not in core})
     rows.sort(key=lambda r: -r["usable_pts"])
-    return {"fa": [r for r in rows if r["owner"] == "FA"][:8], "trade": [r for r in rows if r["owner"] != "FA"][:8]}
+    return {"fa": [r for r in rows if r["owner"] == "FA"][:8],
+            "trade": [r for r in rows if r["owner"] != "FA" and r["tradeable"]][:8]}
 
 
 def _drop_caution(drop, mine: list) -> str:
@@ -172,7 +179,7 @@ def build(swid: str) -> dict:
     usable = advice.usable_games(mine, lg, cal, po_periods)
 
     # Where you rank (a full upcoming week is the fair yardstick)
-    wyr = advice.where_you_rank(rosters, me, lg, cal, next_week or this_week)
+    wyr = advice.where_you_rank(rosters, me, lg, cal, ros_periods)
     quick = {p.id: value.quick(p) for p in mine}
     _, season_starters = engine.best_lineup(mine, lg.slots, lambda p: quick[p.id] + 1e-9)
     weakest = sorted(season_starters, key=lambda p: quick[p.id])[:3]
@@ -200,8 +207,8 @@ def build(swid: str) -> dict:
 
     # News, opportunity alerts, goalies to add today
     now = news.now_utc()
-    g_cands = advice.goalies_today(fas, cal, today, {}, {})[:8]
-    watch = news.watch_set(mine, players, fas, [r.p for r in fa_recs[:8]], [r["p"] for r in g_cands])
+    g_cands = [r["p"] for r in advice.goalies_today(fas, cal, today, {}, {})] + [p for p in mine if p.group == "G"]
+    watch = news.watch_set(mine, players, fas, [r.p for r in fa_recs[:8]], g_cands)
     nws = news.fetch_many(watch)
     log.info("news: %d players watched, %d items", len(watch), sum(len(v) for v in nws.values()))
     starting = {pid: news.starting_today(items, now) for pid, items in nws.items()}
@@ -231,13 +238,15 @@ def build(swid: str) -> dict:
         if bens:
             opp_rows.append((o, sorted(bens, key=lambda r: -max(r["gain"], r["gain_2wk"]))))
     my_news = news.top([i for p in mine for i in nws.get(p.id, [])], now, 8)
+    rumor_names = [p.name for p in mine] + [r.p.name for r in fa_recs[:8]]
+    rumor_items = rumors.refresh(rumor_names)[:8]
     # Flagged players on my roster: always show their latest item, however old (the saga matters).
     status_watch = [(p, nws[p.id][0]) for p in mine if p.injury != "ACTIVE" and nws.get(p.id)
                     and nws[p.id][0].age_hours(now) <= 30 * 24]
     ADD_ALERT = 15.0
 
     my_odds = proj.playoff_odds[me]
-    biggest_need = max(("F", "D", "G"), key=lambda g: wyr[g]["rank"])
+    biggest_need = max(("F", "D", "G"), key=lambda g: (wyr[g]["quality_rank"] + wyr[g]["ros_rank"], g))
     fixes = [i for i in lineup["today"]["issues"] if i["severity"] == "fix"]
     if fixes:
         urgent = "Lineup today: " + fixes[0]["text"]
@@ -251,8 +260,9 @@ def build(swid: str) -> dict:
             " + ".join(p.name for p in t.give), t.get[0].name, state.teams[t.partner].name, t.my_gain)
     else:
         urgent = "Nothing urgent - set tomorrow's lineup and check back."
-    headline = "%s: #%d of %d in projected strength, %.0f%% playoff odds. Weakest group: %s (#%d of %d)." % (
-        state.teams[me].name, my_rank, lg.size, my_odds * 100, biggest_need, wyr[biggest_need]["rank"], lg.size)
+    headline = "%s: #%d of %d in projected strength, %.0f%% playoff odds. Weakest group: %s (#%d quality, #%d rest of season)." % (
+        state.teams[me].name, my_rank, lg.size, my_odds * 100, biggest_need, wyr[biggest_need]["quality_rank"],
+        wyr[biggest_need]["ros_rank"])
 
     fa_text = []
     for r in fa_recs[:3]:
@@ -360,6 +370,8 @@ def build(swid: str) -> dict:
                    "week": [_perf(f, st, pts) for pts, f, st in perf_7 if pts > 0]},
         "news": [_news(i) for i in my_news],
         "status_watch": [dict(_news(i), status=p.injury) for p, i in status_watch],
+        "rumors": [{"title": r["title"], "link": r["link"], "players": r["players"],
+                    "date": datetime.fromisoformat(r["date"]).astimezone(ET).strftime("%b %-d")} for r in rumor_items],
         "notes": notes,
         "opportunities": [{"news": _news(o.item), "about": o.about.name, "about_team": o.about.team,
                            "about_group": o.about.group, "kinds": sorted(o.item.kinds & news.NEGATIVE),
