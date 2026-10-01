@@ -22,6 +22,14 @@ PLAYER_PAGE = "https://www.espn.com/nhl/player/news/_/id/%d"
 INSIDERS = ["Elliotte Friedman", "Pierre LeBrun", "Darren Dreger", "Chris Johnston", "Frank Seravalli",
             "Kevin Weekes", "Jeff Marek", "Nick Kypreos", "David Pagnotta", "Bob McKenzie"]
 
+_SIDE = r"(?:home |road |visiting )?"
+START_CONFIRMED = (r"(slated to start|set to start|will start|gets? the (?:nod|start|call)|draw the start|confirmed (?:as the )?starter|"
+                   r"between the %spipes|(?:guard|defend|patrol|protect|man) the %s(?:cage|goal|net|crease|blue paint)|"
+                   r"tend the %s(?:twine|crease|goal|net)|will be in (?:goal|net)|in net (?:for|against)|start in goal)"
+                   % (_SIDE, _SIDE, _SIDE))
+START_EXPECTED = r"(expected to (?:start|be in goal|get the (?:nod|start)|guard|defend|tend)|likely to start|projected to start|in line to start)"
+WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+
 KINDS = {
     "injury": r"\b(injur\w*|out (?:for|indefinitely|week|month)|week-to-week|month-to-month|day-to-day|"
               r"surgery|sidelined|IR\b|injured reserve|LTIR|concussion|upper-body|lower-body|won't play|will miss)",
@@ -35,8 +43,7 @@ KINDS = {
               r"set to return|expected to return (?:tonight|Thursday|Friday|Saturday|Sunday|Monday|Tuesday|Wednesday))",
     "role": r"\b(promoted|bump(?:ed)? up|moved (?:up )?to the (?:top|first)|top[- ]power[- ]play unit|PP1|"
             r"first power[- ]play unit|will (?:skate|center|play) on the (?:top|first) line|top-six role)",
-    "starting": r"(slated to start|will start|gets? the nod|expected to start|between the pipes|guard the (?:cage|goal|net)|"
-                r"defend the (?:home |road )?(?:crease|net|goal|cage)|draw the start|confirmed starter|tend the (?:twine|crease))",
+    "starting": START_CONFIRMED + "|" + START_EXPECTED,
 }
 NEGATIVE = {"injury", "suspension", "season_over", "trade", "demotion"}
 REPORTER = re.compile(r"((?:[A-Z][\w'.-]+ ){1,2}[A-Z][\w'.-]+) of (?:the )?([A-Z][\w.'&-]+(?: [A-Z][\w.'&-]+)*)")
@@ -110,9 +117,30 @@ def top(items: list, now: datetime, n: int, max_age_h: float = 72) -> list:
     return sorted(fresh, key=lambda i: -relevance(i, now))[:n]
 
 
-def starting_today(items: list, now: datetime) -> bool:
-    """A 'slated to start' style blurb in the last 20 hours."""
-    return any("starting" in i.kinds and i.age_hours(now) <= 20 for i in items)
+def start_status(items: list, game_day) -> str:
+    """'confirmed' / 'expected' / '' for a goalie on game_day (a date, ET). A start note counts when it names
+    that weekday (teams often announce the day before) or, with no weekday named, was posted on game day."""
+    from fh.board import ET
+    best = ""
+    for i in items:
+        if "starting" not in i.kinds:
+            continue
+        posted = i.published.astimezone(ET).date()
+        if not (0 <= (game_day - posted).days <= 2):
+            continue
+        days = [d for d in WEEKDAYS if re.search(r"\b%s\b" % d, i.summary)]
+        if days:
+            if WEEKDAYS[game_day.weekday()] not in days:
+                continue
+        elif posted != game_day:
+            continue    # no weekday named ("tonight", "Thursday's game" omitted): only same-day notes count
+        if "preseason" in i.summary.lower():
+            continue
+        if re.search(START_CONFIRMED, i.summary, re.I):
+            return "confirmed"
+        if re.search(START_EXPECTED, i.summary, re.I):
+            best = "expected"
+    return best
 
 
 # ---- watch set + opportunity alerts ------------------------------------------

@@ -61,8 +61,9 @@ def _overview(ctx, manual):
     drops += "".join("<li><b>%s</b> running %.2f pts/GP vs %.2f projected</li>" % (_e(u["name"]), u["actual"], u["proj"])
                      for u in ctx["underperformers"])
     gt = [[_e(g["name"]) + _inj(g), _e(g["team"]), _e(g["opp"]),
-           '<span class="good">confirmed</span>' if g["confirmed"] else '<span class="mute">unconfirmed</span>',
-           "%.1f" % g["exp"], "%.2f" % g["opp_gf"] if g["opp_gf"] else "-", _e(g["waiver"])] for g in ctx["goalies_today"]]
+           {"confirmed": '<span class="good">confirmed</span>', "expected": '<span class="warnc">expected</span>',
+            "backup": '<span class="bad">backup tonight</span>'}.get(g["confirmed"], '<span class="mute">not reported</span>'),
+           "%.1f" % g["exp"] if g["exp"] else "-", "%.2f" % g["opp_gf"] if g["opp_gf"] else "-", _e(g["waiver"])] for g in ctx["goalies_today"]]
     nw = "".join(_news_li(n) for n in ctx["news"])
     sw = "".join(_news_li(n, ' <span class="inj">%s</span>' % _e(n["status"])) for n in ctx["status_watch"])
     land = [["<b>%s</b>" % _e(s["name"]) if s["id"] == myid else _e(s["name"]), _rec(s), "%.0f" % s["pf"], "%.0f" % s["strength"], _pct(s["odds"])]
@@ -79,7 +80,7 @@ def _overview(ctx, manual):
 <div class="card"><h3>Add alerts</h3><ul>{adds}</ul></div>
 <div class="card"><h3>Drop watch</h3><ul>{drops}</ul><p class="mute">Full ranking on Free Agents.</p></div>
 </div>
-<div class="card"><h3>Goalies to add today</h3>{gt}<p class="mute">Free-agent goalies whose team plays today. Confirmed = a "slated to start" report in the last 20h. Opp GF = opponent goals per game (this season, steadied with last season).</p></div>
+<div class="card"><h3>Goalies to add today</h3>{gt}<p class="mute">Free-agent goalies whose team plays today. Start status comes from RotoWire's reports (via ESPN), which relay beat reporters and team sources - the same sources Daily Faceoff uses; a note counts when it names today's game. Backup = a teammate is confirmed. Opp GF = opponent goals per game (this season, steadied with last season).</p></div>
 <div class="grid">
 <div class="card"><h3>Where you rank</h3>{ranks}<p class="mute">Quality = per-game points of your top starters at each position (IR included, schedule ignored) - how roster rankers like Lineup Experts judge teams. Rest of season = starter points from optimal daily lineups with the real schedule; D ranks lower here because UTIL slots usually go to forwards. Weakest starters (ROS): {weakest}.</p></div>
 <div class="card"><h3>League landscape</h3>{land}</div>
@@ -263,7 +264,7 @@ h3{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;c
 .tw{overflow-x:auto}table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:14px}
 th,td{text-align:left;padding:5px 8px;border-bottom:1px solid var(--line);white-space:nowrap}th{color:var(--mute);font-weight:500}
 .inj{background:var(--warn);color:#1a0f00;font-size:11px;font-weight:700;padding:1px 5px;border-radius:4px}
-.good{color:var(--good)}.bad{color:var(--bad)}ul{margin:0 0 8px;padding-left:18px}
+.good{color:var(--good)}.warnc{color:var(--warn)}.bad{color:var(--bad)}ul{margin:0 0 8px;padding-left:18px}
 .tag{border:1px solid var(--line);color:var(--mute);font-size:11px;padding:0 5px;border-radius:4px}
 .days{display:flex;gap:6px;overflow-x:auto;margin-bottom:6px}.day{min-width:62px;text-align:center;border:1px solid var(--line);border-radius:8px;padding:4px;font-size:12px}
 .day .hot{color:var(--good);font-weight:700}

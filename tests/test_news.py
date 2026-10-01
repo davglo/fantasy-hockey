@@ -30,11 +30,16 @@ class TestParse(unittest.TestCase):
     def test_feature_stories_skipped(self):
         self.assertIsNone(news.parse(raw("Bounce-back picks", kind="Story"), 3, "X"))
 
-    def test_goalie_start_window(self):
-        items = [news.parse(raw("Swayman will defend the home crease Tuesday against the Rangers.", hours_ago=5), 4, "Jeremy Swayman")]
-        self.assertTrue(news.starting_today(items, NOW))
-        items = [news.parse(raw("Swayman will defend the home crease Tuesday.", hours_ago=30), 4, "Jeremy Swayman")]
-        self.assertFalse(news.starting_today(items, NOW))
+    def test_goalie_start_status_real_phrasings(self):
+        day = NOW.date()   # Thursday Oct 1
+        st = lambda desc, h: news.start_status([news.parse(raw(desc, hours_ago=h), 1, "G")], day)
+        self.assertEqual(st("Allen will be between the home pipes against the Flyers on Thursday, Amanda Stein of the Devils' official site reports.", 3), "confirmed")
+        self.assertEqual(st("Wolf is set to start at home against Seattle on Thursday, per Pat Steinberg of QR Calgary 770 AM.", 24), "confirmed")
+        self.assertEqual(st("Luukkonen (lower body) is slated to start on the road against Columbus on Thursday.", 26), "confirmed")
+        self.assertEqual(st("Knight is expected to defend the road net against the Golden Knights on Tuesday.", 48), "")   # other day
+        self.assertEqual(st("Daccord is expected to start Thursday against Calgary.", 5), "expected")
+        self.assertEqual(st("Daccord is set to start in Vancouver for Thursday's preseason outing.", 5), "")
+        self.assertEqual(st("Swayman will guard the cage tonight.", 30), "")     # 'tonight' from yesterday is stale
 
     def test_top_caps_and_ranks(self):
         items = [news.parse(raw("A will miss the next game with an injury.", hours_ago=10), 5, "A"),

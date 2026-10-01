@@ -171,17 +171,18 @@ def usable_games(roster: list, league: League, cal: Calendar, periods) -> dict:
 
 
 def goalies_today(fas: list, cal: Calendar, period: int, starting: dict, opp_gf: dict) -> list:
-    """FA goalies whose team plays today. starting: playerId -> True if news says he starts.
-    Expected points use his full per-start rate when confirmed, else rate x share of starts."""
+    """FA goalies whose team plays today. starting: playerId -> 'confirmed' / 'expected' / 'backup' / ''.
+    Expected points: full per-start rate if confirmed/expected, 0 if backup, else rate x share of starts."""
     out = []
     for p in fas:
         if p.group != "G" or period not in cal.team_games.get(p.team, ()) or p.injury not in HEALTHY:
             continue    # IR / out goalies aren't starting (e.g. Demko)
         opp = cal.opponents.get((p.team, period), "")
-        conf = starting.get(p.id, False)
-        out.append({"p": p, "opp": opp, "confirmed": conf, "opp_gf": opp_gf.get(opp),
-                    "exp": p.rate if conf else p.exp_game()})
-    return sorted(out, key=lambda r: (-r["confirmed"], -r["exp"]))
+        st = starting.get(p.id, "")
+        exp = p.rate if st in ("confirmed", "expected") else 0.0 if st == "backup" else p.exp_game()
+        out.append({"p": p, "opp": opp, "confirmed": st, "opp_gf": opp_gf.get(opp), "exp": exp})
+    order = {"confirmed": 0, "expected": 1, "": 2, "backup": 3}
+    return sorted(out, key=lambda r: (order[r["confirmed"]], -r["exp"]))
 
 
 # ---- free agents (rest of season) --------------------------------------------

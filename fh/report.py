@@ -211,8 +211,14 @@ def build(swid: str) -> dict:
     watch = news.watch_set(mine, players, fas, [r.p for r in fa_recs[:8]], g_cands)
     nws = news.fetch_many(watch)
     log.info("news: %d players watched, %d items", len(watch), sum(len(v) for v in nws.values()))
-    starting = {pid: news.starting_today(items, now) for pid, items in nws.items()}
-    g_today = advice.goalies_today(fas, cal, today, starting, season.fetch_goals_for())[:6]
+    game_day = cal.date_of(today)
+    starting = {pid: news.start_status(items, game_day) for pid, items in nws.items()}
+    # A goalie whose teammate is confirmed tonight is the backup.
+    confirmed_teams = {p.team for p in players + fas if p.group == "G" and starting.get(p.id) == "confirmed"}
+    for f in fas:
+        if f.group == "G" and not starting.get(f.id) and f.team in confirmed_teams:
+            starting[f.id] = "backup"
+    g_today = advice.goalies_today(fas, cal, today, starting, season.fetch_goals_for())[:8]
     opps = news.opportunities(nws, {p.id: p for p in players + fas}, fas, now)
     news.save_snapshot(players)
     drops3 = advice.droppable(mine, value, k=3)
@@ -292,7 +298,7 @@ def build(swid: str) -> dict:
             o.about.name, o.about.team, "/".join(sorted(o.item.kinds & news.NEGATIVE)), bens[0]["name"]))
     if fa_recs and fa_recs[0].gain >= ADD_ALERT:
         notes.append("Best rest-of-season add: %s for %s (+%.0f)." % (fa_recs[0].p.name, fa_recs[0].drop.name, fa_recs[0].gain))
-    conf = [r for r in g_today if r["confirmed"]]
+    conf = [r for r in g_today if r["confirmed"] == "confirmed"]
     if conf:
         notes.append("Confirmed FA goalie starts today: %s." % ", ".join("%s vs %s" % (r["p"].name, r["opp"]) for r in conf[:3]))
     if perf_day:
