@@ -38,6 +38,8 @@ def _curl(url: str, headers: dict | None = None, auth: bool = False, timeout: in
     lines = ['url = "%s"' % url, "silent", "show-error", "compressed", "max-time = %d" % timeout,
              'write-out = "\\n%{http_code}"']
     hdrs = dict(headers or {})
+    if not auth:
+        lines.append("location")   # follow redirects only when no cookies are attached
     if auth:
         env = load_env()
         hdrs["Cookie"] = "espn_s2=%s; SWID=%s" % (env["ESPN_S2"], env["ESPN_SWID"])

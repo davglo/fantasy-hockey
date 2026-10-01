@@ -50,21 +50,6 @@ def lineup_check(mine: list, league: League, cal: Calendar, period: int) -> tupl
     return issues, best, max(0.0, best_pts - actual)
 
 
-# ---- needs -------------------------------------------------------------------
-
-def needs(mine: list, league: League, cal: Calendar, periods, pool: list) -> dict:
-    """Per position: my weakest starter's ROS points vs a typical starter at that position league-wide."""
-    out = {}
-    for g in ("F", "D", "G"):
-        mine_g = sorted((p.ros(cal, periods) for p in engine.active(mine) if p.group == g), reverse=True)
-        n = league.slots.get(g, 0)
-        league_g = sorted((p.ros(cal, periods) for p in pool if p.group == g and p.owner), reverse=True)
-        typical = league_g[min(len(league_g) - 1, n * league.size // 2)] if league_g else 0
-        weakest = mine_g[n - 1] if len(mine_g) >= n else 0.0
-        out[g] = {"weakest": weakest, "typical": typical, "gap": typical - weakest, "count": len(mine_g)}
-    return out
-
-
 # ---- shared: roster value + safe drops ------------------------------------
 
 HEALTHY = ("ACTIVE", "DAY_TO_DAY")
@@ -110,6 +95,83 @@ def droppable(mine: list, value: Valuer, k: int = 6, protect_top: int = 0) -> li
     return out[:k]
 
 
+def drop_ranking(mine: list, value: "Valuer") -> list:
+    """Every droppable player (same protections as `droppable`) with the ROS + playoff points I'd lose."""
+    base = value(mine)
+    cands = droppable(mine, value, k=len(mine))
+    return sorted(((p, base - value([q for q in mine if q.id != p.id])) for p in cands), key=lambda t: t[1])
+
+
+def underperformers(mine: list, min_gp: int = 10, ratio: float = 0.75) -> list:
+    """Players running well below their preseason per-game projection on a real sample."""
+    out = []
+    for p in mine:
+        pre = p.base.fp / p.base.gp if p.base.gp else 0
+        if p.act_gp >= min_gp and pre > 0 and p.act_fp / p.act_gp < ratio * pre:
+            out.append((p, p.act_fp / p.act_gp, pre))
+    return out
+
+
+def group_points(roster: list, league: League, cal: Calendar, periods) -> dict:
+    """Projected points by position group from optimal daily lineups (UTIL counted with the player's group)."""
+    out = {"F": 0.0, "D": 0.0, "G": 0.0}
+    for d in periods:
+        f = lambda p, d=d: p.exp_game() if d in cal.team_games.get(p.team, ()) else 0.0
+        for p in engine.best_lineup(engine.active(roster), league.slots, f)[1]:
+            out[p.group] += f(p)
+    return out
+
+
+def where_you_rank(rosters: dict, me: int, league: League, cal: Calendar, week) -> dict:
+    """Per group: my weekly starter points, rank among teams, league median and best."""
+    pts = {t: group_points(ps, league, cal, week) for t, ps in rosters.items()}
+    out = {}
+    for g in ("F", "D", "G"):
+        vals = sorted((pts[t][g] for t in pts), reverse=True)
+        out[g] = {"mine": pts[me][g], "rank": vals.index(pts[me][g]) + 1, "median": vals[len(vals) // 2],
+                  "best": vals[0]}
+    tot = sorted((sum(v.values()) for v in pts.values()), reverse=True)
+    out["Total"] = {"mine": sum(pts[me].values()), "rank": tot.index(sum(pts[me].values())) + 1,
+                    "median": tot[len(tot) // 2], "best": tot[0]}
+    return out
+
+
+def usable_games(roster: list, league: League, cal: Calendar, periods) -> dict:
+    """Day by day: starts I can fill, games wasted on the bench (more players playing than slots) and slots left
+    empty. Plus, per NHL team, how many of its games land on days I have an open skater / goalie slot."""
+    days, open_sk, open_g = [], set(), set()
+    for d in periods:
+        playing = [p for p in engine.active(roster) if d in cal.team_games.get(p.team, ())]
+        _, st = engine.best_lineup(playing, league.slots, lambda p: p.exp_game() + 1e-9)
+        used_g = sum(1 for p in st if p.group == "G")
+        used_sk = len(st) - used_g
+        sk_slots = sum(league.slots.get(g, 0) for g in ("F", "D", "UTIL"))
+        empty_sk, empty_g = sk_slots - used_sk, league.slots.get("G", 0) - used_g
+        if empty_sk > 0:
+            open_sk.add(d)
+        if empty_g > 0:
+            open_g.add(d)
+        days.append({"period": d, "date": cal.date_of(d).strftime("%a %b %-d"), "playing": len(playing),
+                     "used": len(st), "wasted": len(playing) - len(st), "empty_sk": empty_sk, "empty_g": empty_g})
+    teams = {t: {"games": cal.games(t, periods), "sk_fit": len(open_sk & g), "g_fit": len(open_g & g)}
+             for t, g in cal.team_games.items()}
+    return {"days": days, "teams": teams}
+
+
+def goalies_today(fas: list, cal: Calendar, period: int, starting: dict, opp_gf: dict) -> list:
+    """FA goalies whose team plays today. starting: playerId -> True if news says he starts.
+    Expected points use his full per-start rate when confirmed, else rate x share of starts."""
+    out = []
+    for p in fas:
+        if p.group != "G" or period not in cal.team_games.get(p.team, ()):
+            continue
+        opp = cal.opponents.get((p.team, period), "")
+        conf = starting.get(p.id, False)
+        out.append({"p": p, "opp": opp, "confirmed": conf, "opp_gf": opp_gf.get(opp),
+                    "exp": p.rate if conf else p.exp_game()})
+    return sorted(out, key=lambda r: (-r["confirmed"], -r["exp"]))
+
+
 # ---- free agents (rest of season) --------------------------------------------
 
 @dataclass
@@ -123,6 +185,7 @@ class FARec:
     games_this: int
     games_next: int
     luck: str
+    alt_drops: list = None    # next-best drops: [(player, gain)]
 
 
 def luck_flag(p) -> str:
@@ -147,22 +210,22 @@ def free_agents(mine: list, fas: list, value: Valuer, this_week, next_week, n=25
     cands = sorted(fas, key=lambda p: -value.quick(p))[:40]
     recs = []
     for fa in cands:
-        best = None
+        opts = []
         for d in drops:
             if fa.group != "G" and d.group == "G" and healthy_goalies([p for p in mine if p.id != d.id]) < 2:
                 continue
-            g = value([p for p in mine if p.id != d.id] + [fa]) - base
-            if best is None or g > best[0]:
-                best = (g, d)
-        if best is None:
+            opts.append((value([p for p in mine if p.id != d.id] + [fa]) - base, d))
+        if not opts:
             continue
-        g, d = best
+        opts.sort(key=lambda o: -o[0])
+        g, d = opts[0]
         roster = [p for p in mine if p.id != d.id] + [fa]
         w = engine.projected_points(roster, lg, cal, short) - engine.projected_points(mine, lg, cal, short)
         trend = max(-5.0, min(5.0, fa.pct_change)) * 0.2
         recs.append(FARec(p=fa, gain=g, week_gain=w, po_games=cal.games(fa.team, value.po), drop=d,
                           score=g + trend, games_this=cal.games(fa.team, this_week),
-                          games_next=cal.games(fa.team, next_week), luck=luck_flag(fa)))
+                          games_next=cal.games(fa.team, next_week), luck=luck_flag(fa),
+                          alt_drops=[(x, gx) for gx, x in opts[1:3]]))
     recs.sort(key=lambda r: -r.score)
     return recs[:n]
 

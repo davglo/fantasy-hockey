@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 from datetime import date
 
 from fh import config
@@ -30,12 +31,10 @@ def check(ctx: dict, manual: dict) -> list:
     age = (date.fromisoformat(ctx["period"]["date"]) - date.fromisoformat(manual["date"])).days
     notes.append("takes dated %s (%d days old)" % (manual["date"], age))
     mine = {p["name"] for p in ctx["roster"]}
-    everyone = {n for names in ctx["rosters"].values() for n in names} | {p["name"] for p in ctx["free_agents"]}
     text = " ".join((manual.get("takes") or {}).values())
-    for name in sorted(everyone):
-        if name not in text:
-            continue
-        if name in manual.get("my_players", []) and name not in mine:
+    for name in sorted(manual.get("my_players", [])):
+        last = name.split()[-1]
+        if (name in text or re.search(r"\b%s\b" % re.escape(last), text)) and name not in mine:
             notes.append("take mentions %s as mine but he's no longer on my roster" % name)
     if manual.get("playoff_odds") is not None and abs(manual["playoff_odds"] - ctx["me"]["playoff_odds"]) > 0.15:
         notes.append("playoff odds moved %.0f%% -> %.0f%% since the takes were written"

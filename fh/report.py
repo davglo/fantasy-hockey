@@ -5,7 +5,8 @@ import json
 import logging
 from datetime import datetime
 
-from fh import advice, config, engine, espn, market, rankings, season, valuation
+from fh import advice, analysis, config, engine, espn, market, news, rankings, season, valuation
+from fh.espn import fantasy_points
 from fh.board import ET
 
 log = logging.getLogger(__name__)
@@ -32,6 +33,48 @@ def _span(cal, periods) -> str:
 def _move(m) -> dict:
     return {"add": m.add.name, "add_pos": m.add.group, "add_team": m.add.team, "drop": m.drop.name,
             "gain": round(m.gain, 1), "days": m.days, "waivers": m.add.status == "WAIVERS"}
+
+
+def _waiver(ms, status: str) -> str:
+    if status != "WAIVERS":
+        return ""
+    if not ms:
+        return "on waivers"
+    return "clears " + datetime.fromtimestamp(ms / 1000, tz=ET).strftime("%a %-I%p").replace("AM", "am").replace("PM", "pm")
+
+
+def _news(i) -> dict:
+    return {"player": i.player, "summary": i.summary, "credit": news.credit(i), "link": i.link,
+            "insider": i.insider, "kinds": sorted(i.kinds), "date": i.published.astimezone(ET).strftime("%b %-d %-I:%M%p")}
+
+
+STAT_LINE = (("13", "G"), ("14", "A"), ("29", "SOG"), ("32", "BLK"), ("31", "HIT"), ("1", "W"), ("6", "SV"), ("4", "GA"), ("7", "SO"))
+
+
+def _perf(p, st: dict, pts: float) -> dict:
+    line = ", ".join("%d %s" % (st[k], lab) for k, lab in STAT_LINE if st.get(k))
+    return _pl(p, extra={"pts": round(pts, 1), "line": line, "own_chg": round(p.pct_change, 1)})
+
+
+def _last7(p, state) -> float:
+    ent = next((e for t in state.teams.values() for e, _ in t.roster if e["player"]["id"] == p.id), None)
+    return fantasy_points(season.split_stats(ent, 1), state.league.scoring) if ent else 0.0
+
+
+def _po_targets(fas, players, me, teams, cal, po_periods, state) -> list:
+    """Players whose playoff-week games land on my open-slot days (FAs to grab, others to trade for)."""
+    rows = []
+    for p in list(fas) + [q for q in players if q.owner != me]:
+        t = teams.get(p.team)
+        if not t:
+            continue
+        fit = t["g_fit"] if p.group == "G" else t["sk_fit"]
+        if fit:
+            rows.append({"name": p.name, "team": p.team, "group": p.group, "fit": fit, "games": t["games"],
+                         "usable_pts": round(fit * p.exp_game(), 1),
+                         "owner": "FA" if p.owner is None else state.teams[p.owner].name})
+    rows.sort(key=lambda r: -r["usable_pts"])
+    return {"fa": [r for r in rows if r["owner"] == "FA"][:8], "trade": [r for r in rows if r["owner"] != "FA"][:8]}
 
 
 def _drop_caution(drop, mine: list) -> str:
@@ -116,7 +159,6 @@ def build(swid: str) -> dict:
     po_weeks = {m: cal.matchups[m] for m in sorted(cal.matchups) if m > state.regular_matchups}
     po_periods = [d for ps in po_weeks.values() for d in ps]
     value = advice.Valuer(lg, cal, ros_periods, po_periods)
-    nd = advice.needs(mine, lg, cal, ros_periods, players)
     fa_recs = advice.free_agents(mine, fas, value, this_week, next_week)
     stream = advice.streaming(fas, cal, this_week, next_week)
     adds_used = state.teams[me].adds_by_matchup.get(cm, 0)
@@ -127,9 +169,75 @@ def build(swid: str) -> dict:
     tv = market.trade_values(players + fas, rater, value.quick)
     trade_recs = advice.trades(rosters, me, fas, value, tv, proj.playoff_odds)
     po = advice.playoff_schedule(rosters, me, lg, cal, po_weeks)
+    usable = advice.usable_games(mine, lg, cal, po_periods)
+
+    # Where you rank (a full upcoming week is the fair yardstick)
+    wyr = advice.where_you_rank(rosters, me, lg, cal, next_week or this_week)
+    quick = {p.id: value.quick(p) for p in mine}
+    _, season_starters = engine.best_lineup(mine, lg.slots, lambda p: quick[p.id] + 1e-9)
+    weakest = sorted(season_starters, key=lambda p: quick[p.id])[:3]
+
+    # Drops
+    drop_rank = advice.drop_ranking(mine, value)
+    under = advice.underperformers(mine)
+
+    # Recent free-agent performers: yesterday + last 7 days
+    yday = today - 1
+    fa_by_id = {p.id: p for p in fas}
+    waiver_dates = {e["player"]["id"]: e.get("waiverProcessDate") for e in state.free_agents}
+    perf_day, perf_7 = [], []
+    if yday >= 1:
+        for e in season.fetch_fa_day(yday):
+            st = season.day_stats(e, yday)
+            if st and e["player"]["id"] in fa_by_id:
+                perf_day.append((fantasy_points(st, lg.scoring), fa_by_id[e["player"]["id"]], st))
+    for e in state.free_agents:
+        st = season.split_stats(e, 1)
+        if st and e["player"]["id"] in fa_by_id:
+            perf_7.append((fantasy_points(st, lg.scoring), fa_by_id[e["player"]["id"]], st))
+    perf_day = sorted(perf_day, key=lambda t: -t[0])[:8]
+    perf_7 = sorted(perf_7, key=lambda t: -t[0])[:8]
+
+    # News, opportunity alerts, goalies to add today
+    now = news.now_utc()
+    g_cands = advice.goalies_today(fas, cal, today, {}, {})[:8]
+    watch = news.watch_set(mine, players, fas, [r.p for r in fa_recs[:8]], [r["p"] for r in g_cands])
+    nws = news.fetch_many(watch)
+    log.info("news: %d players watched, %d items", len(watch), sum(len(v) for v in nws.values()))
+    starting = {pid: news.starting_today(items, now) for pid, items in nws.items()}
+    g_today = advice.goalies_today(fas, cal, today, starting, season.fetch_goals_for())[:6]
+    opps = news.opportunities(nws, {p.id: p for p in players + fas}, fas, now)
+    news.save_snapshot(players)
+    drops3 = advice.droppable(mine, value, k=3)
+    base_val = value(mine)
+
+    short = list(this_week) + list(next_week)
+    base_short = engine.projected_points(mine, lg, cal, short)
+
+    def fa_gain(f):
+        return max((value([q for q in mine if q.id != d.id] + [f]) - base_val for d in drops3), default=0.0)
+
+    def fa_gain_short(f):
+        return max((engine.projected_points([q for q in mine if q.id != d.id] + [f], lg, cal, short) - base_short
+                    for d in drops3), default=0.0)
+
+    def opp_row(f):
+        return {"name": f.name, "team": f.team, "pos": f.base.positions, "gain": round(fa_gain(f), 1),
+                "gain_2wk": round(fa_gain_short(f), 1), "status": f.status,
+                "waiver": _waiver(waiver_dates.get(f.id), f.status)}
+    opp_rows = []
+    for o in opps:
+        bens = [r for r in (opp_row(f) for f in o.beneficiaries) if r["gain"] >= 2 or r["gain_2wk"] >= 1]
+        if bens:
+            opp_rows.append((o, sorted(bens, key=lambda r: -max(r["gain"], r["gain_2wk"]))))
+    my_news = news.top([i for p in mine for i in nws.get(p.id, [])], now, 8)
+    # Flagged players on my roster: always show their latest item, however old (the saga matters).
+    status_watch = [(p, nws[p.id][0]) for p in mine if p.injury != "ACTIVE" and nws.get(p.id)
+                    and nws[p.id][0].age_hours(now) <= 30 * 24]
+    ADD_ALERT = 15.0
 
     my_odds = proj.playoff_odds[me]
-    biggest_need = max(nd, key=lambda g: nd[g]["gap"])
+    biggest_need = max(("F", "D", "G"), key=lambda g: wyr[g]["rank"])
     fixes = [i for i in lineup["today"]["issues"] if i["severity"] == "fix"]
     if fixes:
         urgent = "Lineup today: " + fixes[0]["text"]
@@ -143,8 +251,8 @@ def build(swid: str) -> dict:
             " + ".join(p.name for p in t.give), t.get[0].name, state.teams[t.partner].name, t.my_gain)
     else:
         urgent = "Nothing urgent - set tomorrow's lineup and check back."
-    headline = "%s: #%d of %d in projected strength, %.0f%% playoff odds. Weakest spot: %s." % (
-        state.teams[me].name, my_rank, lg.size, my_odds * 100, biggest_need)
+    headline = "%s: #%d of %d in projected strength, %.0f%% playoff odds. Weakest group: %s (#%d of %d)." % (
+        state.teams[me].name, my_rank, lg.size, my_odds * 100, biggest_need, wyr[biggest_need]["rank"], lg.size)
 
     fa_text = []
     for r in fa_recs[:3]:
@@ -162,14 +270,32 @@ def build(swid: str) -> dict:
         fa_text.append("%s (%s, %s) for %s: %s.%s" % (r.p.name, r.p.group, r.p.team, r.drop.name,
                                                        ", ".join(why) or "marginal", _drop_caution(r.drop, mine)))
 
+    # Daily auto-notes, generated from this build's numbers (written takes come Mon & Thu)
+    notes = []
+    if matchup:
+        notes.append("Week %d vs %s: projected %.0f-%.0f, %.0f%% to win (starts left %d vs %d)." % (
+            cm, matchup["opp"], matchup["proj_me"], matchup["proj_opp"], matchup["win_prob"] * 100,
+            matchup["starts_me"], matchup["starts_opp"]))
+    if opp_rows:
+        o, bens = opp_rows[0]
+        notes.append("Opportunity: %s (%s) %s -> %s is the free agent who gains." % (
+            o.about.name, o.about.team, "/".join(sorted(o.item.kinds & news.NEGATIVE)), bens[0]["name"]))
+    if fa_recs and fa_recs[0].gain >= ADD_ALERT:
+        notes.append("Best rest-of-season add: %s for %s (+%.0f)." % (fa_recs[0].p.name, fa_recs[0].drop.name, fa_recs[0].gain))
+    conf = [r for r in g_today if r["confirmed"]]
+    if conf:
+        notes.append("Confirmed FA goalie starts today: %s." % ", ".join("%s vs %s" % (r["p"].name, r["opp"]) for r in conf[:3]))
+    if perf_day:
+        pts, f, _ = perf_day[0]
+        notes.append("Top free agent yesterday: %s, %.1f pts." % (f.name, pts))
+
     ctx = {
         "generated": datetime.now(ET).strftime("%a %b %-d, %-I:%M %p"),
         "league": {"name": lg.name.strip(), "size": lg.size, "scoring": {config.STAT_NAMES.get(k, k): v for k, v in lg.scoring.items()},
                    "slots": lg.slots, "playoff_teams": lg.playoff_teams},
         "me": {"id": me, "name": state.teams[me].name, "grade": GRADES[min(len(GRADES) - 1, (my_rank - 1) * len(GRADES) // lg.size)],
                "rank": my_rank, "playoff_odds": round(my_odds, 3), "posture": advice.posture(my_odds),
-               "headline": headline, "urgent": urgent,
-               "needs": {g: {k: round(v, 1) for k, v in d.items()} for g, d in nd.items()}},
+               "headline": headline, "urgent": urgent},
         "period": {"today": today, "date": cal.date_of(today).isoformat(), "matchup": cm,
                    "regular_matchups": state.regular_matchups},
         "standings": [{"id": tid, "name": t.name, "w": t.wins, "l": t.losses, "t": t.ties,
@@ -182,12 +308,14 @@ def build(swid: str) -> dict:
         "roster": sorted([_pl(p, cal, ros_periods, {"slot": config.SLOT_NAMES.get(p.slot, p.slot),
                                                     "g_this": cal.games(p.team, this_week), "g_next": cal.games(p.team, next_week),
                                                     "luck": advice.luck_flag(p)}) for p in mine],
-                         key=lambda d: ("FDG".index(d["group"]), -d["ros"])),
+                         key=lambda d: -d["ros"]),
         "free_agents": [_pl(r.p, cal, ros_periods, {"score": round(r.score, 1), "gain": round(r.gain, 1),
                                                      "week_gain": round(r.week_gain, 1), "drop": r.drop.name,
                                                      "g_this": r.games_this, "g_next": r.games_next, "po_games": r.po_games,
                                                      "own_chg": round(r.p.pct_change, 1), "luck": r.luck,
-                                                     "status": r.p.status})
+                                                     "status": r.p.status,
+                                                     "alt_drops": ["%s (%+.0f)" % (d.name, g) for d, g in (r.alt_drops or [])],
+                                                     "waiver": _waiver(waiver_dates.get(r.p.id), r.p.status)})
                         for r in fa_recs],
         "fa_summary": fa_text,
         "streaming": {"games": [{"team": t, "this": g[0], "next": g[1]} for t, g in
@@ -214,6 +342,34 @@ def build(swid: str) -> dict:
                     "backfill": ("add " if len(t.give) > len(t.get) else "drop ") + t.backfill.name if t.backfill else "",
                     "partner_odds": round(t.partner_odds, 3)}
                    for t in trade_recs],
+        "where_you_rank": {g: {k: (round(v, 1) if isinstance(v, float) else v) for k, v in d.items()} for g, d in wyr.items()},
+        "weakest_starters": [_pl(p, cal, ros_periods) for p in weakest],
+        "add_alerts": [_pl(r.p, cal, ros_periods, {"gain": round(r.gain, 1), "drop": r.drop.name,
+                                                   "waiver": _waiver(waiver_dates.get(r.p.id), r.p.status)})
+                       for r in fa_recs if r.gain >= ADD_ALERT][:5],
+        "drop_watch": [_pl(p, cal, ros_periods, {"cost": round(c, 1)}) for p, c in drop_rank[:3]],
+        "underperformers": [_pl(p, extra={"actual": round(a, 2), "proj": round(pr, 2)}) for p, a, pr in under],
+        "drop_ranking": [_pl(p, cal, ros_periods, {"cost": round(c, 1), "po_games": cal.games(p.team, po_periods),
+                                                   "last7": round(_last7(p, state), 1)}) for p, c in drop_rank],
+        "goalies_today": [_pl(r["p"], extra={"opp": r["opp"], "confirmed": r["confirmed"], "exp": round(r["exp"], 1),
+                                             "opp_gf": round(r["opp_gf"], 2) if r["opp_gf"] else None,
+                                             "waiver": _waiver(waiver_dates.get(r["p"].id), r["p"].status)})
+                          for r in g_today],
+        "recent": {"yesterday": cal.date_of(yday).strftime("%a %b %-d") if yday >= 1 else "",
+                   "day": [_perf(f, st, pts) for pts, f, st in perf_day if pts > 0],
+                   "week": [_perf(f, st, pts) for pts, f, st in perf_7 if pts > 0]},
+        "news": [_news(i) for i in my_news],
+        "status_watch": [dict(_news(i), status=p.injury) for p, i in status_watch],
+        "notes": notes,
+        "opportunities": [{"news": _news(o.item), "about": o.about.name, "about_team": o.about.team,
+                           "about_group": o.about.group, "kinds": sorted(o.item.kinds & news.NEGATIVE),
+                           "beneficiaries": bens} for o, bens in opp_rows[:8]],
+        "player_news": {p.name: [_news(i) for i in nws.get(p.id, [])[:2]] for p in mine},
+        "playoff_usable": {"days": usable["days"], "totals": {k: sum(d[k] for d in usable["days"]) for k in ("used", "wasted", "empty_sk", "empty_g")},
+                           "targets": _po_targets(fas, players, me, usable["teams"], cal, po_periods, state)},
+        "trade_deadline": state.trade_deadline.strftime("%b %-d, %Y") if state.trade_deadline else "",
+        "days_to_deadline": (state.trade_deadline.date() - cal.date_of(today)).days if state.trade_deadline else None,
+        "cadence": {"takes_days": "Mon & Thu", "daily_at": "12:00 PM ET"},
         "rosters": {state.teams[tid].name: [p.name for p in sorted(ps, key=lambda p: -p.ros(cal, ros_periods))]
                     for tid, ps in rosters.items()},
     }

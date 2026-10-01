@@ -99,6 +99,7 @@ class LeagueState:
     teams: dict
     schedule: list
     free_agents: list    # playerPoolEntry-like dicts
+    trade_deadline: datetime | None = None
 
 
 def fetch_state(swid: str) -> LeagueState:
@@ -127,7 +128,9 @@ def fetch_state(swid: str) -> LeagueState:
         league=lg, today_period=max(1, raw.get("scoringPeriodId", 1)),
         current_matchup=raw["status"].get("currentMatchupPeriod", 1),
         regular_matchups=raw["settings"]["scheduleSettings"]["matchupPeriodCount"],
-        teams=teams, schedule=sched, free_agents=fa["players"])
+        teams=teams, schedule=sched, free_agents=fa["players"],
+        trade_deadline=datetime.fromtimestamp(raw["settings"]["tradeSettings"]["deadlineDate"] / 1000, tz=ET)
+        if raw["settings"].get("tradeSettings", {}).get("deadlineDate") else None)
 
 
 def fetch_calendar(state: LeagueState) -> Calendar:
@@ -138,3 +141,45 @@ def fetch_calendar(state: LeagueState) -> Calendar:
         rounds, n = rounds + 1, n // 2
     final = max(int(p) for t in pro["settings"]["proTeams"] for p in (t.get("proGamesByScoringPeriod") or {}))
     return build_calendar(pro, state.regular_matchups + rounds, final, config.WEEKLY_MATCHUPS)
+
+
+def fetch_fa_day(period: int) -> list:
+    """Free agents with their single-day stats (statSplitTypeId 5) for one scoring period."""
+    flt = {"players": {"filterStatus": {"value": ["FREEAGENT", "WAIVERS"]}, "limit": 400,
+                       "sortPercOwned": {"sortPriority": 1, "sortAsc": False}}}
+    data = espn.cached("fa_day_%d" % period, 6 * 3600, lambda: espn._curl(
+        config.LEAGUE_URL + "?view=kona_player_info&scoringPeriodId=%d" % period,
+        headers={"X-Fantasy-Filter": json.dumps(flt)}, auth=True))
+    return data["players"]
+
+
+def day_stats(entry: dict, period: int) -> dict:
+    return next((s["stats"] for s in entry["player"].get("stats", []) if s.get("statSplitTypeId") == 5
+                 and s.get("statSourceId") == 0 and s.get("scoringPeriodId") == period), {}) or {}
+
+
+def split_stats(entry: dict, split: int) -> dict:
+    """2027 actuals: split 1 = last 7 days, 2 = last 15, 3 = last 30, 0 = season."""
+    return next((s["stats"] for s in entry["player"].get("stats", []) if s.get("seasonId") == config.SEASON
+                 and s.get("statSourceId") == 0 and s.get("statSplitTypeId") == split), {}) or {}
+
+
+def fetch_goals_for() -> dict:
+    """NHL team -> goals for per game, this season blended with last season (worth 10 games) for stability."""
+    from fh.rankings import norm_team
+
+    def table(path):
+        d = espn.cached("nhl_standings_%s" % path.replace("/", "_"), 6 * 3600,
+                        lambda: espn._curl("https://api-web.nhle.com/v1/standings/" + path))
+        return {norm_team(t["teamAbbrev"]["default"]): (t.get("goalFor", 0), t.get("gamesPlayed", 0))
+                for t in d.get("standings", [])}
+    try:
+        now, last = table("now"), table("2026-04-16")
+    except espn.FetchError as e:
+        log.info("NHL standings unavailable (%s)", e)
+        return {}
+    out = {}
+    for t, (lgf, lgp) in last.items():
+        gf, gp = now.get(t, (0, 0))
+        out[t] = (gf + (lgf / lgp if lgp else 3.0) * 10) / (gp + 10)
+    return out
