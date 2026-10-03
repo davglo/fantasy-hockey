@@ -1,5 +1,5 @@
 #!/bin/bash
-# Twice daily (launchd, 12:00 PM + 5:00 PM ET; 5 PM catches confirmed goalie starts): pull, rebuild dashboard + lineup check, publish the page.
+# Twice daily (launchd, 9:00 AM + 5:00 PM ET; 5 PM catches confirmed goalie starts): pull, rebuild dashboard + lineup check, publish the page.
 set -uo pipefail
 cd "$(dirname "$0")/.." || exit 1
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
