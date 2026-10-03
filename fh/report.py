@@ -141,27 +141,33 @@ def build(swid: str) -> dict:
     rank = sorted(proj.strength, key=lambda t: -proj.strength[t])
     my_rank = rank.index(me) + 1
 
-    # This week's matchup
-    mt = next((m for m in state.schedule if m.period == cm and me in (m.home, m.away)), None)
-    opp = (mt.away if mt.home == me else mt.home) if mt else None
-    matchup = None
-    if mt:
+    # This week's matchup, plus next week's so I can plan ahead
+    def _matchup(m, periods):
+        mt = next((x for x in state.schedule if x.period == m and me in (x.home, x.away)), None)
+        if not mt:
+            return None
+        opp = mt.away if mt.home == me else mt.home
         my_pts, opp_pts = (mt.home_pts, mt.away_pts) if mt.home == me else (mt.away_pts, mt.home_pts)
-        mu_me, mu_opp = proj.week_mu[(me, cm)], proj.week_mu[(opp, cm)]
+        mu_me, mu_opp = proj.week_mu[(me, m)], proj.week_mu[(opp, m)]
+        # Future weeks count IR players, matching engine.project.
+        pool = (lambda ps: ps) if m > cm else engine.active
         days = []
-        for d in this_week:
+        for d in periods:
             f = lambda p, d=d: p.exp_game() if d in cal.team_games.get(p.team, ()) else 0.0
-            a, sa = engine.best_lineup(engine.active(mine), lg.slots, f)
-            b, sb = engine.best_lineup(engine.active(rosters[opp]), lg.slots, f)
+            a, sa = engine.best_lineup(pool(mine), lg.slots, f)
+            b, sb = engine.best_lineup(pool(rosters[opp]), lg.slots, f)
             days.append({"date": cal.date_of(d).strftime("%a %b %-d"), "me": round(a, 1), "opp": round(b, 1),
                          "me_starts": len(sa), "opp_starts": len(sb)})
-        matchup = {"opp": state.teams[opp].name, "opp_id": opp, "actual_me": my_pts, "actual_opp": opp_pts,
-                   "proj_me": round(mu_me, 1), "proj_opp": round(mu_opp, 1),
-                   "win_prob": round(engine.win_prob(mu_me, mu_opp), 3),
-                   "starts_me": engine.games_started(mine, lg, cal, this_week),
-                   "starts_opp": engine.games_started(rosters[opp], lg, cal, this_week), "days": days,
-                   "dates": "%s - %s" % (cal.date_of(cal.matchups[cm][0]).strftime("%b %-d"),
-                                         cal.date_of(cal.matchups[cm][-1]).strftime("%b %-d"))}
+        return {"opp": state.teams[opp].name, "opp_id": opp, "actual_me": my_pts, "actual_opp": opp_pts,
+                "proj_me": round(mu_me, 1), "proj_opp": round(mu_opp, 1),
+                "win_prob": round(engine.win_prob(mu_me, mu_opp), 3),
+                "starts_me": sum(d["me_starts"] for d in days), "starts_opp": sum(d["opp_starts"] for d in days),
+                "days": days,
+                "dates": "%s - %s" % (cal.date_of(cal.matchups[m][0]).strftime("%b %-d"),
+                                      cal.date_of(cal.matchups[m][-1]).strftime("%b %-d"))}
+
+    matchup = _matchup(cm, this_week)
+    next_matchup = _matchup(cm + 1, next_week) if next_week else None
 
     # Lineup helper: today and tomorrow
     lineup = {}
@@ -331,6 +337,7 @@ def build(swid: str) -> dict:
                        "exp_wins": round(proj.exp_wins[tid], 1)}
                       for tid, t in sorted(state.teams.items(), key=lambda kv: (-kv[1].wins, -kv[1].points_for, -proj.strength[kv[0]]))],
         "matchup": matchup,
+        "next_matchup": next_matchup,
         "lineup": lineup,
         "roster": sorted([_pl(p, cal, ros_periods, {"slot": config.SLOT_NAMES.get(p.slot, p.slot),
                                                     "g_this": cal.games(p.team, this_week), "g_next": cal.games(p.team, next_week),

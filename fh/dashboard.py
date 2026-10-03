@@ -142,21 +142,29 @@ def _overview(ctx, manual):
         land=_table(["Team", "Record", "PF", "Strength", "Playoff odds"], land))
 
 
-def _week(ctx, manual):
-    m = ctx.get("matchup")
-    if not m:
-        return '<div class="card"><p>No matchup this week.</p></div>'
+def _matchup_block(m, take, now=True):
     days = [[d["date"], "%.1f" % d["me"], "%.1f" % d["opp"], "%d / %d" % (d["me_starts"], d["opp_starts"])] for d in m["days"]]
+    score = "<span>Now <b>%.1f</b> - <b>%.1f</b></span>" % (m["actual_me"], m["actual_opp"]) if now else ""
     return """
 <div class="hero"><div class="grade">{wp}</div><div><div class="hl">vs {opp} &middot; {dates}</div>
-<div class="kpis"><span>Now <b>{am:.1f}</b> - <b>{ao:.1f}</b></span><span>Projected <b>{pm:.0f}</b> - <b>{po:.0f}</b></span>
-<span>Starts left <b>{sm}</b> vs <b>{so}</b></span></div></div></div>
+<div class="kpis">{score}<span>Projected <b>{pm:.0f}</b> - <b>{po:.0f}</b></span>
+<span>Starts{left} <b>{sm}</b> vs <b>{so}</b></span></div></div></div>
 {take}
-<div class="card"><h3>Day by day (optimal lineups)</h3>{days}
-<p class="mute">Win chance uses a normal model with each team's weekly score varying about 15%. Points league: every start counts, so the games-played edge matters.</p></div>
-""".format(wp=_pct(m["win_prob"]), opp=_e(m["opp"]), dates=_e(m["dates"]), am=m["actual_me"], ao=m["actual_opp"],
-           pm=m["proj_me"], po=m["proj_opp"], sm=m["starts_me"], so=m["starts_opp"], take=_take(manual, "matchup"),
+<div class="card"><h3>Day by day (optimal lineups)</h3>{days}</div>
+""".format(wp=_pct(m["win_prob"]), opp=_e(m["opp"]), dates=_e(m["dates"]), score=score, left=" left" if now else "",
+           pm=m["proj_me"], po=m["proj_opp"], sm=m["starts_me"], so=m["starts_opp"], take=take,
            days=_table(["Day", "Me", "Opp", "Starts me / opp"], days))
+
+
+def _week(ctx, manual):
+    m, n = ctx.get("matchup"), ctx.get("next_matchup")
+    parts = [_matchup_block(m, _take(manual, "matchup")) if m else '<div class="card"><p>No matchup this week.</p></div>']
+    if n:
+        parts.append('<h3 class="sec">Next week</h3>' + _matchup_block(n, "", now=False))
+    parts.append('<p class="mute">Win chance uses a normal model with each team\'s weekly score varying about 15%. '
+                 'Points league: every start counts, so the games-played edge matters. Next week assumes both rosters '
+                 'stay as they are today (IR players counted).</p>')
+    return "".join(parts)
 
 
 def _streaming(ctx, manual):
@@ -285,7 +293,7 @@ def _standings(ctx, manual):
          'today\'s rosters (top %d make it).</p></div>' % ctx["league"]["playoff_teams"])
 
 
-TABS = [("overview", "Overview", _overview), ("week", "This Week", _week), ("stream", "Streaming", _streaming),
+TABS = [("overview", "Overview", _overview), ("week", "Matchup", _week), ("stream", "Streaming", _streaming),
         ("fa", "Free Agents", _free_agents), ("roster", "Roster", _roster), ("trades", "Trade Finder", _trades),
         ("playoffs", "Playoffs", _playoffs), ("standings", "Standings", _standings)]
 
@@ -311,6 +319,7 @@ nav button.on{background:var(--acc);border-color:var(--acc);color:#081018;font-w
 main{padding:12px 16px 40px;max-width:1100px;margin:0 auto}section{display:none}section.on{display:block}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:0 0 12px}
 h3{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}
+h3.sec{margin:22px 0 6px;font-size:14px;color:var(--fg)}
 .grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}.grid .card{margin:0 0 12px}
 .hero{display:flex;gap:14px;align-items:center;margin:4px 0 14px}.grade{font-size:34px;font-weight:800;min-width:70px;text-align:center;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px}
 .hl{font-size:17px;font-weight:600}.kpis{display:flex;flex-wrap:wrap;gap:4px 16px;color:var(--mute);margin-top:4px}.kpis b{color:var(--fg)}
