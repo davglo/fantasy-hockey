@@ -221,7 +221,11 @@ def build(swid: str) -> dict:
         st = season.split_stats(e, 1)
         if st and e["player"]["id"] in fa_by_id:
             perf_7.append((fantasy_points(st, lg.scoring), fa_by_id[e["player"]["id"]], st))
-    perf_day = sorted(perf_day, key=lambda t: -t[0])[:10]
+    perf_day = sorted(perf_day, key=lambda t: -t[0])
+    # Today's notes: best free agents yesterday by position - 2 G, 5 F, 3 D
+    yday_by_pos = {g: [(pts, f, st) for pts, f, st in perf_day if f.group == g and pts > 0][:n]
+                   for g, n in (("G", 2), ("F", 5), ("D", 3))}
+    perf_day = perf_day[:10]
     perf_7 = sorted(perf_7, key=lambda t: -t[0])[:8]
 
     # News, opportunity alerts, goalies to add today
@@ -263,6 +267,18 @@ def build(swid: str) -> dict:
         if bens:
             opp_rows.append((o, sorted(bens, key=lambda r: -max(r["gain"], r["gain_2wk"]))))
     my_news = news.top([i for p in mine for i in nws.get(p.id, [])], now, 8)
+    # Injury news around the league: anyone rostered in this league, or a free agent owned >= 10% in ESPN leagues
+    by_id_all = {p.id: p for p in players + fas}
+    notable = {p.id for p in players} | {p.id for p in fas if p.base.pct_owned >= 10}
+    injury_news = []
+    for pid, items in nws.items():
+        if pid not in notable or pid not in by_id_all:
+            continue
+        it = next((i for i in items if i.kinds & {"injury", "season_over", "suspension"}
+                   and i.age_hours(now) <= news.MAX_AGE_H), None)
+        if it:
+            injury_news.append((by_id_all[pid], it))
+    injury_news.sort(key=lambda t: -news.relevance(t[1], now))
     rumor_names = [p.name for p in mine] + [r.p.name for r in fa_recs[:8]]
     known = [e["player"]["fullName"] for e in espn.fetch_pool()] + [p.name for p in players + fas]
     rumor_items = [r for r in rumors.refresh(rumor_names, known)
@@ -330,9 +346,6 @@ def build(swid: str) -> dict:
     conf = [r for r in g_today if r["confirmed"] == "confirmed"]
     if conf:
         notes.append("Confirmed FA goalie starts today: %s." % ", ".join("%s vs %s" % (r["p"].name, r["opp"]) for r in conf[:3]))
-    if perf_day:
-        pts, f, _ = perf_day[0]
-        notes.append("Top free agent yesterday: %s, %.1f pts." % (f.name, pts))
 
     ctx = {
         "generated": datetime.now(ET).strftime("%a %b %-d, %-I:%M %p"),
@@ -406,10 +419,13 @@ def build(swid: str) -> dict:
                    "day": [_perf(f, st, pts) for pts, f, st in perf_day if pts > 0],
                    "week": [_perf(f, st, pts) for pts, f, st in perf_7 if pts > 0]},
         "news": [_news(i) for i in my_news],
+        "injuries": [dict(_news(i), owner=("Me" if p.owner == me else state.teams[p.owner].name if p.owner else "FA"),
+                          status=p.injury, group=p.group, team=p.team) for p, i in injury_news[:15]],
         "status_watch": [dict(_news(i), status=p.injury) for p, i in status_watch],
         "rumors": [{"title": r["title"], "link": r["link"], "players": r["players"],
                     "date": datetime.fromisoformat(r["date"]).astimezone(ET).strftime("%b %-d")} for r in rumor_items],
         "notes": notes,
+        "notes_yday": {g: [_perf(f, st, pts) for pts, f, st in rows] for g, rows in yday_by_pos.items()},
         "opportunities": [{"news": _news(o.item), "about": o.about.name, "about_team": o.about.team,
                            "about_group": o.about.group, "self": o.about.id == bens[0]["id"],
                            "kinds": sorted(o.item.kinds & (news.NEGATIVE | news.POSITIVE)),

@@ -83,6 +83,21 @@ def _rec(p: dict) -> str:
     return "%s-%s" % (p["w"], p["l"]) + ("-%d" % p["t"] if p["t"] else "")
 
 
+def _yday(ctx) -> str:
+    """Best free agents yesterday: 2 G, 5 F, 3 D."""
+    rows = ctx.get("notes_yday") or {}
+    lines = []
+    for g, lab in (("F", "Forwards"), ("D", "Defense"), ("G", "Goalies")):
+        if rows.get(g):
+            lines.append("<li><b>%s:</b> %s</li>" % (lab, "; ".join(
+                "%s (%s) %.1f pts%s" % (_e(r["name"]), _e(r["team"]), r["pts"], " - " + _e(r["line"]) if r["line"] else "")
+                for r in rows[g])))
+    if not lines:
+        return ""
+    return '<h3 style="margin-top:10px">Best free agents yesterday (%s)</h3><ul>%s</ul>' % (
+        _e(ctx["recent"]["yesterday"]), "".join(lines))
+
+
 def _overview(ctx, manual):
     me, myid = ctx["me"], ctx["me"]["id"]
     wyr = ctx["where_you_rank"]
@@ -115,7 +130,7 @@ def _overview(ctx, manual):
 <div class="hero"><div class="grade">{grade}</div><div><div class="hl">{headline}</div>
 <div class="kpis"><span><b>{odds}</b> playoff odds</span><span><b>#{rank}</b> of {size} strength</span><span>{posture}</span></div></div></div>
 {calwarn}<div class="card urgent"><h3>Most urgent</h3><p>{urgent}</p></div>
-<div class="card"><h3>Today's notes</h3><ul>{notes}</ul><p class="mute">Numbers and these notes refresh daily at {daily}. Written analysis below is updated {takes} (last: {tdate}).</p></div>
+<div class="card"><h3>Today's notes</h3><ul>{notes}</ul>{yday}<p class="mute">Numbers and these notes refresh daily at {daily}. Written analysis below is updated {takes} (last: {tdate}).</p></div>
 <div class="card"><h3>News that matters</h3><ul class="news">{nw}</ul>{sw}{rum}</div>
 {take}
 <div class="grid">
@@ -131,6 +146,7 @@ def _overview(ctx, manual):
         posture=_e(me["posture"]), urgent=_e(me["urgent"]),
         calwarn='<div class="card urgent"><h3>Calendar check failed</h3><p>%s. Week-based numbers may be off until fixed.</p></div>'
                 % _e(ctx["calendar_warning"]) if ctx.get("calendar_warning") else "", notes="".join("<li>%s</li>" % _e(n) for n in ctx["notes"]),
+        yday=_yday(ctx),
         daily=_e(cad["daily_at"]), takes=_e(cad["takes_days"]), tdate=_e(manual.get("date", "never")),
         take=_take(manual, "overview"), adds=adds or "<li class=mute>No add clears the bar today.</li>",
         drops=drops or "<li class=mute>Nothing to cut.</li>",
@@ -213,12 +229,16 @@ def _free_agents(ctx, manual):
           for i, d in enumerate(ctx["drop_ranking"])]
     return """{take}
 <div class="card"><h3>Opportunity alerts</h3><ul class="news">{opp}</ul><p class="mute">News that creates free-agent value: injuries, suspensions, trades and demotions around the league (matched to free agents named in the report or on the same team and position), plus good news about free agents themselves - call-ups, promotions to the top line or first power-play unit, new starting jobs, returns and trades. Last 2 days only. Gains are before any role bump - the news is the edge.</p></div>
+<div class="card"><h3>Injuries around the league (last 48h)</h3><ul class="news">{inj}</ul><p class="mute">Injury and suspension reports on anyone rostered in this league or owned in 10%+ of ESPN leagues. Owner in brackets.</p></div>
 <div class="grid"><div class="card"><h3>Best free agents {yd}</h3>{pd}</div><div class="card"><h3>Best free agents, last 7 days</h3>{pw}</div></div>
 <div class="card"><h3>Best rest-of-season adds</h3><ul>{summ}</ul>{fa}
 <p class="mute">Gain = rest-of-season points added (optimal daily lineups, playoff weeks x{w:g}) with the best drop; next-best drops shown under it.</p></div>
 <div class="card"><h3>Drop ranking</h3>{dr}<p class="mute">Points lost (rest of season + playoff weeks x{w:g}) if you cut each player, cheapest first. IR, injury/suspension-flagged players and your last two healthy goalies are excluded.</p></div>""".format(
         take=_take(manual, "free_agents"), opp=opp or "<li class=mute>No news in the last 2 days creating free-agent value.</li>",
         yd=_e(rec["yesterday"]), pd=perf(rec["day"]), pw=perf(rec["week"]),
+        inj="".join(_news_li(n, ' <span class="mute">[%s, %s %s]</span>%s' % (
+            _e(n["owner"]), _e(n["team"]), n["group"], ' <span class="inj">%s</span>' % _e(n["status"]) if n["status"] != "ACTIVE" else ""))
+            for n in ctx["injuries"]) or "<li class=mute>No notable injury news in the last 48 hours.</li>",
         summ="".join("<li>%s</li>" % _e(t) for t in ctx["fa_summary"]), w=ctx["playoffs"]["weight"],
         fa=_table(["Player", "Pos", "Team", "Gain", "Model/gm", "ESPN/gm", "Consensus", "Playoff gms", "Next 2 wks", "Own chg", "Drop", "Signal"], fa),
         dr=_table(["#", "Player", "Pos", "Team", "Pts lost", "ROS", "Model/gm", "Consensus", "Last 7", "Playoff gms"], dr))
