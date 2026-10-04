@@ -405,7 +405,7 @@ def build(swid: str) -> dict:
                            "targets": _po_targets(fas, players, me, usable["teams"], cal, po_periods, state)},
         "trade_deadline": state.trade_deadline.strftime("%b %-d, %Y") if state.trade_deadline else "",
         "days_to_deadline": (state.trade_deadline.date() - cal.date_of(today)).days if state.trade_deadline else None,
-        "cadence": {"takes_days": "Mon & Thu", "daily_at": "12:00 PM and 5:00 PM ET"},
+        "cadence": {"takes_days": "Mon & Thu", "daily_at": "9:00 AM and 5:00 PM ET"},
         "calendar_warning": cal_warning,
         "accuracy": acc,
         "flags": {p.name: round(p.disagreement, 2) for p in players + fas if p.disagreement > DISAGREE},
