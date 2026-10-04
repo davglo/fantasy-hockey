@@ -161,8 +161,11 @@ def _week(ctx, manual):
     parts = [_matchup_block(m, _take(manual, "matchup")) if m else '<div class="card"><p>No matchup this week.</p></div>']
     if n:
         parts.append('<h3 class="sec">Next week</h3>' + _matchup_block(n, "", now=False))
+    a = ctx.get("after_matchup")
+    if a:
+        parts.append('<h3 class="sec">Week after</h3>' + _matchup_block(a, "", now=False))
     parts.append('<p class="mute">Win chance uses a normal model with each team\'s weekly score varying about 15%. '
-                 'Points league: every start counts, so the games-played edge matters. Next week assumes both rosters '
+                 'Points league: every start counts, so the games-played edge matters. Future weeks assume both rosters '
                  'stay as they are today (IR players counted).</p>')
     return "".join(parts)
 
@@ -191,7 +194,8 @@ def _streaming(ctx, manual):
 
 def _free_agents(ctx, manual):
     opp = "".join('<li><b>%s</b> (%s %s) %s &rarr; %s <span class="cred">%s &middot; <a href="%s" target="_blank" rel="noopener">ESPN news</a></span><br><span class="mute">%s</span></li>' % (
-        _e(o["about"]), _e(o["about_team"]), o["about_group"], _e("/".join(o["kinds"])),
+        _e(o["about"]), _e(o["about_team"]), o["about_group"],
+        ('<span class="good">free agent: %s</span>' % _e("/".join(o["kinds"]))) if o.get("self") else _e("/".join(o["kinds"])),
         "; ".join("<b>%s</b> (%s, %+.0f ROS, %+.1f next 2 wks%s)" % (_e(b["name"]), _e(b["pos"]), b["gain"], b["gain_2wk"],
                                                                     ", " + _e(b["waiver"]) if b["waiver"] else "") for b in o["beneficiaries"]),
         _e(o["news"]["credit"]), _e(o["news"]["link"]), _e(o["news"]["summary"])) for o in ctx["opportunities"])
@@ -208,12 +212,12 @@ def _free_agents(ctx, manual):
            _v(d["src"].get("model")), _v(d["cons"]), "%.1f" % d["last7"], d["po_games"]]
           for i, d in enumerate(ctx["drop_ranking"])]
     return """{take}
-<div class="card"><h3>Opportunity alerts</h3><ul class="news">{opp}</ul><p class="mute">News that opens a role for a free agent: injuries, suspensions, trades and demotions on players across the league, matched to free agents named in the report or on the same team and position. Gains are before any role bump - the news is the edge.</p></div>
+<div class="card"><h3>Opportunity alerts</h3><ul class="news">{opp}</ul><p class="mute">News that creates free-agent value: injuries, suspensions, trades and demotions around the league (matched to free agents named in the report or on the same team and position), plus good news about free agents themselves - call-ups, promotions to the top line or first power-play unit, new starting jobs, returns and trades. Last 2 days only. Gains are before any role bump - the news is the edge.</p></div>
 <div class="grid"><div class="card"><h3>Best free agents {yd}</h3>{pd}</div><div class="card"><h3>Best free agents, last 7 days</h3>{pw}</div></div>
 <div class="card"><h3>Best rest-of-season adds</h3><ul>{summ}</ul>{fa}
 <p class="mute">Gain = rest-of-season points added (optimal daily lineups, playoff weeks x{w:g}) with the best drop; next-best drops shown under it.</p></div>
 <div class="card"><h3>Drop ranking</h3>{dr}<p class="mute">Points lost (rest of season + playoff weeks x{w:g}) if you cut each player, cheapest first. IR, injury/suspension-flagged players and your last two healthy goalies are excluded.</p></div>""".format(
-        take=_take(manual, "free_agents"), opp=opp or "<li class=mute>No league news creating free-agent value right now.</li>",
+        take=_take(manual, "free_agents"), opp=opp or "<li class=mute>No news in the last 2 days creating free-agent value.</li>",
         yd=_e(rec["yesterday"]), pd=perf(rec["day"]), pw=perf(rec["week"]),
         summ="".join("<li>%s</li>" % _e(t) for t in ctx["fa_summary"]), w=ctx["playoffs"]["weight"],
         fa=_table(["Player", "Pos", "Team", "Gain", "Model/gm", "ESPN/gm", "Consensus", "Playoff gms", "Next 2 wks", "Own chg", "Drop", "Signal"], fa),

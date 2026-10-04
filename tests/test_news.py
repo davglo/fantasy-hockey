@@ -118,10 +118,20 @@ class TestRumors(unittest.TestCase):
         self.rumors.ARCHIVE, self.rumors._fetch_feed = self.orig_arch, self.orig_fetch
 
     def test_matches_names_and_keeps_archive(self):
-        out = self.rumors.refresh(["Connor Hellebuyck"])
+        out = self.rumors.refresh(["Connor Hellebuyck"], ["Connor Hellebuyck"])
         self.assertEqual([r["link"] for r in out], ["https://x/1", "https://x/2"])   # last-name match; old item expired
         self.rumors._fetch_feed = lambda: []                                         # feed rolled over
-        self.assertEqual(len(self.rumors.refresh(["Connor Hellebuyck"])), 2)          # still shown from archive
+        self.assertEqual(len(self.rumors.refresh(["Connor Hellebuyck"], [])), 2)      # still shown from archive
+
+    def test_shared_last_name_needs_first_name(self):
+        known = ["Jack Hughes", "Quinn Hughes", "Luke Hughes", "Connor Hellebuyck"]
+        m = lambda t, n: self.rumors._mentions(t, n, {"Hughes": 3, "Hellebuyck": 1})
+        self.assertFalse(m("TJ Hughes trade rumors heat up", "Jack Hughes"))
+        self.assertFalse(m("Hughes requests trade", "Jack Hughes"))          # which Hughes? ambiguous
+        self.assertTrue(m("Devils star Jack Hughes injured", "Jack Hughes"))
+        self.assertTrue(m("Why the Hellebuyck saga drags on", "Connor Hellebuyck"))
+        self.assertFalse(m("T.J. Hellebuyck signs", "Connor Hellebuyck"))
+        del known
 
 
 class TestGoaliesToday(unittest.TestCase):

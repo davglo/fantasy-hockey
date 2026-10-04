@@ -41,16 +41,29 @@ def _fetch_feed() -> list:
         return []
 
 
-def _mentions(title: str, name: str) -> bool:
+def _mentions(title: str, name: str, last_counts: dict) -> bool:
+    """Full name always matches. A bare last name only matches when no other known NHL player shares it
+    (Hellebuyck: yes; Hughes: Jack/Quinn/Luke - only 'Jack Hughes' counts) and it isn't preceded by a
+    different first name or initials ('TJ Hughes', 'T.J. Hughes')."""
     if name in title:
         return True
-    last = name.split()[-1]
-    # Last name alone only when distinctive enough (avoids "Hughes", "Tkachuk" style collisions being too loose)
-    return len(last) >= 6 and re.search(r"\b%s\b" % re.escape(last), title) is not None
+    first, last = name.split()[0], name.split()[-1]
+    if last_counts.get(last, 0) > 1:
+        return False
+    for m in re.finditer(r"(?:\b([A-Z][\w.'-]*)\s+)?\b%s\b" % re.escape(last), title):
+        before = (m.group(1) or "").replace(".", "")
+        if before and before != first and (len(before) <= 3 and before.isupper()):
+            continue    # initials of a different player
+        return True
+    return False
 
 
-def refresh(watch: list) -> list:
-    """watch: player names. Returns archived rumor/report headlines about them, newest first."""
+def refresh(watch: list, known_names: list) -> list:
+    """watch: player names; known_names: every NHL player we know (for last-name collisions).
+    Returns archived rumor/report headlines about watched players, newest first."""
+    last_counts = {}
+    for n in set(known_names) | set(watch):
+        last_counts[n.split()[-1]] = last_counts.get(n.split()[-1], 0) + 1
     try:
         archive = json.loads(ARCHIVE.read_text())
     except (FileNotFoundError, ValueError):
@@ -59,10 +72,13 @@ def refresh(watch: list) -> list:
     for it in _fetch_feed():
         if it["link"] in seen or not RUMOR.search(it["title"]):
             continue
-        names = [n for n in watch if _mentions(it["title"], n)]
+        names = [n for n in watch if _mentions(it["title"], n, last_counts)]
         if names:
             archive.append(dict(it, players=names))
             seen.add(it["link"])
+    for a in archive:   # re-check old matches under the current rules (fixes earlier false matches)
+        a["players"] = [n for n in a["players"] if _mentions(a["title"], n, last_counts)]
+    archive = [a for a in archive if a["players"] or a["link"] in seen]
     cutoff = (datetime.now(timezone.utc) - timedelta(days=KEEP_DAYS)).isoformat()
     archive = sorted((a for a in archive if a["date"] >= cutoff), key=lambda a: a["date"], reverse=True)
     config.STATE.mkdir(exist_ok=True)

@@ -168,6 +168,8 @@ def build(swid: str) -> dict:
 
     matchup = _matchup(cm, this_week)
     next_matchup = _matchup(cm + 1, next_week) if next_week else None
+    week_after = cal.matchups.get(cm + 2, [])
+    after_matchup = _matchup(cm + 2, week_after) if week_after else None
 
     # Lineup helper: today and tomorrow
     lineup = {}
@@ -219,7 +221,7 @@ def build(swid: str) -> dict:
         st = season.split_stats(e, 1)
         if st and e["player"]["id"] in fa_by_id:
             perf_7.append((fantasy_points(st, lg.scoring), fa_by_id[e["player"]["id"]], st))
-    perf_day = sorted(perf_day, key=lambda t: -t[0])[:8]
+    perf_day = sorted(perf_day, key=lambda t: -t[0])[:10]
     perf_7 = sorted(perf_7, key=lambda t: -t[0])[:8]
 
     # News, opportunity alerts, goalies to add today
@@ -252,7 +254,7 @@ def build(swid: str) -> dict:
                     for d in drops3), default=0.0)
 
     def opp_row(f):
-        return {"name": f.name, "team": f.team, "pos": f.base.positions, "gain": round(fa_gain(f), 1),
+        return {"id": f.id, "name": f.name, "team": f.team, "pos": f.base.positions, "gain": round(fa_gain(f), 1),
                 "gain_2wk": round(fa_gain_short(f), 1), "status": f.status,
                 "waiver": _waiver(waiver_dates.get(f.id), f.status)}
     opp_rows = []
@@ -262,10 +264,17 @@ def build(swid: str) -> dict:
             opp_rows.append((o, sorted(bens, key=lambda r: -max(r["gain"], r["gain_2wk"]))))
     my_news = news.top([i for p in mine for i in nws.get(p.id, [])], now, 8)
     rumor_names = [p.name for p in mine] + [r.p.name for r in fa_recs[:8]]
-    rumor_items = rumors.refresh(rumor_names)[:8]
+    known = [e["player"]["fullName"] for e in espn.fetch_pool()] + [p.name for p in players + fas]
+    rumor_items = [r for r in rumors.refresh(rumor_names, known)
+                   if (now - datetime.fromisoformat(r["date"])).total_seconds() <= news.MAX_AGE_H * 3600][:8]
     # Flagged players on my roster: always show their latest item, however old (the saga matters).
-    status_watch = [(p, nws[p.id][0]) for p in mine if p.injury != "ACTIVE" and nws.get(p.id)
-                    and nws[p.id][0].age_hours(now) <= 30 * 24]
+    status_watch = []
+    for p in mine:
+        if p.injury == "ACTIVE":
+            continue
+        latest = next((i for i in nws.get(p.id, []) if news.newsworthy(i)), None)
+        if latest and latest.age_hours(now) <= news.MAX_AGE_H:
+            status_watch.append((p, latest))
     ADD_ALERT = 15.0
 
     my_odds = proj.playoff_odds[me]
@@ -311,8 +320,11 @@ def build(swid: str) -> dict:
             matchup["starts_me"], matchup["starts_opp"]))
     if opp_rows:
         o, bens = opp_rows[0]
-        notes.append("Opportunity: %s (%s) %s -> %s is the free agent who gains." % (
-            o.about.name, o.about.team, "/".join(sorted(o.item.kinds & news.NEGATIVE)), bens[0]["name"]))
+        if o.about.id == bens[0]["id"]:
+            notes.append("Opportunity: free agent %s (%s) - %s." % (o.about.name, o.about.team, o.item.summary[:120]))
+        else:
+            notes.append("Opportunity: %s (%s) %s -> %s is the free agent who gains." % (
+                o.about.name, o.about.team, "/".join(sorted(o.item.kinds & news.NEGATIVE)), bens[0]["name"]))
     if fa_recs and fa_recs[0].gain >= ADD_ALERT:
         notes.append("Best rest-of-season add: %s for %s (+%.0f)." % (fa_recs[0].p.name, fa_recs[0].drop.name, fa_recs[0].gain))
     conf = [r for r in g_today if r["confirmed"] == "confirmed"]
@@ -338,6 +350,7 @@ def build(swid: str) -> dict:
                       for tid, t in sorted(state.teams.items(), key=lambda kv: (-kv[1].wins, -kv[1].points_for, -proj.strength[kv[0]]))],
         "matchup": matchup,
         "next_matchup": next_matchup,
+        "after_matchup": after_matchup,
         "lineup": lineup,
         "roster": sorted([_pl(p, cal, ros_periods, {"slot": config.SLOT_NAMES.get(p.slot, p.slot),
                                                     "g_this": cal.games(p.team, this_week), "g_next": cal.games(p.team, next_week),
@@ -398,14 +411,15 @@ def build(swid: str) -> dict:
                     "date": datetime.fromisoformat(r["date"]).astimezone(ET).strftime("%b %-d")} for r in rumor_items],
         "notes": notes,
         "opportunities": [{"news": _news(o.item), "about": o.about.name, "about_team": o.about.team,
-                           "about_group": o.about.group, "kinds": sorted(o.item.kinds & news.NEGATIVE),
+                           "about_group": o.about.group, "self": o.about.id == bens[0]["id"],
+                           "kinds": sorted(o.item.kinds & (news.NEGATIVE | news.POSITIVE)),
                            "beneficiaries": bens} for o, bens in opp_rows[:8]],
         "player_news": {p.name: [_news(i) for i in nws.get(p.id, [])[:2]] for p in mine},
         "playoff_usable": {"days": usable["days"], "totals": {k: sum(d[k] for d in usable["days"]) for k in ("used", "wasted", "empty_sk", "empty_g")},
                            "targets": _po_targets(fas, players, me, usable["teams"], cal, po_periods, state)},
         "trade_deadline": state.trade_deadline.strftime("%b %-d, %Y") if state.trade_deadline else "",
         "days_to_deadline": (state.trade_deadline.date() - cal.date_of(today)).days if state.trade_deadline else None,
-        "cadence": {"takes_days": "Mon & Thu", "daily_at": "9:00 AM and 5:00 PM ET"},
+        "cadence": {"takes_days": "Mon & Thu", "daily_at": "8:00 AM and 5:00 PM ET"},
         "calendar_warning": cal_warning,
         "accuracy": acc,
         "flags": {p.name: round(p.disagreement, 2) for p in players + fas if p.disagreement > DISAGREE},

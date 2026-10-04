@@ -41,11 +41,14 @@ KINDS = {
     "return": r"\b(activated|cleared to (?:play|return)|back in the lineup|will return|returns? to (?:the )?lineup|"
               r"returned to (?:action|the lineup)|reinstated|rejoin\w* the (?:team|lineup)|practic\w* in full|"
               r"set to return|expected to return (?:tonight|Thursday|Friday|Saturday|Sunday|Monday|Tuesday|Wednesday))",
-    "role": r"\b(promoted|bump(?:ed)? up|moved (?:up )?to the (?:top|first)|top[- ]power[- ]play unit|PP1|"
-            r"first power[- ]play unit|will (?:skate|center|play) on the (?:top|first) line|top-six role)",
+    "role": r"\b(promoted|bump(?:ed)? up|moved (?:up )?to the (?:top|first|second)|top[- ]power[- ]play unit|PP1|"
+            r"first power[- ]play unit|(?:top|first|second)[- ]line|top-six|top six|top pairing|first pairing|"
+            r"recalled|called up|named (?:the )?starter|starting (?:job|role)|No\. 1 (?:goalie|netminder)|"
+            r"expanded role|bigger role|increased (?:role|ice time)|(?:quarterback|run) the (?:top|first) unit)",
     "starting": START_CONFIRMED + "|" + START_EXPECTED,
 }
 NEGATIVE = {"injury", "suspension", "season_over", "trade", "demotion"}
+POSITIVE = {"role", "return", "trade"}   # good news about a free agent himself
 REPORTER = re.compile(r"((?:[A-Z][\w'.-]+ ){1,2}[A-Z][\w'.-]+) of (?:the )?([A-Z][\w.'&-]+(?: [A-Z][\w.'&-]+)*)")
 
 
@@ -112,8 +115,16 @@ def relevance(it: Item, now: datetime) -> float:
     return base * max(0.1, 1 - it.age_hours(now) / 72)
 
 
-def top(items: list, now: datetime, n: int, max_age_h: float = 72) -> list:
-    fresh = [i for i in items if i.age_hours(now) <= max_age_h and (i.kinds or i.insider)]
+MAX_AGE_H = 48   # nothing stays on the board longer than 2 days (Dave, 2026-10-04)
+
+
+def newsworthy(i: Item) -> bool:
+    """Goalie start notes feed the start-status column, not the news list."""
+    return bool(i.kinds - {"starting"}) or bool(i.insider)
+
+
+def top(items: list, now: datetime, n: int, max_age_h: float = MAX_AGE_H) -> list:
+    fresh = [i for i in items if i.age_hours(now) <= max_age_h and newsworthy(i)]
     return sorted(fresh, key=lambda i: -relevance(i, now))[:n]
 
 
@@ -165,11 +176,13 @@ def save_snapshot(players: list) -> None:
     (config.STATE / "status_snapshot.json").write_text(json.dumps({str(p.id): p.injury for p in players}))
 
 
-def watch_set(mine: list, rostered: list, fas: list, add_targets: list, goalie_cands: list) -> dict:
+def watch_set(mine: list, rostered: list, fas: list, add_targets: list, goalie_cands: list, top_fas: int = 40) -> dict:
     """Who to crawl: my roster, my add targets + stream goalies, every team's starting goalie, any rostered
-    player whose ESPN status changed since last build or isn't ACTIVE, and FAs whose ownership is spiking."""
+    player whose ESPN status changed since last build or isn't ACTIVE, FAs whose ownership is spiking, and the
+    top free agents by projection (for promotions / call-ups / new roles)."""
     snap = load_snapshot()
     ws = {p.id: p.name for p in list(mine) + list(add_targets) + list(goalie_cands)}
+    ws.update({p.id: p.name for p in sorted(fas, key=lambda p: -p.exp_game())[:top_fas]})
     ws.update({p.id: p.name for p in starting_goalies(rostered + fas).values()})
     ws.update({p.id: p.name for p in rostered
                if p.injury != "ACTIVE" or snap.get(str(p.id), p.injury) != p.injury})
@@ -184,7 +197,7 @@ class Opportunity:
     beneficiaries: list   # FAs who gain
 
 
-def opportunities(news: dict, by_id: dict, fas: list, now: datetime, max_age_h: float = 96) -> list:
+def opportunities(news: dict, by_id: dict, fas: list, now: datetime, max_age_h: float = MAX_AGE_H) -> list:
     """Negative news about a non-FA player -> FAs who stand to gain: FAs named in the blurb first, then FAs on
     the same NHL team in the same group (for goalies: that team's FA backup)."""
     fa_ids = {p.id for p in fas}
@@ -204,6 +217,13 @@ def opportunities(news: dict, by_id: dict, fas: list, now: datetime, max_age_h: 
             if bens:
                 out.append(Opportunity(item=it, about=p, beneficiaries=bens))
             break   # newest qualifying item per player
+    # Good news about free agents themselves: promotions, call-ups, new starting jobs, returns, trades.
+    for f in fas:
+        for it in news.get(f.id, []):
+            if it.age_hours(now) > max_age_h or not (it.kinds & POSITIVE) or (it.kinds & (NEGATIVE - {"trade"})):
+                continue
+            out.append(Opportunity(item=it, about=f, beneficiaries=[f]))
+            break
     return sorted(out, key=lambda o: -relevance(o.item, now))
 
 
