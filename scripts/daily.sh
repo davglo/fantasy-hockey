@@ -8,5 +8,16 @@ git pull --rebase --autostash -q || echo "git pull failed; building from local c
 mkdir -p site && cp output/index.html site/index.html
 git add site/index.html
 if ! git diff --cached --quiet; then
-  git commit -qm "Daily build $(date +%F)" && git push -q || echo "push failed; page not published"
+  git commit -qm "Daily build $(date +%F)"
+  pushed=0
+  for attempt in 1 2 3; do   # another session may have pushed meanwhile: rebase onto it and retry
+    if git push -q; then pushed=1; break; fi
+    echo "push rejected (attempt $attempt); pulling and retrying"
+    git pull --rebase --autostash -q; sleep 5
+  done
+  if [ "$pushed" = 1 ]; then
+    /usr/bin/python3 scripts/ensure_deploy.py   # re-publish once if GitHub fails the Pages deploy
+  else
+    echo "push failed after 3 attempts; page not published"
+  fi
 fi
