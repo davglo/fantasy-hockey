@@ -161,13 +161,13 @@ def fetch_fa_day(period: int) -> list:
 
 
 def day_stats(entry: dict, period: int) -> dict:
-    return next((s["stats"] for s in entry["player"].get("stats", []) if s.get("statSplitTypeId") == 5
+    return next((s.get("stats") or {} for s in entry["player"].get("stats", []) if s.get("statSplitTypeId") == 5
                  and s.get("statSourceId") == 0 and s.get("scoringPeriodId") == period), {}) or {}
 
 
 def split_stats(entry: dict, split: int) -> dict:
     """2027 actuals: split 1 = last 7 days, 2 = last 15, 3 = last 30, 0 = season."""
-    return next((s["stats"] for s in entry["player"].get("stats", []) if s.get("seasonId") == config.SEASON
+    return next((s.get("stats") or {} for s in entry["player"].get("stats", []) if s.get("seasonId") == config.SEASON
                  and s.get("statSourceId") == 0 and s.get("statSplitTypeId") == split), {}) or {}
 
 

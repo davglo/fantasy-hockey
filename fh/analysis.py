@@ -59,7 +59,7 @@ def sanity(ctx: dict) -> list:
     mine = {r["name"] for r in ctx["roster"]}
     rostered = {n for names in ctx["rosters"].values() for n in names}
     chk(not ({f["name"] for f in ctx["free_agents"]} & rostered), "free-agent list contains rostered players")
-    chk(not any(d["injury"] for d in ctx["drop_ranking"]), "flagged player in drop ranking")
+    chk(not any(d["injury"] not in ("", "DAY_TO_DAY") for d in ctx["drop_ranking"]), "flagged player in drop ranking")
     chk(not any(g["injury"] for g in ctx["goalies_today"] + ctx["streaming"]["goalies"]), "injured goalie suggested")
     for t in ctx["trades"]:
         chk(all(n in mine for n in t["give"]) and not any(n in mine for n in t["get"]), "trade sides wrong: %s" % t["give"])

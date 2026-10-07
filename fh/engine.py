@@ -86,12 +86,12 @@ MIN_SAMPLE_GP = 3       # actual-results sources need this many games before the
 
 def _split(pl: dict, split: int) -> dict:
     """This season's actuals: split 1 = last 7 days, 2 = last 15, 3 = last 30."""
-    return next((s["stats"] for s in pl.get("stats", []) if s.get("seasonId") == config.SEASON
+    return next((s.get("stats") or {} for s in pl.get("stats", []) if s.get("seasonId") == config.SEASON
                  and s.get("statSourceId") == 0 and s.get("statSplitTypeId") == split), {}) or {}
 
 
 def _season_actuals(pl: dict) -> dict:
-    return next((s["stats"] for s in pl.get("stats", []) if s.get("seasonId") == config.SEASON
+    return next((s.get("stats") or {} for s in pl.get("stats", []) if s.get("seasonId") == config.SEASON
                  and s.get("statSourceId") == 0 and s.get("statSplitTypeId") == 0), {}) or {}
 
 

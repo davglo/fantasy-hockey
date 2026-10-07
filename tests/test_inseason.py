@@ -71,6 +71,16 @@ class TestPlayoffWeekProjection(unittest.TestCase):
         self.assertIn((5, 26), proj.week_mu)
 
 
+class TestMalformedEspnStats(unittest.TestCase):
+    def test_stat_entry_without_stats(self):
+        # ESPN sometimes returns a stat row with no "stats" dict (crashed both builds on 2026-10-07)
+        entry = {"player": {"stats": [{"seasonId": 2027, "statSourceId": 0, "statSplitTypeId": 1},
+                                      {"seasonId": 2027, "statSourceId": 0, "statSplitTypeId": 5, "scoringPeriodId": 8}]}}
+        self.assertEqual(season.split_stats(entry, 1), {})
+        self.assertEqual(season.day_stats(entry, 8), {})
+        self.assertEqual(engine._split(entry["player"], 1), {})
+
+
 class TestBlend(unittest.TestCase):
     def test_actual_weight_curve(self):
         w = engine.actual_weight

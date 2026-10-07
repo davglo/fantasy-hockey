@@ -4,7 +4,11 @@ set -uo pipefail
 cd "$(dirname "$0")/.." || exit 1
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 git pull --rebase --autostash -q || echo "git pull failed; building from local copy"
-/usr/bin/python3 build.py --lineup-check || exit 1
+if ! /usr/bin/python3 build.py --lineup-check; then
+  # Don't fail silently: the page would just go stale.
+  osascript -e 'display notification "Build failed - page not refreshed. See state/launchd.err.log" with title "Hockey dashboard" sound name "Basso"' 2>/dev/null
+  exit 1
+fi
 mkdir -p site && cp output/index.html site/index.html
 git add site/index.html
 if ! git diff --cached --quiet; then

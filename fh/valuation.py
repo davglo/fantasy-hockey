@@ -71,7 +71,7 @@ def hat_trick_calibration(pool: list) -> float:
         pl = entry["player"]
         if pl.get("defaultPositionId") == 5:
             continue
-        st = next((s["stats"] for s in pl.get("stats", []) if s.get("seasonId") == config.SEASON - 1
+        st = next((s.get("stats") or {} for s in pl.get("stats", []) if s.get("seasonId") == config.SEASON - 1
                    and s.get("statSourceId") == 0 and s.get("statSplitTypeId") == 0), None)
         gp = (st or {}).get("34") or 0
         if gp:
@@ -112,7 +112,7 @@ def build_players(pool: list, sheet: list, league: League, pro_teams: dict,
     players, matched = [], 0
     for entry in pool:
         pl = entry["player"]
-        proj = next((s["stats"] for s in pl.get("stats", [])
+        proj = next((s.get("stats") or {} for s in pl.get("stats", [])
                      if s.get("seasonId") == config.SEASON and s.get("statSourceId") == 1
                      and s.get("statSplitTypeId") == 0), None)
         espn_fp = fantasy_points(proj, league.scoring) if proj else 0.0
