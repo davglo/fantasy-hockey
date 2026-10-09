@@ -83,3 +83,5 @@ function show(k){bs.forEach(b=>b.classList.toggle('on',b.dataset.t===k));documen
 bs.forEach(b=>b.onclick=()=>show(b.dataset.t));let k='overview';try{k=localStorage.getItem('tab')||k}catch(e){}
 show(bs.some(b=>b.dataset.t===k)?k:'overview');
 </script></body></html>
+
+<!-- redeploy 2026-10-09T08:30:40 -->
