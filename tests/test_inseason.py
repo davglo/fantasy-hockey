@@ -121,6 +121,10 @@ class TestLineups(unittest.TestCase):
     def test_win_prob(self):
         self.assertAlmostEqual(engine.win_prob(100, 100), 0.5)
         self.assertGreater(engine.win_prob(120, 100), 0.75)
+        # Last day: 3-pt lead, ~10 pts left each -> much more certain than a fresh week with the same projection
+        last_day = engine.win_prob(126.9, 122.9, 116.7, 113.7)
+        self.assertGreater(last_day, engine.win_prob(126.9, 122.9) + 0.1)
+        self.assertEqual(engine.win_prob(120, 110, 120, 110), 1.0)     # nothing left to play
 
 
 class TestMovesAndTrades(unittest.TestCase):

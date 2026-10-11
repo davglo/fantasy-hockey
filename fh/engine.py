@@ -178,8 +178,20 @@ def games_started(players: list, league: League, cal: Calendar, periods) -> int:
 
 # ---- matchups & playoff odds --------------------------------------------
 
-def win_prob(mu_a: float, mu_b: float) -> float:
-    sd = math.sqrt((TEAM_WEEK_SD * mu_a) ** 2 + (TEAM_WEEK_SD * mu_b) ** 2) or 1.0
+REF_WEEK_PTS = 130.0   # typical full-week team score: a full week varies TEAM_WEEK_SD (15%) around it
+
+
+def team_sd(remaining: float) -> float:
+    """Uncertainty of the points a team has still to score. Scales with sqrt(remaining) so a full week is
+    ~15% and the last day of a matchup is a few points - banked points carry no uncertainty."""
+    return TEAM_WEEK_SD * math.sqrt(max(remaining, 0.0) * REF_WEEK_PTS)
+
+
+def win_prob(mu_a: float, mu_b: float, banked_a: float = 0.0, banked_b: float = 0.0) -> float:
+    """P(a beats b). mu = projected final score (banked + still to play)."""
+    sd = math.sqrt(team_sd(mu_a - banked_a) ** 2 + team_sd(mu_b - banked_b) ** 2)
+    if sd == 0:
+        return 1.0 if mu_a > mu_b else 0.0 if mu_a < mu_b else 0.5
     return 0.5 * (1 + math.erf((mu_a - mu_b) / (sd * math.sqrt(2))))
 
 
@@ -200,10 +212,12 @@ def project(state: LeagueState, cal: Calendar, rosters: dict) -> Projection:
         periods = [d for d in cal.matchups.get(m, []) if d >= today]
         for tid, ps in rosters.items():
             week_mu[(tid, m)] = projected_points(ps, lg, cal, periods, include_ir=m > state.current_matchup)
+    banked = {}
     for mt in state.schedule:   # add points already banked in the current matchup
         if mt.period == state.current_matchup:
             week_mu[(mt.home, mt.period)] = week_mu.get((mt.home, mt.period), 0) + mt.home_pts
             week_mu[(mt.away, mt.period)] = week_mu.get((mt.away, mt.period), 0) + mt.away_pts
+            banked[(mt.home, mt.period)], banked[(mt.away, mt.period)] = mt.home_pts, mt.away_pts
     full = [m for m in range(state.current_matchup + 1, state.regular_matchups + 1)] or [state.current_matchup]
     strength = {tid: sum(week_mu[(tid, m)] * 7 / len(cal.matchups[m]) for m in full) / len(full) for tid in rosters}
 
@@ -217,8 +231,9 @@ def project(state: LeagueState, cal: Calendar, rosters: dict) -> Projection:
         w = {tid: t.wins + 0.5 * t.ties for tid, t in state.teams.items()}
         pf = {tid: t.points_for for tid, t in state.teams.items()}
         for mt in remaining:
-            a = rng.gauss(week_mu[(mt.home, mt.period)], TEAM_WEEK_SD * week_mu[(mt.home, mt.period)])
-            b = rng.gauss(week_mu[(mt.away, mt.period)], TEAM_WEEK_SD * week_mu[(mt.away, mt.period)])
+            ka, kb = (mt.home, mt.period), (mt.away, mt.period)
+            a = rng.gauss(week_mu[ka], team_sd(week_mu[ka] - banked.get(ka, 0.0)))
+            b = rng.gauss(week_mu[kb], team_sd(week_mu[kb] - banked.get(kb, 0.0)))
             pf[mt.home] += a
             pf[mt.away] += b
             w[mt.home if a > b else mt.away] += 1

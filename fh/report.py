@@ -160,7 +160,7 @@ def build(swid: str) -> dict:
                          "me_starts": len(sa), "opp_starts": len(sb)})
         return {"opp": state.teams[opp].name, "opp_id": opp, "actual_me": my_pts, "actual_opp": opp_pts,
                 "proj_me": round(mu_me, 1), "proj_opp": round(mu_opp, 1),
-                "win_prob": round(engine.win_prob(mu_me, mu_opp), 3),
+                "win_prob": round(engine.win_prob(mu_me, mu_opp, my_pts, opp_pts), 3),
                 "starts_me": sum(d["me_starts"] for d in days), "starts_opp": sum(d["opp_starts"] for d in days),
                 "days": days,
                 "dates": "%s - %s" % (cal.date_of(cal.matchups[m][0]).strftime("%b %-d"),
