@@ -5,7 +5,7 @@ import json
 import logging
 from datetime import datetime
 
-from fh import accuracy, advice, config, engine, espn, market, news, rankings, rumors, season, valuation
+from fh import accuracy, advice, config, engine, espn, news, rankings, rumors, season, valuation
 from fh.espn import fantasy_points
 from fh.board import ET
 
@@ -37,8 +37,9 @@ def _span(cal, periods) -> str:
 def _nhl_week(cal, periods, today) -> dict:
     """Every NHL team's games this matchup week, by day: 'BOS' = home vs BOS, '@BOS' = at BOS."""
     teams = sorted(cal.team_games, key=lambda t: (-cal.games(t, periods), t))
+    light = set(advice.light_days(cal, periods))
     return {"days": [{"date": cal.date_of(d).strftime("%a %-d"), "past": d < today,
-                      "n": sum(1 for t in teams if d in cal.team_games[t])} for d in periods],
+                      "n": sum(1 for t in teams if d in cal.team_games[t]), "light": d in light} for d in periods],
             "teams": [{"team": t, "games": cal.games(t, periods),
                        "cells": [("@" if (t, d) in cal.away else "") + cal.opponents[(t, d)]
                                  if d in cal.team_games[t] else "" for d in periods]} for t in teams]}
@@ -201,14 +202,13 @@ def build(swid: str) -> dict:
     adds_left = max(0, config.ADDS_PER_MATCHUP - adds_used)
     plan_this = advice.stream_plan(mine, fas, value, this_week, adds_left)
     plan_next = advice.stream_plan(mine, fas, value, next_week, config.ADDS_PER_MATCHUP)
-    rater = market.rater_ranks(espn.fetch_pool())
-    tv = market.trade_values(players + fas, rater, value.quick)
-    trade_recs = advice.trades(rosters, me, fas, value, tv, proj.playoff_odds)
     po = advice.playoff_schedule(rosters, me, lg, cal, po_weeks)
     usable = advice.usable_games(mine, lg, cal, po_periods)
 
-    # Where you rank (a full upcoming week is the fair yardstick)
-    wyr = advice.where_you_rank(rosters, me, lg, cal, ros_periods)
+    # Where every team ranks by position; mine drives the headline
+    lranks = advice.league_ranks(rosters, lg, cal, ros_periods)
+    wyr = {g: d for g, d in lranks[me].items() if g not in ("need", "surplus")}
+    light = advice.light_days(cal, ros_periods)
     quick = {p.id: value.quick(p) for p in mine}
     _, season_starters = engine.best_lineup(mine, lg.slots, lambda p: quick[p.id] + 1e-9)
     weakest = sorted(season_starters, key=lambda p: quick[p.id])[:3]
@@ -232,9 +232,6 @@ def build(swid: str) -> dict:
         if st and e["player"]["id"] in fa_by_id:
             perf_7.append((fantasy_points(st, lg.scoring), fa_by_id[e["player"]["id"]], st))
     perf_day = sorted(perf_day, key=lambda t: -t[0])
-    # Today's notes: best free agents yesterday by position - 2 G, 5 F, 3 D
-    yday_by_pos = {g: [(pts, f, st) for pts, f, st in perf_day if f.group == g and pts > 0][:n]
-                   for g, n in (("G", 2), ("F", 5), ("D", 3))}
     perf_day = perf_day[:10]
     perf_7 = sorted(perf_7, key=lambda t: -t[0])[:8]
 
@@ -312,10 +309,6 @@ def build(swid: str) -> dict:
         r = fa_recs[0]
         urgent = "Add %s (%s), drop %s: +%.0f rest-of-season pts (playoff weeks x%g), +%.0f over the next two weeks.%s" % (
             r.p.name, r.p.group, r.drop.name, r.gain, config.PLAYOFF_WEIGHT, r.week_gain, _drop_caution(r.drop, mine))
-    elif trade_recs:
-        t = trade_recs[0]
-        urgent = "Trade idea: %s for %s with %s (+%.0f ROS)." % (
-            " + ".join(p.name for p in t.give), t.get[0].name, state.teams[t.partner].name, t.my_gain)
     else:
         urgent = "Nothing urgent - set tomorrow's lineup and check back."
     headline = "%s: #%d of %d in projected strength, %.0f%% playoff odds. Weakest group: %s (#%d quality, #%d rest of season)." % (
@@ -377,13 +370,14 @@ def build(swid: str) -> dict:
         "lineup": lineup,
         "roster": sorted([_pl(p, cal, ros_periods, {"slot": config.SLOT_NAMES.get(p.slot, p.slot),
                                                     "g_this": cal.games(p.team, this_week), "g_next": cal.games(p.team, next_week),
-                                                    "luck": advice.luck_flag(p)}) for p in mine],
+                                                    "luck": advice.luck_flag(p),
+                                                    "light": cal.games(p.team, light)}) for p in mine],
                          key=lambda d: -d["ros"]),
         "free_agents": [_pl(r.p, cal, ros_periods, {"score": round(r.score, 1), "gain": round(r.gain, 1),
                                                      "week_gain": round(r.week_gain, 1), "drop": r.drop.name,
                                                      "g_this": r.games_this, "g_next": r.games_next, "po_games": r.po_games,
                                                      "own_chg": round(r.p.pct_change, 1), "luck": r.luck,
-                                                     "status": r.p.status,
+                                                     "status": r.p.status, "light": cal.games(r.p.team, light),
                                                      "alt_drops": ["%s (%+.0f)" % (d.name, g) for d, g in (r.alt_drops or [])],
                                                      "waiver": _waiver(waiver_dates.get(r.p.id), r.p.status)})
                         for r in fa_recs],
@@ -407,21 +401,24 @@ def build(swid: str) -> dict:
                                       for tid, wk in po["proj"].items()], key=lambda r: -r["total"]),
                      "mine": sorted([{"name": r["p"].name, "group": r["p"].group, "team": r["p"].team, "weeks": r["weeks"],
                                       "total": sum(r["weeks"])} for r in po["mine"]], key=lambda r: r["total"])},
-        "trades": [{"partner": state.teams[t.partner].name, "give": [p.name for p in t.give], "get": [p.name for p in t.get],
-                    "my_gain": round(t.my_gain, 1), "their_gain": round(t.their_gain, 1),
-                    "market_give": round(t.market_give), "market_get": round(t.market_get),
-                    "backfill": ("add " if len(t.give) > len(t.get) else "drop ") + t.backfill.name if t.backfill else "",
-                    "partner_odds": round(t.partner_odds, 3)}
-                   for t in trade_recs],
+        "league_teams": [{"id": tid, "name": state.teams[tid].name, "me": tid == me,
+                          "need": lranks[tid]["need"], "surplus": lranks[tid]["surplus"],
+                          "ranks": {g: {"q": lranks[tid][g]["quality_rank"], "ros": lranks[tid][g]["ros_rank"],
+                                        "ros_pts": round(lranks[tid][g]["ros"])} for g in ("F", "D", "G", "Total")},
+                          "players": [_pl(p, cal, ros_periods, {"slot": config.SLOT_NAMES.get(p.slot, p.slot)})
+                                      for p in sorted(ps, key=lambda p: -p.ros(cal, ros_periods))]}
+                         for tid, ps in rosters.items()],
+        "light_nights": len(light),
         "where_you_rank": {g: {k: (round(v, 1) if isinstance(v, float) else v) for k, v in d.items()} for g, d in wyr.items()},
         "weakest_starters": [_pl(p, cal, ros_periods) for p in weakest],
         "add_alerts": [_pl(r.p, cal, ros_periods, {"gain": round(r.gain, 1), "drop": r.drop.name,
                                                    "waiver": _waiver(waiver_dates.get(r.p.id), r.p.status)})
                        for r in fa_recs if r.gain >= ADD_ALERT][:5],
-        "drop_watch": [_pl(p, cal, ros_periods, {"cost": round(c, 1)}) for p, c in drop_rank[:3]],
-        "underperformers": [_pl(p, extra={"actual": round(a, 2), "proj": round(pr, 2)}) for p, a, pr in under],
+        "drop_watch": [_pl(p, cal, ros_periods, {"cost": round(c, 1)}) for p, c in drop_rank if p.group != "G"][:3],
+        "underperformers": [_pl(p, extra={"actual": round(a, 2), "proj": round(pr, 2)}) for p, a, pr in under if p.group != "G"],
         "drop_ranking": [_pl(p, cal, ros_periods, {"cost": round(c, 1), "po_games": cal.games(p.team, po_periods),
-                                                   "last7": round(_last7(p, state), 1)}) for p, c in drop_rank],
+                                                   "last7": round(_last7(p, state), 1),
+                                                   "light": cal.games(p.team, light)}) for p, c in drop_rank],
         "goalies_today": [_pl(r["p"], extra={"opp": r["opp"], "confirmed": r["confirmed"], "exp": round(r["exp"], 1),
                                              "opp_gf": round(r["opp_gf"], 2) if r["opp_gf"] else None,
                                              "waiver": _waiver(waiver_dates.get(r["p"].id), r["p"].status)})
@@ -436,7 +433,6 @@ def build(swid: str) -> dict:
         "rumors": [{"title": r["title"], "link": r["link"], "players": r["players"],
                     "date": datetime.fromisoformat(r["date"]).astimezone(ET).strftime("%b %-d")} for r in rumor_items],
         "notes": notes,
-        "notes_yday": {g: [_perf(f, st, pts) for pts, f, st in rows] for g, rows in yday_by_pos.items()},
         "opportunities": [{"news": _news(o.item), "about": o.about.name, "about_team": o.about.team,
                            "about_group": o.about.group, "self": o.about.id == bens[0]["id"],
                            "kinds": sorted(o.item.kinds & (news.NEGATIVE | news.POSITIVE)),

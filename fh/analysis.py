@@ -61,9 +61,6 @@ def sanity(ctx: dict) -> list:
     chk(not ({f["name"] for f in ctx["free_agents"]} & rostered), "free-agent list contains rostered players")
     chk(not any(d["injury"] not in ("", "DAY_TO_DAY") for d in ctx["drop_ranking"]), "flagged player in drop ranking")
     chk(not any(g["injury"] for g in ctx["goalies_today"] + ctx["streaming"]["goalies"]), "injured goalie suggested")
-    for t in ctx["trades"]:
-        chk(all(n in mine for n in t["give"]) and not any(n in mine for n in t["get"]), "trade sides wrong: %s" % t["give"])
-        chk(t["market_give"] >= t["market_get"] - 0.5, "trade not market-fair: %s" % t["give"])
     for o in ctx["opportunities"]:
         chk(all(b["name"] not in rostered for b in o["beneficiaries"]), "opportunity names a rostered player")
     for d in ctx["playoff_usable"]["days"]:

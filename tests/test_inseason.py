@@ -127,6 +127,27 @@ class TestLineups(unittest.TestCase):
         self.assertEqual(engine.win_prob(120, 110, 120, 110), 1.0)     # nothing left to play
 
 
+class TestLeagueRanks(unittest.TestCase):
+    def setUp(self):
+        self.lg = espn.parse_league(raw_league(), SWID)
+        self.cal = season.build_calendar(pro_raw(), 27, 194)
+
+    def test_every_team_ranked_with_need_and_surplus(self):
+        strong_f = [pl(i, "F", rate=3.0) for i in range(9)] + [pl(100 + i, "D", rate=1.0) for i in range(5)] + [pl(200, "G")]
+        strong_d = [pl(300 + i, "F", rate=1.0) for i in range(9)] + [pl(400 + i, "D", rate=3.0) for i in range(5)] + [pl(500, "G")]
+        r = advice.league_ranks({1: strong_f, 2: strong_d}, self.lg, self.cal, range(1, 15))
+        self.assertEqual((r[1]["F"]["quality_rank"], r[2]["F"]["quality_rank"]), (1, 2))
+        self.assertEqual((r[1]["D"]["quality_rank"], r[2]["D"]["quality_rank"]), (2, 1))
+        self.assertEqual((r[1]["need"], r[1]["surplus"]), ("D", "F"))
+        self.assertEqual((r[2]["need"], r[2]["surplus"]), ("F", "D"))
+        self.assertEqual(advice.where_you_rank({1: strong_f, 2: strong_d}, 1, self.lg, self.cal, range(1, 15))["F"],
+                         {k: v for k, v in r[1]["F"].items()})
+
+    def test_light_days(self):
+        # 3 NHL teams in the fixture: a light night has 1 team or none playing; TOR and BOS play odd periods together.
+        self.assertEqual(advice.light_days(self.cal, [1, 2, 3, 4]), [2, 4])
+
+
 class TestMovesAndTrades(unittest.TestCase):
     def setUp(self):
         self.lg = espn.parse_league(raw_league(), SWID)

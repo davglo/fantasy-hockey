@@ -23,14 +23,16 @@ build commits `state/context.json`; the routine writes takes from it and re-rend
 1. `cd ~/Claude/fantasy-hockey && git pull`
 2. `python3 build.py` — confirm the log shows `Dashboard written` and read the
    `Analysis check:` line (stale takes, traded players, odds moves).
-3. Read `state/context.json`: `me` (grade, odds, urgent), `notes`, `where_you_rank`, `matchup`,
+3. Read `state/context.json`: `me` (grade, odds, urgent), `notes`, `where_you_rank`, `league_teams`, `matchup`,
    `streaming`, `free_agents` + `fa_summary`, `add_alerts`, `drop_ranking`, `opportunities`, `news`,
-   `status_watch`, `goalies_today`, `recent`, `trades`, `playoffs` + `playoff_usable`, `standings`.
+   `status_watch`, `goalies_today`, `recent`, `playoffs` + `playoff_usable`, `standings`.
 4. Rewrite `state/ai_manual.json`:
    - `date`: today (YYYY-MM-DD); `playoff_odds`: `me.playoff_odds`; `my_players`: names in `roster`.
-   - `takes.overview` / `matchup` / `roster` / `free_agents` / `trades` / `playoffs`: 2-4 sentences each,
+   - `takes.overview` / `matchup` / `roster` (only these three; Free Agents, Playoffs and League are
+     numbers-only): 2-4 sentences each,
      opinionated, naming real players. Buy/sell follows playoff odds (`me.posture`):
      contenders hold producing starters and buy at the biggest need.
+   - Goalies: Dave manages them himself. No goalie drop or trade advice; skater moves only.
    - Injury/suspension statuses are flagged, never assumed long-term — say "check news". Use
      `status_watch` / `news` / `opportunities` for the latest reported facts and credit the reporter.
 5. `python3 build.py` again — the `Analysis check` should report only the takes' age.

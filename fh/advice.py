@@ -123,35 +123,45 @@ def group_points(roster: list, league: League, cal: Calendar, periods, include_i
     return out
 
 
-def where_you_rank(rosters: dict, me: int, league: League, cal: Calendar, ros_periods) -> dict:
-    """Per group, two yardsticks (rank 1 = best):
+def league_ranks(rosters: dict, league: League, cal: Calendar, ros_periods) -> dict:
+    """Every team, per group (rank 1 = best), two yardsticks:
     quality = per-game points of the top-N players at the group (N = starting slots; IR included, schedule-free),
               which is how most roster rankers (e.g. Lineup Experts) judge a team;
-    ros     = rest-of-season starter points from optimal daily lineups (schedule-adjusted, UTIL counted by group)."""
+    ros     = rest-of-season starter points from optimal daily lineups (schedule-adjusted, UTIL counted by group).
+    Plus need (worst group by quality + ros rank) and surplus (best group)."""
     n = {g: league.slots.get(g, 0) for g in ("F", "D", "G")}
     quality = {t: {g: sum(sorted((p.exp_game() for p in ps if p.group == g), reverse=True)[:n[g]]) for g in n}
                for t, ps in rosters.items()}
     ros = {t: group_points(ps, league, cal, ros_periods) for t, ps in rosters.items()}
+    cons = {t: {g: sum(sorted(((p.consensus or 0) * p.share for p in ps if p.group == g), reverse=True)[:n[g]]) for g in n}
+            for t, ps in rosters.items()}
 
     def rank(vals, t):
         return sorted(vals.values(), reverse=True).index(vals[t]) + 1
-    out = {}
-    for g in ("F", "D", "G"):
-        q = {t: quality[t][g] for t in rosters}
-        r = {t: ros[t][g] for t in rosters}
-        out[g] = {"quality": q[me], "quality_rank": rank(q, me), "ros": r[me], "ros_rank": rank(r, me),
-                  "ros_best": max(r.values())}
-    cons = {t: {g: sum(sorted(((p.consensus or 0) * p.share for p in ps if p.group == g), reverse=True)[:n[g]]) for g in n}
-            for t, ps in rosters.items()}
-    for g in ("F", "D", "G"):
-        c = {t: cons[t][g] for t in rosters}
-        out[g]["cons_rank"] = rank(c, me)
-    tq = {t: sum(quality[t].values()) for t in rosters}
-    tr = {t: sum(ros[t].values()) for t in rosters}
-    tc = {t: sum(cons[t].values()) for t in rosters}
-    out["Total"] = {"quality": tq[me], "quality_rank": rank(tq, me), "ros": tr[me], "ros_rank": rank(tr, me),
-                    "ros_best": max(tr.values()), "cons_rank": rank(tc, me)}
+    out = {t: {} for t in rosters}
+    for g in ("F", "D", "G", "Total"):
+        pick = (lambda d, t: d[t][g]) if g != "Total" else (lambda d, t: sum(d[t].values()))
+        q = {t: pick(quality, t) for t in rosters}
+        r = {t: pick(ros, t) for t in rosters}
+        c = {t: pick(cons, t) for t in rosters}
+        for t in rosters:
+            out[t][g] = {"quality": q[t], "quality_rank": rank(q, t), "ros": r[t], "ros_rank": rank(r, t),
+                         "ros_best": max(r.values()), "cons_rank": rank(c, t)}
+    for t in rosters:
+        score = {g: out[t][g]["quality_rank"] + out[t][g]["ros_rank"] for g in ("F", "D", "G")}
+        out[t]["need"] = max(score, key=lambda g: (score[g], g))
+        out[t]["surplus"] = min(score, key=lambda g: (score[g], g))
     return out
+
+
+def where_you_rank(rosters: dict, me: int, league: League, cal: Calendar, ros_periods) -> dict:
+    return {g: d for g, d in league_ranks(rosters, league, cal, ros_periods)[me].items() if g not in ("need", "surplus")}
+
+
+def light_days(cal: Calendar, periods) -> list:
+    """Days when half the NHL or fewer plays: most managers have open lineup slots, so these games score."""
+    half = len(cal.team_games) // 2
+    return [d for d in periods if sum(1 for g in cal.team_games.values() if d in g) <= half]
 
 
 def usable_games(roster: list, league: League, cal: Calendar, periods) -> dict:
