@@ -9,6 +9,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import logging
 import random
 import sys
@@ -128,6 +129,21 @@ def build_dashboard(swid: str) -> dict:
     return ctx
 
 
+def render_only() -> int:
+    path = config.STATE / "context.json"
+    if not path.exists():
+        log.error("STOP: %s missing - the Mac build commits it; git pull first", path)
+        return 1
+    ctx = json.loads(path.read_text())
+    manual = analysis.load_manual()
+    log.info("Analysis check: %s", "; ".join(analysis.check(ctx, manual)))
+    config.OUTPUT.mkdir(exist_ok=True)
+    out = config.OUTPUT / "index.html"
+    out.write_text(dashboard.render(ctx, manual))
+    log.info("Dashboard re-rendered from context of %s: %s", ctx["generated"], out)
+    return 0
+
+
 def lineup_check(ctx: dict) -> None:
     today = ctx["lineup"]["today"]
     fixes = [i["text"] for i in today["issues"] if i["severity"] == "fix"]
@@ -145,10 +161,14 @@ def main() -> int:
     ap.add_argument("--draft-live", action="store_true")
     ap.add_argument("--simulate", action="store_true")
     ap.add_argument("--lineup-check", action="store_true")
+    ap.add_argument("--render-only", action="store_true",
+                    help="re-render output/index.html from the committed state/context.json + takes (no ESPN; cloud analysis refresh)")
     ap.add_argument("--interval", type=float, default=config.POLL_SECONDS)
     ap.add_argument("--polls", type=int, default=None, help="stop live mode after N polls (testing)")
     args = ap.parse_args()
     setup_logging()
+    if args.render_only:
+        return render_only()
     if not (args.draft_board or args.draft_live or args.simulate):
         try:
             ctx = build_dashboard(espn.load_env()["ESPN_SWID"])

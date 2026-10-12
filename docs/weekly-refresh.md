@@ -1,9 +1,24 @@
 # Analysis refresh (Mondays + Thursdays)
 
-Run Monday morning (new matchup week) and Thursday morning (mid-week check). Numbers and
-auto-notes rebuild daily at noon on their own; this refresh is only the written takes. Goal: rewrite the written takes in
+Runs as a Claude cloud routine Monday and Thursday mornings (after the 8 AM Mac build). Numbers
+and auto-notes rebuild daily at 8 AM and 5 PM ET on the Mac; this refresh is only the written takes. Goal: rewrite the written takes in
 `state/ai_manual.json` so they agree with this week's numbers. Numbers are never
 hand-typed into takes unless they come from `state/context.json` of this build.
+
+## Cloud routine (default)
+
+The cloud has no ESPN cookies or projections workbook, so it never runs a full build. The Mac's daily
+build commits `state/context.json`; the routine writes takes from it and re-renders the page.
+
+1. `git pull origin main`. Check `state/context.json` `generated` is from today; if it's older than
+   24h, still write the takes but say so in the session summary (the Mac build is failing).
+2. Read `state/context.json` (keys below) and the current `state/ai_manual.json`.
+3. Rewrite `state/ai_manual.json` per the rules in step 4 of the Mac version below.
+4. `python3 build.py --render-only && cp output/index.html site/index.html`
+5. `git add state/ai_manual.json site/index.html && git commit -m "Analysis <date>"`, then
+   `git pull --rebase origin main && git push origin main` (retry the pull+push if rejected).
+
+## Mac version (fallback)
 
 1. `cd ~/Claude/fantasy-hockey && git pull`
 2. `python3 build.py` — confirm the log shows `Dashboard written` and read the

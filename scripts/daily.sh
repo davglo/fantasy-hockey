@@ -10,7 +10,7 @@ if ! /usr/bin/python3 build.py --lineup-check; then
   exit 1
 fi
 mkdir -p site && cp output/index.html site/index.html
-git add site/index.html
+git add site/index.html state/context.json   # context: cloud analysis refresh re-renders from it
 if ! git diff --cached --quiet; then
   git commit -qm "Daily build $(date +%F)"
   pushed=0

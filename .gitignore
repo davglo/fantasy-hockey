@@ -9,7 +9,7 @@ __pycache__/
 # Regenerable caches and generated output
 state/*_cache.json
 state/*.log
-state/context.json
+# state/context.json is committed: the cloud analysis refresh re-renders from it
 state/status_snapshot.json
 state/rumors_archive.json
 state/projection_log/
