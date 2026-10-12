@@ -200,6 +200,19 @@ def _streaming(ctx, manual):
         parts.append('<div class="card"><h3>%s</h3><div class="days">%s</div><p class="mute">Open lineup slots per day with your current roster '
                      '(G = goalie slots, Sk = skater slots). Highlighted days are where a streamer scores.</p>%s</div>' % (
                          _e(blk["label"]), heat, _table(["#", "Add", "Pos", "Team", "Drop", "Gain", "Game days"], mv)))
+    sch = s.get("schedule")
+    if sch and sch["days"]:
+        head = "".join('<th class="%s">%s</th>' % ("past" if d["past"] else "", _e(d["date"])) for d in sch["days"])
+        rows = "".join('<tr><td><b>%s</b></td><td>%d</td>%s</tr>' % (_e(t["team"]), t["games"], "".join(
+            '<td class="%s">%s</td>' % ("past" if d["past"] else "", _e(c)) for d, c in zip(sch["days"], t["cells"])))
+            for t in sch["teams"])
+        foot = '<tr class="sum"><td>Teams playing</td><td></td>%s</tr>' % "".join(
+            '<td class="%s">%d</td>' % ("past" if d["past"] else ("hot" if d["n"] <= 16 else ""), d["n"]) for d in sch["days"])
+        parts.append('<div class="card"><h3>NHL schedule this week</h3><div class="tw"><table class="sched"><thead><tr>'
+                     '<th>Team</th><th>G</th>%s</tr></thead><tbody>%s%s</tbody></table></div>'
+                     '<p class="mute">Opponent each day: <b>BOS</b> = home vs Boston, <b>@BOS</b> = at Boston. '
+                     'Sorted by games this week. Highlighted counts are light days (half the league or less playing): '
+                     'the easiest days to fit a streamer into your lineup. Faded columns are already played.</p></div>' % (head, rows, foot))
     gm = [[_e(g["team"]), g["this"], g["next"]] for g in s["games"][:12]]
     gs = [[_e(p["name"]) + _inj(p), _e(p["team"]), p["games"], "%.1f" % p["exp"], _e(", ".join(p["opps"]))] for p in s["goalies"]]
     parts.append('<div class="grid"><div class="card"><h3>Most games (this wk / next)</h3>%s</div>'
@@ -343,6 +356,7 @@ nav button.on{background:var(--acc);border-color:var(--acc);color:#081018;font-w
 main{padding:12px 16px 40px;max-width:1100px;margin:0 auto}section{display:none}section.on{display:block}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:0 0 12px}
 h3{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}
+table.sched td,table.sched th{text-align:center;white-space:nowrap}table.sched td:first-child{text-align:left}.past{opacity:.4}table.sched td.hot{color:var(--good);font-weight:700}tr.sum td{font-weight:600;border-top:2px solid var(--line)}
 h3.sec{margin:22px 0 6px;font-size:14px;color:var(--fg)}
 .grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}.grid .card{margin:0 0 12px}
 .hero{display:flex;gap:14px;align-items:center;margin:4px 0 14px}.grade{font-size:34px;font-weight:800;min-width:70px;text-align:center;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px}

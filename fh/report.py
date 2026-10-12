@@ -34,6 +34,16 @@ def _span(cal, periods) -> str:
     return "%s-%s" % (cal.date_of(periods[0]).strftime("%b %-d"), cal.date_of(periods[-1]).strftime("%b %-d"))
 
 
+def _nhl_week(cal, periods, today) -> dict:
+    """Every NHL team's games this matchup week, by day: 'BOS' = home vs BOS, '@BOS' = at BOS."""
+    teams = sorted(cal.team_games, key=lambda t: (-cal.games(t, periods), t))
+    return {"days": [{"date": cal.date_of(d).strftime("%a %-d"), "past": d < today,
+                      "n": sum(1 for t in teams if d in cal.team_games[t])} for d in periods],
+            "teams": [{"team": t, "games": cal.games(t, periods),
+                       "cells": [("@" if (t, d) in cal.away else "") + cal.opponents[(t, d)]
+                                 if d in cal.team_games[t] else "" for d in periods]} for t in teams]}
+
+
 def _move(m) -> dict:
     return {"add": m.add.name, "add_pos": m.add.group, "add_team": m.add.team, "drop": m.drop.name,
             "gain": round(m.gain, 1), "days": m.days, "waivers": m.add.status == "WAIVERS"}
@@ -378,7 +388,8 @@ def build(swid: str) -> dict:
                                                      "waiver": _waiver(waiver_dates.get(r.p.id), r.p.status)})
                         for r in fa_recs],
         "fa_summary": fa_text,
-        "streaming": {"games": [{"team": t, "this": g[0], "next": g[1]} for t, g in
+        "streaming": {"schedule": _nhl_week(cal, cal.matchups.get(cm, []), today),
+                      "games": [{"team": t, "this": g[0], "next": g[1]} for t, g in
                                 sorted(stream["games"].items(), key=lambda kv: -(kv[1][0] + kv[1][1]))],
                       "goalies": [_pl(r["p"], extra={"exp": round(r["exp"], 1), "games": r["games"], "opps": r["opps"],
                                                      "status": r["p"].status})

@@ -21,6 +21,7 @@ class Calendar:
     team_games: dict               # NHL team abbrev -> set of scoring periods with a game
     opponents: dict                # (abbrev, period) -> opponent abbrev
     matchups: dict                 # matchup period -> [scoring periods]
+    away: set = field(default_factory=set)   # (abbrev, period) where the team is the road side
 
     def period_of(self, d: date) -> int:
         return (d - self.start).days + 1
@@ -38,7 +39,7 @@ class Calendar:
 
 def build_calendar(pro_raw: dict, n_matchups: int, final_period: int, weekly: bool = False) -> Calendar:
     abbrev = {t["id"]: t["abbrev"] for t in pro_raw["settings"]["proTeams"]}
-    team_games, opponents, start = {}, {}, None
+    team_games, opponents, away, start = {}, {}, set(), None
     for t in pro_raw["settings"]["proTeams"]:
         for sp, games in (t.get("proGamesByScoringPeriod") or {}).items():
             for g in games:
@@ -46,11 +47,13 @@ def build_calendar(pro_raw: dict, n_matchups: int, final_period: int, weekly: bo
                 team_games.setdefault(t["abbrev"], set()).add(p)
                 opp = g["awayProTeamId"] if g["homeProTeamId"] == t["id"] else g["homeProTeamId"]
                 opponents[(t["abbrev"], p)] = abbrev.get(opp, "?")
+                if g["awayProTeamId"] == t["id"]:
+                    away.add((t["abbrev"], p))
                 d = datetime.fromtimestamp(g["date"] / 1000, tz=ET).date() - timedelta(days=p - 1)
                 start = start or d
     # Matchup weeks: the last one holds the final period and starts on that week's Monday; earlier
     # ones step back 7 days; matchup 1 absorbs the opening partial week (ESPN: Sep 29-Oct 11).
-    cal = Calendar(start=start, final_period=final_period, team_games=team_games, opponents=opponents, matchups={})
+    cal = Calendar(start=start, final_period=final_period, team_games=team_games, opponents=opponents, matchups={}, away=away)
     if weekly:
         # Matchup 1 runs through the first Sunday; then Monday-Sunday weeks.
         first_monday = 1 + (7 - cal.start.weekday()) % 7 or 8
