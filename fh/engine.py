@@ -12,9 +12,9 @@ from fh.season import IR_SLOT, Calendar, LeagueState
 
 log = logging.getLogger(__name__)
 
-# Weight on this season's actual pts/GP vs the preseason projection, by games played (Dave, 2026-10-01):
-# 5% through game 5, then 30% @10, 50% @15, 70% @20, 85% @25, 95% from 30 on. Linear between.
-ACTUAL_WEIGHT_CURVE = [(0, 0.0), (1, 0.05), (5, 0.05), (10, 0.30), (15, 0.50), (20, 0.70), (25, 0.85), (30, 0.95)]
+# Weight on this season's actual pts/GP vs the preseason projection, by games played (Dave, 2026-10-12):
+# 5% through game 5, then 50% @10, 70% @15, 85% @20, 95% from 25 on. Linear between.
+ACTUAL_WEIGHT_CURVE = [(0, 0.0), (1, 0.05), (5, 0.05), (10, 0.50), (15, 0.70), (20, 0.85), (25, 0.95)]
 
 
 def actual_weight(gp: int) -> float:

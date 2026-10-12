@@ -85,8 +85,8 @@ class TestBlend(unittest.TestCase):
     def test_actual_weight_curve(self):
         w = engine.actual_weight
         self.assertEqual([round(w(g), 2) for g in (0, 1, 3, 5, 10, 15, 20, 25, 30, 82)],
-                         [0, 0.05, 0.05, 0.05, 0.30, 0.50, 0.70, 0.85, 0.95, 0.95])
-        self.assertAlmostEqual(w(12), 0.38)
+                         [0, 0.05, 0.05, 0.05, 0.50, 0.70, 0.85, 0.95, 0.95, 0.95])
+        self.assertAlmostEqual(w(12), 0.58)
 
 
 class TestLineups(unittest.TestCase):
