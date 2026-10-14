@@ -1,5 +1,5 @@
 {
- "generated": "Wed Oct 14, 8:09 AM",
+ "generated": "Wed Oct 14, 5:12 PM",
  "league": {
   "name": "The Healthy Scratches",
   "size": 8,
@@ -1016,7 +1016,7 @@
    "pos": "LW",
    "group": "F",
    "team": "ANA",
-   "injury": "OUT",
+   "injury": "DAY_TO_DAY",
    "rate": 2.35,
    "src": {
     "sheet": 2.35,
@@ -1526,7 +1526,7 @@
    "g_this": 2,
    "g_next": 3,
    "po_games": 6,
-   "own_chg": 1.1,
+   "own_chg": 1.2,
    "luck": "",
    "status": "FREEAGENT",
    "light": 32,
@@ -1542,7 +1542,7 @@
    "pos": "D",
    "group": "D",
    "team": "DET",
-   "injury": "OUT",
+   "injury": "INJURY_RESERVE",
    "rate": 1.75,
    "src": {
     "sheet": 1.75,
@@ -1564,7 +1564,7 @@
    "g_this": 2,
    "g_next": 3,
    "po_games": 7,
-   "own_chg": -0.2,
+   "own_chg": -0.1,
    "luck": "",
    "status": "FREEAGENT",
    "light": 27,
@@ -1595,14 +1595,14 @@
    "gp": 7,
    "fp": 15.1,
    "ros": 111.9,
-   "score": 12.8,
+   "score": 13.0,
    "gain": 12.0,
    "week_gain": 2.1,
    "drop": "Justin Faulk",
    "g_this": 2,
    "g_next": 3,
    "po_games": 7,
-   "own_chg": 3.9,
+   "own_chg": 5.5,
    "luck": "",
    "status": "FREEAGENT",
    "light": 26,
@@ -1671,14 +1671,14 @@
    "gp": 6,
    "fp": 19.1,
    "ros": 126.1,
-   "score": 9.2,
+   "score": 9.3,
    "gain": 8.9,
    "week_gain": 1.0,
    "drop": "Gavin McKenna",
    "g_this": 2,
    "g_next": 3,
    "po_games": 5,
-   "own_chg": 1.7,
+   "own_chg": 1.8,
    "luck": "",
    "status": "FREEAGENT",
    "light": 25,
@@ -1754,7 +1754,7 @@
    "g_this": 2,
    "g_next": 3,
    "po_games": 7,
-   "own_chg": 6.6,
+   "own_chg": 12.4,
    "luck": "",
    "status": "FREEAGENT",
    "light": 21,
@@ -1785,58 +1785,20 @@
    "gp": 6,
    "fp": 12.4,
    "ros": 116.3,
-   "score": 5.1,
+   "score": 5.0,
    "gain": 5.0,
    "week_gain": 0.6,
    "drop": "Gavin McKenna",
    "g_this": 2,
    "g_next": 3,
    "po_games": 6,
-   "own_chg": 0.3,
+   "own_chg": 0.0,
    "luck": "",
    "status": "FREEAGENT",
    "light": 26,
    "alt_drops": [
     "Jared McCann (+4)",
     "Justin Faulk (-1)"
-   ],
-   "waiver": ""
-  },
-  {
-   "id": 4565229,
-   "name": "Philip Broberg",
-   "pos": "D",
-   "group": "D",
-   "team": "STL",
-   "injury": "",
-   "rate": 1.61,
-   "src": {
-    "sheet": 1.67,
-    "model": 1.61,
-    "espn": 1.33,
-    "pace": 1.28,
-    "l15": 1.28
-   },
-   "cons": 1.31,
-   "dis": 0.25,
-   "exp_game": 1.59,
-   "gp": 6,
-   "fp": 7.7,
-   "ros": 108.4,
-   "score": 4.7,
-   "gain": 4.7,
-   "week_gain": 0.1,
-   "drop": "Justin Faulk",
-   "g_this": 2,
-   "g_next": 3,
-   "po_games": 7,
-   "own_chg": -0.1,
-   "luck": "",
-   "status": "FREEAGENT",
-   "light": 21,
-   "alt_drops": [
-    "Gavin McKenna (+1)",
-    "Jared McCann (+0)"
    ],
    "waiver": ""
   },
@@ -1861,20 +1823,58 @@
    "gp": 6,
    "fp": 8.4,
    "ros": 114.9,
-   "score": 4.6,
+   "score": 4.7,
    "gain": 4.7,
    "week_gain": 0.2,
    "drop": "Gavin McKenna",
    "g_this": 2,
    "g_next": 4,
    "po_games": 7,
-   "own_chg": -0.6,
+   "own_chg": -0.2,
    "luck": "",
    "status": "FREEAGENT",
    "light": 28,
    "alt_drops": [
     "Jared McCann (+2)",
     "Justin Faulk (-5)"
+   ],
+   "waiver": ""
+  },
+  {
+   "id": 4565229,
+   "name": "Philip Broberg",
+   "pos": "D",
+   "group": "D",
+   "team": "STL",
+   "injury": "",
+   "rate": 1.61,
+   "src": {
+    "sheet": 1.67,
+    "model": 1.61,
+    "espn": 1.33,
+    "pace": 1.28,
+    "l15": 1.28
+   },
+   "cons": 1.31,
+   "dis": 0.25,
+   "exp_game": 1.59,
+   "gp": 6,
+   "fp": 7.7,
+   "ros": 108.4,
+   "score": 4.6,
+   "gain": 4.7,
+   "week_gain": 0.1,
+   "drop": "Justin Faulk",
+   "g_this": 2,
+   "g_next": 3,
+   "po_games": 7,
+   "own_chg": -0.3,
+   "luck": "",
+   "status": "FREEAGENT",
+   "light": 21,
+   "alt_drops": [
+    "Gavin McKenna (+1)",
+    "Jared McCann (+0)"
    ],
    "waiver": ""
   },
@@ -1906,7 +1906,7 @@
    "g_this": 2,
    "g_next": 2,
    "po_games": 7,
-   "own_chg": 0.0,
+   "own_chg": 0.1,
    "luck": "",
    "status": "FREEAGENT",
    "light": 32,
@@ -1937,14 +1937,14 @@
    "gp": 8,
    "fp": 13.9,
    "ros": 112.6,
-   "score": 4.0,
+   "score": 3.9,
    "gain": 4.1,
    "week_gain": -1.5,
    "drop": "Gavin McKenna",
    "g_this": 2,
    "g_next": 3,
    "po_games": 6,
-   "own_chg": -0.5,
+   "own_chg": -0.9,
    "luck": "",
    "status": "FREEAGENT",
    "light": 32,
@@ -1975,14 +1975,14 @@
    "gp": 6,
    "fp": 10.4,
    "ros": 105.0,
-   "score": 2.8,
+   "score": 2.9,
    "gain": 2.8,
    "week_gain": -1.5,
    "drop": "Justin Faulk",
    "g_this": 2,
    "g_next": 2,
    "po_games": 8,
-   "own_chg": 0.3,
+   "own_chg": 0.7,
    "luck": "",
    "status": "FREEAGENT",
    "light": 32,
@@ -2051,14 +2051,14 @@
    "gp": 6,
    "fp": 5.7,
    "ros": 106.7,
-   "score": 1.2,
+   "score": 1.1,
    "gain": 1.3,
    "week_gain": 0.1,
    "drop": "Justin Faulk",
    "g_this": 2,
    "g_next": 3,
    "po_games": 7,
-   "own_chg": -0.8,
+   "own_chg": -1.2,
    "luck": "",
    "status": "FREEAGENT",
    "light": 24,
@@ -2096,7 +2096,7 @@
    "g_this": 2,
    "g_next": 3,
    "po_games": 6,
-   "own_chg": -1.2,
+   "own_chg": -1.3,
    "luck": "",
    "status": "FREEAGENT",
    "light": 25,
@@ -2127,14 +2127,14 @@
    "gp": 7,
    "fp": 12.1,
    "ros": 108.7,
-   "score": -1.5,
+   "score": -1.6,
    "gain": -1.6,
    "week_gain": -1.7,
    "drop": "Gavin McKenna",
    "g_this": 2,
    "g_next": 3,
    "po_games": 6,
-   "own_chg": 0.5,
+   "own_chg": 0.1,
    "luck": "",
    "status": "FREEAGENT",
    "light": 25,
@@ -2172,7 +2172,7 @@
    "g_this": 2,
    "g_next": 2,
    "po_games": 6,
-   "own_chg": -0.6,
+   "own_chg": -0.8,
    "luck": "",
    "status": "FREEAGENT",
    "light": 25,
@@ -2210,7 +2210,7 @@
    "g_this": 2,
    "g_next": 3,
    "po_games": 6,
-   "own_chg": -0.3,
+   "own_chg": -0.4,
    "luck": "",
    "status": "FREEAGENT",
    "light": 29,
@@ -2248,7 +2248,7 @@
    "g_this": 2,
    "g_next": 3,
    "po_games": 6,
-   "own_chg": 0.5,
+   "own_chg": 0.6,
    "luck": "",
    "status": "FREEAGENT",
    "light": 26,
@@ -2286,7 +2286,7 @@
    "g_this": 1,
    "g_next": 3,
    "po_games": 7,
-   "own_chg": -0.3,
+   "own_chg": -0.6,
    "luck": "",
    "status": "FREEAGENT",
    "light": 27,
@@ -2317,14 +2317,14 @@
    "gp": 5,
    "fp": 21.2,
    "ros": 201.6,
-   "score": -25.4,
+   "score": -25.2,
    "gain": -24.7,
    "week_gain": 0.2,
    "drop": "Gavin McKenna",
    "g_this": 2,
    "g_next": 3,
    "po_games": 6,
-   "own_chg": -3.6,
+   "own_chg": -2.5,
    "luck": "",
    "status": "FREEAGENT",
    "light": 32,
@@ -2362,7 +2362,7 @@
    "g_this": 2,
    "g_next": 2,
    "po_games": 7,
-   "own_chg": -0.3,
+   "own_chg": -0.4,
    "luck": "",
    "status": "FREEAGENT",
    "light": 32,
@@ -2393,14 +2393,14 @@
    "gp": 5,
    "fp": 8.4,
    "ros": 135.4,
-   "score": -54.0,
+   "score": -54.1,
    "gain": -53.9,
    "week_gain": -2.6,
    "drop": "Gavin McKenna",
    "g_this": 2,
    "g_next": 4,
    "po_games": 7,
-   "own_chg": -0.8,
+   "own_chg": -1.2,
    "luck": "",
    "status": "FREEAGENT",
    "light": 28,
@@ -2438,7 +2438,7 @@
    "g_this": 2,
    "g_next": 4,
    "po_games": 7,
-   "own_chg": -0.0,
+   "own_chg": 0.0,
    "luck": "",
    "status": "FREEAGENT",
    "light": 28,
@@ -2450,9 +2450,9 @@
   }
  ],
  "fa_summary": [
-  "Will Cuylle (F, NYR) for Gavin McKenna: +17 ROS, 6 playoff-week games, owned +1.1%.",
+  "Will Cuylle (F, NYR) for Gavin McKenna: +17 ROS, 6 playoff-week games, owned +1.2%.",
   "Simon Edvinsson (D, DET) for Justin Faulk: +14 ROS, 7 playoff-week games.",
-  "Seth Jones (D, FLA) for Justin Faulk: +12 ROS, 7 playoff-week games, +2 next 2 wks (2+3 games), owned +3.9%."
+  "Seth Jones (D, FLA) for Justin Faulk: +12 ROS, 7 playoff-week games, +2 next 2 wks (2+3 games), owned +5.5%."
  ],
  "streaming": {
   "schedule": {
@@ -4270,7 +4270,7 @@
      "pos": "D",
      "group": "D",
      "team": "OTT",
-     "injury": "OUT",
+     "injury": "DAY_TO_DAY",
      "rate": 2.18,
      "src": {
       "sheet": 2.27,
@@ -5060,7 +5060,7 @@
      "pos": "C",
      "group": "F",
      "team": "DAL",
-     "injury": "DAY_TO_DAY",
+     "injury": "",
      "rate": 1.83,
      "src": {
       "sheet": 1.86,
@@ -6111,7 +6111,7 @@
      "pos": "D",
      "group": "D",
      "team": "WPG",
-     "injury": "OUT",
+     "injury": "DAY_TO_DAY",
      "rate": 1.97,
      "src": {
       "sheet": 1.97,
@@ -6648,7 +6648,7 @@
      "pos": "LW",
      "group": "F",
      "team": "ANA",
-     "injury": "OUT",
+     "injury": "DAY_TO_DAY",
      "rate": 2.35,
      "src": {
       "sheet": 2.35,
@@ -7139,7 +7139,7 @@
      "pos": "D",
      "group": "D",
      "team": "COL",
-     "injury": "OUT",
+     "injury": "DAY_TO_DAY",
      "rate": 2.7,
      "src": {
       "sheet": 2.69,
@@ -7154,7 +7154,7 @@
      "gp": 5,
      "fp": 14.8,
      "ros": 183.6,
-     "slot": "BE"
+     "slot": "D"
     },
     {
      "id": 5452,
@@ -7162,7 +7162,7 @@
      "pos": "G",
      "group": "G",
      "team": "FLA",
-     "injury": "OUT",
+     "injury": "DAY_TO_DAY",
      "rate": 4.01,
      "src": {
       "sheet": 4.04,
@@ -7231,7 +7231,7 @@
      "pos": "D",
      "group": "D",
      "team": "BUF",
-     "injury": "OUT",
+     "injury": "DAY_TO_DAY",
      "rate": 2.43,
      "src": {
       "sheet": 2.37,
@@ -7384,7 +7384,7 @@
      "gp": 7,
      "fp": 11.4,
      "ros": 128.3,
-     "slot": "D"
+     "slot": "BE"
     },
     {
      "id": 5118,
@@ -7576,7 +7576,7 @@
      "pos": "D",
      "group": "D",
      "team": "MIN",
-     "injury": "OUT",
+     "injury": "DAY_TO_DAY",
      "rate": 1.46,
      "src": {
       "sheet": 1.3,
@@ -8021,7 +8021,7 @@
      "pos": "RW",
      "group": "F",
      "team": "EDM",
-     "injury": "OUT",
+     "injury": "DAY_TO_DAY",
      "rate": 1.89,
      "src": {
       "sheet": 1.96,
@@ -8742,7 +8742,7 @@
      "pos": "RW",
      "group": "F",
      "team": "NJ",
-     "injury": "OUT",
+     "injury": "DAY_TO_DAY",
      "rate": 1.46,
      "src": {
       "sheet": 1.44,
@@ -9635,8 +9635,8 @@
    "gp": 1,
    "fp": 3.4,
    "opp": "MTL",
-   "confirmed": "",
-   "exp": 1.1,
+   "confirmed": "confirmed",
+   "exp": 3.7,
    "opp_gf": 3.34,
    "waiver": ""
   },
@@ -9692,7 +9692,7 @@
     "fp": 15.3,
     "pts": 6.7,
     "line": "2 G, 1 A, 6 SOG, 1 BLK, 1 HIT",
-    "own_chg": 6.6
+    "own_chg": 12.4
    },
    {
     "id": 3041992,
@@ -9716,7 +9716,7 @@
     "fp": 15.1,
     "pts": 6.5,
     "line": "4 A, 3 SOG, 2 BLK, 2 HIT",
-    "own_chg": 3.9
+    "own_chg": 5.5
    },
    {
     "id": 4271732,
@@ -9764,7 +9764,7 @@
     "fp": 14.8,
     "pts": 6.0,
     "line": "1 W, 25 SV, 2 GA",
-    "own_chg": 1.1
+    "own_chg": 0.4
    },
    {
     "id": 5657,
@@ -9836,7 +9836,7 @@
     "fp": 14.5,
     "pts": 5.6,
     "line": "2 G, 4 SOG, 2 BLK, 2 HIT",
-    "own_chg": 1.6
+    "own_chg": 3.9
    },
    {
     "id": 4697409,
@@ -9884,7 +9884,7 @@
     "fp": 8.1,
     "pts": 5.3,
     "line": "2 G, 1 A, 3 SOG",
-    "own_chg": 0.0
+    "own_chg": 0.1
    },
    {
     "id": 3042081,
@@ -9908,7 +9908,7 @@
     "fp": 10.1,
     "pts": 5.1,
     "line": "3 A, 1 SOG, 2 BLK",
-    "own_chg": 0.0
+    "own_chg": 0.1
    }
   ],
   "week": [
@@ -9934,7 +9934,7 @@
     "fp": 14.8,
     "pts": 14.8,
     "line": "2 W, 59 SV, 6 GA, 1 SO",
-    "own_chg": 4.5
+    "own_chg": 2.1
    },
    {
     "id": 5657,
@@ -9982,7 +9982,7 @@
     "fp": 21.7,
     "pts": 12.2,
     "line": "2 W, 51 SV, 4 GA",
-    "own_chg": 2.2
+    "own_chg": 1.7
    },
    {
     "id": 3900240,
@@ -10006,7 +10006,7 @@
     "fp": 12.4,
     "pts": 10.9,
     "line": "3 G, 1 A, 14 SOG, 3 BLK, 5 HIT",
-    "own_chg": 0.3
+    "own_chg": 0.0
    },
    {
     "id": 4894222,
@@ -10030,7 +10030,7 @@
     "fp": 13.9,
     "pts": 10.7,
     "line": "3 G, 3 SOG, 5 BLK, 14 HIT",
-    "own_chg": 0.7
+    "own_chg": 1.0
    },
    {
     "id": 3041992,
@@ -10054,7 +10054,7 @@
     "fp": 15.1,
     "pts": 10.4,
     "line": "6 A, 10 SOG, 2 BLK, 4 HIT",
-    "own_chg": 3.9
+    "own_chg": 5.5
    },
    {
     "id": 5080207,
@@ -10078,7 +10078,7 @@
     "fp": 14.5,
     "pts": 10.4,
     "line": "3 G, 2 A, 11 SOG, 2 BLK, 3 HIT",
-    "own_chg": 1.6
+    "own_chg": 3.9
    },
    {
     "id": 2976849,
@@ -10102,7 +10102,7 @@
     "fp": 14.7,
     "pts": 10.3,
     "line": "4 G, 9 SOG, 2 BLK, 4 HIT",
-    "own_chg": 1.5
+    "own_chg": 1.6
    }
   ]
  },
@@ -10149,7 +10149,7 @@
    ],
    "date": "Oct 13 7:46PM",
    "owner": "Torts Illustrated",
-   "status": "OUT",
+   "status": "DAY_TO_DAY",
    "group": "D",
    "team": "MIN"
   },
@@ -10164,7 +10164,7 @@
    ],
    "date": "Oct 13 4:09PM",
    "owner": "Torts Illustrated",
-   "status": "OUT",
+   "status": "DAY_TO_DAY",
    "group": "G",
    "team": "FLA"
   },
@@ -10179,7 +10179,7 @@
    ],
    "date": "Oct 13 1:09PM",
    "owner": "Torts Illustrated",
-   "status": "OUT",
+   "status": "DAY_TO_DAY",
    "group": "D",
    "team": "COL"
   },
@@ -10194,7 +10194,7 @@
    ],
    "date": "Oct 13 12:39PM",
    "owner": "Matt's Monstrous Team",
-   "status": "OUT",
+   "status": "DAY_TO_DAY",
    "group": "D",
    "team": "WPG"
   },
@@ -10227,40 +10227,26 @@
    "status": "INJURY_RESERVE",
    "group": "F",
    "team": "FLA"
-  },
-  {
-   "player": "Rasmus Dahlin",
-   "summary": "Dahlin (upper body) has been ruled out for Tuesday's game against Montreal, Heather Engel of NHL.com reports.",
-   "credit": "Rotowire via ESPN, citing Heather Engel (NHL.com)",
-   "link": "https://www.espn.com/nhl/player/news/_/id/4294163",
-   "insider": "",
-   "kinds": [
-    "injury"
-   ],
-   "date": "Oct 12 4:05PM",
-   "owner": "Torts Illustrated",
-   "status": "OUT",
-   "group": "D",
-   "team": "BUF"
-  },
-  {
-   "player": "Jake Sanderson",
-   "summary": "Sanderson (lower body) has been ruled out for Monday's game against the Devils, Bruce Garrioch of Postmedia reports.",
-   "credit": "Rotowire via ESPN, citing Bruce Garrioch (Postmedia)",
-   "link": "https://www.espn.com/nhl/player/news/_/id/4697386",
-   "insider": "",
-   "kinds": [
-    "injury"
-   ],
-   "date": "Oct 12 11:43AM",
-   "owner": "McDavid Mania",
-   "status": "OUT",
-   "group": "D",
-   "team": "OTT"
   }
  ],
  "status_watch": [],
  "rumors": [
+  {
+   "title": "New Reports Suggest Red Wings Have \"Zero Interest\" in Trading Simon Edvinsson",
+   "link": "https://sports.yahoo.com/articles/reports-suggest-red-wings-zero-170822845.html",
+   "players": [
+    "Simon Edvinsson"
+   ],
+   "date": "Oct 14"
+  },
+  {
+   "title": "St. Louis Blues Reportedly Interested In Red Wings' Simon Edvinsson; Would They Be Willing To Part Ways With The Necessary Assets?",
+   "link": "https://sports.yahoo.com/articles/st-louis-blues-reportedly-interested-153942407.html",
+   "players": [
+    "Simon Edvinsson"
+   ],
+   "date": "Oct 14"
+  },
   {
    "title": "Blackhawks Hang On And Win 5-3 In Connor Bedard's Return To Lineup",
    "link": "https://sports.yahoo.com/articles/blackhawks-hang-win-5-3-032829918.html",
@@ -10276,21 +10262,13 @@
     "Jack Hughes"
    ],
    "date": "Oct 13"
-  },
-  {
-   "title": "When will Blackhawks' Connor Bedard return? Latest on shoulder injury",
-   "link": "https://sports.yahoo.com/articles/blackhawks-connor-bedard-return-latest-183055585.html",
-   "players": [
-    "Connor Bedard"
-   ],
-   "date": "Oct 12"
   }
  ],
  "notes": [
   "Week 3 vs McDavid Mania: projected 145-137, 63% to win (starts left 42 vs 43).",
   "Opportunity: Wyatt Johnston (DAL) injury -> Matt Duchene is the free agent who gains.",
   "Best rest-of-season add: Will Cuylle for Gavin McKenna (+17).",
-  "Confirmed FA goalie starts today: Casey DeSmith vs COL."
+  "Confirmed FA goalie starts today: Casey DeSmith vs COL, Charlie Lindgren vs MTL."
  ],
  "opportunities": [
   {
@@ -10570,21 +10548,21 @@
   "Jack Hughes": [
    {
     "player": "Jack Hughes",
+    "summary": "Hughes scored the game-winning goal and added two assists, one on the power play, in Tuesday's 5-4 overtime victory over the Red Wings.",
+    "credit": "Rotowire via ESPN",
+    "link": "https://www.espn.com/nhl/player/news/_/id/4565222",
+    "insider": "",
+    "kinds": [],
+    "date": "Oct 14 9:25AM"
+   },
+   {
+    "player": "Jack Hughes",
     "summary": "Hughes notched two power-play assists in Saturday's 4-1 win over the Canucks.",
     "credit": "Rotowire via ESPN",
     "link": "https://www.espn.com/nhl/player/news/_/id/4565222",
     "insider": "",
     "kinds": [],
     "date": "Oct 10 8:55PM"
-   },
-   {
-    "player": "Jack Hughes",
-    "summary": "Hughes scored the game-winning goal to lift the Devils to a 3-2 overtime win over the Flyers on Thursday.",
-    "credit": "Rotowire via ESPN",
-    "link": "https://www.espn.com/nhl/player/news/_/id/4565222",
-    "insider": "",
-    "kinds": [],
-    "date": "Oct 1 11:08PM"
    }
   ],
   "Cutter Gauthier": [
@@ -10732,21 +10710,21 @@
   "Connor Bedard": [
    {
     "player": "Connor Bedard",
+    "summary": "Bedard tallied a power-play assist, posted a plus-1 rating and placed three shots on net in Tuesday's 5-3 win over Pittsburgh.",
+    "credit": "Rotowire via ESPN",
+    "link": "https://www.espn.com/nhl/player/news/_/id/5149125",
+    "insider": "",
+    "kinds": [],
+    "date": "Oct 14 9:45AM"
+   },
+   {
+    "player": "Connor Bedard",
     "summary": "Bedard (shoulder) is expected to be in the lineup against the Penguins on Tuesday, Charlie Roumeliotis of WGN Radio reports.",
     "credit": "Rotowire via ESPN, citing Charlie Roumeliotis (WGN Radio)",
     "link": "https://www.espn.com/nhl/player/news/_/id/5149125",
     "insider": "",
     "kinds": [],
     "date": "Oct 13 11:46AM"
-   },
-   {
-    "player": "Connor Bedard",
-    "summary": "Bedard (shoulder) might be available for Tuesday's tilt versus the Penguins, Ben Pope of the Chicago Sun-Times reports.",
-    "credit": "Rotowire via ESPN, citing Ben Pope (Chicago Sun-Times)",
-    "link": "https://www.espn.com/nhl/player/news/_/id/5149125",
-    "insider": "",
-    "kinds": [],
-    "date": "Oct 12 1:31PM"
    }
   ],
   "Connor Hellebuyck": [
@@ -10837,23 +10815,21 @@
   "Jet Greaves": [
    {
     "player": "Jet Greaves",
+    "summary": "Greaves turned aside all four shots he faced after replacing Cam Talbot early in the third period of Tuesday's 7-3 loss to the Panthers.",
+    "credit": "Rotowire via ESPN",
+    "link": "https://www.espn.com/nhl/player/news/_/id/4894366",
+    "insider": "",
+    "kinds": [],
+    "date": "Oct 14 10:35AM"
+   },
+   {
+    "player": "Jet Greaves",
     "summary": "Greaves allowed four goals on 26 shots in Saturday's 5-3 loss to the Blues. St. Louis' fifth goal was an empty-netter.",
     "credit": "Rotowire via ESPN",
     "link": "https://www.espn.com/nhl/player/news/_/id/4894366",
     "insider": "",
     "kinds": [],
     "date": "Oct 11 1:24AM"
-   },
-   {
-    "player": "Jet Greaves",
-    "summary": "Greaves will defend the road crease in Saturday's clash with the Blues, per Mark Scheig of The Hockey Writers.",
-    "credit": "Rotowire via ESPN, citing Mark Scheig (The Hockey Writers.)",
-    "link": "https://www.espn.com/nhl/player/news/_/id/4894366",
-    "insider": "",
-    "kinds": [
-     "starting"
-    ],
-    "date": "Oct 10 1:24PM"
    }
   ],
   "Gavin McKenna": [
@@ -10959,6 +10935,15 @@
   "Mackenzie Blackwood": [
    {
     "player": "Mackenzie Blackwood",
+    "summary": "Blackwood stopped 24 of 26 shots in Tuesday's 3-2 win over the Stars.",
+    "credit": "Rotowire via ESPN",
+    "link": "https://www.espn.com/nhl/player/news/_/id/3904177",
+    "insider": "",
+    "kinds": [],
+    "date": "Oct 14 8:46AM"
+   },
+   {
+    "player": "Mackenzie Blackwood",
     "summary": "Blackwood will guard the road goal against Dallas on Tuesday, per Meghan Angley of Altitude Sports Radio.",
     "credit": "Rotowire via ESPN, citing Meghan Angley (Altitude Sports Radio.)",
     "link": "https://www.espn.com/nhl/player/news/_/id/3904177",
@@ -10967,15 +10952,6 @@
      "starting"
     ],
     "date": "Oct 12 2:44PM"
-   },
-   {
-    "player": "Mackenzie Blackwood",
-    "summary": "Blackwood made 17 saves in a 6-3 loss to Toronto on Saturday.",
-    "credit": "Rotowire via ESPN",
-    "link": "https://www.espn.com/nhl/player/news/_/id/3904177",
-    "insider": "",
-    "kinds": [],
-    "date": "Oct 11 3:08AM"
    }
   ],
   "Jared McCann": [
@@ -11492,172 +11468,172 @@
   "Stuart Skinner": 0.36,
   "Matty Beniers": 0.4,
   "Declan Carlile": 0.77,
-  "Ryan Hartman": 0.98,
   "Brady Skjei": 0.44,
+  "Ryan Hartman": 0.98,
   "William Eklund": 0.28,
   "Jonathan Marchessault": 0.76,
   "Porter Martone": 1.41,
   "Elias Lindholm": 0.42,
+  "Mason McTavish": 0.51,
   "Gustav Forsling": 0.35,
   "Anthony Cirelli": 0.34,
-  "Tommy Novak": 0.49,
   "Matt Coronato": 0.26,
   "Brayden Schenn": 0.39,
   "Nikita Zadorov": 0.27,
+  "Tommy Novak": 0.49,
   "Dustin Wolf": 1.3,
-  "Mason McTavish": 0.51,
   "Josh Manson": 0.26,
   "Lawson Crouse": 0.26,
-  "Yaroslav Askarov": 0.77,
   "Sam Malinski": 0.8,
-  "Oliver Bjorkstrand": 0.25,
+  "Fraser Minten": 0.44,
   "Aliaksei Protas": 0.65,
+  "Oliver Bjorkstrand": 0.25,
+  "Yaroslav Askarov": 0.77,
   "Mats Zuccarello": 1.18,
   "Alexander Wennberg": 0.79,
-  "Fraser Minten": 0.44,
+  "Tyler Kleven": 0.33,
   "Philip Broberg": 0.25,
   "Anton Lundell": 0.31,
-  "Anthony Stolarz": 0.26,
   "Zeev Buium": 0.91,
-  "Mason Marchment": 0.5,
+  "Anthony Stolarz": 0.26,
   "Aaron Ekblad": 0.4,
-  "Tyler Kleven": 0.33,
+  "Mason Marchment": 0.5,
   "Josh Doan": 0.34,
   "Logan Stanley": 0.86,
-  "Zayne Parekh": 0.4,
-  "Michael Misa": 1.16,
-  "Zach Benson": 0.42,
   "Adin Hill": 0.41,
+  "Zach Benson": 0.42,
+  "Michael Misa": 1.16,
+  "Zayne Parekh": 0.4,
   "Maxim Tsyplakov": 1.35,
-  "Egor Chinakhov": 0.39,
   "Jack Roslovic": 0.28,
+  "Parker Kelly": 0.3,
+  "Egor Chinakhov": 0.39,
   "Cam Fowler": 0.52,
   "Victor Olofsson": 0.65,
   "Drew Doughty": 0.47,
-  "Parker Kelly": 0.3,
   "Ryan Pulock": 0.68,
   "Oliver Ekman-Larsson": 1.25,
-  "Kevin Lankinen": 4.94,
-  "Connor McMichael": 0.3,
   "Damon Severson": 0.7,
-  "Kyle Palmieri": 0.27,
+  "Connor McMichael": 0.3,
+  "Kevin Lankinen": 4.94,
   "Zack Bolduc": 0.31,
+  "Mark Jankowski": 0.37,
+  "Kyle Palmieri": 0.27,
+  "Kent Johnson": 0.43,
   "Kasperi Kapanen": 0.37,
   "Igor Chernyshov": 0.35,
-  "Mark Jankowski": 0.37,
   "Jordan Staal": 0.73,
-  "Kent Johnson": 0.43,
   "Trevor Connelly": 0.68,
   "Yegor Sharangovich": 0.27,
   "Simon Nemec": 0.55,
-  "Kaapo Kakko": 0.31,
   "Nicolas Roy": 0.33,
+  "Kaapo Kakko": 0.31,
   "Maxim Shabanov": 0.29,
   "Ryan Donato": 0.48,
-  "Dawson Mercer": 0.86,
   "William Karlsson": 0.32,
+  "Josh Anderson": 0.26,
+  "Dawson Mercer": 0.86,
   "Jason Zucker": 0.38,
   "Mark Kastelic": 0.31,
+  "Frederick Gaudreau": 0.43,
   "Ryan McLeod": 0.7,
   "Yakov Trenin": 0.55,
-  "Frederick Gaudreau": 0.43,
   "Frederik Andersen": 0.4,
-  "Josh Anderson": 0.26,
   "Josh Norris": 0.77,
-  "Tyson Foerster": 0.51,
   "Jamie Benn": 0.51,
   "Teuvo Teravainen": 0.45,
+  "Tyson Foerster": 0.51,
   "Arber Xhekaj": 0.86,
-  "Noah Cates": 1.4,
-  "Mavrik Bourque": 0.92,
+  "Brett Kulak": 0.33,
+  "Michael Brandsegg-Nygard": 0.86,
   "Tim Washe": 0.5,
+  "Cole Sillinger": 0.7,
+  "Mavrik Bourque": 0.92,
+  "Noah Cates": 1.4,
   "Collin Graf": 0.38,
   "Carter Yakemchuk": 0.77,
-  "Cole Sillinger": 0.7,
   "Leevi Merilainen": 0.95,
-  "Brett Kulak": 0.33,
   "Sam Dickinson": 0.28,
-  "Michael Brandsegg-Nygard": 0.86,
+  "Adam Edstrom": 0.5,
   "Conor Garland": 1.34,
   "Akira Schmid": 0.42,
   "Viggo Bjorck": 0.86,
   "Michael Bunting": 1.61,
-  "Adam Edstrom": 0.5,
-  "Michael Amadio": 0.27,
   "Ridly Greig": 0.31,
+  "Michael Amadio": 0.27,
   "Dmitri Voronkov": 0.63,
-  "Konsta Helenius": 0.72,
-  "J.J. Moser": 0.51,
   "Ilya Protas": 0.86,
   "Luke Schenn": 0.77,
-  "Cam York": 0.29,
+  "Konsta Helenius": 0.72,
+  "J.J. Moser": 0.51,
   "Simon Holmstrom": 0.34,
+  "Cam York": 0.29,
   "Sean Couturier": 0.79,
   "Jake Walman": 0.62,
   "Andrew Copp": 0.36,
   "Pavel Mintyukov": 0.32,
+  "T.J. Hughes": 0.86,
   "Ben Meyers": 0.57,
   "Nils Hoglander": 0.38,
   "A.J. Greer": 0.46,
   "Victor Eklund": 0.86,
-  "T.J. Hughes": 0.86,
   "Matias Maccelli": 0.29,
   "Filip Hallander": 0.33,
-  "Colten Ellis": 0.95,
   "Matthew Wood": 0.33,
-  "Alberts Smits": 0.68,
   "Rasmus Ristolainen": 0.37,
-  "Matvei Gridin": 0.99,
-  "Justin Sourdif": 0.66,
+  "Alberts Smits": 0.68,
   "William Carrier": 0.26,
+  "Justin Sourdif": 0.66,
+  "Matvei Gridin": 0.99,
+  "Noah Warren": 0.86,
+  "Colten Ellis": 0.95,
   "Connor Brown": 0.38,
   "Axel Sandin-Pellikka": 0.95,
   "Corey Perry": 1.55,
-  "Noah Warren": 0.86,
   "Alex Vlasic": 0.39,
-  "Jesper Boqvist": 0.5,
-  "Samuel Ersson": 2.73,
-  "Andrew Peeke": 0.77,
-  "Justin Brazeau": 0.29,
   "Pius Suter": 0.5,
+  "Samuel Ersson": 2.73,
+  "Justin Brazeau": 0.29,
+  "Andrew Peeke": 0.77,
+  "Jesper Boqvist": 0.5,
   "Max Domi": 0.3,
   "Jiri Kulich": 0.43,
-  "Conor Geekie": 0.29,
   "Marcus Foligno": 1.53,
-  "Hendrix Lapierre": 0.29,
+  "Conor Geekie": 0.29,
   "Kirby Dach": 0.47,
+  "Hendrix Lapierre": 0.29,
   "Connor Clifton": 0.86,
-  "Parker Wotherspoon": 0.69,
-  "Calum Ritchie": 0.35,
-  "Justin Hryckowian": 0.99,
   "Adam Jiricek": 0.86,
+  "Fedor Svechkov": 0.32,
+  "Calum Ritchie": 0.35,
+  "Parker Wotherspoon": 0.69,
+  "Justin Hryckowian": 0.99,
+  "Jake Evans": 0.4,
   "Alex Formenton": 0.86,
   "Marc Gatcomb": 0.68,
-  "Jake Evans": 0.4,
   "Michael Kesselring": 1.11,
-  "Owen Michaels": 0.86,
-  "Andre Burakovsky": 0.74,
-  "Brenden Dillon": 0.95,
-  "Isaac Howard": 0.75,
   "Phillip Danault": 1.05,
-  "Denver Barkey": 0.52,
+  "Brenden Dillon": 0.95,
+  "Owen Michaels": 0.86,
   "Beck Malenstyn": 0.77,
-  "Ville Koivunen": 0.95,
+  "Isaac Howard": 0.75,
+  "Denver Barkey": 0.52,
   "Brandon Carlo": 0.27,
+  "Andre Burakovsky": 0.74,
+  "Ville Koivunen": 0.95,
   "Niko Mikkola": 0.53,
-  "Fedor Svechkov": 0.32,
-  "Nick Lardis": 0.34,
   "Jonathan Drouin": 0.54,
+  "Nick Lardis": 0.34,
   "Ryan McDonagh": 0.6,
+  "Erik Gudbranson": 0.95,
   "Andrei Kuzmenko": 0.95,
   "Joel Armia": 0.32,
   "Noel Acciari": 0.26,
-  "Erik Gudbranson": 0.95,
   "Ryan Winterton": 0.4,
   "Ian Cole": 0.3,
   "Zach Bogosian": 0.86,
-  "Lars Eller": 0.31,
-  "Zemgus Girgensons": 0.28
+  "Zemgus Girgensons": 0.28,
+  "Lars Eller": 0.31
  },
  "disagree_threshold": 0.25,
  "rosters": {
