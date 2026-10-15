@@ -5,7 +5,7 @@ import json
 import logging
 from datetime import datetime
 
-from fh import accuracy, advice, config, engine, espn, news, rankings, rumors, season, valuation
+from fh import accuracy, advice, config, engine, espn, news, rankings, rumors, season, valuation, vegas
 from fh.espn import fantasy_points
 from fh.board import ET
 
@@ -148,6 +148,8 @@ def build(swid: str) -> dict:
     next_week = cal.matchups.get(cm + 1, [])
     ros_periods = [d for m in range(cm, state.regular_matchups + 1) for d in cal.matchups[m] if d >= today]
 
+    team_rates = season.fetch_team_rates()
+    cal.vegas = vegas.fetch(cal, [today, today + 1], team_rates, lg.scoring)
     proj = engine.project(state, cal, rosters)
     rank = sorted(proj.strength, key=lambda t: -proj.strength[t])
     my_rank = rank.index(me) + 1
@@ -164,7 +166,7 @@ def build(swid: str) -> dict:
         pool = (lambda ps: ps) if m > cm else engine.active
         days = []
         for d in periods:
-            f = lambda p, d=d: p.exp_game() if d in cal.team_games.get(p.team, ()) else 0.0
+            f = lambda p, d=d: p.exp_day(cal, d)
             a, sa = engine.best_lineup(pool(mine), lg.slots, f)
             b, sb = engine.best_lineup(pool(rosters[opp]), lg.slots, f)
             days.append({"date": cal.date_of(d).strftime("%a %b %-d"), "me": round(a, 1), "opp": round(b, 1),
@@ -248,7 +250,7 @@ def build(swid: str) -> dict:
     for f in fas:
         if f.group == "G" and not starting.get(f.id) and f.team in confirmed_teams:
             starting[f.id] = "backup"
-    g_today = advice.goalies_today(fas, cal, today, starting, season.fetch_goals_for())[:8]
+    g_today = advice.goalies_today(fas, cal, today, starting, {t: r["gf"] for t, r in team_rates.items()})[:8]
     opps = news.opportunities(nws, {p.id: p for p in players + fas}, fas, now)
     news.save_snapshot(players)
     drops3 = advice.droppable(mine, value, k=3)
@@ -346,6 +348,13 @@ def build(swid: str) -> dict:
                 o.about.name, o.about.team, "/".join(sorted(o.item.kinds & news.NEGATIVE)), bens[0]["name"]))
     if fa_recs and fa_recs[0].gain >= ADD_ALERT:
         notes.append("Best rest-of-season add: %s for %s (+%.0f)." % (fa_recs[0].p.name, fa_recs[0].drop.name, fa_recs[0].gain))
+    # Betting lines: my teams tonight whose implied goals differ most from their usual scoring
+    tonight = sorted({p.team: cal.vegas[(p.team, today)] for p in engine.active(mine) if (p.team, today) in cal.vegas
+                      and p.group != "G"}.items(), key=lambda ta: -abs(ta[1].line.goals / ta[1].base_gf - 1))
+    swings = [(t, a) for t, a in tonight if abs(a.line.goals / a.base_gf - 1) >= 0.1][:4]
+    if swings:
+        notes.append("Vegas tonight: " + ", ".join("%s %.1f goals vs %s (usual %.1f, %+.0f%% skater pts)" % (
+            t, a.line.goals, a.line.opp, a.base_gf, (a.sk_mult["F"] - 1) * 100) for t, a in swings) + ".")
     conf = [r for r in g_today if r["confirmed"] == "confirmed"]
     if conf:
         notes.append("Confirmed FA goalie starts today: %s." % ", ".join("%s vs %s" % (r["p"].name, r["opp"]) for r in conf[:3]))
@@ -421,6 +430,8 @@ def build(swid: str) -> dict:
                                                    "light": cal.games(p.team, light)}) for p, c in drop_rank],
         "goalies_today": [_pl(r["p"], extra={"opp": r["opp"], "confirmed": r["confirmed"], "exp": round(r["exp"], 1),
                                              "opp_gf": round(r["opp_gf"], 2) if r["opp_gf"] else None,
+                                             "win": round(r["win"], 3) if r["win"] is not None else None,
+                                             "opp_goals": round(r["opp_goals"], 2) if r["opp_goals"] is not None else None,
                                              "waiver": _waiver(waiver_dates.get(r["p"].id), r["p"].status)})
                           for r in g_today],
         "recent": {"yesterday": cal.date_of(yday).strftime("%a %b %-d") if yday >= 1 else "",

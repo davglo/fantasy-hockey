@@ -21,6 +21,7 @@ class Calendar:
     team_games: dict               # NHL team abbrev -> set of scoring periods with a game
     opponents: dict                # (abbrev, period) -> opponent abbrev
     matchups: dict                 # matchup period -> [scoring periods]
+    vegas: dict = field(default_factory=dict)   # (team, period) -> vegas.Adj (betting lines, today/tomorrow)
     away: set = field(default_factory=set)   # (abbrev, period) where the team is the road side
 
     def period_of(self, d: date) -> int:
@@ -175,13 +176,19 @@ def split_stats(entry: dict, split: int) -> dict:
 
 
 def fetch_goals_for() -> dict:
-    """NHL team -> goals for per game, this season blended with last season (worth 10 games) for stability."""
+    """NHL team -> goals for per game (see fetch_team_rates)."""
+    return {t: r["gf"] for t, r in fetch_team_rates().items()}
+
+
+def fetch_team_rates() -> dict:
+    """NHL team -> {"gf", "ga", "win"} per game, this season blended with last season (worth 10 games) for stability."""
     from fh.rankings import norm_team
 
     def table(path):
         d = espn.cached("nhl_standings_%s" % path.replace("/", "_"), 6 * 3600,
                         lambda: espn._curl("https://api-web.nhle.com/v1/standings/" + path))
-        return {norm_team(t["teamAbbrev"]["default"]): (t.get("goalFor", 0), t.get("gamesPlayed", 0))
+        return {norm_team(t["teamAbbrev"]["default"]): (t.get("goalFor", 0), t.get("goalAgainst", 0), t.get("wins", 0),
+                                                        t.get("gamesPlayed", 0))
                 for t in d.get("standings", [])}
     try:
         now, last = table("now"), table("2026-04-16")
@@ -189,9 +196,11 @@ def fetch_goals_for() -> dict:
         log.info("NHL standings unavailable (%s)", e)
         return {}
     out = {}
-    for t, (lgf, lgp) in last.items():
-        gf, gp = now.get(t, (0, 0))
-        out[t] = (gf + (lgf / lgp if lgp else 3.0) * 10) / (gp + 10)
+    for t, (lgf, lga, lw, lgp) in last.items():
+        gf, ga, w, gp = now.get(t, (0, 0, 0, 0))
+        prior = lambda x, d: x / lgp if lgp else d
+        out[t] = {"gf": (gf + prior(lgf, 3.0) * 10) / (gp + 10), "ga": (ga + prior(lga, 3.0) * 10) / (gp + 10),
+                  "win": (w + prior(lw, 0.5) * 10) / (gp + 10)}
     return out
 
 

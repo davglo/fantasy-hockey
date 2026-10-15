@@ -77,6 +77,17 @@ class P:
         """Expected points on a day his NHL team plays."""
         return self.rate * self.share
 
+    def exp_day(self, cal: Calendar, period: int) -> float:
+        """Expected points on one scoring period: 0 without a game; betting lines adjust it when posted."""
+        if period not in cal.team_games.get(self.team, ()):
+            return 0.0
+        adj = cal.vegas.get((self.team, period))
+        if adj is None:
+            return self.exp_game()
+        if self.group == "G":
+            return max(0.0, self.rate + adj.g_delta) * self.share
+        return self.exp_game() * adj.sk_mult[self.group]
+
     def ros(self, cal: Calendar, periods) -> float:
         return self.exp_game() * cal.games(self.team, periods)
 
@@ -152,8 +163,7 @@ def projected_points(players: list, league: League, cal: Calendar, periods, incl
     act = list(players) if include_ir else active(players)
     total = 0.0
     for d in periods:
-        total += best_lineup(act, league.slots,
-                             lambda p: p.exp_game() if d in cal.team_games.get(p.team, ()) else 0.0)[0]
+        total += best_lineup(act, league.slots, lambda p: p.exp_day(cal, d))[0]
     return total
 
 

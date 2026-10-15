@@ -100,7 +100,9 @@ def _overview(ctx, manual):
     gt = [[_e(g["name"]) + _inj(g), _e(g["team"]), _e(g["opp"]),
            {"confirmed": '<span class="good">confirmed</span>', "expected": '<span class="warnc">expected</span>',
             "backup": '<span class="bad">backup tonight</span>'}.get(g["confirmed"], '<span class="mute">not reported</span>'),
-           "%.1f" % g["exp"] if g["exp"] else "-", "%.2f" % g["opp_gf"] if g["opp_gf"] else "-", _e(g["waiver"])] for g in ctx["goalies_today"]]
+           "%.1f" % g["exp"] if g["exp"] else "-", "%.0f%%" % (g["win"] * 100) if g.get("win") is not None else "-",
+           "%.1f" % g["opp_goals"] if g.get("opp_goals") is not None else "-",
+           "%.2f" % g["opp_gf"] if g["opp_gf"] else "-", _e(g["waiver"])] for g in ctx["goalies_today"]]
     nw = "".join(_news_li(n) for n in ctx["news"])
     sw = "".join(_news_li(n, ' <span class="inj">%s</span>' % _e(n["status"])) for n in ctx["status_watch"])
     cad = ctx["cadence"]
@@ -114,7 +116,7 @@ def _overview(ctx, manual):
 <div class="card"><h3>Add alerts</h3><ul>{adds}</ul></div>
 <div class="card"><h3>Drop watch</h3><ul>{drops}</ul><p class="mute">Skaters only. Full ranking on Free Agents.</p></div>
 </div>
-<div class="card"><h3>Goalies to add today</h3>{gt}<p class="mute">Free-agent goalies whose team plays today. Start status comes from RotoWire's reports (via ESPN), which relay beat reporters and team sources - the same sources Daily Faceoff uses; a note counts when it names today's game. Backup = a teammate is confirmed. Opp GF = opponent goals per game (this season, steadied with last season).</p></div>""".format(
+<div class="card"><h3>Goalies to add today</h3>{gt}<p class="mute">Free-agent goalies whose team plays today. Start status comes from RotoWire's reports (via ESPN), which relay beat reporters and team sources - the same sources Daily Faceoff uses; a note counts when it names today's game. Backup = a teammate is confirmed. Win / Opp exp G = DraftKings betting line (via ESPN): his team's chance to win and the opponent's expected goals tonight; Exp pts already includes them. Opp GF = opponent goals per game (this season, steadied with last season).</p></div>""".format(
         grade=_e(me["grade"]), headline=_e(me["headline"]), odds=_pct(me["playoff_odds"]), rank=me["rank"], size=size,
         posture=_e(me["posture"]),
         calwarn='<div class="card urgent"><h3>Calendar check failed</h3><p>%s. Week-based numbers may be off until fixed.</p></div>'
@@ -122,7 +124,7 @@ def _overview(ctx, manual):
         daily=_e(cad["daily_at"]), takes=_e(cad["takes_days"]), tdate=_e(manual.get("date", "never")),
         take=_take(manual, "overview"), adds=adds or "<li class=mute>No add clears the bar today.</li>",
         drops=drops or "<li class=mute>No skater worth cutting.</li>",
-        gt=_table(["Goalie", "Team", "Opp", "Start", "Exp pts", "Opp GF", "Waivers"], gt),
+        gt=_table(["Goalie", "Team", "Opp", "Start", "Exp pts", "Win", "Opp exp G", "Opp GF", "Waivers"], gt),
         nw=nw or "<li class=mute>No fresh news on your players in the last 72h.</li>",
         sw='<h3 style="margin-top:10px">Status watch</h3><ul class="news">%s</ul>' % sw if sw else "",
         rum='<h3 style="margin-top:10px">Rumors &amp; reports</h3><ul class="news">%s</ul>' % rum if rum else "")

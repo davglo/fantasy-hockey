@@ -26,7 +26,7 @@ def lineup_check(mine: list, league: League, cal: Calendar, period: int) -> tupl
     can_play = lambda p: plays(p) and p.injury != "OUT"
     starters = [p for p in mine if p.slot not in (BENCH_SLOT, IR_SLOT)]
     best_pts, best = engine.best_lineup(engine.active(mine), league.slots,
-                                        lambda p: p.exp_game() if can_play(p) else 0.0)
+                                        lambda p: p.exp_day(cal, period) if can_play(p) else 0.0)
     best_ids = {p.id for p in best}
     # Starters who won't score and aren't part of the best lineup = slots to hand to benched players.
     idle = sorted((p for p in starters if p.id not in best_ids), key=lambda p: p.exp_game() if can_play(p) else -1)
@@ -46,7 +46,7 @@ def lineup_check(mine: list, league: League, cal: Calendar, period: int) -> tupl
             issues.append(LineupIssue("check", "%s is starting but listed %s - confirm he's eligible tonight." % (p.name, p.injury)))
         if p.group == "G" and can_play(p):
             issues.append(LineupIssue("check", "Confirm %s starts in net (no confirmed-starter feed)." % p.name))
-    actual = sum(p.exp_game() for p in starters if can_play(p))
+    actual = sum(p.exp_day(cal, period) for p in starters if can_play(p))
     return issues, best, max(0.0, best_pts - actual)
 
 
@@ -188,15 +188,19 @@ def usable_games(roster: list, league: League, cal: Calendar, periods) -> dict:
 
 def goalies_today(fas: list, cal: Calendar, period: int, starting: dict, opp_gf: dict) -> list:
     """FA goalies whose team plays today. starting: playerId -> 'confirmed' / 'expected' / 'backup' / ''.
-    Expected points: full per-start rate if confirmed/expected, 0 if backup, else rate x share of starts."""
+    Expected points: full per-start rate if confirmed/expected, 0 if backup, else rate x share of starts.
+    Betting lines (cal.vegas), when posted, shift the per-start rate for win odds and goals against."""
     out = []
     for p in fas:
         if p.group != "G" or period not in cal.team_games.get(p.team, ()) or p.injury not in HEALTHY:
             continue    # IR / out goalies aren't starting (e.g. Demko)
         opp = cal.opponents.get((p.team, period), "")
         st = starting.get(p.id, "")
-        exp = p.rate if st in ("confirmed", "expected") else 0.0 if st == "backup" else p.exp_game()
-        out.append({"p": p, "opp": opp, "confirmed": st, "opp_gf": opp_gf.get(opp), "exp": exp})
+        adj = cal.vegas.get((p.team, period))
+        rate = max(0.0, p.rate + adj.g_delta) if adj else p.rate
+        exp = rate if st in ("confirmed", "expected") else 0.0 if st == "backup" else rate * p.share
+        out.append({"p": p, "opp": opp, "confirmed": st, "opp_gf": opp_gf.get(opp), "exp": exp,
+                    "win": adj.line.win if adj else None, "opp_goals": adj.line.opp_goals if adj else None})
     order = {"confirmed": 0, "expected": 1, "": 2, "backup": 3}
     return sorted(out, key=lambda r: (order[r["confirmed"]], -r["exp"]))
 
