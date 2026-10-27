@@ -1,5 +1,5 @@
 {
- "generated": "Tue Oct 27, 8:08 AM",
+ "generated": "Tue Oct 27, 5:43 PM",
  "league": {
   "name": "The Healthy Scratches",
   "size": 8,
@@ -33,9 +33,9 @@
   "name": "Jabroni Beaters",
   "grade": "A-",
   "rank": 2,
-  "playoff_odds": 0.905,
+  "playoff_odds": 0.872,
   "posture": "Contender: hold producing starters; buy at your biggest need.",
-  "headline": "Jabroni Beaters: #2 of 8 in projected strength, 91% playoff odds. Weakest group: F (#6 quality, #8 rest of season).",
+  "headline": "Jabroni Beaters: #2 of 8 in projected strength, 87% playoff odds. Weakest group: F (#6 quality, #8 rest of season).",
   "urgent": "Lineup today: Start Darcy Kuemper (LA vs CHI) for Jeremy Swayman (lower projection)."
  },
  "period": {
@@ -54,8 +54,8 @@
    "pf": 574.7,
    "pa": 457.6,
    "strength": 143.9,
-   "odds": 0.907,
-   "exp_wins": 15.5
+   "odds": 0.923,
+   "exp_wins": 15.6
   },
   {
    "id": 5,
@@ -65,9 +65,9 @@
    "t": 0,
    "pf": 560.1,
    "pa": 494.8,
-   "strength": 146.7,
-   "odds": 0.905,
-   "exp_wins": 15.2
+   "strength": 144.6,
+   "odds": 0.872,
+   "exp_wins": 14.8
   },
   {
    "id": 2,
@@ -77,9 +77,9 @@
    "t": 0,
    "pf": 512.5,
    "pa": 490.5,
-   "strength": 140.0,
-   "odds": 0.616,
-   "exp_wins": 13.3
+   "strength": 137.6,
+   "odds": 0.507,
+   "exp_wins": 12.8
   },
   {
    "id": 1,
@@ -90,8 +90,8 @@
    "pf": 546.5,
    "pa": 558.4,
    "strength": 148.2,
-   "odds": 0.896,
-   "exp_wins": 15.1
+   "odds": 0.906,
+   "exp_wins": 15.2
   },
   {
    "id": 7,
@@ -102,8 +102,8 @@
    "pf": 521.0,
    "pa": 560.1,
    "strength": 137.6,
-   "odds": 0.205,
-   "exp_wins": 10.9
+   "odds": 0.234,
+   "exp_wins": 11.0
   },
   {
    "id": 6,
@@ -114,8 +114,8 @@
    "pf": 509.9,
    "pa": 547.4,
    "strength": 138.0,
-   "odds": 0.21,
-   "exp_wins": 10.9
+   "odds": 0.254,
+   "exp_wins": 11.1
   },
   {
    "id": 3,
@@ -126,8 +126,8 @@
    "pf": 499.5,
    "pa": 553.8,
    "strength": 141.5,
-   "odds": 0.242,
-   "exp_wins": 11.1
+   "odds": 0.281,
+   "exp_wins": 11.2
   },
   {
    "id": 8,
@@ -138,8 +138,8 @@
    "pf": 478.4,
    "pa": 540.0,
    "strength": 130.5,
-   "odds": 0.017,
-   "exp_wins": 8.0
+   "odds": 0.023,
+   "exp_wins": 8.1
   }
  ],
  "matchup": {
@@ -147,24 +147,24 @@
   "opp_id": 6,
   "actual_me": 19.6,
   "actual_opp": 11.9,
-  "proj_me": 142.9,
-  "proj_opp": 131.9,
-  "win_prob": 0.66,
-  "starts_me": 58,
+  "proj_me": 146.7,
+  "proj_opp": 132.3,
+  "win_prob": 0.703,
+  "starts_me": 59,
   "starts_opp": 60,
   "days": [
    {
     "date": "Tue Oct 27",
-    "me": 27.7,
+    "me": 28.4,
     "opp": 23.3,
     "me_starts": 13,
     "opp_starts": 12
    },
    {
     "date": "Wed Oct 28",
-    "me": 14.7,
-    "opp": 15.7,
-    "me_starts": 7,
+    "me": 16.9,
+    "opp": 16.0,
+    "me_starts": 8,
     "opp_starts": 8
    },
    {
@@ -176,7 +176,7 @@
    },
    {
     "date": "Fri Oct 30",
-    "me": 8.0,
+    "me": 8.9,
     "opp": 8.1,
     "me_starts": 4,
     "opp_starts": 5
@@ -203,22 +203,22 @@
   "opp_id": 8,
   "actual_me": 0.0,
   "actual_opp": 0.0,
-  "proj_me": 161.1,
+  "proj_me": 160.5,
   "proj_opp": 135.5,
-  "win_prob": 0.808,
+  "win_prob": 0.802,
   "starts_me": 76,
   "starts_opp": 67,
   "days": [
    {
     "date": "Mon Nov 2",
-    "me": 19.7,
+    "me": 19.4,
     "opp": 7.9,
     "me_starts": 9,
     "opp_starts": 4
    },
    {
     "date": "Tue Nov 3",
-    "me": 36.5,
+    "me": 36.2,
     "opp": 33.5,
     "me_starts": 18,
     "opp_starts": 16
@@ -266,10 +266,10 @@
   "opp_id": 4,
   "actual_me": 0.0,
   "actual_opp": 0.0,
-  "proj_me": 148.5,
+  "proj_me": 142.2,
   "proj_opp": 139.1,
-  "win_prob": 0.628,
-  "starts_me": 69,
+  "win_prob": 0.544,
+  "starts_me": 66,
   "starts_opp": 67,
   "days": [
    {
@@ -288,9 +288,9 @@
    },
    {
     "date": "Wed Nov 11",
-    "me": 19.5,
+    "me": 17.4,
     "opp": 11.1,
-    "me_starts": 9,
+    "me_starts": 8,
     "opp_starts": 6
    },
    {
@@ -302,9 +302,9 @@
    },
    {
     "date": "Fri Nov 13",
-    "me": 7.4,
+    "me": 5.3,
     "opp": 3.8,
-    "me_starts": 4,
+    "me_starts": 3,
     "opp_starts": 2
    },
    {
@@ -316,9 +316,9 @@
    },
    {
     "date": "Sun Nov 15",
-    "me": 15.7,
+    "me": 13.6,
     "opp": 9.3,
-    "me_starts": 7,
+    "me_starts": 6,
     "opp_starts": 5
    }
   ],
@@ -339,10 +339,10 @@
     },
     {
      "severity": "check",
-     "text": "Confirm Carter Hart starts in net (no confirmed-starter feed)."
+     "text": "Confirm Connor Hellebuyck starts in net (no confirmed-starter feed)."
     }
    ],
-   "gain": 0.1,
+   "gain": 0.0,
    "playing": [
     {
      "id": 5206628,
@@ -504,7 +504,7 @@
      "pos": "G",
      "group": "G",
      "team": "NJ",
-     "injury": "OUT",
+     "injury": "",
      "rate": 4.51,
      "src": {
       "sheet": 4.51,
@@ -609,28 +609,6 @@
      "opp": "VAN"
     },
     {
-     "id": 4064582,
-     "name": "Carter Hart",
-     "pos": "G",
-     "group": "G",
-     "team": "VGK",
-     "injury": "",
-     "rate": 3.82,
-     "src": {
-      "sheet": 4.1,
-      "model": 3.82,
-      "espn": 3.76,
-      "pace": 3.21,
-      "l15": 1.88
-     },
-     "cons": 3.49,
-     "dis": 0.56,
-     "exp_game": 2.09,
-     "gp": 8,
-     "fp": 25.7,
-     "opp": "OTT"
-    },
-    {
      "id": 4697725,
      "name": "Alex Laferriere",
      "pos": "C/RW",
@@ -676,12 +654,12 @@
     }
    ],
    "best": [
-    "Carter Hart",
+    "Connor Hellebuyck",
     "Darcy Kuemper",
     "Macklin Celebrini",
     "Cutter Gauthier",
-    "Mark Stone",
     "Connor Bedard",
+    "Mark Stone",
     "Jack Hughes",
     "Dylan Guenther",
     "Mikael Granlund",
@@ -702,9 +680,13 @@
     {
      "severity": "fix",
      "text": "Start Gavin McKenna (TOR vs SEA) for Macklin Celebrini (no game)."
+    },
+    {
+     "severity": "check",
+     "text": "Confirm Connor Hellebuyck starts in net (no confirmed-starter feed)."
     }
    ],
-   "gain": 3.1,
+   "gain": 3.2,
    "playing": [
     {
      "id": 4352722,
@@ -822,7 +804,7 @@
      "pos": "G",
      "group": "G",
      "team": "NJ",
-     "injury": "OUT",
+     "injury": "",
      "rate": 4.51,
      "src": {
       "sheet": 4.51,
@@ -884,6 +866,7 @@
     }
    ],
    "best": [
+    "Connor Hellebuyck",
     "Mackenzie Blackwood",
     "Alex Tuch",
     "Jack Hughes",
@@ -982,7 +965,7 @@
    "pos": "G",
    "group": "G",
    "team": "NJ",
-   "injury": "OUT",
+   "injury": "",
    "rate": 4.51,
    "src": {
     "sheet": 4.51,
@@ -997,7 +980,7 @@
    "gp": 0,
    "fp": 0.0,
    "ros": 190.6,
-   "slot": "IR",
+   "slot": "G",
    "g_this": 3,
    "g_next": 4,
    "luck": "",
@@ -1191,33 +1174,6 @@
    "g_next": 2,
    "luck": "",
    "light": 31
-  },
-  {
-   "id": 4064582,
-   "name": "Carter Hart",
-   "pos": "G",
-   "group": "G",
-   "team": "VGK",
-   "injury": "",
-   "rate": 3.82,
-   "src": {
-    "sheet": 4.1,
-    "model": 3.82,
-    "espn": 3.76,
-    "pace": 3.21,
-    "l15": 1.88
-   },
-   "cons": 3.49,
-   "dis": 0.56,
-   "exp_game": 2.09,
-   "gp": 8,
-   "fp": 25.7,
-   "ros": 129.8,
-   "slot": "G",
-   "g_this": 2,
-   "g_next": 4,
-   "luck": "",
-   "light": 26
   },
   {
    "id": 5080145,
@@ -1593,20 +1549,58 @@
    "gp": 13,
    "fp": 30.2,
    "ros": 121.9,
-   "score": 93.0,
-   "gain": 92.6,
-   "week_gain": 6.8,
+   "score": 78.0,
+   "gain": 77.7,
+   "week_gain": 8.6,
    "drop": "Darcy Kuemper",
    "g_this": 3,
    "g_next": 3,
    "po_games": 7,
-   "own_chg": 1.7,
+   "own_chg": 1.5,
    "luck": "hot (sh% 19) - sell-high risk",
    "status": "FREEAGENT",
    "light": 24,
    "alt_drops": [
     "Gavin McKenna (+48)",
     "Justin Faulk (+37)"
+   ],
+   "waiver": ""
+  },
+  {
+   "id": 3151297,
+   "name": "Igor Shesterkin",
+   "pos": "G",
+   "group": "G",
+   "team": "NYR",
+   "injury": "INJURY_RESERVE",
+   "rate": 4.42,
+   "src": {
+    "sheet": 4.43,
+    "model": 4.42,
+    "espn": null,
+    "pace": 4.24,
+    "l15": null
+   },
+   "cons": 4.33,
+   "dis": 0.04,
+   "exp_game": 2.96,
+   "gp": 5,
+   "fp": 21.2,
+   "ros": 183.8,
+   "score": 73.4,
+   "gain": 73.5,
+   "week_gain": 2.0,
+   "drop": "Darcy Kuemper",
+   "g_this": 1,
+   "g_next": 3,
+   "po_games": 6,
+   "own_chg": -0.4,
+   "luck": "",
+   "status": "FREEAGENT",
+   "light": 30,
+   "alt_drops": [
+    "Gavin McKenna (+29)",
+    "Justin Faulk (+12)"
    ],
    "waiver": ""
   },
@@ -1631,14 +1625,14 @@
    "gp": 10,
    "fp": 20.1,
    "ros": 119.8,
-   "score": 86.9,
-   "gain": 86.8,
-   "week_gain": 4.4,
+   "score": 71.9,
+   "gain": 71.8,
+   "week_gain": 6.2,
    "drop": "Darcy Kuemper",
    "g_this": 3,
    "g_next": 2,
    "po_games": 8,
-   "own_chg": 0.6,
+   "own_chg": 0.4,
    "luck": "",
    "status": "FREEAGENT",
    "light": 31,
@@ -1669,14 +1663,14 @@
    "gp": 2,
    "fp": 3.7,
    "ros": 110.2,
-   "score": 82.0,
-   "gain": 82.0,
-   "week_gain": 5.3,
+   "score": 67.1,
+   "gain": 67.1,
+   "week_gain": 7.1,
    "drop": "Darcy Kuemper",
    "g_this": 3,
    "g_next": 3,
    "po_games": 7,
-   "own_chg": -0.2,
+   "own_chg": -0.1,
    "luck": "",
    "status": "WAIVERS",
    "light": 24,
@@ -1692,7 +1686,7 @@
    "pos": "D",
    "group": "D",
    "team": "CHI",
-   "injury": "DAY_TO_DAY",
+   "injury": "OUT",
    "rate": 1.71,
    "src": {
     "sheet": 1.81,
@@ -1707,9 +1701,9 @@
    "gp": 6,
    "fp": 6.7,
    "ros": 108.0,
-   "score": 80.5,
-   "gain": 80.7,
-   "week_gain": 7.1,
+   "score": 65.6,
+   "gain": 65.8,
+   "week_gain": 8.8,
    "drop": "Darcy Kuemper",
    "g_this": 3,
    "g_next": 4,
@@ -1745,14 +1739,14 @@
    "gp": 11,
    "fp": 20.2,
    "ros": 112.4,
-   "score": 77.1,
-   "gain": 77.0,
-   "week_gain": 5.7,
+   "score": 62.1,
+   "gain": 62.1,
+   "week_gain": 7.4,
    "drop": "Darcy Kuemper",
    "g_this": 3,
    "g_next": 3,
    "po_games": 7,
-   "own_chg": 0.1,
+   "own_chg": 0.3,
    "luck": "",
    "status": "FREEAGENT",
    "light": 21,
@@ -1783,9 +1777,9 @@
    "gp": 11,
    "fp": 24.0,
    "ros": 110.9,
-   "score": 74.3,
-   "gain": 74.1,
-   "week_gain": 5.4,
+   "score": 59.4,
+   "gain": 59.2,
+   "week_gain": 7.2,
    "drop": "Darcy Kuemper",
    "g_this": 3,
    "g_next": 3,
@@ -1797,44 +1791,6 @@
    "alt_drops": [
     "Gavin McKenna (+27)",
     "Justin Faulk (+17)"
-   ],
-   "waiver": ""
-  },
-  {
-   "id": 3899939,
-   "name": "Ivan Provorov",
-   "pos": "D",
-   "group": "D",
-   "team": "CBJ",
-   "injury": "INJURY_RESERVE",
-   "rate": 1.55,
-   "src": {
-    "sheet": 1.55,
-    "model": 1.55,
-    "espn": 1.56,
-    "pace": null,
-    "l15": null
-   },
-   "cons": 1.55,
-   "dis": 0.01,
-   "exp_game": 1.55,
-   "gp": 0,
-   "fp": 0.0,
-   "ros": 102.2,
-   "score": 71.3,
-   "gain": 71.4,
-   "week_gain": 4.2,
-   "drop": "Darcy Kuemper",
-   "g_this": 3,
-   "g_next": 3,
-   "po_games": 6,
-   "own_chg": -0.3,
-   "luck": "",
-   "status": "FREEAGENT",
-   "light": 24,
-   "alt_drops": [
-    "Gavin McKenna (+26)",
-    "Justin Faulk (+10)"
    ],
    "waiver": ""
   },
@@ -1859,20 +1815,58 @@
    "gp": 12,
    "fp": 24.0,
    "ros": 103.7,
-   "score": 71.2,
-   "gain": 70.8,
-   "week_gain": 4.7,
+   "score": 56.3,
+   "gain": 55.8,
+   "week_gain": 6.5,
    "drop": "Darcy Kuemper",
    "g_this": 4,
    "g_next": 2,
    "po_games": 6,
-   "own_chg": 2.1,
+   "own_chg": 2.3,
    "luck": "",
    "status": "FREEAGENT",
    "light": 24,
    "alt_drops": [
     "Gavin McKenna (+25)",
     "Justin Faulk (+10)"
+   ],
+   "waiver": ""
+  },
+  {
+   "id": 4894366,
+   "name": "Jet Greaves",
+   "pos": "G",
+   "group": "G",
+   "team": "CBJ",
+   "injury": "",
+   "rate": 4.26,
+   "src": {
+    "sheet": 4.49,
+    "model": 4.26,
+    "espn": 4.02,
+    "pace": 2.87,
+    "l15": 3.6
+   },
+   "cons": 3.81,
+   "dis": 0.37,
+   "exp_game": 2.86,
+   "gp": 6,
+   "fp": 17.2,
+   "ros": 188.7,
+   "score": 55.6,
+   "gain": 55.7,
+   "week_gain": 5.9,
+   "drop": "Darcy Kuemper",
+   "g_this": 3,
+   "g_next": 3,
+   "po_games": 6,
+   "own_chg": -0.4,
+   "luck": "",
+   "status": "FREEAGENT",
+   "light": 24,
+   "alt_drops": [
+    "Gavin McKenna (+6)",
+    "Justin Faulk (-11)"
    ],
    "waiver": ""
   },
@@ -1897,58 +1891,20 @@
    "gp": 9,
    "fp": 15.1,
    "ros": 105.6,
-   "score": 70.3,
-   "gain": 70.4,
-   "week_gain": 4.6,
+   "score": 55.4,
+   "gain": 55.4,
+   "week_gain": 6.3,
    "drop": "Darcy Kuemper",
    "g_this": 3,
    "g_next": 3,
    "po_games": 6,
-   "own_chg": -0.1,
+   "own_chg": 0.0,
    "luck": "",
    "status": "FREEAGENT",
    "light": 24,
    "alt_drops": [
     "Gavin McKenna (+25)",
     "Justin Faulk (+9)"
-   ],
-   "waiver": ""
-  },
-  {
-   "id": 3151297,
-   "name": "Igor Shesterkin",
-   "pos": "G",
-   "group": "G",
-   "team": "NYR",
-   "injury": "INJURY_RESERVE",
-   "rate": 4.42,
-   "src": {
-    "sheet": 4.43,
-    "model": 4.42,
-    "espn": null,
-    "pace": 4.24,
-    "l15": null
-   },
-   "cons": 4.33,
-   "dis": 0.04,
-   "exp_game": 2.96,
-   "gp": 5,
-   "fp": 21.2,
-   "ros": 183.8,
-   "score": 69.7,
-   "gain": 69.8,
-   "week_gain": 2.9,
-   "drop": "Darcy Kuemper",
-   "g_this": 1,
-   "g_next": 3,
-   "po_games": 6,
-   "own_chg": -0.6,
-   "luck": "",
-   "status": "FREEAGENT",
-   "light": 30,
-   "alt_drops": [
-    "Gavin McKenna (+15)",
-    "Justin Faulk (-2)"
    ],
    "waiver": ""
   },
@@ -1973,14 +1929,14 @@
    "gp": 12,
    "fp": 19.5,
    "ros": 103.3,
-   "score": 68.9,
-   "gain": 68.7,
-   "week_gain": 6.4,
+   "score": 54.0,
+   "gain": 53.8,
+   "week_gain": 8.1,
    "drop": "Darcy Kuemper",
    "g_this": 3,
    "g_next": 4,
    "po_games": 7,
-   "own_chg": 0.8,
+   "own_chg": 1.2,
    "luck": "",
    "status": "FREEAGENT",
    "light": 27,
@@ -2011,14 +1967,14 @@
    "gp": 12,
    "fp": 24.4,
    "ros": 103.4,
-   "score": 68.4,
-   "gain": 68.2,
-   "week_gain": 4.9,
+   "score": 53.4,
+   "gain": 53.2,
+   "week_gain": 6.7,
    "drop": "Darcy Kuemper",
    "g_this": 2,
    "g_next": 4,
    "po_games": 7,
-   "own_chg": 0.8,
+   "own_chg": 0.6,
    "luck": "",
    "status": "FREEAGENT",
    "light": 26,
@@ -2049,14 +2005,14 @@
    "gp": 4,
    "fp": 5.0,
    "ros": 102.9,
-   "score": 67.9,
-   "gain": 68.0,
-   "week_gain": 4.6,
+   "score": 53.0,
+   "gain": 53.1,
+   "week_gain": 6.3,
    "drop": "Darcy Kuemper",
    "g_this": 4,
    "g_next": 2,
    "po_games": 6,
-   "own_chg": -0.6,
+   "own_chg": -0.4,
    "luck": "",
    "status": "FREEAGENT",
    "light": 24,
@@ -2087,14 +2043,14 @@
    "gp": 11,
    "fp": 17.1,
    "ros": 100.0,
-   "score": 66.9,
-   "gain": 66.9,
-   "week_gain": 4.5,
+   "score": 52.0,
+   "gain": 52.0,
+   "week_gain": 6.2,
    "drop": "Darcy Kuemper",
    "g_this": 3,
    "g_next": 3,
    "po_games": 7,
-   "own_chg": -0.1,
+   "own_chg": 0.2,
    "luck": "",
    "status": "FREEAGENT",
    "light": 21,
@@ -2125,14 +2081,14 @@
    "gp": 10,
    "fp": 15.2,
    "ros": 103.4,
-   "score": 66.3,
-   "gain": 66.4,
-   "week_gain": 3.1,
+   "score": 51.4,
+   "gain": 51.4,
+   "week_gain": 4.9,
    "drop": "Darcy Kuemper",
    "g_this": 3,
    "g_next": 2,
    "po_games": 8,
-   "own_chg": -0.0,
+   "own_chg": 0.0,
    "luck": "",
    "status": "FREEAGENT",
    "light": 31,
@@ -2163,14 +2119,14 @@
    "gp": 12,
    "fp": 24.6,
    "ros": 101.9,
-   "score": 66.1,
-   "gain": 65.2,
-   "week_gain": 4.5,
+   "score": 51.1,
+   "gain": 50.2,
+   "week_gain": 6.2,
    "drop": "Darcy Kuemper",
    "g_this": 3,
    "g_next": 3,
    "po_games": 6,
-   "own_chg": 4.7,
+   "own_chg": 4.2,
    "luck": "",
    "status": "FREEAGENT",
    "light": 21,
@@ -2201,14 +2157,14 @@
    "gp": 10,
    "fp": 18.2,
    "ros": 102.2,
-   "score": 64.8,
-   "gain": 65.0,
-   "week_gain": 3.0,
+   "score": 49.9,
+   "gain": 50.0,
+   "week_gain": 4.8,
    "drop": "Darcy Kuemper",
    "g_this": 3,
    "g_next": 2,
    "po_games": 8,
-   "own_chg": -0.6,
+   "own_chg": -0.4,
    "luck": "",
    "status": "FREEAGENT",
    "light": 31,
@@ -2239,9 +2195,9 @@
    "gp": 12,
    "fp": 20.9,
    "ros": 99.7,
-   "score": 64.8,
-   "gain": 64.6,
-   "week_gain": 6.0,
+   "score": 49.8,
+   "gain": 49.6,
+   "week_gain": 7.7,
    "drop": "Darcy Kuemper",
    "g_this": 3,
    "g_next": 4,
@@ -2277,14 +2233,14 @@
    "gp": 11,
    "fp": 19.0,
    "ros": 102.8,
-   "score": 64.7,
-   "gain": 64.3,
-   "week_gain": 6.2,
+   "score": 49.5,
+   "gain": 49.5,
+   "week_gain": 8.0,
    "drop": "Darcy Kuemper",
    "g_this": 3,
    "g_next": 4,
    "po_games": 6,
-   "own_chg": 2.0,
+   "own_chg": 0.1,
    "luck": "",
    "status": "FREEAGENT",
    "light": 25,
@@ -2315,19 +2271,19 @@
    "gp": 11,
    "fp": 17.7,
    "ros": 101.8,
-   "score": 64.0,
-   "gain": 64.1,
-   "week_gain": 4.8,
+   "score": 49.1,
+   "gain": 49.2,
+   "week_gain": 6.5,
    "drop": "Darcy Kuemper",
    "g_this": 3,
    "g_next": 3,
    "po_games": 6,
-   "own_chg": -0.6,
+   "own_chg": -0.3,
    "luck": "",
    "status": "FREEAGENT",
    "light": 25,
    "alt_drops": [
-    "Gavin McKenna (+19)",
+    "Gavin McKenna (+18)",
     "Justin Faulk (+8)"
    ],
    "waiver": ""
@@ -2353,9 +2309,9 @@
    "gp": 11,
    "fp": 19.5,
    "ros": 100.2,
-   "score": 62.4,
-   "gain": 62.3,
-   "week_gain": 4.5,
+   "score": 47.5,
+   "gain": 47.3,
+   "week_gain": 6.2,
    "drop": "Darcy Kuemper",
    "g_this": 3,
    "g_next": 3,
@@ -2367,82 +2323,6 @@
    "alt_drops": [
     "Gavin McKenna (+18)",
     "Justin Faulk (+6)"
-   ],
-   "waiver": ""
-  },
-  {
-   "id": 4233637,
-   "name": "Robert Thomas",
-   "pos": "C",
-   "group": "F",
-   "team": "STL",
-   "injury": "",
-   "rate": 1.63,
-   "src": {
-    "sheet": 2.0,
-    "model": 1.63,
-    "espn": 2.08,
-    "pace": 1.32,
-    "l15": 1.9
-   },
-   "cons": 1.77,
-   "dis": 0.43,
-   "exp_game": 1.57,
-   "gp": 11,
-   "fp": 14.5,
-   "ros": 99.1,
-   "score": 61.0,
-   "gain": 61.1,
-   "week_gain": 4.4,
-   "drop": "Darcy Kuemper",
-   "g_this": 3,
-   "g_next": 3,
-   "po_games": 7,
-   "own_chg": -0.4,
-   "luck": "",
-   "status": "FREEAGENT",
-   "light": 21,
-   "alt_drops": [
-    "Gavin McKenna (+17)",
-    "Justin Faulk (+5)"
-   ],
-   "waiver": ""
-  },
-  {
-   "id": 4894366,
-   "name": "Jet Greaves",
-   "pos": "G",
-   "group": "G",
-   "team": "CBJ",
-   "injury": "",
-   "rate": 4.26,
-   "src": {
-    "sheet": 4.49,
-    "model": 4.26,
-    "espn": 4.02,
-    "pace": 2.87,
-    "l15": 3.6
-   },
-   "cons": 3.81,
-   "dis": 0.37,
-   "exp_game": 2.86,
-   "gp": 6,
-   "fp": 17.2,
-   "ros": 188.7,
-   "score": 51.4,
-   "gain": 51.5,
-   "week_gain": 5.0,
-   "drop": "Darcy Kuemper",
-   "g_this": 3,
-   "g_next": 3,
-   "po_games": 6,
-   "own_chg": -0.6,
-   "luck": "",
-   "status": "FREEAGENT",
-   "light": 24,
-   "alt_drops": [
-    "Gavin McKenna (-5)",
-    "Justin Faulk (-22)"
    ],
    "waiver": ""
   },
@@ -2467,20 +2347,20 @@
    "gp": 5,
    "fp": 6.4,
    "ros": 159.2,
-   "score": 45.6,
-   "gain": 46.1,
-   "week_gain": 2.3,
+   "score": 46.2,
+   "gain": 46.6,
+   "week_gain": 2.0,
    "drop": "Darcy Kuemper",
    "g_this": 3,
    "g_next": 3,
    "po_games": 7,
-   "own_chg": -2.2,
+   "own_chg": -1.8,
    "luck": "",
    "status": "FREEAGENT",
    "light": 24,
    "alt_drops": [
-    "Gavin McKenna (-12)",
-    "Justin Faulk (-29)"
+    "Gavin McKenna (+2)",
+    "Justin Faulk (-15)"
    ],
    "waiver": ""
   },
@@ -2505,9 +2385,9 @@
    "gp": 5,
    "fp": 3.2,
    "ros": 164.1,
-   "score": 32.2,
-   "gain": 32.2,
-   "week_gain": 6.9,
+   "score": 38.0,
+   "gain": 38.1,
+   "week_gain": 6.1,
    "drop": "Darcy Kuemper",
    "g_this": 3,
    "g_next": 4,
@@ -2517,16 +2397,92 @@
    "status": "FREEAGENT",
    "light": 25,
    "alt_drops": [
-    "Gavin McKenna (-24)",
-    "Justin Faulk (-41)"
+    "Gavin McKenna (-7)",
+    "Justin Faulk (-23)"
+   ],
+   "waiver": ""
+  },
+  {
+   "id": 2590824,
+   "name": "John Gibson",
+   "pos": "G",
+   "group": "G",
+   "team": "DET",
+   "injury": "",
+   "rate": 3.53,
+   "src": {
+    "sheet": 4.19,
+    "model": 3.53,
+    "espn": 3.93,
+    "pace": 2.14,
+    "l15": 2.78
+   },
+   "cons": 3.15,
+   "dis": 0.57,
+   "exp_game": 2.37,
+   "gp": 8,
+   "fp": 17.1,
+   "ros": 146.8,
+   "score": 34.1,
+   "gain": 34.2,
+   "week_gain": 1.4,
+   "drop": "Darcy Kuemper",
+   "g_this": 2,
+   "g_next": 4,
+   "po_games": 7,
+   "own_chg": -0.7,
+   "luck": "",
+   "status": "WAIVERS",
+   "light": 26,
+   "alt_drops": [
+    "Gavin McKenna (-14)",
+    "Justin Faulk (-30)"
+   ],
+   "waiver": "clears Thu 3am"
+  },
+  {
+   "id": 5452,
+   "name": "Jacob Markstrom",
+   "pos": "G",
+   "group": "G",
+   "team": "FLA",
+   "injury": "INJURY_RESERVE",
+   "rate": 3.97,
+   "src": {
+    "sheet": 4.04,
+    "model": 3.97,
+    "espn": 3.64,
+    "pace": 3.58,
+    "l15": null
+   },
+   "cons": 3.64,
+   "dis": 0.11,
+   "exp_game": 2.52,
+   "gp": 6,
+   "fp": 21.5,
+   "ros": 156.2,
+   "score": 32.9,
+   "gain": 33.1,
+   "week_gain": 4.0,
+   "drop": "Darcy Kuemper",
+   "g_this": 2,
+   "g_next": 4,
+   "po_games": 7,
+   "own_chg": -0.8,
+   "luck": "",
+   "status": "FREEAGENT",
+   "light": 24,
+   "alt_drops": [
+    "Gavin McKenna (-9)",
+    "Justin Faulk (-25)"
    ],
    "waiver": ""
   }
  ],
  "fa_summary": [
-  "Logan Stankoven (F, CAR) for Darcy Kuemper: +93 ROS, 7 playoff-week games, +7 next 2 wks (3+3 games), owned +1.7%, hot (sh% 19) - sell-high risk.",
-  "Dylan Strome (F, WSH) for Darcy Kuemper: +87 ROS, 8 playoff-week games, +4 next 2 wks (3+2 games).",
-  "Ivan Demidov (F, MTL) for Darcy Kuemper: +82 ROS, 7 playoff-week games, +5 next 2 wks (3+3 games)."
+  "Logan Stankoven (F, CAR) for Darcy Kuemper: +78 ROS, 7 playoff-week games, +9 next 2 wks (3+3 games), owned +1.5%, hot (sh% 19) - sell-high risk.",
+  "Igor Shesterkin (G, NYR) for Darcy Kuemper: +74 ROS, 6 playoff-week games, +2 next 2 wks (1+3 games).",
+  "Dylan Strome (F, WSH) for Darcy Kuemper: +72 ROS, 8 playoff-week games, +6 next 2 wks (3+2 games)."
  ],
  "streaming": {
   "schedule": {
@@ -3406,9 +3362,9 @@
     {
      "period": 30,
      "date": "Wed Oct 28",
-     "G": 1,
+     "G": 0,
      "skater": 10,
-     "starts": 7
+     "starts": 8
     },
     {
      "period": 31,
@@ -3469,27 +3425,28 @@
      "waivers": false
     },
     {
-     "add": "Dustin Wolf",
-     "add_pos": "G",
-     "add_team": "CGY",
+     "add": "Logan Stankoven",
+     "add_pos": "F",
+     "add_team": "CAR",
      "drop": "Justin Faulk",
      "gain": 3.0,
      "days": [
-      "Wed 28",
-      "Fri 30",
-      "Sat 31"
+      "Tue 27",
+      "Thu 29",
+      "Sun 1"
      ],
      "waivers": false
     },
     {
-     "add": "Logan Stankoven",
-     "add_pos": "F",
-     "add_team": "CAR",
+     "add": "Stuart Skinner",
+     "add_pos": "G",
+     "add_team": "WPG",
      "drop": "Darcy Kuemper",
-     "gain": 4.2,
+     "gain": 5.5,
      "days": [
       "Tue 27",
       "Thu 29",
+      "Fri 30",
       "Sun 1"
      ],
      "waivers": false
@@ -3551,25 +3508,11 @@
    ],
    "moves": [
     {
-     "add": "Bowen Byram",
-     "add_pos": "D",
-     "add_team": "CHI",
-     "drop": "Gavin McKenna",
-     "gain": 2.9,
-     "days": [
-      "Mon 2",
-      "Wed 4",
-      "Thu 5",
-      "Sat 7"
-     ],
-     "waivers": false
-    },
-    {
      "add": "Viktor Arvidsson",
      "add_pos": "F",
      "add_team": "DET",
-     "drop": "Darcy Kuemper",
-     "gain": 3.4,
+     "drop": "Gavin McKenna",
+     "gain": 2.7,
      "days": [
       "Mon 2",
       "Tue 3",
@@ -3879,11 +3822,11 @@
     "name": "Jabroni Beaters",
     "me": true,
     "weeks": [
-     149.4,
-     159.3
+     152.2,
+     165.1
     ],
-    "total": 308.6,
-    "odds": 0.905
+    "total": 317.3,
+    "odds": 0.872
    },
    {
     "name": "McDISHHH",
@@ -3893,17 +3836,7 @@
      147.0
     ],
     "total": 293.9,
-    "odds": 0.896
-   },
-   {
-    "name": "PuttinOnTheFoil",
-    "me": false,
-    "weeks": [
-     139.6,
-     147.0
-    ],
-    "total": 286.6,
-    "odds": 0.616
+    "odds": 0.906
    },
    {
     "name": "Matt's Monstrous Team",
@@ -3913,7 +3846,7 @@
      148.0
     ],
     "total": 284.0,
-    "odds": 0.907
+    "odds": 0.923
    },
    {
     "name": "Timmy's Tenacious Team",
@@ -3923,7 +3856,17 @@
      145.2
     ],
     "total": 283.0,
-    "odds": 0.017
+    "odds": 0.023
+   },
+   {
+    "name": "PuttinOnTheFoil",
+    "me": false,
+    "weeks": [
+     134.4,
+     145.3
+    ],
+    "total": 279.7,
+    "odds": 0.507
    },
    {
     "name": "Angie\u2019s Bear Balls",
@@ -3933,7 +3876,7 @@
      145.9
     ],
     "total": 278.7,
-    "odds": 0.205
+    "odds": 0.234
    },
    {
     "name": "Mike's Magnificent Team",
@@ -3943,7 +3886,7 @@
      143.3
     ],
     "total": 276.1,
-    "odds": 0.242
+    "odds": 0.281
    },
    {
     "name": "Torts Illustrated",
@@ -3953,7 +3896,7 @@
      140.8
     ],
     "total": 271.3,
-    "odds": 0.21
+    "odds": 0.254
    }
   ],
   "mine": [
@@ -4010,16 +3953,6 @@
    {
     "name": "Shea Theodore",
     "group": "D",
-    "team": "VGK",
-    "weeks": [
-     3,
-     3
-    ],
-    "total": 6
-   },
-   {
-    "name": "Carter Hart",
-    "group": "G",
     "team": "VGK",
     "weeks": [
      3,
@@ -4834,14 +4767,14 @@
      "ros_pts": 690
     },
     "G": {
-     "q": 3,
-     "ros": 3,
-     "ros_pts": 431
+     "q": 5,
+     "ros": 6,
+     "ros_pts": 383
     },
     "Total": {
      "q": 8,
-     "ros": 5,
-     "ros_pts": 2927
+     "ros": 6,
+     "ros_pts": 2879
     }
    },
    "players": [
@@ -4958,29 +4891,6 @@
      "gp": 14,
      "fp": 37.4,
      "ros": 153.9,
-     "slot": "BE"
-    },
-    {
-     "id": 2590824,
-     "name": "John Gibson",
-     "pos": "G",
-     "group": "G",
-     "team": "DET",
-     "injury": "",
-     "rate": 3.53,
-     "src": {
-      "sheet": 4.19,
-      "model": 3.53,
-      "espn": 3.93,
-      "pace": 2.14,
-      "l15": 2.78
-     },
-     "cons": 3.15,
-     "dis": 0.57,
-     "exp_game": 2.37,
-     "gp": 8,
-     "fp": 17.1,
-     "ros": 146.8,
      "slot": "BE"
     },
     {
@@ -5398,12 +5308,35 @@
      "slot": "D"
     },
     {
+     "id": 4319911,
+     "name": "Devin Cooley",
+     "pos": "G",
+     "group": "G",
+     "team": "CGY",
+     "injury": "",
+     "rate": 3.71,
+     "src": {
+      "sheet": 3.5,
+      "model": 3.71,
+      "espn": null,
+      "pace": 5.03,
+      "l15": 7.8
+     },
+     "cons": 5.03,
+     "dis": 0.81,
+     "exp_game": 1.13,
+     "gp": 6,
+     "fp": 30.2,
+     "ros": 72.5,
+     "slot": "BE"
+    },
+    {
      "id": 2976849,
      "name": "Mark Jankowski",
      "pos": "C",
      "group": "F",
      "team": "CAR",
-     "injury": "OUT",
+     "injury": "",
      "rate": 1.3,
      "src": {
       "sheet": 0.85,
@@ -5440,7 +5373,7 @@
      "ros_pts": 786
     },
     "G": {
-     "q": 4,
+     "q": 3,
      "ros": 2,
      "ros_pts": 473
     },
@@ -6047,7 +5980,7 @@
     },
     "G": {
      "q": 2,
-     "ros": 4,
+     "ros": 3,
      "ros_pts": 430
     },
     "Total": {
@@ -6247,7 +6180,7 @@
      "pos": "LW/RW",
      "group": "F",
      "team": "TOR",
-     "injury": "OUT",
+     "injury": "DAY_TO_DAY",
      "rate": 2.25,
      "src": {
       "sheet": 2.05,
@@ -6654,12 +6587,12 @@
     "G": {
      "q": 1,
      "ros": 1,
-     "ros_pts": 548
+     "ros_pts": 505
     },
     "Total": {
      "q": 1,
      "ros": 2,
-     "ros_pts": 3068
+     "ros_pts": 3024
     }
    },
    "players": [
@@ -6738,7 +6671,7 @@
      "pos": "G",
      "group": "G",
      "team": "NJ",
-     "injury": "OUT",
+     "injury": "",
      "rate": 4.51,
      "src": {
       "sheet": 4.51,
@@ -6753,7 +6686,7 @@
      "gp": 0,
      "fp": 0.0,
      "ros": 190.6,
-     "slot": "IR"
+     "slot": "G"
     },
     {
      "id": 4874722,
@@ -6915,29 +6848,6 @@
      "fp": 20.4,
      "ros": 130.2,
      "slot": "D"
-    },
-    {
-     "id": 4064582,
-     "name": "Carter Hart",
-     "pos": "G",
-     "group": "G",
-     "team": "VGK",
-     "injury": "",
-     "rate": 3.82,
-     "src": {
-      "sheet": 4.1,
-      "model": 3.82,
-      "espn": 3.76,
-      "pace": 3.21,
-      "l15": 1.88
-     },
-     "cons": 3.49,
-     "dis": 0.56,
-     "exp_game": 2.09,
-     "gp": 8,
-     "fp": 25.7,
-     "ros": 129.8,
-     "slot": "G"
     },
     {
      "id": 5080145,
@@ -7258,13 +7168,13 @@
      "ros_pts": 822
     },
     "G": {
-     "q": 5,
-     "ros": 6,
+     "q": 4,
+     "ros": 5,
      "ros_pts": 401
     },
     "Total": {
      "q": 6,
-     "ros": 6,
+     "ros": 5,
      "ros_pts": 2882
     }
    },
@@ -8402,7 +8312,7 @@
     },
     "G": {
      "q": 8,
-     "ros": 5,
+     "ros": 4,
      "ros_pts": 413
     },
     "Total": {
@@ -8965,15 +8875,15 @@
   "G": {
    "quality": 6.2,
    "quality_rank": 1,
-   "ros": 548.1,
+   "ros": 504.5,
    "ros_rank": 1,
-   "ros_best": 548.1,
+   "ros_best": 504.5,
    "cons_rank": 1
   },
   "Total": {
    "quality": 37.5,
    "quality_rank": 1,
-   "ros": 3067.6,
+   "ros": 3024.1,
    "ros_rank": 2,
    "ros_best": 3096.4,
    "cons_rank": 2
@@ -9069,7 +8979,32 @@
    "gp": 13,
    "fp": 30.2,
    "ros": 121.9,
-   "gain": 92.6,
+   "gain": 77.7,
+   "drop": "Darcy Kuemper",
+   "waiver": ""
+  },
+  {
+   "id": 3151297,
+   "name": "Igor Shesterkin",
+   "pos": "G",
+   "group": "G",
+   "team": "NYR",
+   "injury": "INJURY_RESERVE",
+   "rate": 4.42,
+   "src": {
+    "sheet": 4.43,
+    "model": 4.42,
+    "espn": null,
+    "pace": 4.24,
+    "l15": null
+   },
+   "cons": 4.33,
+   "dis": 0.04,
+   "exp_game": 2.96,
+   "gp": 5,
+   "fp": 21.2,
+   "ros": 183.8,
+   "gain": 73.5,
    "drop": "Darcy Kuemper",
    "waiver": ""
   },
@@ -9094,7 +9029,7 @@
    "gp": 10,
    "fp": 20.1,
    "ros": 119.8,
-   "gain": 86.8,
+   "gain": 71.8,
    "drop": "Darcy Kuemper",
    "waiver": ""
   },
@@ -9119,7 +9054,7 @@
    "gp": 2,
    "fp": 3.7,
    "ros": 110.2,
-   "gain": 82.0,
+   "gain": 67.1,
    "drop": "Darcy Kuemper",
    "waiver": "clears Wed 3am"
   },
@@ -9129,7 +9064,7 @@
    "pos": "D",
    "group": "D",
    "team": "CHI",
-   "injury": "DAY_TO_DAY",
+   "injury": "OUT",
    "rate": 1.71,
    "src": {
     "sheet": 1.81,
@@ -9144,32 +9079,7 @@
    "gp": 6,
    "fp": 6.7,
    "ros": 108.0,
-   "gain": 80.7,
-   "drop": "Darcy Kuemper",
-   "waiver": ""
-  },
-  {
-   "id": 5080171,
-   "name": "Jimmy Snuggerud",
-   "pos": "RW",
-   "group": "F",
-   "team": "STL",
-   "injury": "",
-   "rate": 1.85,
-   "src": {
-    "sheet": 1.87,
-    "model": 1.85,
-    "espn": 1.7,
-    "pace": 1.84,
-    "l15": 1.73
-   },
-   "cons": 1.78,
-   "dis": 0.09,
-   "exp_game": 1.78,
-   "gp": 11,
-   "fp": 20.2,
-   "ros": 112.4,
-   "gain": 77.0,
+   "gain": 65.8,
    "drop": "Darcy Kuemper",
    "waiver": ""
   }
@@ -9338,7 +9248,7 @@
    "gp": 7,
    "fp": 22.9,
    "ros": 106.1,
-   "cost": 33.1,
+   "cost": 48.1,
    "po_games": 7,
    "last7": 20.8,
    "light": 26
@@ -9364,36 +9274,10 @@
    "gp": 8,
    "fp": 30.2,
    "ros": 110.1,
-   "cost": 36.9,
+   "cost": 62.6,
    "po_games": 7,
    "last7": 6.2,
    "light": 28
-  },
-  {
-   "id": 4064582,
-   "name": "Carter Hart",
-   "pos": "G",
-   "group": "G",
-   "team": "VGK",
-   "injury": "",
-   "rate": 3.82,
-   "src": {
-    "sheet": 4.1,
-    "model": 3.82,
-    "espn": 3.76,
-    "pace": 3.21,
-    "l15": 1.88
-   },
-   "cons": 3.49,
-   "dis": 0.56,
-   "exp_game": 2.09,
-   "gp": 8,
-   "fp": 25.7,
-   "ros": 129.8,
-   "cost": 46.0,
-   "po_games": 6,
-   "last7": -0.9,
-   "light": 26
   },
   {
    "id": 5342529,
@@ -9546,7 +9430,7 @@
    "gp": 10,
    "fp": 18.2,
    "ros": 109.3,
-   "cost": 117.6,
+   "cost": 117.7,
    "po_games": 7,
    "last7": 1.8,
    "light": 28
@@ -9630,32 +9514,6 @@
    "light": 31
   },
   {
-   "id": 4712036,
-   "name": "Jeremy Swayman",
-   "pos": "G",
-   "group": "G",
-   "team": "BOS",
-   "injury": "",
-   "rate": 4.76,
-   "src": {
-    "sheet": 4.18,
-    "model": 4.76,
-    "espn": 3.95,
-    "pace": 5.59,
-    "l15": 4.88
-   },
-   "cons": 4.82,
-   "dis": 0.34,
-   "exp_game": 3.19,
-   "gp": 9,
-   "fp": 50.3,
-   "ros": 198.0,
-   "cost": 135.1,
-   "po_games": 6,
-   "last7": 5.5,
-   "light": 21
-  },
-  {
    "id": 5080145,
    "name": "Cutter Gauthier",
    "pos": "LW",
@@ -9734,6 +9592,32 @@
    "light": 26
   },
   {
+   "id": 3020225,
+   "name": "Connor Hellebuyck",
+   "pos": "G",
+   "group": "G",
+   "team": "NJ",
+   "injury": "",
+   "rate": 4.51,
+   "src": {
+    "sheet": 4.51,
+    "model": 4.51,
+    "espn": 4.5,
+    "pace": null,
+    "l15": null
+   },
+   "cons": 4.5,
+   "dis": 0.0,
+   "exp_game": 3.03,
+   "gp": 0,
+   "fp": 0.0,
+   "ros": 190.6,
+   "cost": 147.7,
+   "po_games": 7,
+   "last7": 0,
+   "light": 24
+  },
+  {
    "id": 4024950,
    "name": "Jakob Chychrun",
    "pos": "D",
@@ -9780,7 +9664,7 @@
    "gp": 11,
    "fp": 23.9,
    "ros": 139.4,
-   "cost": 151.7,
+   "cost": 151.6,
    "po_games": 7,
    "last7": 5.7,
    "light": 24
@@ -9812,6 +9696,58 @@
    "light": 31
   },
   {
+   "id": 4712036,
+   "name": "Jeremy Swayman",
+   "pos": "G",
+   "group": "G",
+   "team": "BOS",
+   "injury": "",
+   "rate": 4.76,
+   "src": {
+    "sheet": 4.18,
+    "model": 4.76,
+    "espn": 3.95,
+    "pace": 5.59,
+    "l15": 4.88
+   },
+   "cons": 4.82,
+   "dis": 0.34,
+   "exp_game": 3.19,
+   "gp": 9,
+   "fp": 50.3,
+   "ros": 198.0,
+   "cost": 164.0,
+   "po_games": 6,
+   "last7": 5.5,
+   "light": 21
+  },
+  {
+   "id": 4874722,
+   "name": "Brandt Clarke",
+   "pos": "D",
+   "group": "D",
+   "team": "LA",
+   "injury": "",
+   "rate": 2.4,
+   "src": {
+    "sheet": 2.17,
+    "model": 2.4,
+    "espn": 1.93,
+    "pace": 2.62,
+    "l15": 2.8
+   },
+   "cons": 2.51,
+   "dis": 0.35,
+   "exp_game": 2.4,
+   "gp": 10,
+   "fp": 26.2,
+   "ros": 153.4,
+   "cost": 172.4,
+   "po_games": 7,
+   "last7": 11.7,
+   "light": 26
+  },
+  {
    "id": 4565227,
    "name": "Moritz Seider",
    "pos": "D",
@@ -9835,32 +9771,6 @@
    "cost": 172.4,
    "po_games": 7,
    "last7": 7.2,
-   "light": 26
-  },
-  {
-   "id": 4874722,
-   "name": "Brandt Clarke",
-   "pos": "D",
-   "group": "D",
-   "team": "LA",
-   "injury": "",
-   "rate": 2.4,
-   "src": {
-    "sheet": 2.17,
-    "model": 2.4,
-    "espn": 1.93,
-    "pace": 2.62,
-    "l15": 2.8
-   },
-   "cons": 2.51,
-   "dis": 0.35,
-   "exp_game": 2.4,
-   "gp": 10,
-   "fp": 26.2,
-   "ros": 153.4,
-   "cost": 172.5,
-   "po_games": 7,
-   "last7": 11.7,
    "light": 26
   },
   {
@@ -9918,171 +9828,87 @@
  ],
  "goalies_today": [
   {
-   "id": 4894366,
-   "name": "Jet Greaves",
+   "id": 4587845,
+   "name": "Akira Schmid",
+   "pos": "G",
+   "group": "G",
+   "team": "FLA",
+   "injury": "",
+   "rate": 3.71,
+   "src": {
+    "sheet": 3.87,
+    "model": 3.71,
+    "espn": 3.68,
+    "pace": 2.75,
+    "l15": 2.88
+   },
+   "cons": 3.28,
+   "dis": 0.29,
+   "exp_game": 1.27,
+   "gp": 6,
+   "fp": 16.5,
+   "opp": "WPG",
+   "confirmed": "confirmed",
+   "exp": 4.1,
+   "opp_gf": 2.63,
+   "win": 0.543,
+   "opp_goals": 2.93,
+   "waiver": ""
+  },
+  {
+   "id": 3939714,
+   "name": "Adin Hill",
+   "pos": "G",
+   "group": "G",
+   "team": "VGK",
+   "injury": "",
+   "rate": 3.94,
+   "src": {
+    "sheet": 3.94,
+    "model": 3.94,
+    "espn": 3.08,
+    "pace": 3.88,
+    "l15": 3.53
+   },
+   "cons": 3.71,
+   "dis": 0.23,
+   "exp_game": 1.68,
+   "gp": 5,
+   "fp": 19.4,
+   "opp": "OTT",
+   "confirmed": "confirmed",
+   "exp": 4.1,
+   "opp_gf": 3.27,
+   "win": 0.593,
+   "opp_goals": 2.95,
+   "waiver": ""
+  },
+  {
+   "id": 5734,
+   "name": "Cam Talbot",
    "pos": "G",
    "group": "G",
    "team": "CBJ",
    "injury": "",
-   "rate": 4.26,
+   "rate": 3.36,
    "src": {
-    "sheet": 4.49,
-    "model": 4.26,
-    "espn": 4.02,
-    "pace": 2.87,
-    "l15": 3.6
+    "sheet": null,
+    "model": 3.36,
+    "espn": 3.39,
+    "pace": 2.72,
+    "l15": 2.15
    },
-   "cons": 3.81,
-   "dis": 0.37,
-   "exp_game": 2.86,
-   "gp": 6,
-   "fp": 17.2,
-   "opp": "PHI",
-   "confirmed": "",
-   "exp": 3.3,
-   "opp_gf": 2.37,
-   "win": 0.532,
-   "opp_goals": 2.69,
-   "waiver": ""
-  },
-  {
-   "id": 3036851,
-   "name": "Anton Forsberg",
-   "pos": "G",
-   "group": "G",
-   "team": "LA",
-   "injury": "",
-   "rate": 4.04,
-   "src": {
-    "sheet": 4.17,
-    "model": 4.04,
-    "espn": 4.56,
-    "pace": 1.68,
-    "l15": 2.4
-   },
-   "cons": 3.22,
-   "dis": 0.89,
-   "exp_game": 2.22,
-   "gp": 4,
-   "fp": 6.7,
-   "opp": "CHI",
-   "confirmed": "",
-   "exp": 2.7,
-   "opp_gf": 2.38,
-   "win": 0.526,
-   "opp_goals": 2.83,
-   "waiver": ""
-  },
-  {
-   "id": 4697686,
-   "name": "Jakub Dobes",
-   "pos": "G",
-   "group": "G",
-   "team": "MTL",
-   "injury": "",
-   "rate": 4.14,
-   "src": {
-    "sheet": 4.29,
-    "model": 4.14,
-    "espn": 4.32,
-    "pace": 1.28,
-    "l15": null
-   },
-   "cons": 4.14,
-   "dis": 0.73,
-   "exp_game": 2.53,
+   "cons": 3.04,
+   "dis": 0.41,
+   "exp_game": 1.06,
    "gp": 5,
-   "fp": 6.4,
-   "opp": "STL",
-   "confirmed": "",
-   "exp": 2.4,
-   "opp_gf": 3.01,
-   "win": 0.474,
-   "opp_goals": 3.19,
-   "waiver": ""
-  },
-  {
-   "id": 4268767,
-   "name": "Stuart Skinner",
-   "pos": "G",
-   "group": "G",
-   "team": "WPG",
-   "injury": "",
-   "rate": 3.73,
-   "src": {
-    "sheet": 3.58,
-    "model": 3.73,
-    "espn": 4.25,
-    "pace": 4.06,
-    "l15": 3.12
-   },
-   "cons": 3.9,
-   "dis": 0.29,
-   "exp_game": 2.27,
-   "gp": 8,
-   "fp": 32.5,
-   "opp": "FLA",
-   "confirmed": "",
-   "exp": 2.4,
-   "opp_gf": 2.94,
-   "win": 0.457,
-   "opp_goals": 3.04,
-   "waiver": ""
-  },
-  {
-   "id": 5111,
-   "name": "Jake Allen",
-   "pos": "G",
-   "group": "G",
-   "team": "NJ",
-   "injury": "",
-   "rate": 4.06,
-   "src": {
-    "sheet": 4.16,
-    "model": 4.06,
-    "espn": 4.49,
-    "pace": 3.74,
-    "l15": 3.6
-   },
-   "cons": 3.9,
-   "dis": 0.23,
-   "exp_game": 2.23,
-   "gp": 7,
-   "fp": 26.2,
-   "opp": "DAL",
-   "confirmed": "",
-   "exp": 2.1,
-   "opp_gf": 3.14,
-   "win": 0.468,
-   "opp_goals": 2.91,
-   "waiver": ""
-  },
-  {
-   "id": 4233889,
-   "name": "Ukko-Pekka Luukkonen",
-   "pos": "G",
-   "group": "G",
-   "team": "BUF",
-   "injury": "",
-   "rate": 3.23,
-   "src": {
-    "sheet": 3.96,
-    "model": 3.23,
-    "espn": 4.29,
-    "pace": 2.19,
-    "l15": 3.35
-   },
-   "cons": 3.29,
-   "dis": 0.64,
-   "exp_game": 1.77,
-   "gp": 9,
-   "fp": 19.7,
-   "opp": "SJ",
-   "confirmed": "",
-   "exp": 2.0,
-   "opp_gf": 3.07,
-   "win": 0.551,
-   "opp_goals": 3.16,
+   "fp": 13.6,
+   "opp": "PHI",
+   "confirmed": "confirmed",
+   "exp": 4.0,
+   "opp_gf": 2.37,
+   "win": 0.522,
+   "opp_goals": 2.7,
    "waiver": ""
   },
   {
@@ -10106,39 +9932,123 @@
    "gp": 7,
    "fp": 21.4,
    "opp": "BUF",
-   "confirmed": "",
-   "exp": 1.9,
+   "confirmed": "confirmed",
+   "exp": 3.3,
    "opp_gf": 3.15,
-   "win": 0.449,
-   "opp_goals": 3.49,
+   "win": 0.428,
+   "opp_goals": 3.59,
    "waiver": ""
   },
   {
-   "id": 4271575,
-   "name": "Joseph Woll",
+   "id": 3025540,
+   "name": "Casey DeSmith",
    "pos": "G",
    "group": "G",
-   "team": "PHI",
+   "team": "DAL",
    "injury": "",
-   "rate": 3.84,
+   "rate": 4.16,
    "src": {
-    "sheet": 4.03,
-    "model": 3.84,
-    "espn": 4.21,
-    "pace": 3.2,
-    "l15": 2.6
+    "sheet": 4.14,
+    "model": 4.16,
+    "espn": null,
+    "pace": null,
+    "l15": null
    },
-   "cons": 3.52,
-   "dis": 0.46,
-   "exp_game": 1.64,
-   "gp": 7,
-   "fp": 22.4,
-   "opp": "CBJ",
-   "confirmed": "",
-   "exp": 1.9,
-   "opp_gf": 2.78,
-   "win": 0.468,
-   "opp_goals": 2.89,
+   "cons": 4.16,
+   "dis": 0.0,
+   "exp_game": 1.27,
+   "gp": 2,
+   "fp": 8.8,
+   "opp": "NJ",
+   "confirmed": "confirmed",
+   "exp": 3.3,
+   "opp_gf": 3.05,
+   "win": 0.511,
+   "opp_goals": 2.75,
+   "waiver": ""
+  },
+  {
+   "id": 4736758,
+   "name": "Colten Ellis",
+   "pos": "G",
+   "group": "G",
+   "team": "BUF",
+   "injury": "",
+   "rate": 0.09,
+   "src": {
+    "sheet": null,
+    "model": 0.09,
+    "espn": null,
+    "pace": 1.73,
+    "l15": null
+   },
+   "cons": 0.91,
+   "dis": 1.81,
+   "exp_game": 0.06,
+   "gp": 3,
+   "fp": 5.2,
+   "opp": "SJ",
+   "confirmed": "confirmed",
+   "exp": 0.6,
+   "opp_gf": 3.07,
+   "win": 0.572,
+   "opp_goals": 3.12,
+   "waiver": ""
+  },
+  {
+   "id": 5104602,
+   "name": "Clay Stevenson",
+   "pos": "G",
+   "group": "G",
+   "team": "WPG",
+   "injury": "",
+   "rate": 0.15,
+   "src": {
+    "sheet": null,
+    "model": 0.15,
+    "espn": null,
+    "pace": 3.0,
+    "l15": null
+   },
+   "cons": 1.57,
+   "dis": 1.81,
+   "exp_game": 0.11,
+   "gp": 3,
+   "fp": 9.0,
+   "opp": "FLA",
+   "confirmed": "confirmed",
+   "exp": 0.1,
+   "opp_gf": 2.94,
+   "win": 0.457,
+   "opp_goals": 3.19,
+   "waiver": ""
+  },
+  {
+   "id": 3759,
+   "name": "Semyon Varlamov",
+   "pos": "G",
+   "group": "G",
+   "team": "NYI",
+   "injury": "",
+   "rate": 0.11,
+   "src": {
+    "sheet": null,
+    "model": 0.11,
+    "espn": null,
+    "pace": 2.13,
+    "l15": null
+   },
+   "cons": 1.12,
+   "dis": 1.81,
+   "exp_game": 0.08,
+   "gp": 3,
+   "fp": 6.4,
+   "opp": "NSH",
+   "confirmed": "confirmed",
+   "exp": 0.0,
+   "opp_gf": 2.91,
+   "win": 0.474,
+   "opp_goals": 2.87,
    "waiver": ""
   }
  ],
@@ -10167,31 +10077,7 @@
     "fp": 19.7,
     "pts": 6.5,
     "line": "2 G, 1 A, 5 SOG, 1 BLK",
-    "own_chg": 1.8
-   },
-   {
-    "id": 4319911,
-    "name": "Devin Cooley",
-    "pos": "G",
-    "group": "G",
-    "team": "CGY",
-    "injury": "",
-    "rate": 3.71,
-    "src": {
-     "sheet": 3.5,
-     "model": 3.71,
-     "espn": null,
-     "pace": 5.03,
-     "l15": 7.8
-    },
-    "cons": 5.03,
-    "dis": 0.81,
-    "exp_game": 1.13,
-    "gp": 6,
-    "fp": 30.2,
-    "pts": 6.2,
-    "line": "1 W, 26 SV, 2 GA",
-    "own_chg": 9.0
+    "own_chg": 2.1
    },
    {
     "id": 3995,
@@ -10239,7 +10125,7 @@
     "fp": 5.4,
     "pts": 5.0,
     "line": "1 W, 25 SV, 3 GA",
-    "own_chg": 0.4
+    "own_chg": 0.3
    },
    {
     "id": 3120307,
@@ -10263,7 +10149,7 @@
     "fp": 24.4,
     "pts": 3.9,
     "line": "1 G, 1 A, 4 SOG",
-    "own_chg": 0.8
+    "own_chg": 0.6
    },
    {
     "id": 4588750,
@@ -10287,7 +10173,7 @@
     "fp": 21.9,
     "pts": 3.7,
     "line": "1 G, 1 A, 2 SOG, 5 HIT",
-    "own_chg": 0.7
+    "own_chg": 0.5
    },
    {
     "id": 4392883,
@@ -10311,7 +10197,7 @@
     "fp": 15.0,
     "pts": 3.6,
     "line": "1 G, 1 A, 2 SOG, 4 HIT",
-    "own_chg": 0.2
+    "own_chg": 0.1
    },
    {
     "id": 2562618,
@@ -10335,7 +10221,7 @@
     "fp": 20.0,
     "pts": 2.9,
     "line": "2 SOG, 5 BLK, 2 HIT",
-    "own_chg": 0.7
+    "own_chg": 0.2
    },
    {
     "id": 4378683,
@@ -10359,7 +10245,7 @@
     "fp": 20.1,
     "pts": 2.6,
     "line": "1 A, 1 SOG, 3 BLK",
-    "own_chg": 0.0
+    "own_chg": -0.2
    },
    {
     "id": 3797,
@@ -10384,33 +10270,33 @@
     "pts": 2.6,
     "line": "1 G, 1 SOG, 1 BLK",
     "own_chg": 0.0
+   },
+   {
+    "id": 5188599,
+    "name": "Emmitt Finnie",
+    "pos": "LW/RW",
+    "group": "F",
+    "team": "DET",
+    "injury": "",
+    "rate": 1.48,
+    "src": {
+     "sheet": 1.2,
+     "model": 1.48,
+     "espn": 1.12,
+     "pace": 1.69,
+     "l15": 2.31
+    },
+    "cons": 1.59,
+    "dis": 0.75,
+    "exp_game": 1.48,
+    "gp": 12,
+    "fp": 20.3,
+    "pts": 2.4,
+    "line": "1 G, 1 SOG, 3 HIT",
+    "own_chg": 0.3
    }
   ],
   "week": [
-   {
-    "id": 4319911,
-    "name": "Devin Cooley",
-    "pos": "G",
-    "group": "G",
-    "team": "CGY",
-    "injury": "",
-    "rate": 3.71,
-    "src": {
-     "sheet": 3.5,
-     "model": 3.71,
-     "espn": null,
-     "pace": 5.03,
-     "l15": 7.8
-    },
-    "cons": 5.03,
-    "dis": 0.81,
-    "exp_game": 1.13,
-    "gp": 6,
-    "fp": 30.2,
-    "pts": 23.4,
-    "line": "3 W, 92 SV, 4 GA",
-    "own_chg": 9.0
-   },
    {
     "id": 4576894,
     "name": "Arturs Silovs",
@@ -10433,7 +10319,7 @@
     "fp": 35.2,
     "pts": 17.0,
     "line": "2 W, 50 SV, 2 GA, 1 SO",
-    "own_chg": 2.0
+    "own_chg": 1.2
    },
    {
     "id": 3067313,
@@ -10457,7 +10343,7 @@
     "fp": 25.2,
     "pts": 15.2,
     "line": "2 W, 66 SV, 4 GA",
-    "own_chg": 2.1
+    "own_chg": 0.9
    },
    {
     "id": 4874899,
@@ -10481,7 +10367,7 @@
     "fp": 30.2,
     "pts": 12.1,
     "line": "4 G, 1 A, 15 SOG, 3 BLK, 1 HIT",
-    "own_chg": 1.7
+    "own_chg": 1.5
    },
    {
     "id": 4392765,
@@ -10505,7 +10391,7 @@
     "fp": 20.0,
     "pts": 11.6,
     "line": "1 W, 28 SV, 1 SO",
-    "own_chg": 0.8
+    "own_chg": 0.5
    },
    {
     "id": 5216897,
@@ -10529,7 +10415,7 @@
     "fp": 19.7,
     "pts": 11.1,
     "line": "3 G, 2 A, 11 SOG, 2 BLK",
-    "own_chg": 1.8
+    "own_chg": 2.1
    },
    {
     "id": 5657,
@@ -10553,7 +10439,7 @@
     "fp": 29.5,
     "pts": 10.8,
     "line": "2 W, 54 SV, 6 GA",
-    "own_chg": 1.5
+    "own_chg": 0.8
    },
    {
     "id": 5111,
@@ -10577,7 +10463,31 @@
     "fp": 26.2,
     "pts": 10.6,
     "line": "2 W, 43 SV, 4 GA",
-    "own_chg": -0.0
+    "own_chg": 0.1
+   },
+   {
+    "id": 4391255,
+    "name": "Kiefer Sherwood",
+    "pos": "LW/RW",
+    "group": "F",
+    "team": "SJ",
+    "injury": "",
+    "rate": 1.62,
+    "src": {
+     "sheet": 1.46,
+     "model": 1.62,
+     "espn": 1.71,
+     "pace": 1.74,
+     "l15": 1.97
+    },
+    "cons": 1.73,
+    "dis": 0.2,
+    "exp_game": 1.58,
+    "gp": 12,
+    "fp": 20.9,
+    "pts": 10.4,
+    "line": "1 G, 3 A, 10 SOG, 3 BLK, 19 HIT",
+    "own_chg": 1.1
    }
   ]
  },
@@ -10595,6 +10505,21 @@
   }
  ],
  "injuries": [
+  {
+   "player": "Bowen Byram",
+   "summary": "Byram (upper body) won't play against the Kings on Tuesday, per Vinnie Parise of The Hockey News.",
+   "credit": "Rotowire via ESPN, citing Vinnie Parise (The Hockey News.)",
+   "link": "https://www.espn.com/nhl/player/news/_/id/4565225",
+   "insider": "",
+   "kinds": [
+    "injury"
+   ],
+   "date": "Oct 27 2:29PM",
+   "owner": "FA",
+   "status": "OUT",
+   "group": "D",
+   "team": "CHI"
+  },
   {
    "player": "Zach Hyman",
    "summary": "Hyman sustained an upper-body injury in the second period of Monday's 4-3 shootout loss to the Red Wings and did not return, according to Jamie Umbach of the Oilers' official site.",
@@ -10621,7 +10546,7 @@
    ],
    "date": "Oct 26 12:49PM",
    "owner": "PuttinOnTheFoil",
-   "status": "OUT",
+   "status": "ACTIVE",
    "group": "F",
    "team": "CAR"
   },
@@ -10636,7 +10561,7 @@
    ],
    "date": "Oct 26 12:36PM",
    "owner": "Me",
-   "status": "OUT",
+   "status": "ACTIVE",
    "group": "G",
    "team": "NJ"
   },
@@ -10654,38 +10579,18 @@
    "status": "INJURY_RESERVE",
    "group": "G",
    "team": "WSH"
-  },
-  {
-   "player": "Jared McCann",
-   "summary": "McCann (lower body) will be out for approximately 10 weeks, the Kraken announced Sunday.",
-   "credit": "Rotowire via ESPN",
-   "link": "https://www.espn.com/nhl/player/news/_/id/3114777",
-   "insider": "",
-   "kinds": [
-    "injury"
-   ],
-   "date": "Oct 25 1:08PM",
-   "owner": "FA",
-   "status": "INJURY_RESERVE",
-   "group": "F",
-   "team": "SEA"
   }
  ],
- "status_watch": [
-  {
-   "player": "Connor Hellebuyck",
-   "summary": "Head coach Sheldon Keefe said Monday that Hellebuyck (not injury related) intends to play during the Devils' upcoming three-game road trip, Amanda Stein of the Devils' official site reports.",
-   "credit": "Rotowire via ESPN, citing Amanda Stein (Devils')",
-   "link": "https://www.espn.com/nhl/player/news/_/id/3020225",
-   "insider": "",
-   "kinds": [
-    "injury"
-   ],
-   "date": "Oct 26 12:36PM",
-   "status": "OUT"
-  }
- ],
+ "status_watch": [],
  "rumors": [
+  {
+   "title": "NHL Insider Says Trade Talks Picking Up Around Red Wings' RFA Simon Edvinsson",
+   "link": "https://sports.yahoo.com/articles/nhl-insider-says-trade-talks-164804185.html",
+   "players": [
+    "Simon Edvinsson"
+   ],
+   "date": "Oct 27"
+  },
   {
    "title": "Report: What Did The Buffalo Sabres Offer Or Were They Asked To Give Up In A Trade For Connor Hellebuyck?",
    "link": "https://sports.yahoo.com/articles/report-did-buffalo-sabres-offer-164442880.html",
@@ -10717,21 +10622,14 @@
     "Jack Quinn"
    ],
    "date": "Oct 25"
-  },
-  {
-   "title": "Devils Notebook: Hellebuyck Trade Lessons, Larkin, Upcoming Road Trip & More",
-   "link": "https://sports.yahoo.com/articles/devils-notebook-hellebuyck-trade-lessons-202313059.html",
-   "players": [
-    "Connor Hellebuyck"
-   ],
-   "date": "Oct 25"
   }
  ],
  "notes": [
-  "Week 5 vs Torts Illustrated: projected 143-132, 66% to win (starts left 58 vs 60).",
+  "Week 5 vs Torts Illustrated: projected 147-132, 70% to win (starts left 59 vs 60).",
   "Opportunity: Mark Jankowski (CAR) injury -> Logan Stankoven is the free agent who gains.",
-  "Best rest-of-season add: Logan Stankoven for Darcy Kuemper (+93).",
-  "Vegas tonight: ANA 3.8 goals vs VAN (usual 3.1, +15% skater pts), CHI 2.8 goals vs LA (usual 2.4, +12% skater pts), NJ 2.7 goals vs DAL (usual 3.0, -7% skater pts)."
+  "Best rest-of-season add: Logan Stankoven for Darcy Kuemper (+78).",
+  "Vegas tonight: ANA 3.8 goals vs VAN (usual 3.1, +15% skater pts), CHI 2.9 goals vs LA (usual 2.4, +14% skater pts).",
+  "Confirmed FA goalie starts today: Akira Schmid vs WPG, Adin Hill vs OTT, Cam Talbot vs PHI."
  ],
  "opportunities": [
   {
@@ -10941,26 +10839,35 @@
   "Jeremy Swayman": [
    {
     "player": "Jeremy Swayman",
+    "summary": "Swayman will guard the road crease in Tuesday's clash against the Hurricanes, per Adam Pellerin of NESN.",
+    "credit": "Rotowire via ESPN, citing Adam Pellerin (NESN.)",
+    "link": "https://www.espn.com/nhl/player/news/_/id/4712036",
+    "insider": "",
+    "kinds": [
+     "starting"
+    ],
+    "date": "Oct 27 12:14PM"
+   },
+   {
+    "player": "Jeremy Swayman",
     "summary": "Swayman stopped 23 of 27 shots in Saturday's 6-4 win over the Sharks.",
     "credit": "Rotowire via ESPN",
     "link": "https://www.espn.com/nhl/player/news/_/id/4712036",
     "insider": "",
     "kinds": [],
     "date": "Oct 25 9:33AM"
-   },
-   {
-    "player": "Jeremy Swayman",
-    "summary": "Swayman will protect the home net against San Jose on Saturday, Jack Studley of Boston Hockey Now reports.",
-    "credit": "Rotowire via ESPN, citing Jack Studley (Boston Hockey Now)",
-    "link": "https://www.espn.com/nhl/player/news/_/id/4712036",
-    "insider": "",
-    "kinds": [
-     "starting"
-    ],
-    "date": "Oct 24 11:03AM"
    }
   ],
   "Brandt Clarke": [
+   {
+    "player": "Brandt Clarke",
+    "summary": "Clarke scored a goal and recorded four blocked shots in Monday's 6-3 win over the Rangers.",
+    "credit": "Rotowire via ESPN",
+    "link": "https://www.espn.com/nhl/player/news/_/id/4874722",
+    "insider": "",
+    "kinds": [],
+    "date": "Oct 27 8:56AM"
+   },
    {
     "player": "Brandt Clarke",
     "summary": "Clarke scored the game-winning goal and added an assist in Thursday's 3-2 overtime victory over the Islanders.",
@@ -10969,15 +10876,6 @@
     "insider": "",
     "kinds": [],
     "date": "Oct 23 10:39AM"
-   },
-   {
-    "player": "Brandt Clarke",
-    "summary": "Clarke scored a goal on six shots and added two PIM in Tuesday's 4-1 loss to the Oilers.",
-    "credit": "Rotowire via ESPN",
-    "link": "https://www.espn.com/nhl/player/news/_/id/4874722",
-    "insider": "",
-    "kinds": [],
-    "date": "Oct 14 2:49AM"
    }
   ],
   "Tom Wilson": [
@@ -11023,6 +10921,17 @@
   "Connor Hellebuyck": [
    {
     "player": "Connor Hellebuyck",
+    "summary": "Hellebuyck will defend the road net against Dallas on Tuesday, per Peter Baugh of The Athletic.",
+    "credit": "Rotowire via ESPN, citing Peter Baugh (The Athletic.)",
+    "link": "https://www.espn.com/nhl/player/news/_/id/3020225",
+    "insider": "",
+    "kinds": [
+     "starting"
+    ],
+    "date": "Oct 27 1:07PM"
+   },
+   {
+    "player": "Connor Hellebuyck",
     "summary": "Head coach Sheldon Keefe said Monday that Hellebuyck (not injury related) intends to play during the Devils' upcoming three-game road trip, Amanda Stein of the Devils' official site reports.",
     "credit": "Rotowire via ESPN, citing Amanda Stein (Devils')",
     "link": "https://www.espn.com/nhl/player/news/_/id/3020225",
@@ -11031,17 +10940,6 @@
      "injury"
     ],
     "date": "Oct 26 12:36PM"
-   },
-   {
-    "player": "Connor Hellebuyck",
-    "summary": "Hellebuyck was traded to the Devils from the Jets on Friday in exchange for Dawson Mercer, Nico Daws, Alexander Command, Nick Bjugstad (pectoral) and a pair of draft picks.",
-    "credit": "Rotowire via ESPN",
-    "link": "https://www.espn.com/nhl/player/news/_/id/3020225",
-    "insider": "",
-    "kinds": [
-     "trade"
-    ],
-    "date": "Oct 23 12:07PM"
    }
   ],
   "Pavel Dorofeyev": [
@@ -11206,28 +11104,6 @@
     "date": "Oct 23 12:27PM"
    }
   ],
-  "Carter Hart": [
-   {
-    "player": "Carter Hart",
-    "summary": "Hart stopped 18 of 20 shots on net in Saturday's 2-1 overtime loss to the Blue Jackets.",
-    "credit": "Rotowire via ESPN",
-    "link": "https://www.espn.com/nhl/player/news/_/id/4064582",
-    "insider": "",
-    "kinds": [],
-    "date": "Oct 25 8:49AM"
-   },
-   {
-    "player": "Carter Hart",
-    "summary": "Hart will protect the road goal versus the Blue Jackets on Saturday, Mark Scheig of The Hockey Writers reports.",
-    "credit": "Rotowire via ESPN, citing Mark Scheig (The Hockey Writers)",
-    "link": "https://www.espn.com/nhl/player/news/_/id/4064582",
-    "insider": "",
-    "kinds": [
-     "starting"
-    ],
-    "date": "Oct 24 6:32PM"
-   }
-  ],
   "Simon Edvinsson": [
    {
     "player": "Simon Edvinsson",
@@ -11253,24 +11129,33 @@
   "Alex Laferriere": [
    {
     "player": "Alex Laferriere",
+    "summary": "Laferriere dished out two assists, including one on the power play, placed two shots on net and had three hits in Monday's 6-3 win over the Rangers.",
+    "credit": "Rotowire via ESPN",
+    "link": "https://www.espn.com/nhl/player/news/_/id/4697725",
+    "insider": "",
+    "kinds": [],
+    "date": "Oct 27 9:13AM"
+   },
+   {
+    "player": "Alex Laferriere",
     "summary": "Laferriere distributed two assists, posted a plus-2 rating, placed three shots on net, recorded two blocked shots, served two PIM and dished out four hits in Tuesday's 5-2 win over Washington.",
     "credit": "Rotowire via ESPN",
     "link": "https://www.espn.com/nhl/player/news/_/id/4697725",
     "insider": "",
     "kinds": [],
     "date": "Oct 21 8:15AM"
-   },
-   {
-    "player": "Alex Laferriere",
-    "summary": "Laferriere scored a goal on two shots, blocked two shots and went minus-2 in Saturday's 4-1 loss to the Bruins.",
-    "credit": "Rotowire via ESPN",
-    "link": "https://www.espn.com/nhl/player/news/_/id/4697725",
-    "insider": "",
-    "kinds": [],
-    "date": "Oct 18 1:41AM"
    }
   ],
   "Darcy Kuemper": [
+   {
+    "player": "Darcy Kuemper",
+    "summary": "Kuemper halted 23 of 26 shots on goal in Monday's 6-3 win over the Rangers.",
+    "credit": "Rotowire via ESPN",
+    "link": "https://www.espn.com/nhl/player/news/_/id/2610321",
+    "insider": "",
+    "kinds": [],
+    "date": "Oct 27 8:52AM"
+   },
    {
     "player": "Darcy Kuemper",
     "summary": "Kuemper will patrol the road paint in Monday's clash against the Rangers, per Zach Dooley of the Kings' official site.",
@@ -11279,15 +11164,6 @@
     "insider": "",
     "kinds": [],
     "date": "Oct 26 6:36PM"
-   },
-   {
-    "player": "Darcy Kuemper",
-    "summary": "Kuemper stopped 41 shots in Thursday's 3-2 overtime win over the Islanders.",
-    "credit": "Rotowire via ESPN",
-    "link": "https://www.espn.com/nhl/player/news/_/id/2610321",
-    "insider": "",
-    "kinds": [],
-    "date": "Oct 23 10:31AM"
    }
   ]
  },
@@ -11359,9 +11235,9 @@
    {
     "period": 182,
     "date": "Mon Mar 29",
-    "playing": 8,
+    "playing": 9,
     "used": 8,
-    "wasted": 0,
+    "wasted": 1,
     "empty_sk": 10,
     "empty_g": 0
    },
@@ -11395,9 +11271,9 @@
    {
     "period": 186,
     "date": "Fri Apr 2",
-    "playing": 11,
+    "playing": 10,
     "used": 10,
-    "wasted": 1,
+    "wasted": 0,
     "empty_sk": 8,
     "empty_g": 0
    },
@@ -11413,18 +11289,18 @@
    {
     "period": 188,
     "date": "Sun Apr 4",
-    "playing": 9,
-    "used": 9,
+    "playing": 10,
+    "used": 10,
     "wasted": 0,
     "empty_sk": 8,
-    "empty_g": 1
+    "empty_g": 0
    }
   ],
   "totals": {
-   "used": 148,
+   "used": 149,
    "wasted": 8,
    "empty_sk": 95,
-   "empty_g": 9
+   "empty_g": 8
   },
   "targets": {
    "fa": [
@@ -11469,16 +11345,6 @@
      "tradeable": false
     },
     {
-     "name": "Jakub Dobes",
-     "team": "MTL",
-     "group": "G",
-     "fit": 5,
-     "games": 7,
-     "usable_pts": 12.6,
-     "owner": "FA",
-     "tradeable": false
-    },
-    {
      "name": "Jimmy Snuggerud",
      "team": "STL",
      "group": "F",
@@ -11505,6 +11371,16 @@
      "fit": 7,
      "games": 7,
      "usable_pts": 12.0,
+     "owner": "FA",
+     "tradeable": false
+    },
+    {
+     "name": "Viktor Arvidsson",
+     "team": "DET",
+     "group": "F",
+     "fit": 7,
+     "games": 7,
+     "usable_pts": 11.7,
      "owner": "FA",
      "tradeable": false
     }
@@ -11621,7 +11497,7 @@
     "G": 1.643
    },
    "pace": {
-    "all": 0.797,
+    "all": 0.796,
     "F": 0.813,
     "D": 0.619,
     "G": 1.918
@@ -11641,7 +11517,7 @@
   },
   "games": {
    "model": 27065,
-   "sheet": 25404,
+   "sheet": 25401,
    "espn": 18513,
    "pace": 19732,
    "l15": 19686,
@@ -11679,10 +11555,10 @@
   "J.T. Miller": 0.26,
   "Roope Hintz": 0.32,
   "Shayne Gostisbehere": 0.34,
-  "John Gibson": 0.57,
   "Pyotr Kochetkov": 0.29,
   "Mark Jankowski": 0.4,
   "Mason McTavish": 0.42,
+  "Devin Cooley": 0.81,
   "Nikita Kucherov": 0.33,
   "Jack Eichel": 0.27,
   "Ilya Sorokin": 0.26,
@@ -11725,7 +11601,6 @@
   "Joel Eriksson Ek": 0.28,
   "Mikael Granlund": 0.51,
   "Mackenzie Blackwood": 0.29,
-  "Carter Hart": 0.56,
   "Darcy Kuemper": 0.36,
   "Leon Draisaitl": 0.46,
   "Cale Makar": 0.4,
@@ -11771,6 +11646,7 @@
   "Brandon Bussi": 0.51,
   "Timo Meier": 0.37,
   "Logan Stankoven": 0.57,
+  "Carter Hart": 0.56,
   "Bowen Byram": 0.41,
   "Dylan Strome": 0.39,
   "Jack Quinn": 0.77,
@@ -11778,8 +11654,9 @@
   "Jordan Kyrou": 0.37,
   "Jared McCann": 0.5,
   "Ukko-Pekka Luukkonen": 0.64,
-  "Stuart Skinner": 0.29,
+  "John Gibson": 0.57,
   "Robert Thomas": 0.43,
+  "Stuart Skinner": 0.29,
   "Jakub Dobes": 0.73,
   "Brent Burns": 0.76,
   "Mattias Ekholm": 0.64,
@@ -11790,50 +11667,49 @@
   "JJ Peterka": 0.26,
   "Jared Spurgeon": 0.58,
   "Tyler Bertuzzi": 0.7,
-  "Declan Carlile": 0.64,
-  "Bobby McMann": 0.49,
   "Ivar Stenberg": 0.45,
-  "Esa Lindell": 0.38,
   "Fraser Minten": 0.53,
+  "Bobby McMann": 0.49,
+  "Declan Carlile": 0.64,
+  "Esa Lindell": 0.38,
   "Anders Lee": 0.39,
-  "Eeli Tolvanen": 0.94,
   "Elias Lindholm": 0.33,
+  "Eeli Tolvanen": 0.94,
   "Ryan Hartman": 1.02,
-  "Marco Rossi": 0.92,
   "Jonathan Marchessault": 0.26,
+  "Marco Rossi": 0.92,
   "K'Andre Miller": 0.7,
+  "Arseny Gritsyuk": 0.5,
+  "Matt Coronato": 0.39,
+  "William Eklund": 0.25,
   "Gabe Perreault": 0.33,
   "Devon Levi": 0.85,
-  "Arseny Gritsyuk": 0.5,
-  "William Eklund": 0.25,
-  "Matt Coronato": 0.39,
   "Chris Kreider": 1.1,
   "Porter Martone": 0.45,
   "Anton Forsberg": 0.89,
   "Brayden Schenn": 0.38,
   "Anthony Cirelli": 0.4,
   "Dustin Wolf": 0.91,
-  "Pavel Buchnevich": 0.37,
-  "Gustav Forsling": 0.68,
-  "Philip Broberg": 0.32,
   "Charle-Edouard D'Astous": 0.9,
+  "Pavel Buchnevich": 0.37,
+  "Philip Broberg": 0.32,
+  "Gustav Forsling": 0.68,
   "Tommy Novak": 0.5,
   "Boone Jenner": 0.38,
   "Lawson Crouse": 0.46,
   "Frederick Gaudreau": 0.25,
   "Philipp Grubauer": 0.26,
+  "Yaroslav Askarov": 0.28,
   "Joseph Woll": 0.46,
   "Frank Nazar": 0.55,
-  "Yaroslav Askarov": 0.28,
   "Anton Frondell": 0.32,
-  "Devin Cooley": 0.81,
-  "Mats Zuccarello": 1.62,
+  "Kailer Yamamoto": 0.83,
   "Logan Stanley": 0.66,
-  "Michael Brandsegg-Nygard": 0.46,
+  "Mats Zuccarello": 1.62,
   "Dmitry Orlov": 0.39,
+  "Michael Brandsegg-Nygard": 0.46,
   "Mario Ferraro": 0.33,
   "Zach Benson": 0.34,
-  "Kailer Yamamoto": 0.83,
   "Anton Lundell": 0.57,
   "Aliaksei Protas": 0.88,
   "Luca Cagnoni": 0.3,
@@ -11842,43 +11718,43 @@
   "Morgan Frost": 0.32,
   "Damon Severson": 0.3,
   "Maxim Tsyplakov": 1.42,
-  "Jaden Schwartz": 0.63,
   "Tim Washe": 0.28,
+  "Jaden Schwartz": 0.63,
   "Akira Schmid": 0.29,
   "Josh Doan": 0.26,
   "Ben Kindel": 0.69,
   "Zeev Buium": 0.41,
   "Victor Olofsson": 0.96,
-  "Cam Fowler": 0.45,
+  "Kaiden Guhle": 0.3,
   "Michael DiPietro": 0.49,
+  "Cam Fowler": 0.45,
+  "Emmitt Finnie": 0.75,
   "Ryker Evans": 0.37,
   "Chandler Stephenson": 0.29,
-  "Emmitt Finnie": 0.75,
-  "Michael Misa": 0.28,
   "Jake Neighbours": 0.56,
+  "Michael Misa": 0.28,
   "Roman Kantserov": 0.48,
   "Trevor Moore": 0.54,
   "Ryan Pulock": 0.43,
-  "Kaiden Guhle": 0.3,
-  "Oliver Ekman-Larsson": 0.69,
   "Kevin Lankinen": 1.87,
+  "Oliver Ekman-Larsson": 0.69,
   "Connor McMichael": 0.48,
   "Kyle Palmieri": 0.39,
   "Trevor Connelly": 0.41,
   "Brett Howden": 0.3,
   "Jason Zucker": 0.36,
-  "Parker Kelly": 0.63,
   "Dawson Mercer": 0.27,
+  "Parker Kelly": 0.63,
   "Yegor Sharangovich": 0.36,
   "William Karlsson": 0.45,
   "Jordan Binnington": 0.77,
   "Kasperi Kapanen": 0.34,
-  "Daniil Tarasov": 0.27,
   "Cole Sillinger": 0.4,
-  "Leevi Merilainen": 0.71,
+  "Daniil Tarasov": 0.27,
   "Jordan Staal": 0.57,
-  "Kaedan Korczak": 0.44,
   "Tyler Seguin": 0.33,
+  "Leevi Merilainen": 0.71,
+  "Kaedan Korczak": 0.44,
   "Sean Monahan": 0.78,
   "Ryan Donato": 0.53,
   "Kaapo Kakko": 0.37,
@@ -11886,31 +11762,32 @@
   "John Marino": 0.53,
   "Mark Kastelic": 0.25,
   "Mason Lohrei": 0.31,
+  "Matvei Gridin": 0.42,
   "Frederik Andersen": 0.4,
   "Mathieu Olivier": 0.87,
-  "Teuvo Teravainen": 0.29,
-  "Igor Chernyshov": 0.62,
-  "Christian Dvorak": 0.41,
-  "Jordan Spence": 0.35,
-  "Jack McBain": 0.37,
   "Tye Kartye": 0.29,
+  "Teuvo Teravainen": 0.29,
+  "Jordan Spence": 0.35,
+  "Christian Dvorak": 0.41,
+  "Igor Chernyshov": 0.62,
+  "Jack McBain": 0.37,
   "Ryan McLeod": 0.76,
-  "Oliver Kapanen": 1.16,
-  "Matvei Gridin": 0.42,
   "Barrett Hayton": 0.3,
+  "Oliver Kapanen": 1.16,
   "Arber Xhekaj": 0.58,
   "Josh Norris": 0.51,
   "Jamie Benn": 1.34,
-  "Adam Klapka": 0.27,
   "Olen Zellweger": 0.55,
+  "Adam Klapka": 0.27,
+  "Brett Pesce": 0.44,
   "Noah Cates": 0.86,
   "Mavrik Bourque": 0.68,
   "Eetu Luostarinen": 0.56,
+  "Casey Mittelstadt": 0.52,
   "Conor Garland": 1.52,
   "Michael Bunting": 0.95,
   "Nicolas Roy": 0.4,
-  "Casey Mittelstadt": 0.52,
-  "Brett Pesce": 0.44,
+  "Cam Talbot": 0.41,
   "Artyom Levshunov": 0.34,
   "Martin Pospisil": 0.39,
   "Sean Couturier": 0.84,
@@ -11919,15 +11796,14 @@
   "Victor Eklund": 0.59,
   "Carter Yakemchuk": 0.48,
   "Radko Gudas": 0.6,
-  "T.J. Hughes": 0.66,
-  "Andrew Copp": 0.31,
   "Matthew Poitras": 0.67,
   "Ilya Protas": 0.48,
+  "Andrew Copp": 0.31,
+  "T.J. Hughes": 0.66,
   "Jake Walman": 0.38,
-  "Cam Talbot": 0.41,
-  "Viggo Bjorck": 0.68,
   "Luke Schenn": 0.6,
   "Scott Laughton": 0.35,
+  "Viggo Bjorck": 0.68,
   "Drew O'Connor": 0.71,
   "Peyton Krebs": 0.67,
   "Ilya Mikheyev": 0.45,
@@ -11935,72 +11811,72 @@
   "Noah Warren": 0.59,
   "Matias Maccelli": 0.66,
   "Dylan Samberg": 0.31,
-  "Nick Paul": 0.27,
   "Cam York": 0.25,
+  "Nick Paul": 0.27,
   "Samuel Ersson": 3.12,
   "Konsta Helenius": 0.57,
   "Pavel Mintyukov": 0.33,
   "Pius Suter": 0.25,
   "Connor Brown": 0.78,
-  "Sebastian Cossa": 1.02,
   "Arttu Hyry": 0.37,
+  "Sebastian Cossa": 1.02,
   "Corey Perry": 0.63,
-  "Mathieu Joseph": 0.43,
-  "Troy Stecher": 0.66,
+  "Semyon Varlamov": 1.81,
   "Oliver Bonk": 0.9,
-  "Aydar Suniev": 0.69,
-  "Ben Meyers": 0.6,
+  "Troy Stecher": 0.66,
   "Justin Sourdif": 0.36,
   "Frederic Brunet": 0.65,
-  "Alberts Smits": 0.41,
+  "Ben Meyers": 0.6,
+  "Mathieu Joseph": 0.43,
+  "Aydar Suniev": 0.69,
   "Stephen Halliday": 0.62,
+  "Alberts Smits": 0.41,
   "Michael Carcone": 0.26,
-  "Semyon Varlamov": 1.81,
-  "Axel Sandin-Pellikka": 1.11,
   "Justin Brazeau": 0.29,
+  "Axel Sandin-Pellikka": 1.11,
+  "Justin Barron": 0.35,
   "Roger McQueen": 0.86,
   "Matthew Wood": 0.5,
   "Sam Steel": 0.75,
   "Max Domi": 0.3,
-  "Justin Barron": 0.35,
   "Phillip Danault": 0.27,
+  "Clay Stevenson": 1.81,
   "Nils Hoglander": 0.49,
   "Marat Khusnutdinov": 0.33,
   "Conor Geekie": 0.31,
   "Filip Hallander": 0.62,
-  "Alex Formenton": 0.62,
   "Beck Malenstyn": 0.67,
-  "Clay Stevenson": 1.81,
+  "Alex Formenton": 0.62,
   "Marcus Foligno": 0.87,
   "Sam Rinzel": 0.49,
+  "Colten Ellis": 1.81,
   "Eric Robinson": 0.31,
   "Noel Acciari": 0.28,
-  "Dalibor Dvorsky": 0.52,
   "Kirby Dach": 0.53,
+  "Dalibor Dvorsky": 0.52,
   "Andrew Peeke": 0.52,
   "Nico Daws": 0.36,
-  "Colten Ellis": 1.81,
   "Michael Kesselring": 0.47,
   "Jiri Kulich": 0.61,
   "Connor Clifton": 1.51,
   "Hendrix Lapierre": 0.42,
-  "Justin Hryckowian": 0.3,
   "Denver Barkey": 0.42,
-  "Ville Husso": 0.47,
-  "Matt Roy": 0.34,
+  "Justin Hryckowian": 0.3,
   "Jesper Boqvist": 0.37,
+  "Matt Roy": 0.34,
   "Ryan McDonagh": 0.44,
-  "Jonathan Drouin": 0.54,
   "Owen Michaels": 0.53,
+  "Ville Husso": 0.47,
   "Parker Wotherspoon": 0.51,
-  "Zach Bogosian": 0.45,
+  "Jonathan Drouin": 0.54,
   "Marc Gatcomb": 0.46,
   "Cody Glass": 0.28,
-  "Cole Knuble": 0.95,
   "Florian Xhekaj": 1.81,
   "Wyatt Kaiser": 0.3,
-  "Ryan Winterton": 0.45,
-  "Oliver Moore": 0.48
+  "Zach Bogosian": 0.45,
+  "Oliver Moore": 0.48,
+  "Juuso Valimaki": 0.95,
+  "Adam Jiricek": 0.82
  },
  "disagree_threshold": 0.25,
  "rosters": {
@@ -12037,7 +11913,6 @@
    "David Pastrnak",
    "Brandon Hagel",
    "William Nylander",
-   "John Gibson",
    "Pyotr Kochetkov",
    "Sam Reinhart",
    "Charlie McAvoy",
@@ -12056,6 +11931,7 @@
    "Shayne Gostisbehere",
    "Blake Coleman",
    "Elias N. Pettersson",
+   "Devin Cooley",
    "Mark Jankowski"
   ],
   "Mike's Magnificent Team": [
@@ -12124,7 +12000,6 @@
    "Dylan Guenther",
    "Mark Stone",
    "Jakob Chychrun",
-   "Carter Hart",
    "Cutter Gauthier",
    "Connor Bedard",
    "Tom Wilson",
