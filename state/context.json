@@ -1,5 +1,5 @@
 {
- "generated": "Sun Nov 8, 8:00 AM",
+ "generated": "Sun Nov 8, 5:03 PM",
  "league": {
   "name": "The Healthy Scratches",
   "size": 8,
@@ -10116,21 +10116,6 @@
    "status": "INJURY_RESERVE",
    "group": "F",
    "team": "BOS"
-  },
-  {
-   "player": "Miro Heiskanen",
-   "summary": "Heiskanen (upper body) is slated to be sidelined for Saturday's game against the Sharks, Robert Tiffin of NHL.com reports.",
-   "credit": "Rotowire via ESPN, citing Robert Tiffin (NHL.com)",
-   "link": "https://www.espn.com/nhl/player/news/_/id/4233536",
-   "insider": "",
-   "kinds": [
-    "injury"
-   ],
-   "date": "Nov 6 1:45PM",
-   "owner": "Mike's Magnificent Team",
-   "status": "OUT",
-   "group": "D",
-   "team": "DAL"
   }
  ],
  "status_watch": [],
@@ -10179,48 +10164,6 @@
      "pos": "RW",
      "gain": 49.8,
      "gain_2wk": -0.1,
-     "status": "FREEAGENT",
-     "waiver": ""
-    }
-   ]
-  },
-  {
-   "news": {
-    "player": "Miro Heiskanen",
-    "summary": "Heiskanen (upper body) is slated to be sidelined for Saturday's game against the Sharks, Robert Tiffin of NHL.com reports.",
-    "credit": "Rotowire via ESPN, citing Robert Tiffin (NHL.com)",
-    "link": "https://www.espn.com/nhl/player/news/_/id/4233536",
-    "insider": "",
-    "kinds": [
-     "injury"
-    ],
-    "date": "Nov 6 1:45PM"
-   },
-   "about": "Miro Heiskanen",
-   "about_team": "DAL",
-   "about_group": "D",
-   "self": false,
-   "kinds": [
-    "injury"
-   ],
-   "beneficiaries": [
-    {
-     "id": 3069352,
-     "name": "Esa Lindell",
-     "team": "DAL",
-     "pos": "D",
-     "gain": 50.2,
-     "gain_2wk": -0.2,
-     "status": "FREEAGENT",
-     "waiver": ""
-    },
-    {
-     "id": 5080162,
-     "name": "Lian Bichsel",
-     "team": "DAL",
-     "pos": "D",
-     "gain": 18.6,
-     "gain_2wk": -1.3,
      "status": "FREEAGENT",
      "waiver": ""
     }
