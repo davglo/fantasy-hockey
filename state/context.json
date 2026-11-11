@@ -1,5 +1,5 @@
 {
- "generated": "Wed Nov 11, 8:02 AM",
+ "generated": "Wed Nov 11, 5:00 PM",
  "league": {
   "name": "The Healthy Scratches",
   "size": 8,
@@ -33,7 +33,7 @@
   "name": "Jabroni Beaters",
   "grade": "A",
   "rank": 1,
-  "playoff_odds": 0.991,
+  "playoff_odds": 0.989,
   "posture": "Contender: hold producing starters; buy at your biggest need.",
   "headline": "Jabroni Beaters: #1 of 8 in projected strength, 99% playoff odds. Weakest group: F (#4 quality, #7 rest of season).",
   "urgent": "Add Igor Shesterkin (G), drop Devon Levi: +69 rest-of-season pts (playoff weeks x2), +5 over the next two weeks."
@@ -54,8 +54,8 @@
    "pf": 880.6,
    "pa": 734.9,
    "strength": 144.1,
-   "odds": 0.965,
-   "exp_wins": 16.2
+   "odds": 0.962,
+   "exp_wins": 16.1
   },
   {
    "id": 5,
@@ -66,7 +66,7 @@
    "pf": 958.3,
    "pa": 777.0,
    "strength": 150.1,
-   "odds": 0.991,
+   "odds": 0.989,
    "exp_wins": 17.1
   },
   {
@@ -78,7 +78,7 @@
    "pf": 796.6,
    "pa": 778.6,
    "strength": 140.8,
-   "odds": 0.826,
+   "odds": 0.813,
    "exp_wins": 14.5
   },
   {
@@ -90,8 +90,8 @@
    "pf": 806.9,
    "pa": 832.4,
    "strength": 139.9,
-   "odds": 0.46,
-   "exp_wins": 12.3
+   "odds": 0.438,
+   "exp_wins": 12.2
   },
   {
    "id": 6,
@@ -101,9 +101,9 @@
    "t": 0,
    "pf": 878.0,
    "pa": 883.2,
-   "strength": 139.3,
-   "odds": 0.39,
-   "exp_wins": 11.5
+   "strength": 140.4,
+   "odds": 0.453,
+   "exp_wins": 11.9
   },
   {
    "id": 7,
@@ -114,8 +114,8 @@
    "pf": 822.2,
    "pa": 900.4,
    "strength": 137.8,
-   "odds": 0.146,
-   "exp_wins": 10.1
+   "odds": 0.141,
+   "exp_wins": 10.2
   },
   {
    "id": 3,
@@ -126,7 +126,7 @@
    "pf": 801.1,
    "pa": 869.5,
    "strength": 142.7,
-   "odds": 0.207,
+   "odds": 0.191,
    "exp_wins": 10.3
   },
   {
@@ -138,7 +138,7 @@
    "pf": 732.5,
    "pa": 900.2,
    "strength": 132.3,
-   "odds": 0.016,
+   "odds": 0.014,
    "exp_wins": 7.8
   }
  ],
@@ -147,23 +147,23 @@
   "opp_id": 4,
   "actual_me": 32.9,
   "actual_opp": 29.7,
-  "proj_me": 148.0,
-  "proj_opp": 130.0,
-  "win_prob": 0.764,
+  "proj_me": 147.3,
+  "proj_opp": 128.7,
+  "win_prob": 0.772,
   "starts_me": 51,
   "starts_opp": 48,
   "days": [
    {
     "date": "Wed Nov 11",
-    "me": 22.3,
+    "me": 22.1,
     "opp": 12.9,
     "me_starts": 10,
     "opp_starts": 7
    },
    {
     "date": "Thu Nov 12",
-    "me": 32.2,
-    "opp": 34.7,
+    "me": 31.6,
+    "opp": 33.4,
     "me_starts": 15,
     "opp_starts": 16
    },
@@ -554,8 +554,8 @@
     "Devon Levi",
     "Cutter Gauthier",
     "Macklin Celebrini",
-    "Mark Stone",
     "Mikael Granlund",
+    "Mark Stone",
     "Jack Quinn",
     "Dylan Guenther",
     "Pavel Dorofeyev",
@@ -588,7 +588,7 @@
      "text": "Confirm Connor Hellebuyck starts in net (no confirmed-starter feed)."
     }
    ],
-   "gain": 7.8,
+   "gain": 6.9,
    "playing": [
     {
      "id": 4565227,
@@ -966,18 +966,18 @@
     }
    ],
    "best": [
-    "Jeremy Swayman",
     "Connor Hellebuyck",
+    "Jeremy Swayman",
     "Jack Hughes",
-    "Alex Tuch",
     "Connor Bedard",
-    "Dylan Guenther",
+    "Alex Tuch",
     "Jack Quinn",
     "Joel Eriksson Ek",
+    "Dylan Guenther",
     "Tom Wilson",
     "Gavin McKenna",
-    "Moritz Seider",
     "Brandt Clarke",
+    "Moritz Seider",
     "Jakob Chychrun",
     "Charle-Edouard D'Astous",
     "Justin Faulk"
@@ -1657,7 +1657,7 @@
    "fp": 21.2,
    "ros": 169.0,
    "score": 68.8,
-   "gain": 68.8,
+   "gain": 68.9,
    "week_gain": 4.6,
    "drop": "Devon Levi",
    "g_this": 2,
@@ -1694,14 +1694,14 @@
    "gp": 16,
    "fp": 29.9,
    "ros": 105.3,
-   "score": 64.0,
-   "gain": 64.0,
-   "week_gain": -1.5,
+   "score": 63.9,
+   "gain": 63.9,
+   "week_gain": -1.6,
    "drop": "Devon Levi",
    "g_this": 2,
    "g_next": 3,
    "po_games": 8,
-   "own_chg": 0.0,
+   "own_chg": -0.3,
    "luck": "",
    "status": "FREEAGENT",
    "light": 28,
@@ -1733,18 +1733,18 @@
    "fp": 30.8,
    "ros": 105.3,
    "score": 61.5,
-   "gain": 61.4,
-   "week_gain": -1.7,
+   "gain": 61.6,
+   "week_gain": -1.5,
    "drop": "Devon Levi",
    "g_this": 2,
    "g_next": 3,
    "po_games": 7,
-   "own_chg": 0.6,
+   "own_chg": -0.0,
    "luck": "",
    "status": "FREEAGENT",
    "light": 24,
    "alt_drops": [
-    "Gavin McKenna (+29)",
+    "Gavin McKenna (+30)",
     "Tom Wilson (+15)"
    ],
    "waiver": ""
@@ -1770,14 +1770,14 @@
    "gp": 2,
    "fp": 3.7,
    "ros": 98.0,
-   "score": 61.1,
+   "score": 61.0,
    "gain": 61.1,
    "week_gain": -0.3,
    "drop": "Devon Levi",
    "g_this": 2,
    "g_next": 4,
    "po_games": 7,
-   "own_chg": 0.1,
+   "own_chg": -0.1,
    "luck": "",
    "status": "FREEAGENT",
    "light": 23,
@@ -1808,9 +1808,9 @@
    "gp": 18,
    "fp": 34.2,
    "ros": 102.2,
-   "score": 58.6,
-   "gain": 58.4,
-   "week_gain": 0.2,
+   "score": 58.8,
+   "gain": 58.5,
+   "week_gain": 0.3,
    "drop": "Devon Levi",
    "g_this": 2,
    "g_next": 4,
@@ -1820,8 +1820,8 @@
    "status": "FREEAGENT",
    "light": 20,
    "alt_drops": [
-    "Gavin McKenna (+26)",
-    "Tom Wilson (+13)"
+    "Gavin McKenna (+27)",
+    "Tom Wilson (+14)"
    ],
    "waiver": ""
   },
@@ -1848,56 +1848,18 @@
    "ros": 99.9,
    "score": 57.9,
    "gain": 57.9,
-   "week_gain": -2.0,
+   "week_gain": -2.1,
    "drop": "Devon Levi",
    "g_this": 2,
    "g_next": 3,
    "po_games": 8,
-   "own_chg": -0.0,
+   "own_chg": -0.1,
    "luck": "",
    "status": "FREEAGENT",
    "light": 28,
    "alt_drops": [
     "Gavin McKenna (+24)",
     "Justin Faulk (+15)"
-   ],
-   "waiver": ""
-  },
-  {
-   "id": 3904189,
-   "name": "Vince Dunn",
-   "pos": "D",
-   "group": "D",
-   "team": "SEA",
-   "injury": "",
-   "rate": 1.81,
-   "src": {
-    "sheet": 1.66,
-    "model": 1.81,
-    "espn": 1.64,
-    "pace": 1.86,
-    "l15": 1.68
-   },
-   "cons": 1.74,
-   "dis": 0.13,
-   "exp_game": 1.74,
-   "gp": 16,
-   "fp": 29.8,
-   "ros": 101.1,
-   "score": 56.8,
-   "gain": 56.9,
-   "week_gain": -3.8,
-   "drop": "Devon Levi",
-   "g_this": 2,
-   "g_next": 2,
-   "po_games": 6,
-   "own_chg": -0.2,
-   "luck": "",
-   "status": "FREEAGENT",
-   "light": 23,
-   "alt_drops": [
-    "Gavin McKenna (+23)",
-    "Justin Faulk (+12)"
    ],
    "waiver": ""
   },
@@ -1922,9 +1884,9 @@
    "gp": 6,
    "fp": 6.7,
    "ros": 96.0,
-   "score": 56.5,
-   "gain": 56.5,
-   "week_gain": -0.5,
+   "score": 56.7,
+   "gain": 56.8,
+   "week_gain": -0.2,
    "drop": "Devon Levi",
    "g_this": 2,
    "g_next": 4,
@@ -1940,40 +1902,40 @@
    "waiver": ""
   },
   {
-   "id": 4062251,
-   "name": "Jordan Kyrou",
-   "pos": "RW",
-   "group": "F",
-   "team": "WSH",
+   "id": 3904189,
+   "name": "Vince Dunn",
+   "pos": "D",
+   "group": "D",
+   "team": "SEA",
    "injury": "",
-   "rate": 1.74,
+   "rate": 1.81,
    "src": {
-    "sheet": 1.76,
-    "model": 1.74,
-    "espn": 1.72,
-    "pace": 1.74,
-    "l15": 2.1
+    "sheet": 1.66,
+    "model": 1.81,
+    "espn": 1.64,
+    "pace": 1.86,
+    "l15": 1.68
    },
    "cons": 1.74,
-   "dis": 0.22,
+   "dis": 0.13,
    "exp_game": 1.74,
    "gp": 16,
-   "fp": 27.8,
-   "ros": 99.4,
-   "score": 56.4,
-   "gain": 56.4,
-   "week_gain": -2.1,
+   "fp": 29.8,
+   "ros": 101.1,
+   "score": 56.7,
+   "gain": 56.8,
+   "week_gain": -3.9,
    "drop": "Devon Levi",
    "g_this": 2,
-   "g_next": 3,
-   "po_games": 8,
-   "own_chg": -0.1,
+   "g_next": 2,
+   "po_games": 6,
+   "own_chg": -0.3,
    "luck": "",
    "status": "FREEAGENT",
-   "light": 28,
+   "light": 23,
    "alt_drops": [
-    "Gavin McKenna (+24)",
-    "Tom Wilson (+12)"
+    "Gavin McKenna (+23)",
+    "Justin Faulk (+12)"
    ],
    "waiver": ""
   },
@@ -1998,9 +1960,9 @@
    "gp": 17,
    "fp": 31.0,
    "ros": 97.5,
-   "score": 56.2,
+   "score": 56.3,
    "gain": 56.3,
-   "week_gain": -2.4,
+   "week_gain": -2.3,
    "drop": "Devon Levi",
    "g_this": 2,
    "g_next": 3,
@@ -2012,6 +1974,44 @@
    "alt_drops": [
     "Gavin McKenna (+24)",
     "Tom Wilson (+8)"
+   ],
+   "waiver": ""
+  },
+  {
+   "id": 4062251,
+   "name": "Jordan Kyrou",
+   "pos": "RW",
+   "group": "F",
+   "team": "WSH",
+   "injury": "",
+   "rate": 1.74,
+   "src": {
+    "sheet": 1.76,
+    "model": 1.74,
+    "espn": 1.72,
+    "pace": 1.74,
+    "l15": 2.1
+   },
+   "cons": 1.74,
+   "dis": 0.22,
+   "exp_game": 1.74,
+   "gp": 16,
+   "fp": 27.8,
+   "ros": 99.4,
+   "score": 56.2,
+   "gain": 56.4,
+   "week_gain": -2.2,
+   "drop": "Devon Levi",
+   "g_this": 2,
+   "g_next": 3,
+   "po_games": 8,
+   "own_chg": -0.7,
+   "luck": "",
+   "status": "FREEAGENT",
+   "light": 28,
+   "alt_drops": [
+    "Gavin McKenna (+24)",
+    "Tom Wilson (+12)"
    ],
    "waiver": ""
   },
@@ -2036,14 +2036,14 @@
    "gp": 18,
    "fp": 34.9,
    "ros": 98.1,
-   "score": 55.7,
-   "gain": 55.6,
+   "score": 55.6,
+   "gain": 55.7,
    "week_gain": -2.0,
    "drop": "Devon Levi",
    "g_this": 2,
    "g_next": 3,
    "po_games": 6,
-   "own_chg": 0.3,
+   "own_chg": -0.3,
    "luck": "",
    "status": "FREEAGENT",
    "light": 21,
@@ -2074,14 +2074,14 @@
    "gp": 14,
    "fp": 23.1,
    "ros": 92.1,
-   "score": 54.7,
-   "gain": 54.7,
-   "week_gain": -1.1,
+   "score": 54.8,
+   "gain": 54.8,
+   "week_gain": -1.0,
    "drop": "Devon Levi",
    "g_this": 3,
    "g_next": 3,
    "po_games": 7,
-   "own_chg": -0.2,
+   "own_chg": 0.1,
    "luck": "",
    "status": "FREEAGENT",
    "light": 25,
@@ -2112,14 +2112,14 @@
    "gp": 16,
    "fp": 28.0,
    "ros": 100.0,
-   "score": 54.2,
-   "gain": 54.2,
-   "week_gain": -2.3,
+   "score": 54.3,
+   "gain": 54.4,
+   "week_gain": -2.1,
    "drop": "Devon Levi",
    "g_this": 2,
    "g_next": 3,
    "po_games": 6,
-   "own_chg": 0.1,
+   "own_chg": -0.4,
    "luck": "",
    "status": "FREEAGENT",
    "light": 22,
@@ -2150,14 +2150,14 @@
    "gp": 17,
    "fp": 30.7,
    "ros": 100.4,
-   "score": 53.3,
-   "gain": 53.3,
-   "week_gain": 1.3,
+   "score": 53.6,
+   "gain": 53.5,
+   "week_gain": 1.5,
    "drop": "Devon Levi",
    "g_this": 3,
    "g_next": 4,
    "po_games": 6,
-   "own_chg": 0.2,
+   "own_chg": 0.8,
    "luck": "cold (sh% 5) - buy-low",
    "status": "FREEAGENT",
    "light": 21,
@@ -2188,14 +2188,14 @@
    "gp": 19,
    "fp": 34.8,
    "ros": 95.0,
-   "score": 51.2,
+   "score": 50.9,
    "gain": 50.8,
-   "week_gain": -2.3,
+   "week_gain": -2.2,
    "drop": "Devon Levi",
    "g_this": 2,
    "g_next": 3,
    "po_games": 6,
-   "own_chg": 2.2,
+   "own_chg": 0.5,
    "luck": "",
    "status": "FREEAGENT",
    "light": 21,
@@ -2226,58 +2226,20 @@
    "gp": 17,
    "fp": 27.7,
    "ros": 94.3,
-   "score": 47.2,
-   "gain": 47.2,
-   "week_gain": 0.6,
+   "score": 47.3,
+   "gain": 47.3,
+   "week_gain": 0.7,
    "drop": "Devon Levi",
    "g_this": 3,
    "g_next": 4,
    "po_games": 6,
-   "own_chg": -0.3,
+   "own_chg": 0.0,
    "luck": "",
    "status": "FREEAGENT",
    "light": 21,
    "alt_drops": [
     "Gavin McKenna (+14)",
     "Justin Faulk (+2)"
-   ],
-   "waiver": ""
-  },
-  {
-   "id": 5149172,
-   "name": "Ryan Leonard",
-   "pos": "RW",
-   "group": "F",
-   "team": "WSH",
-   "injury": "",
-   "rate": 1.73,
-   "src": {
-    "sheet": 1.68,
-    "model": 1.73,
-    "espn": 1.47,
-    "pace": 1.75,
-    "l15": 1.63
-   },
-   "cons": 1.68,
-   "dis": 0.17,
-   "exp_game": 1.6,
-   "gp": 16,
-   "fp": 28.0,
-   "ros": 91.5,
-   "score": 46.6,
-   "gain": 46.6,
-   "week_gain": -2.8,
-   "drop": "Devon Levi",
-   "g_this": 2,
-   "g_next": 3,
-   "po_games": 8,
-   "own_chg": 0.1,
-   "luck": "",
-   "status": "FREEAGENT",
-   "light": 28,
-   "alt_drops": [
-    "Gavin McKenna (+15)",
-    "Tom Wilson (+2)"
    ],
    "waiver": ""
   },
@@ -2302,20 +2264,58 @@
    "gp": 17,
    "fp": 29.3,
    "ros": 94.0,
-   "score": 46.5,
+   "score": 46.4,
    "gain": 46.4,
    "week_gain": -2.4,
    "drop": "Devon Levi",
    "g_this": 2,
    "g_next": 3,
    "po_games": 6,
-   "own_chg": 0.3,
+   "own_chg": 0.2,
    "luck": "",
    "status": "FREEAGENT",
    "light": 19,
    "alt_drops": [
     "Gavin McKenna (+14)",
     "Tom Wilson (+1)"
+   ],
+   "waiver": ""
+  },
+  {
+   "id": 5149172,
+   "name": "Ryan Leonard",
+   "pos": "RW",
+   "group": "F",
+   "team": "WSH",
+   "injury": "",
+   "rate": 1.73,
+   "src": {
+    "sheet": 1.68,
+    "model": 1.73,
+    "espn": 1.47,
+    "pace": 1.75,
+    "l15": 1.63
+   },
+   "cons": 1.68,
+   "dis": 0.17,
+   "exp_game": 1.6,
+   "gp": 16,
+   "fp": 28.0,
+   "ros": 91.5,
+   "score": 46.4,
+   "gain": 46.5,
+   "week_gain": -2.8,
+   "drop": "Devon Levi",
+   "g_this": 2,
+   "g_next": 3,
+   "po_games": 8,
+   "own_chg": -0.3,
+   "luck": "",
+   "status": "FREEAGENT",
+   "light": 28,
+   "alt_drops": [
+    "Gavin McKenna (+14)",
+    "Tom Wilson (+2)"
    ],
    "waiver": ""
   },
@@ -2347,13 +2347,13 @@
    "g_this": 2,
    "g_next": 3,
    "po_games": 8,
-   "own_chg": 0.5,
+   "own_chg": 0.7,
    "luck": "",
    "status": "FREEAGENT",
    "light": 28,
    "alt_drops": [
     "Gavin McKenna (+13)",
-    "Justin Faulk (+3)"
+    "Justin Faulk (+2)"
    ],
    "waiver": ""
   },
@@ -2378,19 +2378,19 @@
    "gp": 18,
    "fp": 29.2,
    "ros": 91.8,
-   "score": 45.6,
-   "gain": 45.5,
-   "week_gain": -0.9,
+   "score": 45.7,
+   "gain": 45.7,
+   "week_gain": -0.8,
    "drop": "Devon Levi",
    "g_this": 2,
    "g_next": 4,
    "po_games": 7,
-   "own_chg": 0.5,
+   "own_chg": 0.2,
    "luck": "",
    "status": "FREEAGENT",
    "light": 20,
    "alt_drops": [
-    "Gavin McKenna (+13)",
+    "Gavin McKenna (+14)",
     "Tom Wilson (+1)"
    ],
    "waiver": ""
@@ -2416,14 +2416,14 @@
    "gp": 11,
    "fp": 17.4,
    "ros": 93.4,
-   "score": 45.2,
-   "gain": 45.3,
-   "week_gain": -4.3,
+   "score": 45.1,
+   "gain": 45.1,
+   "week_gain": -4.5,
    "drop": "Devon Levi",
    "g_this": 2,
    "g_next": 2,
    "po_games": 6,
-   "own_chg": -0.2,
+   "own_chg": -0.3,
    "luck": "",
    "status": "FREEAGENT",
    "light": 23,
@@ -2454,9 +2454,9 @@
    "gp": 7,
    "fp": 13.0,
    "ros": 127.5,
-   "score": 31.6,
-   "gain": 31.7,
-   "week_gain": -3.1,
+   "score": 31.7,
+   "gain": 31.8,
+   "week_gain": -3.0,
    "drop": "Devon Levi",
    "g_this": 2,
    "g_next": 4,
@@ -2493,8 +2493,8 @@
    "fp": 21.0,
    "ros": 142.7,
    "score": 29.9,
-   "gain": 29.9,
-   "week_gain": -2.8,
+   "gain": 30.0,
+   "week_gain": -2.7,
    "drop": "Devon Levi",
    "g_this": 2,
    "g_next": 3,
@@ -2530,19 +2530,19 @@
    "gp": 10,
    "fp": 37.7,
    "ros": 136.1,
-   "score": 26.3,
-   "gain": 26.1,
-   "week_gain": -2.7,
+   "score": 26.6,
+   "gain": 26.6,
+   "week_gain": -2.3,
    "drop": "Devon Levi",
    "g_this": 3,
    "g_next": 2,
    "po_games": 7,
-   "own_chg": 0.5,
+   "own_chg": 0.1,
    "luck": "",
    "status": "FREEAGENT",
    "light": 19,
    "alt_drops": [
-    "Gavin McKenna (-22)",
+    "Gavin McKenna (-21)",
     "Tom Wilson (-40)"
    ],
    "waiver": ""
@@ -2568,9 +2568,9 @@
    "gp": 0,
    "fp": 0.0,
    "ros": 114.1,
-   "score": 17.1,
-   "gain": 17.1,
-   "week_gain": 2.7,
+   "score": 17.2,
+   "gain": 17.2,
+   "week_gain": 2.8,
    "drop": "Devon Levi",
    "g_this": 2,
    "g_next": 4,
@@ -2589,7 +2589,7 @@
  "fa_summary": [
   "Igor Shesterkin (G, NYR) for Devon Levi: +69 ROS, 6 playoff-week games, +5 next 2 wks (2+2 games).",
   "Dylan Strome (F, WSH) for Devon Levi: +64 ROS, 8 playoff-week games.",
-  "Alex Laferriere (F, LA) for Devon Levi: +61 ROS, 7 playoff-week games."
+  "Alex Laferriere (F, LA) for Devon Levi: +62 ROS, 7 playoff-week games."
  ],
  "streaming": {
   "schedule": {
@@ -3394,35 +3394,6 @@
     "status": "FREEAGENT"
    },
    {
-    "id": 3042020,
-    "name": "Tristan Jarry",
-    "pos": "G",
-    "group": "G",
-    "team": "EDM",
-    "injury": "",
-    "rate": 4.09,
-    "src": {
-     "sheet": 3.92,
-     "model": 4.09,
-     "espn": 3.84,
-     "pace": 4.44,
-     "l15": 8.03
-    },
-    "cons": 4.26,
-    "dis": 0.98,
-    "exp_game": 1.74,
-    "gp": 8,
-    "fp": 35.5,
-    "exp": 5.2,
-    "games": 3,
-    "opps": [
-     "PHI",
-     "TOR",
-     "PHI"
-    ],
-    "status": "FREEAGENT"
-   },
-   {
     "id": 3114994,
     "name": "Alex Nedeljkovic",
     "pos": "G",
@@ -3448,6 +3419,34 @@
      "PIT",
      "UTA",
      "NSH"
+    ],
+    "status": "FREEAGENT"
+   },
+   {
+    "id": 4894366,
+    "name": "Jet Greaves",
+    "pos": "G",
+    "group": "G",
+    "team": "CBJ",
+    "injury": "",
+    "rate": 3.61,
+    "src": {
+     "sheet": 4.49,
+     "model": 3.61,
+     "espn": 4.02,
+     "pace": 2.33,
+     "l15": 1.27
+    },
+    "cons": 2.97,
+    "dis": 0.93,
+    "exp_game": 2.42,
+    "gp": 9,
+    "fp": 21.0,
+    "exp": 4.8,
+    "games": 2,
+    "opps": [
+     "TB",
+     "PHI"
     ],
     "status": "FREEAGENT"
    }
@@ -3499,7 +3498,7 @@
      "add_pos": "G",
      "add_team": "VGK",
      "drop": "Gavin McKenna",
-     "gain": 4.7,
+     "gain": 4.8,
      "days": [
       "Wed 11",
       "Fri 13",
@@ -3512,7 +3511,7 @@
      "add_pos": "F",
      "add_team": "BUF",
      "drop": "Tom Wilson",
-     "gain": 2.0,
+     "gain": 2.3,
      "days": [
       "Wed 11",
       "Thu 12",
@@ -3525,7 +3524,7 @@
      "add_pos": "G",
      "add_team": "VGK",
      "drop": "Devon Levi",
-     "gain": 1.9,
+     "gain": 2.0,
      "days": [
       "Wed 11",
       "Fri 13",
@@ -3935,7 +3934,7 @@
      169.3
     ],
     "total": 329.8,
-    "odds": 0.991
+    "odds": 0.989
    },
    {
     "name": "McDISHHH",
@@ -3945,7 +3944,7 @@
      146.9
     ],
     "total": 293.4,
-    "odds": 0.46
+    "odds": 0.438
    },
    {
     "name": "Timmy's Tenacious Team",
@@ -3955,7 +3954,7 @@
      146.6
     ],
     "total": 286.2,
-    "odds": 0.016
+    "odds": 0.014
    },
    {
     "name": "Mike's Magnificent Team",
@@ -3965,7 +3964,7 @@
      147.7
     ],
     "total": 283.0,
-    "odds": 0.207
+    "odds": 0.191
    },
    {
     "name": "Angie\u2019s Bear Balls",
@@ -3975,7 +3974,7 @@
      147.5
     ],
     "total": 282.6,
-    "odds": 0.146
+    "odds": 0.141
    },
    {
     "name": "PuttinOnTheFoil",
@@ -3985,17 +3984,17 @@
      146.4
     ],
     "total": 282.1,
-    "odds": 0.826
+    "odds": 0.813
    },
    {
     "name": "Torts Illustrated",
     "me": false,
     "weeks": [
-     137.0,
-     143.2
+     135.9,
+     144.9
     ],
-    "total": 280.2,
-    "odds": 0.39
+    "total": 280.8,
+    "odds": 0.453
    },
    {
     "name": "Matt's Monstrous Team",
@@ -4005,7 +4004,7 @@
      148.8
     ],
     "total": 278.4,
-    "odds": 0.965
+    "odds": 0.962
    }
   ],
   "mine": [
@@ -4276,7 +4275,7 @@
     },
     "Total": {
      "q": 2,
-     "ros": 5,
+     "ros": 6,
      "ros_pts": 2622
     }
    },
@@ -4854,12 +4853,12 @@
     },
     "G": {
      "q": 3,
-     "ros": 5,
+     "ros": 6,
      "ros_pts": 347
     },
     "Total": {
      "q": 8,
-     "ros": 4,
+     "ros": 5,
      "ros_pts": 2641
     }
    },
@@ -5821,7 +5820,7 @@
      "pos": "D",
      "group": "D",
      "team": "DAL",
-     "injury": "DAY_TO_DAY",
+     "injury": "OUT",
      "rate": 1.87,
      "src": {
       "sheet": 2.05,
@@ -6105,7 +6104,7 @@
      "pos": "G",
      "group": "G",
      "team": "OTT",
-     "injury": "OUT",
+     "injury": "DAY_TO_DAY",
      "rate": 4.65,
      "src": {
       "sheet": 4.17,
@@ -6611,7 +6610,7 @@
      "pos": "D",
      "group": "D",
      "team": "TOR",
-     "injury": "OUT",
+     "injury": "DAY_TO_DAY",
      "rate": 1.48,
      "src": {
       "sheet": 1.4,
@@ -7255,13 +7254,13 @@
     },
     "G": {
      "q": 4,
-     "ros": 6,
-     "ros_pts": 332
+     "ros": 5,
+     "ros_pts": 356
     },
     "Total": {
      "q": 4,
-     "ros": 6,
-     "ros_pts": 2620
+     "ros": 4,
+     "ros_pts": 2644
     }
    },
    "players": [
@@ -7588,6 +7587,29 @@
      "slot": "D"
     },
     {
+     "id": 3042020,
+     "name": "Tristan Jarry",
+     "pos": "G",
+     "group": "G",
+     "team": "EDM",
+     "injury": "",
+     "rate": 4.09,
+     "src": {
+      "sheet": 3.92,
+      "model": 4.09,
+      "espn": 3.84,
+      "pace": 4.44,
+      "l15": 8.03
+     },
+     "cons": 4.26,
+     "dis": 0.98,
+     "exp_game": 1.74,
+     "gp": 8,
+     "fp": 35.5,
+     "ros": 97.7,
+     "slot": "G"
+    },
+    {
      "id": 3988847,
      "name": "Neal Pionk",
      "pos": "D",
@@ -7793,29 +7815,6 @@
      "fp": 2.7,
      "ros": 70.4,
      "slot": "IR"
-    },
-    {
-     "id": 5734,
-     "name": "Cam Talbot",
-     "pos": "G",
-     "group": "G",
-     "team": "CBJ",
-     "injury": "",
-     "rate": 3.63,
-     "src": {
-      "sheet": null,
-      "model": 3.63,
-      "espn": 3.39,
-      "pace": 3.98,
-      "l15": 5.55
-     },
-     "cons": 3.8,
-     "dis": 0.57,
-     "exp_game": 1.15,
-     "gp": 9,
-     "fp": 35.8,
-     "ros": 67.9,
-     "slot": "G"
     }
    ]
   },
@@ -9065,7 +9064,7 @@
    "gp": 5,
    "fp": 21.2,
    "ros": 169.0,
-   "gain": 68.8,
+   "gain": 68.9,
    "drop": "Devon Levi",
    "waiver": ""
   },
@@ -9090,7 +9089,7 @@
    "gp": 16,
    "fp": 29.9,
    "ros": 105.3,
-   "gain": 64.0,
+   "gain": 63.9,
    "drop": "Devon Levi",
    "waiver": ""
   },
@@ -9115,7 +9114,7 @@
    "gp": 16,
    "fp": 30.8,
    "ros": 105.3,
-   "gain": 61.4,
+   "gain": 61.6,
    "drop": "Devon Levi",
    "waiver": ""
   },
@@ -9165,7 +9164,7 @@
    "gp": 18,
    "fp": 34.2,
    "ros": 102.2,
-   "gain": 58.4,
+   "gain": 58.5,
    "drop": "Devon Levi",
    "waiver": ""
   }
@@ -9192,7 +9191,7 @@
    "gp": 20,
    "fp": 27.1,
    "ros": 76.0,
-   "cost": 77.4
+   "cost": 77.3
   },
   {
    "id": 2970615,
@@ -9215,7 +9214,7 @@
    "gp": 16,
    "fp": 22.8,
    "ros": 89.9,
-   "cost": 95.9
+   "cost": 95.7
   },
   {
    "id": 4587588,
@@ -9288,7 +9287,7 @@
    "gp": 9,
    "fp": 43.6,
    "ros": 81.4,
-   "cost": 44.0,
+   "cost": 43.9,
    "po_games": 6,
    "last7": 13.2,
    "light": 25
@@ -9340,7 +9339,7 @@
    "gp": 20,
    "fp": 27.1,
    "ros": 76.0,
-   "cost": 77.4,
+   "cost": 77.3,
    "po_games": 7,
    "last7": 4.5,
    "light": 21
@@ -9366,7 +9365,7 @@
    "gp": 16,
    "fp": 22.8,
    "ros": 89.9,
-   "cost": 95.9,
+   "cost": 95.7,
    "po_games": 8,
    "last7": 2.3,
    "light": 28
@@ -9470,7 +9469,7 @@
    "gp": 20,
    "fp": 39.3,
    "ros": 98.4,
-   "cost": 110.1,
+   "cost": 110.2,
    "po_games": 7,
    "last7": 4.0,
    "light": 17
@@ -9496,7 +9495,7 @@
    "gp": 17,
    "fp": 35.8,
    "ros": 106.1,
-   "cost": 110.1,
+   "cost": 110.2,
    "po_games": 6,
    "last7": 4.3,
    "light": 21
@@ -9522,7 +9521,7 @@
    "gp": 18,
    "fp": 32.1,
    "ros": 106.9,
-   "cost": 110.9,
+   "cost": 110.8,
    "po_games": 5,
    "last7": 2.3,
    "light": 29
@@ -9548,7 +9547,7 @@
    "gp": 12,
    "fp": 29.3,
    "ros": 109.4,
-   "cost": 120.2,
+   "cost": 120.6,
    "po_games": 7,
    "last7": 7.4,
    "light": 28
@@ -9626,7 +9625,7 @@
    "gp": 16,
    "fp": 37.6,
    "ros": 130.9,
-   "cost": 148.3,
+   "cost": 148.1,
    "po_games": 8,
    "last7": 3.4,
    "light": 28
@@ -9652,7 +9651,7 @@
    "gp": 5,
    "fp": 29.0,
    "ros": 168.8,
-   "cost": 148.9,
+   "cost": 149.1,
    "po_games": 7,
    "last7": 15.2,
    "light": 20
@@ -9678,36 +9677,10 @@
    "gp": 16,
    "fp": 38.3,
    "ros": 131.8,
-   "cost": 152.2,
+   "cost": 152.1,
    "po_games": 8,
    "last7": 4.1,
    "light": 28
-  },
-  {
-   "id": 4565222,
-   "name": "Jack Hughes",
-   "pos": "C/LW",
-   "group": "F",
-   "team": "NJ",
-   "injury": "",
-   "rate": 2.72,
-   "src": {
-    "sheet": 2.64,
-    "model": 2.72,
-    "espn": 2.6,
-    "pace": 2.74,
-    "l15": 3.52
-   },
-   "cons": 2.73,
-   "dis": 0.34,
-   "exp_game": 2.52,
-   "gp": 19,
-   "fp": 52.1,
-   "ros": 138.9,
-   "cost": 154.8,
-   "po_games": 7,
-   "last7": 10.7,
-   "light": 20
   },
   {
    "id": 4712036,
@@ -9730,10 +9703,36 @@
    "gp": 13,
    "fp": 68.1,
    "ros": 181.7,
-   "cost": 155.0,
+   "cost": 154.5,
    "po_games": 6,
    "last7": 10.2,
    "light": 19
+  },
+  {
+   "id": 4565222,
+   "name": "Jack Hughes",
+   "pos": "C/LW",
+   "group": "F",
+   "team": "NJ",
+   "injury": "",
+   "rate": 2.72,
+   "src": {
+    "sheet": 2.64,
+    "model": 2.72,
+    "espn": 2.6,
+    "pace": 2.74,
+    "l15": 3.52
+   },
+   "cons": 2.73,
+   "dis": 0.34,
+   "exp_game": 2.52,
+   "gp": 19,
+   "fp": 52.1,
+   "ros": 138.9,
+   "cost": 154.9,
+   "po_games": 7,
+   "last7": 10.7,
+   "light": 20
   },
   {
    "id": 4565227,
@@ -9782,7 +9781,7 @@
    "gp": 16,
    "fp": 40.3,
    "ros": 140.7,
-   "cost": 158.0,
+   "cost": 158.1,
    "po_games": 7,
    "last7": 7.6,
    "light": 24
@@ -9808,7 +9807,7 @@
    "gp": 18,
    "fp": 49.8,
    "ros": 153.6,
-   "cost": 175.3,
+   "cost": 175.2,
    "po_games": 7,
    "last7": 12.6,
    "light": 23
@@ -9868,6 +9867,62 @@
  ],
  "goalies_today": [
   {
+   "id": 4697394,
+   "name": "Yaroslav Askarov",
+   "pos": "G",
+   "group": "G",
+   "team": "SJ",
+   "injury": "",
+   "rate": 3.32,
+   "src": {
+    "sheet": 3.68,
+    "model": 3.32,
+    "espn": 3.22,
+    "pace": 3.11,
+    "l15": 3.17
+   },
+   "cons": 3.2,
+   "dis": 0.07,
+   "exp_game": 1.82,
+   "gp": 13,
+   "fp": 40.4,
+   "opp": "PIT",
+   "confirmed": "confirmed",
+   "exp": 3.3,
+   "opp_gf": 3.35,
+   "win": 0.437,
+   "opp_goals": 3.59,
+   "waiver": ""
+  },
+  {
+   "id": 3026526,
+   "name": "Laurent Brossoit",
+   "pos": "G",
+   "group": "G",
+   "team": "ANA",
+   "injury": "",
+   "rate": 0.22,
+   "src": {
+    "sheet": null,
+    "model": 0.22,
+    "espn": null,
+    "pace": 4.4,
+    "l15": 4.4
+   },
+   "cons": 4.4,
+   "dis": 0.95,
+   "exp_game": 0.16,
+   "gp": 4,
+   "fp": 17.6,
+   "opp": "NSH",
+   "confirmed": "confirmed",
+   "exp": 0.7,
+   "opp_gf": 3.04,
+   "win": 0.563,
+   "opp_goals": 3.15,
+   "waiver": ""
+  },
+  {
    "id": 4587952,
    "name": "Dustin Wolf",
    "pos": "G",
@@ -9891,8 +9946,8 @@
    "confirmed": "",
    "exp": 2.3,
    "opp_gf": 2.93,
-   "win": 0.428,
-   "opp_goals": 3.04,
+   "win": 0.437,
+   "opp_goals": 3.02,
    "waiver": ""
   },
   {
@@ -9917,38 +9972,10 @@
    "fp": 36.5,
    "opp": "SJ",
    "confirmed": "",
-   "exp": 2.2,
+   "exp": 2.3,
    "opp_gf": 2.72,
-   "win": 0.551,
-   "opp_goals": 3.2,
-   "waiver": ""
-  },
-  {
-   "id": 3042020,
-   "name": "Tristan Jarry",
-   "pos": "G",
-   "group": "G",
-   "team": "EDM",
-   "injury": "",
-   "rate": 4.09,
-   "src": {
-    "sheet": 3.92,
-    "model": 4.09,
-    "espn": 3.84,
-    "pace": 4.44,
-    "l15": 8.03
-   },
-   "cons": 4.26,
-   "dis": 0.98,
-   "exp_game": 1.74,
-   "gp": 8,
-   "fp": 35.5,
-   "opp": "PHI",
-   "confirmed": "",
-   "exp": 2.0,
-   "opp_gf": 2.52,
-   "win": 0.645,
-   "opp_goals": 2.64,
+   "win": 0.563,
+   "opp_goals": 3.18,
    "waiver": ""
   },
   {
@@ -9976,63 +10003,7 @@
    "exp": 1.9,
    "opp_gf": 3.42,
    "win": 0.532,
-   "opp_goals": 3.1,
-   "waiver": ""
-  },
-  {
-   "id": 4697394,
-   "name": "Yaroslav Askarov",
-   "pos": "G",
-   "group": "G",
-   "team": "SJ",
-   "injury": "",
-   "rate": 3.32,
-   "src": {
-    "sheet": 3.68,
-    "model": 3.32,
-    "espn": 3.22,
-    "pace": 3.11,
-    "l15": 3.17
-   },
-   "cons": 3.2,
-   "dis": 0.07,
-   "exp_game": 1.82,
-   "gp": 13,
-   "fp": 40.4,
-   "opp": "PIT",
-   "confirmed": "",
-   "exp": 1.9,
-   "opp_gf": 3.35,
-   "win": 0.449,
-   "opp_goals": 3.54,
-   "waiver": ""
-  },
-  {
-   "id": 3114994,
-   "name": "Alex Nedeljkovic",
-   "pos": "G",
-   "group": "G",
-   "team": "SJ",
-   "injury": "",
-   "rate": 3.83,
-   "src": {
-    "sheet": 3.87,
-    "model": 3.83,
-    "espn": 3.85,
-    "pace": 3.7,
-    "l15": null
-   },
-   "cons": 3.83,
-   "dis": 0.04,
-   "exp_game": 1.63,
-   "gp": 7,
-   "fp": 25.9,
-   "opp": "PIT",
-   "confirmed": "",
-   "exp": 1.7,
-   "opp_gf": 3.35,
-   "win": 0.449,
-   "opp_goals": 3.54,
+   "opp_goals": 3.07,
    "waiver": ""
   },
   {
@@ -10060,7 +10031,7 @@
    "exp": 1.6,
    "opp_gf": 3.64,
    "win": 0.457,
-   "opp_goals": 3.41,
+   "opp_goals": 3.39,
    "waiver": ""
   },
   {
@@ -10088,7 +10059,35 @@
    "exp": 1.6,
    "opp_gf": 3.42,
    "win": 0.532,
-   "opp_goals": 3.1,
+   "opp_goals": 3.07,
+   "waiver": ""
+  },
+  {
+   "id": 3069266,
+   "name": "Joonas Korpisalo",
+   "pos": "G",
+   "group": "G",
+   "team": "NYR",
+   "injury": "",
+   "rate": 3.66,
+   "src": {
+    "sheet": 3.58,
+    "model": 3.66,
+    "espn": 3.74,
+    "pace": null,
+    "l15": null
+   },
+   "cons": 3.7,
+   "dis": 0.02,
+   "exp_game": 1.11,
+   "gp": 1,
+   "fp": 5.0,
+   "opp": "CGY",
+   "confirmed": "",
+   "exp": 1.3,
+   "opp_gf": 2.57,
+   "win": 0.563,
+   "opp_goals": 2.64,
    "waiver": ""
   }
  ],
@@ -10117,7 +10116,7 @@
     "fp": 37.7,
     "pts": 9.4,
     "line": "1 W, 37 SV, 1 GA",
-    "own_chg": 0.5
+    "own_chg": 0.1
    },
    {
     "id": 4697401,
@@ -10141,7 +10140,7 @@
     "fp": 25.5,
     "pts": 5.8,
     "line": "2 G, 3 SOG, 2 BLK",
-    "own_chg": 0.3
+    "own_chg": 0.4
    },
    {
     "id": 4697683,
@@ -10165,7 +10164,7 @@
     "fp": 19.2,
     "pts": 4.8,
     "line": "1 W, 19 SV, 2 GA",
-    "own_chg": 0.4
+    "own_chg": -0.1
    },
    {
     "id": 5216918,
@@ -10189,7 +10188,7 @@
     "fp": 28.4,
     "pts": 4.5,
     "line": "1 G, 1 A, 3 SOG, 2 BLK, 2 HIT",
-    "own_chg": 0.5
+    "own_chg": 0.7
    },
    {
     "id": 3042114,
@@ -10285,7 +10284,7 @@
     "fp": 15.7,
     "pts": 3.4,
     "line": "27 SV, 2 GA",
-    "own_chg": 0.3
+    "own_chg": 0.0
    },
    {
     "id": 5080171,
@@ -10359,7 +10358,7 @@
     "fp": 37.7,
     "pts": 15.4,
     "line": "2 W, 87 SV, 8 GA",
-    "own_chg": 0.5
+    "own_chg": 0.1
    },
    {
     "id": 4587815,
@@ -10383,7 +10382,7 @@
     "fp": 23.4,
     "pts": 14.3,
     "line": "2 W, 69 SV, 6 GA",
-    "own_chg": 0.8
+    "own_chg": -0.2
    },
    {
     "id": 3026526,
@@ -10407,7 +10406,7 @@
     "fp": 17.6,
     "pts": 10.8,
     "line": "2 W, 54 SV, 6 GA",
-    "own_chg": 0.8
+    "own_chg": 1.9
    },
    {
     "id": 5291952,
@@ -10431,7 +10430,31 @@
     "fp": 27.8,
     "pts": 10.5,
     "line": "3 G, 1 A, 7 SOG, 2 BLK, 13 HIT",
-    "own_chg": 0.6
+    "own_chg": 0.5
+   },
+   {
+    "id": 5734,
+    "name": "Cam Talbot",
+    "pos": "G",
+    "group": "G",
+    "team": "CBJ",
+    "injury": "",
+    "rate": 3.63,
+    "src": {
+     "sheet": null,
+     "model": 3.63,
+     "espn": 3.39,
+     "pace": 3.98,
+     "l15": 5.55
+    },
+    "cons": 3.8,
+    "dis": 0.57,
+    "exp_game": 1.15,
+    "gp": 9,
+    "fp": 35.8,
+    "pts": 10.0,
+    "line": "1 W, 55 SV, 4 GA",
+    "own_chg": -0.4
    },
    {
     "id": 4697401,
@@ -10455,7 +10478,7 @@
     "fp": 25.5,
     "pts": 9.5,
     "line": "3 G, 1 A, 5 SOG, 2 BLK",
-    "own_chg": 0.3
+    "own_chg": 0.4
    },
    {
     "id": 4268767,
@@ -10503,36 +10526,27 @@
     "fp": 26.7,
     "pts": 9.1,
     "line": "1 G, 2 A, 6 SOG, 8 BLK",
-    "own_chg": 0.4
-   },
-   {
-    "id": 3899978,
-    "name": "Timo Meier",
-    "pos": "LW",
-    "group": "F",
-    "team": "NJ",
-    "injury": "",
-    "rate": 1.45,
-    "src": {
-     "sheet": 1.73,
-     "model": 1.45,
-     "espn": 1.86,
-     "pace": 1.39,
-     "l15": 1.46
-    },
-    "cons": 1.46,
-    "dis": 0.33,
-    "exp_game": 1.45,
-    "gp": 19,
-    "fp": 26.4,
-    "pts": 8.3,
-    "line": "2 G, 22 SOG, 3 BLK, 6 HIT",
-    "own_chg": 0.2
+    "own_chg": 0.7
    }
   ]
  },
  "news": [],
  "injuries": [
+  {
+   "player": "Miro Heiskanen",
+   "summary": "Heiskanen (upper body) has been ruled out for Thursday's game against the Jets, Stars TV host Brien Rea reports.",
+   "credit": "Rotowire via ESPN",
+   "link": "https://www.espn.com/nhl/player/news/_/id/4233536",
+   "insider": "",
+   "kinds": [
+    "injury"
+   ],
+   "date": "Nov 11 1:26PM",
+   "owner": "Mike's Magnificent Team",
+   "status": "OUT",
+   "group": "D",
+   "team": "DAL"
+  },
   {
    "player": "Noah Hanifin",
    "summary": "Hanifin (undisclosed) is week-to-week, according to SinBin.vegas on Tuesday.",
@@ -10559,7 +10573,7 @@
    ],
    "date": "Nov 10 10:41AM",
    "owner": "Matt's Monstrous Team",
-   "status": "OUT",
+   "status": "DAY_TO_DAY",
    "group": "D",
    "team": "TOR"
   },
@@ -10577,21 +10591,6 @@
    "status": "INJURY_RESERVE",
    "group": "F",
    "team": "TB"
-  },
-  {
-   "player": "Mathew Barzal",
-   "summary": "Barzal (knee) won't be in the lineup against the Sharks on Monday but has been upgraded to day-to-day, Andrew Gross of Newsday reports.",
-   "credit": "Rotowire via ESPN, citing Andrew Gross (Newsday)",
-   "link": "https://www.espn.com/nhl/player/news/_/id/3899946",
-   "insider": "",
-   "kinds": [
-    "injury"
-   ],
-   "date": "Nov 9 1:52PM",
-   "owner": "McDISHHH",
-   "status": "INJURY_RESERVE",
-   "group": "F",
-   "team": "NYI"
   }
  ],
  "status_watch": [],
@@ -10606,12 +10605,55 @@
   }
  ],
  "notes": [
-  "Week 7 vs Matt's Monstrous Team: projected 148-130, 76% to win (starts left 51 vs 48).",
-  "Opportunity: Noah Hanifin (VGK) injury -> Brayden McNabb is the free agent who gains.",
+  "Week 7 vs Matt's Monstrous Team: projected 147-129, 77% to win (starts left 51 vs 48).",
+  "Opportunity: Miro Heiskanen (DAL) injury -> Esa Lindell is the free agent who gains.",
   "Best rest-of-season add: Igor Shesterkin for Devon Levi (+69).",
-  "Vegas tonight: SJ 3.2 goals vs PIT (usual 2.7, +12% skater pts)."
+  "Vegas tonight: SJ 3.2 goals vs PIT (usual 2.7, +11% skater pts), UTA 3.1 goals vs VGK (usual 3.4, -7% skater pts).",
+  "Confirmed FA goalie starts today: Yaroslav Askarov vs PIT, Laurent Brossoit vs NSH."
  ],
  "opportunities": [
+  {
+   "news": {
+    "player": "Miro Heiskanen",
+    "summary": "Heiskanen (upper body) has been ruled out for Thursday's game against the Jets, Stars TV host Brien Rea reports.",
+    "credit": "Rotowire via ESPN",
+    "link": "https://www.espn.com/nhl/player/news/_/id/4233536",
+    "insider": "",
+    "kinds": [
+     "injury"
+    ],
+    "date": "Nov 11 1:26PM"
+   },
+   "about": "Miro Heiskanen",
+   "about_team": "DAL",
+   "about_group": "D",
+   "self": false,
+   "kinds": [
+    "injury"
+   ],
+   "beneficiaries": [
+    {
+     "id": 3069352,
+     "name": "Esa Lindell",
+     "team": "DAL",
+     "pos": "D",
+     "gain": 38.5,
+     "gain_2wk": 3.2,
+     "status": "FREEAGENT",
+     "waiver": ""
+    },
+    {
+     "id": 5080162,
+     "name": "Lian Bichsel",
+     "team": "DAL",
+     "pos": "D",
+     "gain": 6.9,
+     "gain_2wk": 0.4,
+     "status": "FREEAGENT",
+     "waiver": ""
+    }
+   ]
+  },
   {
    "news": {
     "player": "Noah Hanifin",
@@ -10638,7 +10680,7 @@
      "team": "VGK",
      "pos": "D",
      "gain": 34.9,
-     "gain_2wk": 2.9,
+     "gain_2wk": 3.0,
      "status": "FREEAGENT",
      "waiver": ""
     },
@@ -10648,7 +10690,7 @@
      "team": "VGK",
      "pos": "D",
      "gain": 30.5,
-     "gain_2wk": 2.5,
+     "gain_2wk": 2.6,
      "status": "FREEAGENT",
      "waiver": ""
     }
@@ -10680,7 +10722,7 @@
      "team": "TOR",
      "pos": "D",
      "gain": 20.1,
-     "gain_2wk": -0.8,
+     "gain_2wk": -0.7,
      "status": "FREEAGENT",
      "waiver": ""
     },
@@ -10722,7 +10764,7 @@
      "team": "TB",
      "pos": "C",
      "gain": 35.6,
-     "gain_2wk": 3.2,
+     "gain_2wk": 3.1,
      "status": "FREEAGENT",
      "waiver": ""
     },
@@ -10732,7 +10774,7 @@
      "team": "TB",
      "pos": "LW/RW",
      "gain": 27.8,
-     "gain_2wk": 2.5,
+     "gain_2wk": 2.4,
      "status": "FREEAGENT",
      "waiver": ""
     },
@@ -10741,50 +10783,8 @@
      "name": "Zemgus Girgensons",
      "team": "TB",
      "pos": "LW/RW",
-     "gain": 15.2,
+     "gain": 15.1,
      "gain_2wk": 1.3,
-     "status": "FREEAGENT",
-     "waiver": ""
-    }
-   ]
-  },
-  {
-   "news": {
-    "player": "Mathew Barzal",
-    "summary": "Barzal (knee) won't be in the lineup against the Sharks on Monday but has been upgraded to day-to-day, Andrew Gross of Newsday reports.",
-    "credit": "Rotowire via ESPN, citing Andrew Gross (Newsday)",
-    "link": "https://www.espn.com/nhl/player/news/_/id/3899946",
-    "insider": "",
-    "kinds": [
-     "injury"
-    ],
-    "date": "Nov 9 1:52PM"
-   },
-   "about": "Mathew Barzal",
-   "about_team": "NYI",
-   "about_group": "F",
-   "self": false,
-   "kinds": [
-    "injury"
-   ],
-   "beneficiaries": [
-    {
-     "id": 5219,
-     "name": "Brayden Schenn",
-     "team": "NYI",
-     "pos": "C/LW",
-     "gain": 56.3,
-     "gain_2wk": 1.1,
-     "status": "FREEAGENT",
-     "waiver": ""
-    },
-    {
-     "id": 4565244,
-     "name": "Simon Holmstrom",
-     "team": "NYI",
-     "pos": "RW",
-     "gain": 38.9,
-     "gain_2wk": 0.1,
      "status": "FREEAGENT",
      "waiver": ""
     }
@@ -11630,12 +11630,12 @@
    }
   },
   "games": {
-   "model": 45839,
-   "sheet": 42975,
+   "model": 45836,
+   "sheet": 42972,
    "espn": 30952,
-   "pace": 38319,
-   "l15": 37770,
-   "consensus": 45839
+   "pace": 38316,
+   "l15": 37767,
+   "consensus": 45836
   },
   "windows": 34,
   "best": "sheet",
@@ -11733,7 +11733,7 @@
   "Will Cuylle": 0.5,
   "Jack Roslovic": 0.76,
   "Joel Farabee": 0.55,
-  "Cam Talbot": 0.57,
+  "Tristan Jarry": 0.98,
   "Mikhail Sergachev": 0.39,
   "Nick Schmaltz": 0.31,
   "Mattias Samuelsson": 0.43,
@@ -11767,8 +11767,8 @@
   "Robert Thomas": 0.25,
   "Mattias Ekholm": 0.41,
   "Owen Power": 0.35,
-  "John Gibson": 1.04,
   "Pavel Zacha": 0.34,
+  "John Gibson": 1.04,
   "Matthew Knies": 0.72,
   "Darcy Kuemper": 0.41,
   "Brent Burns": 0.31,
@@ -11782,8 +11782,8 @@
   "Jet Greaves": 0.93,
   "Shane Pinto": 0.36,
   "Matty Beniers": 0.36,
-  "Anders Lee": 0.71,
   "Ivar Stenberg": 0.27,
+  "Anders Lee": 0.71,
   "Tyler Bertuzzi": 1.61,
   "Adam Larsson": 0.56,
   "Stuart Skinner": 0.78,
@@ -11793,20 +11793,19 @@
   "Jonathan Marchessault": 0.46,
   "Joey Daccord": 0.61,
   "Adin Hill": 0.53,
-  "Tristan Jarry": 0.98,
   "K'Andre Miller": 0.36,
   "Marco Rossi": 0.56,
   "William Eklund": 0.25,
   "Anton Forsberg": 0.69,
   "Declan Carlile": 0.59,
-  "Brayden Schenn": 0.3,
   "Jamie Drysdale": 0.38,
+  "Brayden Schenn": 0.3,
   "Chris Kreider": 0.33,
   "Arturs Silovs": 1.02,
   "Dustin Wolf": 0.45,
-  "Jake Allen": 0.48,
-  "Emmitt Finnie": 0.32,
   "Tommy Novak": 0.54,
+  "Emmitt Finnie": 0.32,
+  "Jake Allen": 0.48,
   "Paul Cotter": 0.47,
   "Pavel Buchnevich": 0.65,
   "Victor Olofsson": 0.66,
@@ -11816,18 +11815,19 @@
   "Kasperi Kapanen": 0.28,
   "Frederick Gaudreau": 0.46,
   "Mario Ferraro": 0.27,
-  "Joseph Woll": 0.38,
   "Ryker Evans": 0.28,
+  "Joseph Woll": 0.38,
   "Mark Jankowski": 0.34,
   "Philipp Grubauer": 1.02,
   "Anton Lundell": 0.65,
   "Mats Zuccarello": 1.02,
   "Roman Kantserov": 0.39,
   "Drew Doughty": 0.39,
+  "Cam Talbot": 0.57,
   "Aliaksei Protas": 0.41,
   "Claude Giroux": 0.39,
-  "Maxim Tsyplakov": 1.58,
   "Trevor Connelly": 0.29,
+  "Maxim Tsyplakov": 1.58,
   "Kailer Yamamoto": 0.84,
   "Alexander Wennberg": 0.6,
   "Josh Anderson": 0.29,
@@ -11845,25 +11845,26 @@
   "Oliver Ekman-Larsson": 1.17,
   "Ryan Pulock": 0.39,
   "Kyle Palmieri": 0.69,
-  "Emil Heineman": 0.36,
-  "Pavel Mintyukov": 0.45,
-  "Connor McMichael": 0.64,
-  "Will Borgen": 0.28,
   "Ross Colton": 0.38,
-  "Dawson Mercer": 0.27,
+  "Pavel Mintyukov": 0.45,
+  "Emil Heineman": 0.36,
   "Victor Eklund": 0.61,
+  "Dawson Mercer": 0.27,
+  "Connor McMichael": 0.64,
   "Kaedan Korczak": 0.29,
+  "Will Borgen": 0.28,
   "William Karlsson": 0.33,
   "Yegor Sharangovich": 0.48,
   "Artem Zub": 0.48,
   "Jordan Binnington": 0.66,
+  "Laurent Brossoit": 0.95,
   "Egor Chinakhov": 0.63,
-  "Jordan Staal": 0.57,
   "Judd Caulfield": 0.53,
+  "Jordan Staal": 0.57,
   "Mikael Backlund": 0.36,
+  "Christian Dvorak": 0.36,
   "Sean Monahan": 0.33,
   "Ryan Donato": 0.85,
-  "Christian Dvorak": 0.36,
   "Yakov Trenin": 0.39,
   "Tony DeAngelo": 0.46,
   "Kaapo Kakko": 0.27,
@@ -11872,76 +11873,75 @@
   "Jason Zucker": 1.39,
   "Brett Howden": 0.39,
   "Leevi Merilainen": 0.83,
-  "Laurent Brossoit": 0.95,
-  "Samuel Girard": 0.4,
   "Tyler Seguin": 1.21,
+  "Samuel Girard": 0.4,
+  "Pontus Holmberg": 0.43,
   "Arber Xhekaj": 0.91,
   "Jordan Spence": 0.39,
-  "Pontus Holmberg": 0.43,
-  "Teuvo Teravainen": 1.28,
   "Barrett Hayton": 0.31,
+  "Teuvo Teravainen": 1.28,
   "Mavrik Bourque": 0.73,
   "Jack McBain": 0.45,
-  "Samuel Ersson": 0.85,
   "William Carrier": 0.26,
   "Mason Lohrei": 0.26,
   "Jamie Benn": 0.46,
   "Igor Chernyshov": 0.28,
+  "Erik Cernak": 0.29,
   "Ryan McLeod": 1.63,
   "Casey Mittelstadt": 0.35,
+  "Samuel Ersson": 0.85,
   "Josh Norris": 0.47,
-  "Erik Cernak": 0.29,
   "Noah Cates": 0.49,
   "Colten Ellis": 1.12,
   "Collin Graf": 1.06,
   "Ridly Greig": 0.37,
   "Michael Bunting": 0.54,
+  "Sebastian Cossa": 0.5,
   "Conor Garland": 1.26,
   "A.J. Greer": 0.71,
   "Sean Couturier": 0.49,
   "Oliver Kapanen": 0.91,
-  "Sebastian Cossa": 0.5,
-  "Connor Brown": 0.41,
   "Nick Jensen": 0.75,
+  "Connor Brown": 0.41,
   "Evan Rodrigues": 0.31,
   "Andrew Copp": 0.45,
   "Peyton Krebs": 0.62,
-  "Morgan Barron": 0.32,
   "Jordan Martinook": 0.76,
   "Bobby Brink": 0.29,
-  "Nicolas Roy": 0.52,
+  "Morgan Barron": 0.32,
   "Dmitri Voronkov": 1.21,
+  "Nicolas Roy": 0.52,
   "Michael Amadio": 0.4,
   "Artyom Levshunov": 0.45,
-  "Brett Kulak": 0.65,
   "Viggo Bjorck": 1.1,
-  "T.J. Hughes": 0.25,
+  "Brett Kulak": 0.65,
   "Alex Killorn": 0.86,
+  "T.J. Hughes": 0.25,
+  "Zemgus Girgensons": 0.46,
   "Ilya Protas": 0.56,
   "Liam Ohgren": 0.44,
   "Garnet Hathaway": 0.34,
   "Oliver Bonk": 0.37,
-  "Zemgus Girgensons": 0.46,
-  "Keegan Kolesar": 0.72,
   "Shane Wright": 0.59,
+  "Keegan Kolesar": 0.72,
   "Carter Yakemchuk": 0.41,
   "Jake Walman": 0.28,
   "Luke Schenn": 0.57,
   "Jake Middleton": 0.37,
-  "Nico Daws": 0.28,
   "Corey Perry": 0.61,
   "Connor Dewar": 0.82,
   "Alex Vlasic": 0.29,
+  "Zach Whitecloud": 0.32,
   "Phillip Danault": 0.65,
   "Colton Sissons": 0.31,
   "Scott Laughton": 0.32,
-  "Denver Barkey": 0.42,
-  "Zach Whitecloud": 0.32,
   "Roger McQueen": 0.79,
-  "Erik Gustafsson": 0.59,
+  "Denver Barkey": 0.42,
   "Lian Bichsel": 0.31,
-  "Matthew Poitras": 1.15,
+  "Nico Daws": 0.28,
   "Sandis Vilmanis": 0.91,
+  "Erik Gustafsson": 0.59,
+  "Matthew Poitras": 1.15,
   "Michael Carcone": 0.54,
   "Alberts Smits": 0.37,
   "Justin Brazeau": 0.51,
@@ -11950,21 +11950,21 @@
   "Sam Steel": 1.19,
   "William Wallinder": 0.45,
   "Axel Sandin-Pellikka": 1.25,
-  "Fedor Svechkov": 0.37,
   "Marat Khusnutdinov": 0.52,
-  "Ben Meyers": 0.45,
+  "Fedor Svechkov": 0.37,
   "Matthew Wood": 0.52,
   "Frederic Brunet": 0.59,
-  "Wyatt Kaiser": 0.31,
+  "Ben Meyers": 0.45,
   "Marcus Foligno": 0.71,
+  "Wyatt Kaiser": 0.31,
   "Semyon Varlamov": 1.81,
   "Kirby Dach": 0.48,
-  "Philip Tomasino": 0.95,
   "Michael Kesselring": 0.33,
   "Jesperi Kotkaniemi": 0.35,
+  "Philip Tomasino": 0.95,
   "Aydar Suniev": 0.38,
-  "Calvin Pickard": 1.81,
   "Ryan McDonagh": 0.25,
+  "Calvin Pickard": 1.81,
   "Justin Hryckowian": 0.38,
   "Alex Formenton": 0.4,
   "Marc Gatcomb": 0.41,
@@ -11972,8 +11972,8 @@
   "Connor Clifton": 1.25,
   "Filip Hallander": 0.49,
   "Jiri Kulich": 0.32,
-  "Stephen Halliday": 0.48,
-  "Oliver Moore": 0.29
+  "Zach Bogosian": 0.72,
+  "Stephen Halliday": 0.48
  },
  "disagree_threshold": 0.25,
  "rosters": {
@@ -12125,6 +12125,7 @@
    "Jack Roslovic",
    "Adam Fantilli",
    "John Carlson",
+   "Tristan Jarry",
    "Neal Pionk",
    "Elias Lindholm",
    "Darren Raddysh",
@@ -12133,8 +12134,7 @@
    "Vladislav Gavrikov",
    "Vincent Trocheck",
    "Dougie Hamilton",
-   "Brad Marchand",
-   "Cam Talbot"
+   "Brad Marchand"
   ],
   "Angie\u2019s Bear Balls": [
    "Juuse Saros",
