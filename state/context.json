@@ -1,5 +1,5 @@
 {
- "generated": "Sun Nov 15, 5:09 PM",
+ "generated": "Sun Nov 15, 5:35 PM",
  "league": {
   "name": "The Healthy Scratches",
   "size": 8,
@@ -317,7 +317,7 @@
       "l15": 2.26
      },
      "cons": 2.73,
-     "dis": 0.18,
+     "dis": 0.01,
      "exp_game": 2.76,
      "gp": 20,
      "fp": 54.7,
@@ -361,7 +361,7 @@
       "l15": 5.63
      },
      "cons": 3.27,
-     "dis": 1.11,
+     "dis": 0.41,
      "exp_game": 3.18,
      "gp": 19,
      "fp": 63.8,
@@ -383,7 +383,7 @@
       "l15": 1.87
      },
      "cons": 2.47,
-     "dis": 0.27,
+     "dis": 0.03,
      "exp_game": 2.07,
      "gp": 21,
      "fp": 53.1,
@@ -405,7 +405,7 @@
       "l15": 3.44
      },
      "cons": 2.32,
-     "dis": 0.68,
+     "dis": 0.22,
      "exp_game": 2.18,
      "gp": 19,
      "fp": 45.2,
@@ -471,7 +471,7 @@
       "l15": 6.83
      },
      "cons": 4.5,
-     "dis": 0.67,
+     "dis": 0.2,
      "exp_game": 1.82,
      "gp": 9,
      "fp": 42.7,
@@ -516,7 +516,7 @@
       "l15": 1.38
      },
      "cons": 1.84,
-     "dis": 0.42,
+     "dis": 0.2,
      "exp_game": 1.88,
      "gp": 18,
      "fp": 32.1,
@@ -567,7 +567,7 @@
     "l15": 5.63
    },
    "cons": 3.27,
-   "dis": 1.11,
+   "dis": 0.41,
    "exp_game": 3.18,
    "gp": 19,
    "fp": 63.8,
@@ -621,7 +621,7 @@
     "l15": 6.52
    },
    "cons": 5.52,
-   "dis": 0.3,
+   "dis": 0.22,
    "exp_game": 3.27,
    "gp": 7,
    "fp": 42.8,
@@ -648,7 +648,7 @@
     "l15": 3.2
    },
    "cons": 4.13,
-   "dis": 0.28,
+   "dis": 0.1,
    "exp_game": 2.89,
    "gp": 15,
    "fp": 65.5,
@@ -675,7 +675,7 @@
     "l15": 2.26
    },
    "cons": 2.73,
-   "dis": 0.18,
+   "dis": 0.01,
    "exp_game": 2.76,
    "gp": 20,
    "fp": 54.7,
@@ -756,7 +756,7 @@
     "l15": 3.04
    },
    "cons": 2.61,
-   "dis": 0.17,
+   "dis": 0.01,
    "exp_game": 2.42,
    "gp": 21,
    "fp": 54.7,
@@ -783,7 +783,7 @@
     "l15": 2.42
    },
    "cons": 2.27,
-   "dis": 0.11,
+   "dis": 0.05,
    "exp_game": 2.25,
    "gp": 18,
    "fp": 41.2,
@@ -810,7 +810,7 @@
     "l15": 3.44
    },
    "cons": 2.32,
-   "dis": 0.68,
+   "dis": 0.22,
    "exp_game": 2.18,
    "gp": 19,
    "fp": 45.2,
@@ -837,7 +837,7 @@
     "l15": 1.17
    },
    "cons": 2.18,
-   "dis": 0.57,
+   "dis": 0.1,
    "exp_game": 2.18,
    "gp": 18,
    "fp": 39.3,
@@ -864,7 +864,7 @@
     "l15": 1.87
    },
    "cons": 2.47,
-   "dis": 0.27,
+   "dis": 0.03,
    "exp_game": 2.07,
    "gp": 21,
    "fp": 53.1,
@@ -891,7 +891,7 @@
     "l15": 2.69
    },
    "cons": 2.48,
-   "dis": 0.16,
+   "dis": 0.09,
    "exp_game": 1.98,
    "gp": 14,
    "fp": 34.9,
@@ -945,7 +945,7 @@
     "l15": 1.38
    },
    "cons": 1.84,
-   "dis": 0.42,
+   "dis": 0.2,
    "exp_game": 1.88,
    "gp": 18,
    "fp": 32.1,
@@ -972,7 +972,7 @@
     "l15": 5.21
    },
    "cons": 4.49,
-   "dis": 0.17,
+   "dis": 0.01,
    "exp_game": 1.9,
    "gp": 16,
    "fp": 71.7,
@@ -999,7 +999,7 @@
     "l15": 6.83
    },
    "cons": 4.5,
-   "dis": 0.67,
+   "dis": 0.2,
    "exp_game": 1.82,
    "gp": 9,
    "fp": 42.7,
@@ -1053,7 +1053,7 @@
     "l15": 2.08
    },
    "cons": 1.92,
-   "dis": 0.4,
+   "dis": 0.36,
    "exp_game": 1.78,
    "gp": 19,
    "fp": 37.8,
@@ -1107,7 +1107,7 @@
     "l15": 1.56
    },
    "cons": 1.81,
-   "dis": 0.15,
+   "dis": 0.02,
    "exp_game": 1.7,
    "gp": 22,
    "fp": 40.0,
@@ -1134,7 +1134,7 @@
     "l15": 2.2
    },
    "cons": 1.74,
-   "dis": 0.31,
+   "dis": 0.1,
    "exp_game": 1.63,
    "gp": 21,
    "fp": 34.7,
@@ -1215,7 +1215,7 @@
     "l15": 0.71
    },
    "cons": 1.26,
-   "dis": 0.73,
+   "dis": 0.32,
    "exp_game": 1.26,
    "gp": 22,
    "fp": 27.1,
@@ -1244,7 +1244,7 @@
     "l15": 2.17
    },
    "cons": 1.94,
-   "dis": 0.3,
+   "dis": 0.21,
    "exp_game": 1.89,
    "gp": 18,
    "fp": 35.8,
@@ -1282,7 +1282,7 @@
     "l15": 2.2
    },
    "cons": 1.83,
-   "dis": 0.36,
+   "dis": 0.19,
    "exp_game": 1.78,
    "gp": 19,
    "fp": 36.0,
@@ -1294,7 +1294,7 @@
    "g_this": 0,
    "g_next": 3,
    "po_games": 6,
-   "own_chg": 0.7,
+   "own_chg": 0.6,
    "luck": "",
    "status": "FREEAGENT",
    "light": 23,
@@ -1320,7 +1320,7 @@
     "l15": 1.93
    },
    "cons": 1.83,
-   "dis": 0.16,
+   "dis": 0.12,
    "exp_game": 1.8,
    "gp": 18,
    "fp": 33.6,
@@ -1332,7 +1332,7 @@
    "g_this": 0,
    "g_next": 3,
    "po_games": 8,
-   "own_chg": -0.1,
+   "own_chg": -0.2,
    "luck": "",
    "status": "FREEAGENT",
    "light": 28,
@@ -1358,7 +1358,7 @@
     "l15": 2.83
    },
    "cons": 1.8,
-   "dis": 0.85,
+   "dis": 0.3,
    "exp_game": 1.76,
    "gp": 19,
    "fp": 34.9,
@@ -1370,7 +1370,7 @@
    "g_this": 0,
    "g_next": 3,
    "po_games": 6,
-   "own_chg": 1.9,
+   "own_chg": 2.0,
    "luck": "",
    "status": "FREEAGENT",
    "light": 23,
@@ -1434,7 +1434,7 @@
     "l15": 1.33
    },
    "cons": 1.76,
-   "dis": 0.26,
+   "dis": 0.04,
    "exp_game": 1.79,
    "gp": 18,
    "fp": 32.3,
@@ -1510,7 +1510,7 @@
     "l15": 2.35
    },
    "cons": 1.91,
-   "dis": 0.46,
+   "dis": 0.25,
    "exp_game": 1.75,
    "gp": 18,
    "fp": 34.9,
@@ -1522,7 +1522,7 @@
    "g_this": 0,
    "g_next": 3,
    "po_games": 8,
-   "own_chg": 0.4,
+   "own_chg": 0.5,
    "luck": "",
    "status": "FREEAGENT",
    "light": 28,
@@ -1548,7 +1548,7 @@
     "l15": 2.23
    },
    "cons": 1.69,
-   "dis": 0.33,
+   "dis": 0.01,
    "exp_game": 1.62,
    "gp": 16,
    "fp": 26.7,
@@ -1586,7 +1586,7 @@
     "l15": 1.57
    },
    "cons": 1.8,
-   "dis": 0.18,
+   "dis": 0.05,
    "exp_game": 1.75,
    "gp": 20,
    "fp": 37.8,
@@ -1624,7 +1624,7 @@
     "l15": 1.89
    },
    "cons": 1.68,
-   "dis": 0.13,
+   "dis": 0.02,
    "exp_game": 1.66,
    "gp": 18,
    "fp": 30.4,
@@ -1636,7 +1636,7 @@
    "g_this": 0,
    "g_next": 3,
    "po_games": 6,
-   "own_chg": -0.5,
+   "own_chg": -0.6,
    "luck": "",
    "status": "FREEAGENT",
    "light": 22,
@@ -1674,7 +1674,7 @@
    "g_this": 0,
    "g_next": 4,
    "po_games": 7,
-   "own_chg": -0.6,
+   "own_chg": -0.7,
    "luck": "",
    "status": "WAIVERS",
    "light": 23,
@@ -1700,7 +1700,7 @@
     "l15": 1.43
    },
    "cons": 1.7,
-   "dis": 0.21,
+   "dis": 0.08,
    "exp_game": 1.69,
    "gp": 18,
    "fp": 32.0,
@@ -1776,7 +1776,7 @@
     "l15": 1.67
    },
    "cons": 1.72,
-   "dis": 0.05,
+   "dis": 0.04,
    "exp_game": 1.7,
    "gp": 20,
    "fp": 34.9,
@@ -1814,7 +1814,7 @@
     "l15": 2.03
    },
    "cons": 1.72,
-   "dis": 0.2,
+   "dis": 0.02,
    "exp_game": 1.69,
    "gp": 22,
    "fp": 37.9,
@@ -1826,7 +1826,7 @@
    "g_this": 1,
    "g_next": 3,
    "po_games": 6,
-   "own_chg": 2.2,
+   "own_chg": 2.3,
    "luck": "",
    "status": "FREEAGENT",
    "light": 22,
@@ -1890,7 +1890,7 @@
     "l15": 0.93
    },
    "cons": 1.59,
-   "dis": 0.5,
+   "dis": 0.1,
    "exp_game": 1.61,
    "gp": 18,
    "fp": 28.2,
@@ -2004,7 +2004,7 @@
     "l15": 0.59
    },
    "cons": 1.74,
-   "dis": 0.71,
+   "dis": 0.09,
    "exp_game": 1.6,
    "gp": 21,
    "fp": 38.3,
@@ -2025,158 +2025,6 @@
     "Pavel Dorofeyev (+1)"
    ],
    "waiver": ""
-  },
-  {
-   "id": 4565259,
-   "name": "Pyotr Kochetkov",
-   "pos": "G",
-   "group": "G",
-   "team": "CAR",
-   "injury": "",
-   "rate": 4.85,
-   "src": {
-    "sheet": 4.06,
-    "model": 4.85,
-    "espn": null,
-    "pace": 5.34,
-    "l15": 5.1
-   },
-   "cons": 5.1,
-   "dis": 0.1,
-   "exp_game": 2.37,
-   "gp": 13,
-   "fp": 69.4,
-   "ros": 125.5,
-   "score": -7.9,
-   "gain": -7.9,
-   "week_gain": 0.4,
-   "drop": "Gavin McKenna",
-   "g_this": 0,
-   "g_next": 3,
-   "po_games": 7,
-   "own_chg": -0.1,
-   "luck": "",
-   "status": "WAIVERS",
-   "light": 23,
-   "alt_drops": [
-    "Victor Olofsson (-10)",
-    "Pavel Dorofeyev (-27)"
-   ],
-   "waiver": "clears Tue 3am"
-  },
-  {
-   "id": 4697686,
-   "name": "Jakub Dobes",
-   "pos": "G",
-   "group": "G",
-   "team": "MTL",
-   "injury": "",
-   "rate": 3.5,
-   "src": {
-    "sheet": 4.29,
-    "model": 3.5,
-    "espn": 4.32,
-    "pace": 1.83,
-    "l15": null
-   },
-   "cons": 3.5,
-   "dis": 0.71,
-   "exp_game": 2.14,
-   "gp": 8,
-   "fp": 14.6,
-   "ros": 115.4,
-   "score": -11.6,
-   "gain": -11.5,
-   "week_gain": -0.3,
-   "drop": "Gavin McKenna",
-   "g_this": 0,
-   "g_next": 4,
-   "po_games": 7,
-   "own_chg": -0.7,
-   "luck": "",
-   "status": "FREEAGENT",
-   "light": 23,
-   "alt_drops": [
-    "Victor Olofsson (-14)",
-    "Pavel Dorofeyev (-31)"
-   ],
-   "waiver": ""
-  },
-  {
-   "id": 5452,
-   "name": "Jacob Markstrom",
-   "pos": "G",
-   "group": "G",
-   "team": "FLA",
-   "injury": "",
-   "rate": 4.04,
-   "src": {
-    "sheet": 4.04,
-    "model": 4.04,
-    "espn": 3.64,
-    "pace": 4.05,
-    "l15": 4.6
-   },
-   "cons": 4.04,
-   "dis": 0.24,
-   "exp_game": 2.56,
-   "gp": 11,
-   "fp": 44.5,
-   "ros": 135.8,
-   "score": -12.1,
-   "gain": -12.2,
-   "week_gain": 0.7,
-   "drop": "Gavin McKenna",
-   "g_this": 1,
-   "g_next": 2,
-   "po_games": 7,
-   "own_chg": 0.2,
-   "luck": "",
-   "status": "FREEAGENT",
-   "light": 19,
-   "alt_drops": [
-    "Victor Olofsson (-14)",
-    "Pavel Dorofeyev (-31)"
-   ],
-   "waiver": ""
-  },
-  {
-   "id": 4894366,
-   "name": "Jet Greaves",
-   "pos": "G",
-   "group": "G",
-   "team": "CBJ",
-   "injury": "",
-   "rate": 3.17,
-   "src": {
-    "sheet": 4.49,
-    "model": 3.17,
-    "espn": 4.02,
-    "pace": 2.04,
-    "l15": 0.85
-   },
-   "cons": 2.6,
-   "dis": 1.22,
-   "exp_game": 2.12,
-   "gp": 11,
-   "fp": 22.4,
-   "ros": 121.0,
-   "score": -18.9,
-   "gain": -18.7,
-   "week_gain": -1.9,
-   "drop": "Gavin McKenna",
-   "g_this": 0,
-   "g_next": 3,
-   "po_games": 6,
-   "own_chg": -0.8,
-   "luck": "",
-   "status": "FREEAGENT",
-   "light": 22,
-   "alt_drops": [
-    "Victor Olofsson (-21)",
-    "Pavel Dorofeyev (-38)"
-   ],
-   "waiver": ""
   }
  ],
  "fa_summary": [
@@ -2188,43 +2036,43 @@
   "schedule": {
    "days": [
     {
-     "date": "Mon 9",
-     "past": true,
-     "n": 6,
-     "light": true
-    },
-    {
-     "date": "Tue 10",
-     "past": true,
-     "n": 14,
-     "light": true
-    },
-    {
-     "date": "Wed 11",
-     "past": true,
-     "n": 12,
-     "light": true
-    },
-    {
-     "date": "Thu 12",
-     "past": true,
-     "n": 22,
-     "light": false
-    },
-    {
-     "date": "Fri 13",
-     "past": true,
+     "date": "Mon 16",
+     "past": false,
      "n": 4,
      "light": true
     },
     {
-     "date": "Sat 14",
-     "past": true,
+     "date": "Tue 17",
+     "past": false,
+     "n": 22,
+     "light": false
+    },
+    {
+     "date": "Wed 18",
+     "past": false,
+     "n": 6,
+     "light": true
+    },
+    {
+     "date": "Thu 19",
+     "past": false,
+     "n": 24,
+     "light": false
+    },
+    {
+     "date": "Fri 20",
+     "past": false,
+     "n": 0,
+     "light": true
+    },
+    {
+     "date": "Sat 21",
+     "past": false,
      "n": 28,
      "light": false
     },
     {
-     "date": "Sun 15",
+     "date": "Sun 22",
      "past": false,
      "n": 10,
      "light": true
@@ -2232,68 +2080,81 @@
    ],
    "teams": [
     {
+     "team": "BUF",
+     "games": 4,
+     "cells": [
+      "",
+      "@PHI",
+      "",
+      "@WSH",
+      "",
+      "@FLA",
+      "@TB"
+     ]
+    },
+    {
+     "team": "CHI",
+     "games": 4,
+     "cells": [
+      "",
+      "TOR",
+      "",
+      "CBJ",
+      "",
+      "@CGY",
+      "@VAN"
+     ]
+    },
+    {
      "team": "EDM",
      "games": 4,
      "cells": [
-      "NYR",
+      "",
+      "@FLA",
+      "",
+      "@TB",
+      "",
+      "@CAR",
+      "@STL"
+     ]
+    },
+    {
+     "team": "MTL",
+     "games": 4,
+     "cells": [
+      "@NYR",
+      "",
+      "@NJ",
+      "@CAR",
       "",
       "PHI",
-      "",
-      "",
-      "@TOR",
-      "@PHI"
+      ""
      ]
     },
     {
-     "team": "FLA",
+     "team": "STL",
      "games": 4,
      "cells": [
       "",
-      "@CBJ",
+      "ANA",
       "",
-      "DET",
+      "@PIT",
       "",
-      "@STL",
-      "@DAL"
-     ]
-    },
-    {
-     "team": "NSH",
-     "games": 4,
-     "cells": [
-      "",
-      "@LA",
-      "@ANA",
-      "",
-      "@VGK",
-      "",
-      "@SJ"
-     ]
-    },
-    {
-     "team": "PHI",
-     "games": 4,
-     "cells": [
-      "@VAN",
-      "",
-      "@EDM",
-      "",
-      "",
-      "@CBJ",
+      "NJ",
       "EDM"
      ]
     },
     {
-     "team": "SJ",
+     "team": "VAN",
      "games": 4,
      "cells": [
-      "NYI",
-      "",
-      "PIT",
-      "",
-      "",
       "@UTA",
-      "NSH"
+      "",
+      "",
+      "@SEA",
+      "",
+      "MIN",
+      "CHI"
      ]
     },
     {
@@ -2301,25 +2162,38 @@
      "games": 3,
      "cells": [
       "",
+      "@STL",
       "",
-      "NSH",
+      "@COL",
       "",
-      "",
-      "NYI",
-      "CGY"
+      "@UTA",
+      ""
      ]
     },
     {
-     "team": "BUF",
+     "team": "BOS",
+     "games": 3,
+     "cells": [
+      "",
+      "LA",
+      "@DET",
+      "",
+      "",
+      "WSH",
+      ""
+     ]
+    },
+    {
+     "team": "CAR",
      "games": 3,
      "cells": [
       "",
       "",
-      "TB",
-      "@CHI",
       "",
-      "@DAL",
-      ""
+      "MTL",
+      "",
+      "EDM",
+      "@NYR"
      ]
     },
     {
@@ -2327,11 +2201,11 @@
      "games": 3,
      "cells": [
       "",
-      "FLA",
+      "@NYI",
       "",
-      "TB",
+      "@CHI",
       "",
-      "PHI",
+      "@TOR",
       ""
      ]
     },
@@ -2340,24 +2214,11 @@
      "games": 3,
      "cells": [
       "",
+      "@SJ",
       "",
-      "NYR",
+      "MIN",
       "",
-      "",
-      "@LA",
-      "@ANA"
-     ]
-    },
-    {
-     "team": "COL",
-     "games": 3,
-     "cells": [
-      "",
-      "@TOR",
-      "",
-      "@OTT",
-      "",
-      "@MTL",
+      "CHI",
       ""
      ]
     },
@@ -2366,25 +2227,12 @@
      "games": 3,
      "cells": [
       "",
+      "@VGK",
+      "",
+      "@VGK",
       "",
       "",
-      "WPG",
-      "",
-      "BUF",
-      "FLA"
-     ]
-    },
-    {
-     "team": "DET",
-     "games": 3,
-     "cells": [
-      "",
-      "@STL",
-      "",
-      "@FLA",
-      "",
-      "@TB",
-      ""
+      "PIT"
      ]
     },
     {
@@ -2392,11 +2240,11 @@
      "games": 3,
      "cells": [
       "",
-      "NSH",
+      "@BOS",
       "",
-      "NYI",
+      "@TOR",
       "",
-      "CGY",
+      "@OTT",
       ""
      ]
     },
@@ -2405,37 +2253,11 @@
      "games": 3,
      "cells": [
       "",
-      "@MTL",
+      "NSH",
       "",
-      "@TOR",
+      "@CGY",
       "",
-      "@BOS",
-      ""
-     ]
-    },
-    {
-     "team": "MTL",
-     "games": 3,
-     "cells": [
-      "",
-      "MIN",
-      "",
-      "@BOS",
-      "",
-      "COL",
-      ""
-     ]
-    },
-    {
-     "team": "NJ",
-     "games": 3,
-     "cells": [
-      "",
-      "@WPG",
-      "",
-      "WSH",
-      "",
-      "@WSH",
+      "@VAN",
       ""
      ]
     },
@@ -2443,25 +2265,12 @@
      "team": "NYI",
      "games": 3,
      "cells": [
-      "@SJ",
       "",
+      "CBJ",
       "",
-      "@LA",
+      "@WPG",
       "",
-      "@ANA",
-      ""
-     ]
-    },
-    {
-     "team": "NYR",
-     "games": 3,
-     "cells": [
-      "@EDM",
-      "",
-      "@CGY",
-      "",
-      "@VAN",
-      "",
+      "@DET",
       ""
      ]
     },
@@ -2470,25 +2279,38 @@
      "games": 3,
      "cells": [
       "",
-      "WSH",
+      "@WPG",
       "",
-      "COL",
+      "PHI",
       "",
-      "@PIT",
+      "LA",
       ""
      ]
     },
     {
-     "team": "STL",
+     "team": "PHI",
      "games": 3,
      "cells": [
       "",
-      "DET",
+      "BUF",
       "",
-      "@UTA",
+      "@OTT",
       "",
-      "FLA",
+      "@MTL",
       ""
+     ]
+    },
+    {
+     "team": "PIT",
+     "games": 3,
+     "cells": [
+      "",
+      "",
+      "",
+      "STL",
+      "",
+      "@NSH",
+      "@DAL"
      ]
     },
     {
@@ -2496,12 +2318,12 @@
      "games": 3,
      "cells": [
       "",
+      "WSH",
       "",
-      "@BUF",
-      "@CBJ",
+      "EDM",
       "",
-      "DET",
-      ""
+      "",
+      "BUF"
      ]
     },
     {
@@ -2509,11 +2331,11 @@
      "games": 3,
      "cells": [
       "",
-      "COL",
+      "@CHI",
       "",
-      "MIN",
+      "LA",
       "",
-      "EDM",
+      "CBJ",
       ""
      ]
     },
@@ -2521,26 +2343,13 @@
      "team": "UTA",
      "games": 3,
      "cells": [
+      "VAN",
+      "",
+      "COL",
       "",
       "",
-      "@VGK",
-      "STL",
-      "",
-      "SJ",
+      "ANA",
       ""
-     ]
-    },
-    {
-     "team": "VAN",
-     "games": 3,
-     "cells": [
-      "PHI",
-      "",
-      "",
-      "",
-      "NYR",
-      "",
-      "@VGK"
      ]
     },
     {
@@ -2548,12 +2357,12 @@
      "games": 3,
      "cells": [
       "",
+      "DAL",
       "",
-      "UTA",
+      "DAL",
       "",
-      "NSH",
-      "",
-      "VAN"
+      "@WPG",
+      ""
      ]
     },
     {
@@ -2561,11 +2370,11 @@
      "games": 3,
      "cells": [
       "",
-      "NJ",
+      "OTT",
       "",
-      "@DAL",
+      "NYI",
       "",
-      "@CHI",
+      "VGK",
       ""
      ]
     },
@@ -2574,64 +2383,90 @@
      "games": 3,
      "cells": [
       "",
-      "@OTT",
+      "@TB",
       "",
-      "@NJ",
+      "BUF",
       "",
-      "NJ",
+      "@BOS",
       ""
      ]
     },
     {
-     "team": "BOS",
+     "team": "COL",
      "games": 2,
      "cells": [
       "",
       "",
+      "@UTA",
+      "ANA",
       "",
-      "MTL",
       "",
-      "MIN",
       ""
      ]
     },
     {
-     "team": "CAR",
+     "team": "DET",
      "games": 2,
      "cells": [
       "",
       "",
+      "BOS",
       "",
-      "@SEA",
       "",
-      "SEA",
+      "NYI",
       ""
      ]
     },
     {
-     "team": "CHI",
+     "team": "FLA",
      "games": 2,
      "cells": [
+      "",
+      "EDM",
       "",
       "",
       "",
       "BUF",
-      "",
-      "WPG",
       ""
      ]
     },
     {
-     "team": "PIT",
+     "team": "NJ",
      "games": 2,
      "cells": [
       "",
       "",
-      "@SJ",
+      "MTL",
       "",
       "",
-      "OTT",
+      "@STL",
       ""
+     ]
+    },
+    {
+     "team": "NSH",
+     "games": 2,
+     "cells": [
+      "",
+      "@MIN",
+      "",
+      "",
+      "",
+      "PIT",
+      ""
+     ]
+    },
+    {
+     "team": "NYR",
+     "games": 2,
+     "cells": [
+      "MTL",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "CAR"
      ]
     },
     {
@@ -2641,14 +2476,28 @@
       "",
       "",
       "",
-      "CAR",
+      "VAN",
       "",
-      "@CAR",
+      "@SJ",
+      ""
+     ]
+    },
+    {
+     "team": "SJ",
+     "games": 2,
+     "cells": [
+      "",
+      "CGY",
+      "",
+      "",
+      "",
+      "SEA",
       ""
      ]
     }
    ]
   },
+  "week_label": "next week",
   "games": [
    {
     "team": "EDM",
@@ -2813,56 +2662,32 @@
   ],
   "goalies": [
    {
-    "id": 5452,
-    "name": "Jacob Markstrom",
+    "id": 4697686,
+    "name": "Jakub Dobes",
     "pos": "G",
     "group": "G",
-    "team": "FLA",
+    "team": "MTL",
     "injury": "",
-    "rate": 4.04,
+    "rate": 3.5,
     "src": {
-     "sheet": 4.04,
-     "model": 4.04,
-     "espn": 3.64,
-     "pace": 4.05,
-     "l15": 4.6
+     "sheet": 4.29,
+     "model": 3.5,
+     "espn": 4.32,
+     "pace": 1.83,
+     "l15": null
     },
-    "cons": 4.04,
-    "dis": 0.24,
-    "exp_game": 2.56,
-    "gp": 11,
-    "fp": 44.5,
-    "exp": 2.6,
-    "games": 1,
+    "cons": 3.5,
+    "dis": 0.71,
+    "exp_game": 2.14,
+    "gp": 8,
+    "fp": 14.6,
+    "exp": 8.5,
+    "games": 4,
     "opps": [
-     "DAL"
-    ],
-    "status": "FREEAGENT"
-   },
-   {
-    "id": 4587952,
-    "name": "Dustin Wolf",
-    "pos": "G",
-    "group": "G",
-    "team": "CGY",
-    "injury": "",
-    "rate": 3.21,
-    "src": {
-     "sheet": 3.99,
-     "model": 3.21,
-     "espn": 3.48,
-     "pace": 2.54,
-     "l15": 4.68
-    },
-    "cons": 3.34,
-    "dis": 0.64,
-    "exp_game": 2.15,
-    "gp": 11,
-    "fp": 27.9,
-    "exp": 2.1,
-    "games": 1,
-    "opps": [
-     "ANA"
+     "NYR",
+     "NJ",
+     "CAR",
+     "PHI"
     ],
     "status": "FREEAGENT"
    },
@@ -2882,149 +2707,194 @@
      "l15": 7.67
     },
     "cons": 5.34,
-    "dis": 0.94,
+    "dis": 0.5,
     "exp_game": 1.95,
     "gp": 10,
     "fp": 53.4,
-    "exp": 2.0,
-    "games": 1,
+    "exp": 7.8,
+    "games": 4,
     "opps": [
-     "PHI"
+     "FLA",
+     "TB",
+     "CAR",
+     "STL"
     ],
     "status": "WAIVERS"
    },
    {
-    "id": 4697394,
-    "name": "Yaroslav Askarov",
+    "id": 4565259,
+    "name": "Pyotr Kochetkov",
     "pos": "G",
     "group": "G",
-    "team": "SJ",
+    "team": "CAR",
     "injury": "",
-    "rate": 3.39,
+    "rate": 4.85,
     "src": {
-     "sheet": 3.68,
-     "model": 3.39,
-     "espn": 3.22,
-     "pace": 3.27,
-     "l15": 2.55
-    },
-    "cons": 3.25,
-    "dis": 0.26,
-    "exp_game": 1.86,
-    "gp": 15,
-    "fp": 49.1,
-    "exp": 1.9,
-    "games": 1,
-    "opps": [
-     "NSH"
-    ],
-    "status": "FREEAGENT"
-   },
-   {
-    "id": 3114994,
-    "name": "Alex Nedeljkovic",
-    "pos": "G",
-    "group": "G",
-    "team": "SJ",
-    "injury": "",
-    "rate": 3.83,
-    "src": {
-     "sheet": 3.87,
-     "model": 3.83,
-     "espn": 3.85,
-     "pace": 3.7,
-     "l15": null
-    },
-    "cons": 3.83,
-    "dis": 0.04,
-    "exp_game": 1.63,
-    "gp": 7,
-    "fp": 25.9,
-    "exp": 1.6,
-    "games": 1,
-    "opps": [
-     "NSH"
-    ],
-    "status": "FREEAGENT"
-   },
-   {
-    "id": 4271575,
-    "name": "Joseph Woll",
-    "pos": "G",
-    "group": "G",
-    "team": "PHI",
-    "injury": "",
-    "rate": 3.66,
-    "src": {
-     "sheet": 4.03,
-     "model": 3.66,
-     "espn": 4.21,
-     "pace": 3.35,
-     "l15": 4.47
-    },
-    "cons": 3.94,
-    "dis": 0.28,
-    "exp_game": 1.56,
-    "gp": 11,
-    "fp": 36.8,
-    "exp": 1.6,
-    "games": 1,
-    "opps": [
-     "EDM"
-    ],
-    "status": "FREEAGENT"
-   },
-   {
-    "id": 4587845,
-    "name": "Akira Schmid",
-    "pos": "G",
-    "group": "G",
-    "team": "FLA",
-    "injury": "",
-    "rate": 3.63,
-    "src": {
-     "sheet": 3.87,
-     "model": 3.63,
-     "espn": 3.68,
-     "pace": 3.39,
-     "l15": null
-    },
-    "cons": 3.63,
-    "dis": 0.08,
-    "exp_game": 1.24,
-    "gp": 10,
-    "fp": 33.9,
-    "exp": 1.2,
-    "games": 1,
-    "opps": [
-     "DAL"
-    ],
-    "status": "FREEAGENT"
-   },
-   {
-    "id": 3025540,
-    "name": "Casey DeSmith",
-    "pos": "G",
-    "group": "G",
-    "team": "DAL",
-    "injury": "",
-    "rate": 4.05,
-    "src": {
-     "sheet": 4.14,
-     "model": 4.05,
+     "sheet": 4.06,
+     "model": 4.85,
      "espn": null,
-     "pace": 2.34,
+     "pace": 5.34,
+     "l15": 5.1
+    },
+    "cons": 5.1,
+    "dis": 0.1,
+    "exp_game": 2.37,
+    "gp": 13,
+    "fp": 69.4,
+    "exp": 7.1,
+    "games": 3,
+    "opps": [
+     "MTL",
+     "EDM",
+     "NYR"
+    ],
+    "status": "WAIVERS"
+   },
+   {
+    "id": 3654006,
+    "name": "Alex Lyon",
+    "pos": "G",
+    "group": "G",
+    "team": "BUF",
+    "injury": "",
+    "rate": 3.99,
+    "src": {
+     "sheet": 4.06,
+     "model": 3.99,
+     "espn": 4.25,
+     "pace": null,
      "l15": null
     },
-    "cons": 3.2,
-    "dis": 0.54,
-    "exp_game": 1.24,
-    "gp": 5,
-    "fp": 11.7,
-    "exp": 1.2,
-    "games": 1,
+    "cons": 4.12,
+    "dis": 0.06,
+    "exp_game": 1.7,
+    "gp": 2,
+    "fp": 5.5,
+    "exp": 6.8,
+    "games": 4,
     "opps": [
-     "FLA"
+     "PHI",
+     "WSH",
+     "FLA",
+     "TB"
+    ],
+    "status": "FREEAGENT"
+   },
+   {
+    "id": 4233889,
+    "name": "Ukko-Pekka Luukkonen",
+    "pos": "G",
+    "group": "G",
+    "team": "BUF",
+    "injury": "",
+    "rate": 3.05,
+    "src": {
+     "sheet": 3.96,
+     "model": 3.05,
+     "espn": 4.29,
+     "pace": 2.39,
+     "l15": 3.0
+    },
+    "cons": 3.03,
+    "dis": 0.63,
+    "exp_game": 1.67,
+    "gp": 12,
+    "fp": 28.7,
+    "exp": 6.7,
+    "games": 4,
+    "opps": [
+     "PHI",
+     "WSH",
+     "FLA",
+     "TB"
+    ],
+    "status": "FREEAGENT"
+   },
+   {
+    "id": 4587952,
+    "name": "Dustin Wolf",
+    "pos": "G",
+    "group": "G",
+    "team": "CGY",
+    "injury": "",
+    "rate": 3.21,
+    "src": {
+     "sheet": 3.99,
+     "model": 3.21,
+     "espn": 3.48,
+     "pace": 2.54,
+     "l15": 4.68
+    },
+    "cons": 3.34,
+    "dis": 0.28,
+    "exp_game": 2.15,
+    "gp": 11,
+    "fp": 27.9,
+    "exp": 6.4,
+    "games": 3,
+    "opps": [
+     "SJ",
+     "MIN",
+     "CHI"
+    ],
+    "status": "FREEAGENT"
+   },
+   {
+    "id": 4894366,
+    "name": "Jet Greaves",
+    "pos": "G",
+    "group": "G",
+    "team": "CBJ",
+    "injury": "",
+    "rate": 3.17,
+    "src": {
+     "sheet": 4.49,
+     "model": 3.17,
+     "espn": 4.02,
+     "pace": 2.04,
+     "l15": 0.85
+    },
+    "cons": 2.6,
+    "dis": 0.76,
+    "exp_game": 2.12,
+    "gp": 11,
+    "fp": 22.4,
+    "exp": 6.4,
+    "games": 3,
+    "opps": [
+     "NYI",
+     "CHI",
+     "TOR"
+    ],
+    "status": "FREEAGENT"
+   },
+   {
+    "id": 2590874,
+    "name": "Jordan Binnington",
+    "pos": "G",
+    "group": "G",
+    "team": "STL",
+    "injury": "",
+    "rate": 3.46,
+    "src": {
+     "sheet": 3.58,
+     "model": 3.46,
+     "espn": 3.26,
+     "pace": 1.3,
+     "l15": null
+    },
+    "cons": 3.26,
+    "dis": 0.66,
+    "exp_game": 1.48,
+    "gp": 5,
+    "fp": 6.5,
+    "exp": 5.9,
+    "games": 4,
+    "opps": [
+     "ANA",
+     "PIT",
+     "NJ",
+     "EDM"
     ],
     "status": "FREEAGENT"
    }
@@ -3039,7 +2909,8 @@
      "date": "Sun Nov 15",
      "G": 1,
      "skater": 9,
-     "starts": 8
+     "starts": 8,
+     "nhl": true
     }
    ],
    "moves": [
@@ -3064,49 +2935,56 @@
      "date": "Mon Nov 16",
      "G": 2,
      "skater": 15,
-     "starts": 1
+     "starts": 1,
+     "nhl": true
     },
     {
      "period": 50,
      "date": "Tue Nov 17",
      "G": 0,
      "skater": 1,
-     "starts": 17
+     "starts": 17,
+     "nhl": true
     },
     {
      "period": 51,
      "date": "Wed Nov 18",
      "G": 0,
      "skater": 13,
-     "starts": 5
+     "starts": 5,
+     "nhl": true
     },
     {
      "period": 52,
      "date": "Thu Nov 19",
      "G": 0,
      "skater": 2,
-     "starts": 16
+     "starts": 16,
+     "nhl": true
     },
     {
      "period": 53,
      "date": "Fri Nov 20",
-     "G": 2,
-     "skater": 16,
-     "starts": 0
+     "G": 0,
+     "skater": 0,
+     "starts": 0,
+     "nhl": false
     },
     {
      "period": 54,
      "date": "Sat Nov 21",
      "G": 0,
      "skater": 0,
-     "starts": 18
+     "starts": 18,
+     "nhl": true
     },
     {
      "period": 55,
      "date": "Sun Nov 22",
      "G": 1,
      "skater": 10,
-     "starts": 7
+     "starts": 7,
+     "nhl": true
     }
    ],
    "moves": [
@@ -3861,7 +3739,7 @@
       "l15": 2.22
      },
      "cons": 2.48,
-     "dis": 0.16,
+     "dis": 0.08,
      "exp_game": 2.54,
      "gp": 14,
      "fp": 36.6,
@@ -3884,7 +3762,7 @@
       "l15": 2.97
      },
      "cons": 2.65,
-     "dis": 0.27,
+     "dis": 0.16,
      "exp_game": 2.6,
      "gp": 22,
      "fp": 58.5,
@@ -3907,7 +3785,7 @@
       "l15": 2.12
      },
      "cons": 2.27,
-     "dis": 0.11,
+     "dis": 0.05,
      "exp_game": 2.25,
      "gp": 19,
      "fp": 43.0,
@@ -3930,7 +3808,7 @@
       "l15": 2.58
      },
      "cons": 2.28,
-     "dis": 0.21,
+     "dis": 0.09,
      "exp_game": 2.26,
      "gp": 19,
      "fp": 43.7,
@@ -3953,7 +3831,7 @@
       "l15": 1.97
      },
      "cons": 2.28,
-     "dis": 0.17,
+     "dis": 0.07,
      "exp_game": 2.2,
      "gp": 21,
      "fp": 49.5,
@@ -3999,7 +3877,7 @@
       "l15": 1.76
      },
      "cons": 2.06,
-     "dis": 0.28,
+     "dis": 0.16,
      "exp_game": 2.09,
      "gp": 13,
      "fp": 26.2,
@@ -4022,7 +3900,7 @@
       "l15": 2.2
      },
      "cons": 2.1,
-     "dis": 0.13,
+     "dis": 0.08,
      "exp_game": 2.09,
      "gp": 21,
      "fp": 44.1,
@@ -4045,7 +3923,7 @@
       "l15": 0.98
      },
      "cons": 2.87,
-     "dis": 1.08,
+     "dis": 0.49,
      "exp_game": 2.05,
      "gp": 16,
      "fp": 42.9,
@@ -4068,7 +3946,7 @@
       "l15": 1.28
      },
      "cons": 1.88,
-     "dis": 0.42,
+     "dis": 0.18,
      "exp_game": 2.0,
      "gp": 21,
      "fp": 43.4,
@@ -4091,7 +3969,7 @@
       "l15": 1.27
      },
      "cons": 2.77,
-     "dis": 0.78,
+     "dis": 0.35,
      "exp_game": 1.96,
      "gp": 13,
      "fp": 31.8,
@@ -4114,7 +3992,7 @@
       "l15": 0.9
      },
      "cons": 1.9,
-     "dis": 0.71,
+     "dis": 0.19,
      "exp_game": 1.92,
      "gp": 21,
      "fp": 39.6,
@@ -4137,7 +4015,7 @@
       "l15": 4.76
      },
      "cons": 3.71,
-     "dis": 0.44,
+     "dis": 0.19,
      "exp_game": 1.8,
      "gp": 15,
      "fp": 57.3,
@@ -4160,7 +4038,7 @@
       "l15": 1.73
      },
      "cons": 1.81,
-     "dis": 0.08,
+     "dis": 0.03,
      "exp_game": 1.8,
      "gp": 20,
      "fp": 36.4,
@@ -4206,7 +4084,7 @@
       "l15": 2.13
      },
      "cons": 1.83,
-     "dis": 0.2,
+     "dis": 0.07,
      "exp_game": 1.78,
      "gp": 21,
      "fp": 36.9,
@@ -4275,7 +4153,7 @@
       "l15": 2.21
      },
      "cons": 1.65,
-     "dis": 0.48,
+     "dis": 0.24,
      "exp_game": 1.42,
      "gp": 21,
      "fp": 30.0,
@@ -4298,7 +4176,7 @@
       "l15": 1.33
      },
      "cons": 1.39,
-     "dis": 0.28,
+     "dis": 0.25,
      "exp_game": 1.39,
      "gp": 22,
      "fp": 30.2,
@@ -4321,7 +4199,7 @@
       "l15": 1.18
      },
      "cons": 1.32,
-     "dis": 0.8,
+     "dis": 0.71,
      "exp_game": 1.23,
      "gp": 19,
      "fp": 24.5,
@@ -4421,7 +4299,7 @@
       "l15": 2.11
      },
      "cons": 2.48,
-     "dis": 0.25,
+     "dis": 0.18,
      "exp_game": 2.67,
      "gp": 20,
      "fp": 54.8,
@@ -4444,7 +4322,7 @@
       "l15": 2.72
      },
      "cons": 2.62,
-     "dis": 0.06,
+     "dis": 0.02,
      "exp_game": 2.61,
      "gp": 20,
      "fp": 52.4,
@@ -4467,7 +4345,7 @@
       "l15": 4.12
      },
      "cons": 2.76,
-     "dis": 0.8,
+     "dis": 0.34,
      "exp_game": 2.57,
      "gp": 18,
      "fp": 50.9,
@@ -4490,7 +4368,7 @@
       "l15": 2.67
      },
      "cons": 2.41,
-     "dis": 0.13,
+     "dis": 0.03,
      "exp_game": 2.31,
      "gp": 21,
      "fp": 49.8,
@@ -4513,7 +4391,7 @@
       "l15": 2.43
      },
      "cons": 2.22,
-     "dis": 0.52,
+     "dis": 0.45,
      "exp_game": 2.17,
      "gp": 21,
      "fp": 47.7,
@@ -4536,7 +4414,7 @@
       "l15": 1.31
      },
      "cons": 2.18,
-     "dis": 0.44,
+     "dis": 0.05,
      "exp_game": 2.16,
      "gp": 22,
      "fp": 47.7,
@@ -4559,7 +4437,7 @@
       "l15": 4.43
      },
      "cons": 3.78,
-     "dis": 0.23,
+     "dis": 0.07,
      "exp_game": 2.09,
      "gp": 11,
      "fp": 39.0,
@@ -4605,7 +4483,7 @@
       "l15": 2.37
      },
      "cons": 2.0,
-     "dis": 0.23,
+     "dis": 0.06,
      "exp_game": 1.89,
      "gp": 19,
      "fp": 38.3,
@@ -4651,7 +4529,7 @@
       "l15": 2.77
      },
      "cons": 2.03,
-     "dis": 0.54,
+     "dis": 0.18,
      "exp_game": 1.89,
      "gp": 21,
      "fp": 43.2,
@@ -4697,7 +4575,7 @@
       "l15": 2.18
      },
      "cons": 1.9,
-     "dis": 0.39,
+     "dis": 0.25,
      "exp_game": 1.88,
      "gp": 21,
      "fp": 40.4,
@@ -4743,7 +4621,7 @@
       "l15": 2.53
      },
      "cons": 1.94,
-     "dis": 0.33,
+     "dis": 0.03,
      "exp_game": 1.7,
      "gp": 18,
      "fp": 34.9,
@@ -4766,7 +4644,7 @@
       "l15": 1.25
      },
      "cons": 1.86,
-     "dis": 0.58,
+     "dis": 0.3,
      "exp_game": 1.72,
      "gp": 14,
      "fp": 25.0,
@@ -4835,7 +4713,7 @@
       "l15": 1.77
      },
      "cons": 1.8,
-     "dis": 0.07,
+     "dis": 0.05,
      "exp_game": 1.62,
      "gp": 17,
      "fp": 32.2,
@@ -4858,7 +4736,7 @@
       "l15": 2.23
      },
      "cons": 1.69,
-     "dis": 0.36,
+     "dis": 0.04,
      "exp_game": 1.64,
      "gp": 20,
      "fp": 34.0,
@@ -4904,7 +4782,7 @@
       "l15": 2.2
      },
      "cons": 1.81,
-     "dis": 0.31,
+     "dis": 0.17,
      "exp_game": 1.56,
      "gp": 21,
      "fp": 34.6,
@@ -5004,7 +4882,7 @@
       "l15": 2.78
      },
      "cons": 2.53,
-     "dis": 0.27,
+     "dis": 0.18,
      "exp_game": 2.51,
      "gp": 19,
      "fp": 48.4,
@@ -5050,7 +4928,7 @@
       "l15": 2.97
      },
      "cons": 2.58,
-     "dis": 0.4,
+     "dis": 0.26,
      "exp_game": 2.54,
      "gp": 20,
      "fp": 52.3,
@@ -5073,7 +4951,7 @@
       "l15": 2.08
      },
      "cons": 2.45,
-     "dis": 0.17,
+     "dis": 0.04,
      "exp_game": 2.44,
      "gp": 21,
      "fp": 52.3,
@@ -5096,7 +4974,7 @@
       "l15": 2.59
      },
      "cons": 2.42,
-     "dis": 0.41,
+     "dis": 0.35,
      "exp_game": 2.39,
      "gp": 20,
      "fp": 48.8,
@@ -5188,7 +5066,7 @@
       "l15": 1.25
      },
      "cons": 2.89,
-     "dis": 0.92,
+     "dis": 0.43,
      "exp_game": 2.09,
      "gp": 15,
      "fp": 40.0,
@@ -5211,7 +5089,7 @@
       "l15": 2.37
      },
      "cons": 2.1,
-     "dis": 0.5,
+     "dis": 0.39,
      "exp_game": 2.02,
      "gp": 21,
      "fp": 44.8,
@@ -5257,7 +5135,7 @@
       "l15": 2.42
      },
      "cons": 1.95,
-     "dis": 0.38,
+     "dis": 0.15,
      "exp_game": 1.94,
      "gp": 21,
      "fp": 41.4,
@@ -5303,7 +5181,7 @@
       "l15": 0.74
      },
      "cons": 1.65,
-     "dis": 0.76,
+     "dis": 0.36,
      "exp_game": 1.82,
      "gp": 21,
      "fp": 41.7,
@@ -5349,7 +5227,7 @@
       "l15": 1.75
      },
      "cons": 1.8,
-     "dis": 0.16,
+     "dis": 0.14,
      "exp_game": 1.68,
      "gp": 18,
      "fp": 32.4,
@@ -5372,7 +5250,7 @@
       "l15": 1.3
      },
      "cons": 1.62,
-     "dis": 0.27,
+     "dis": 0.12,
      "exp_game": 1.71,
      "gp": 22,
      "fp": 38.2,
@@ -5395,7 +5273,7 @@
       "l15": 1.31
      },
      "cons": 1.75,
-     "dis": 0.3,
+     "dis": 0.05,
      "exp_game": 1.64,
      "gp": 21,
      "fp": 38.5,
@@ -5418,7 +5296,7 @@
       "l15": 1.85
      },
      "cons": 1.56,
-     "dis": 0.2,
+     "dis": 0.01,
      "exp_game": 1.54,
      "gp": 21,
      "fp": 32.7,
@@ -5441,7 +5319,7 @@
       "l15": 1.1
      },
      "cons": 1.58,
-     "dis": 0.32,
+     "dis": 0.03,
      "exp_game": 1.56,
      "gp": 22,
      "fp": 34.2,
@@ -5464,7 +5342,7 @@
       "l15": 1.01
      },
      "cons": 1.6,
-     "dis": 0.39,
+     "dis": 0.03,
      "exp_game": 1.5,
      "gp": 22,
      "fp": 36.1,
@@ -5487,7 +5365,7 @@
       "l15": 1.64
      },
      "cons": 1.59,
-     "dis": 0.08,
+     "dis": 0.04,
      "exp_game": 1.45,
      "gp": 21,
      "fp": 33.4,
@@ -5510,7 +5388,7 @@
       "l15": 2.06
      },
      "cons": 1.68,
-     "dis": 0.24,
+     "dis": 0.01,
      "exp_game": 1.49,
      "gp": 22,
      "fp": 36.9,
@@ -5610,7 +5488,7 @@
       "l15": 3.49
      },
      "cons": 2.93,
-     "dis": 0.42,
+     "dis": 0.24,
      "exp_game": 2.89,
      "gp": 21,
      "fp": 62.4,
@@ -5633,7 +5511,7 @@
       "l15": 2.2
      },
      "cons": 2.76,
-     "dis": 0.39,
+     "dis": 0.2,
      "exp_game": 2.78,
      "gp": 20,
      "fp": 54.7,
@@ -5656,7 +5534,7 @@
       "l15": 2.0
      },
      "cons": 3.62,
-     "dis": 0.65,
+     "dis": 0.27,
      "exp_game": 2.59,
      "gp": 13,
      "fp": 44.0,
@@ -5679,7 +5557,7 @@
       "l15": 2.6
      },
      "cons": 2.51,
-     "dis": 0.09,
+     "dis": 0.06,
      "exp_game": 2.48,
      "gp": 20,
      "fp": 50.7,
@@ -5702,7 +5580,7 @@
       "l15": 2.97
      },
      "cons": 2.43,
-     "dis": 0.24,
+     "dis": 0.02,
      "exp_game": 2.41,
      "gp": 19,
      "fp": 45.5,
@@ -5725,7 +5603,7 @@
       "l15": 2.06
      },
      "cons": 2.15,
-     "dis": 0.09,
+     "dis": 0.06,
      "exp_game": 2.19,
      "gp": 17,
      "fp": 38.2,
@@ -5771,7 +5649,7 @@
       "l15": 2.59
      },
      "cons": 2.19,
-     "dis": 0.22,
+     "dis": 0.09,
      "exp_game": 2.1,
      "gp": 21,
      "fp": 44.0,
@@ -5794,7 +5672,7 @@
       "l15": 1.2
      },
      "cons": 2.01,
-     "dis": 0.45,
+     "dis": 0.09,
      "exp_game": 2.08,
      "gp": 21,
      "fp": 44.4,
@@ -5817,7 +5695,7 @@
       "l15": 2.98
      },
      "cons": 2.06,
-     "dis": 0.52,
+     "dis": 0.08,
      "exp_game": 2.0,
      "gp": 21,
      "fp": 43.5,
@@ -5840,7 +5718,7 @@
       "l15": 2.19
      },
      "cons": 2.07,
-     "dis": 0.27,
+     "dis": 0.23,
      "exp_game": 2.02,
      "gp": 21,
      "fp": 44.3,
@@ -5886,7 +5764,7 @@
       "l15": 2.15
      },
      "cons": 1.98,
-     "dis": 0.27,
+     "dis": 0.21,
      "exp_game": 1.94,
      "gp": 21,
      "fp": 42.5,
@@ -5909,7 +5787,7 @@
       "l15": 4.8
      },
      "cons": 5.17,
-     "dis": 0.25,
+     "dis": 0.18,
      "exp_game": 1.89,
      "gp": 12,
      "fp": 73.0,
@@ -5932,7 +5810,7 @@
       "l15": 1.81
      },
      "cons": 1.89,
-     "dis": 0.14,
+     "dis": 0.11,
      "exp_game": 1.91,
      "gp": 21,
      "fp": 39.3,
@@ -5955,7 +5833,7 @@
       "l15": 2.19
      },
      "cons": 1.92,
-     "dis": 0.41,
+     "dis": 0.29,
      "exp_game": 1.86,
      "gp": 21,
      "fp": 41.1,
@@ -6001,7 +5879,7 @@
       "l15": 0.58
      },
      "cons": 1.62,
-     "dis": 0.83,
+     "dis": 0.23,
      "exp_game": 1.69,
      "gp": 12,
      "fp": 18.5,
@@ -6070,7 +5948,7 @@
       "l15": 1.13
      },
      "cons": 1.48,
-     "dis": 0.41,
+     "dis": 0.18,
      "exp_game": 1.48,
      "gp": 18,
      "fp": 26.9,
@@ -6116,7 +5994,7 @@
       "l15": 1.88
      },
      "cons": 1.51,
-     "dis": 0.29,
+     "dis": 0.1,
      "exp_game": 1.41,
      "gp": 19,
      "fp": 27.2,
@@ -6193,7 +6071,7 @@
       "l15": 5.63
      },
      "cons": 3.27,
-     "dis": 1.11,
+     "dis": 0.41,
      "exp_game": 3.18,
      "gp": 19,
      "fp": 63.8,
@@ -6239,7 +6117,7 @@
       "l15": 6.52
      },
      "cons": 5.52,
-     "dis": 0.3,
+     "dis": 0.22,
      "exp_game": 3.27,
      "gp": 7,
      "fp": 42.8,
@@ -6262,7 +6140,7 @@
       "l15": 3.2
      },
      "cons": 4.13,
-     "dis": 0.28,
+     "dis": 0.1,
      "exp_game": 2.89,
      "gp": 15,
      "fp": 65.5,
@@ -6285,7 +6163,7 @@
       "l15": 2.26
      },
      "cons": 2.73,
-     "dis": 0.18,
+     "dis": 0.01,
      "exp_game": 2.76,
      "gp": 20,
      "fp": 54.7,
@@ -6354,7 +6232,7 @@
       "l15": 3.04
      },
      "cons": 2.61,
-     "dis": 0.17,
+     "dis": 0.01,
      "exp_game": 2.42,
      "gp": 21,
      "fp": 54.7,
@@ -6377,7 +6255,7 @@
       "l15": 2.42
      },
      "cons": 2.27,
-     "dis": 0.11,
+     "dis": 0.05,
      "exp_game": 2.25,
      "gp": 18,
      "fp": 41.2,
@@ -6400,7 +6278,7 @@
       "l15": 3.44
      },
      "cons": 2.32,
-     "dis": 0.68,
+     "dis": 0.22,
      "exp_game": 2.18,
      "gp": 19,
      "fp": 45.2,
@@ -6423,7 +6301,7 @@
       "l15": 1.17
      },
      "cons": 2.18,
-     "dis": 0.57,
+     "dis": 0.1,
      "exp_game": 2.18,
      "gp": 18,
      "fp": 39.3,
@@ -6446,7 +6324,7 @@
       "l15": 1.87
      },
      "cons": 2.47,
-     "dis": 0.27,
+     "dis": 0.03,
      "exp_game": 2.07,
      "gp": 21,
      "fp": 53.1,
@@ -6469,7 +6347,7 @@
       "l15": 2.69
      },
      "cons": 2.48,
-     "dis": 0.16,
+     "dis": 0.09,
      "exp_game": 1.98,
      "gp": 14,
      "fp": 34.9,
@@ -6515,7 +6393,7 @@
       "l15": 1.38
      },
      "cons": 1.84,
-     "dis": 0.42,
+     "dis": 0.2,
      "exp_game": 1.88,
      "gp": 18,
      "fp": 32.1,
@@ -6538,7 +6416,7 @@
       "l15": 5.21
      },
      "cons": 4.49,
-     "dis": 0.17,
+     "dis": 0.01,
      "exp_game": 1.9,
      "gp": 16,
      "fp": 71.7,
@@ -6561,7 +6439,7 @@
       "l15": 6.83
      },
      "cons": 4.5,
-     "dis": 0.67,
+     "dis": 0.2,
      "exp_game": 1.82,
      "gp": 9,
      "fp": 42.7,
@@ -6607,7 +6485,7 @@
       "l15": 2.08
      },
      "cons": 1.92,
-     "dis": 0.4,
+     "dis": 0.36,
      "exp_game": 1.78,
      "gp": 19,
      "fp": 37.8,
@@ -6653,7 +6531,7 @@
       "l15": 1.56
      },
      "cons": 1.81,
-     "dis": 0.15,
+     "dis": 0.02,
      "exp_game": 1.7,
      "gp": 22,
      "fp": 40.0,
@@ -6676,7 +6554,7 @@
       "l15": 2.2
      },
      "cons": 1.74,
-     "dis": 0.31,
+     "dis": 0.1,
      "exp_game": 1.63,
      "gp": 21,
      "fp": 34.7,
@@ -6745,7 +6623,7 @@
       "l15": 0.71
      },
      "cons": 1.26,
-     "dis": 0.73,
+     "dis": 0.32,
      "exp_game": 1.26,
      "gp": 22,
      "fp": 27.1,
@@ -6822,7 +6700,7 @@
       "l15": 6.67
      },
      "cons": 5.14,
-     "dis": 0.42,
+     "dis": 0.14,
      "exp_game": 2.78,
      "gp": 19,
      "fp": 98.9,
@@ -6868,7 +6746,7 @@
       "l15": 3.09
      },
      "cons": 2.59,
-     "dis": 0.23,
+     "dis": 0.07,
      "exp_game": 2.52,
      "gp": 19,
      "fp": 47.3,
@@ -6937,7 +6815,7 @@
       "l15": 3.73
      },
      "cons": 2.36,
-     "dis": 0.6,
+     "dis": 0.03,
      "exp_game": 2.35,
      "gp": 21,
      "fp": 49.9,
@@ -6960,7 +6838,7 @@
       "l15": 2.53
      },
      "cons": 2.31,
-     "dis": 0.15,
+     "dis": 0.08,
      "exp_game": 2.25,
      "gp": 17,
      "fp": 37.2,
@@ -7006,7 +6884,7 @@
       "l15": 2.74
      },
      "cons": 2.04,
-     "dis": 0.37,
+     "dis": 0.04,
      "exp_game": 2.01,
      "gp": 17,
      "fp": 33.7,
@@ -7029,7 +6907,7 @@
       "l15": 1.4
      },
      "cons": 1.98,
-     "dis": 0.42,
+     "dis": 0.15,
      "exp_game": 2.01,
      "gp": 17,
      "fp": 32.8,
@@ -7052,7 +6930,7 @@
       "l15": 2.54
      },
      "cons": 2.16,
-     "dis": 0.24,
+     "dis": 0.12,
      "exp_game": 2.01,
      "gp": 20,
      "fp": 40.9,
@@ -7075,7 +6953,7 @@
       "l15": 5.97
      },
      "cons": 4.41,
-     "dis": 0.65,
+     "dis": 0.34,
      "exp_game": 1.82,
      "gp": 10,
      "fp": 45.7,
@@ -7121,7 +6999,7 @@
       "l15": 0.9
      },
      "cons": 1.62,
-     "dis": 0.56,
+     "dis": 0.15,
      "exp_game": 1.66,
      "gp": 18,
      "fp": 28.2,
@@ -7144,7 +7022,7 @@
       "l15": 2.05
      },
      "cons": 1.77,
-     "dis": 0.18,
+     "dis": 0.03,
      "exp_game": 1.71,
      "gp": 20,
      "fp": 35.7,
@@ -7167,7 +7045,7 @@
       "l15": 1.7
      },
      "cons": 1.74,
-     "dis": 0.21,
+     "dis": 0.2,
      "exp_game": 1.73,
      "gp": 22,
      "fp": 37.9,
@@ -7190,7 +7068,7 @@
       "l15": 1.39
      },
      "cons": 1.81,
-     "dis": 0.26,
+     "dis": 0.03,
      "exp_game": 1.7,
      "gp": 21,
      "fp": 39.1,
@@ -7213,7 +7091,7 @@
       "l15": 1.92
      },
      "cons": 1.69,
-     "dis": 0.16,
+     "dis": 0.02,
      "exp_game": 1.68,
      "gp": 21,
      "fp": 35.5,
@@ -7236,7 +7114,7 @@
       "l15": 0.84
      },
      "cons": 1.51,
-     "dis": 0.48,
+     "dis": 0.05,
      "exp_game": 1.53,
      "gp": 21,
      "fp": 32.8,
@@ -7259,7 +7137,7 @@
       "l15": 0.87
      },
      "cons": 1.5,
-     "dis": 0.54,
+     "dis": 0.13,
      "exp_game": 1.52,
      "gp": 21,
      "fp": 31.3,
@@ -7282,7 +7160,7 @@
       "l15": 2.03
      },
      "cons": 1.68,
-     "dis": 0.21,
+     "dis": 0.01,
      "exp_game": 1.52,
      "gp": 21,
      "fp": 35.4,
@@ -7305,7 +7183,7 @@
       "l15": 0.93
      },
      "cons": 1.4,
-     "dis": 0.98,
+     "dis": 0.65,
      "exp_game": 1.4,
      "gp": 21,
      "fp": 29.1,
@@ -7328,7 +7206,7 @@
       "l15": 1.32
      },
      "cons": 1.43,
-     "dis": 0.2,
+     "dis": 0.14,
      "exp_game": 1.36,
      "gp": 21,
      "fp": 29.3,
@@ -7405,7 +7283,7 @@
       "l15": 8.9
      },
      "cons": 4.94,
-     "dis": 1.01,
+     "dis": 0.25,
      "exp_game": 3.48,
      "gp": 14,
      "fp": 71.8,
@@ -7474,7 +7352,7 @@
       "l15": 2.9
      },
      "cons": 2.7,
-     "dis": 0.29,
+     "dis": 0.23,
      "exp_game": 2.52,
      "gp": 21,
      "fp": 57.5,
@@ -7497,7 +7375,7 @@
       "l15": 2.67
      },
      "cons": 2.56,
-     "dis": 0.08,
+     "dis": 0.07,
      "exp_game": 2.48,
      "gp": 22,
      "fp": 54.0,
@@ -7520,7 +7398,7 @@
       "l15": 1.87
      },
      "cons": 2.14,
-     "dis": 0.26,
+     "dis": 0.22,
      "exp_game": 2.33,
      "gp": 20,
      "fp": 48.4,
@@ -7543,7 +7421,7 @@
       "l15": 2.8
      },
      "cons": 2.34,
-     "dis": 0.37,
+     "dis": 0.19,
      "exp_game": 2.29,
      "gp": 19,
      "fp": 45.3,
@@ -7589,7 +7467,7 @@
       "l15": 3.4
      },
      "cons": 2.29,
-     "dis": 0.65,
+     "dis": 0.18,
      "exp_game": 2.23,
      "gp": 19,
      "fp": 44.1,
@@ -7612,7 +7490,7 @@
       "l15": 1.6
      },
      "cons": 1.9,
-     "dis": 0.34,
+     "dis": 0.33,
      "exp_game": 2.2,
      "gp": 21,
      "fp": 47.2,
@@ -7635,7 +7513,7 @@
       "l15": 2.04
      },
      "cons": 2.33,
-     "dis": 0.15,
+     "dis": 0.04,
      "exp_game": 2.22,
      "gp": 21,
      "fp": 50.0,
@@ -7658,7 +7536,7 @@
       "l15": 3.12
      },
      "cons": 2.3,
-     "dis": 0.52,
+     "dis": 0.17,
      "exp_game": 2.22,
      "gp": 21,
      "fp": 48.8,
@@ -7681,7 +7559,7 @@
       "l15": 2.14
      },
      "cons": 2.1,
-     "dis": 0.04,
+     "dis": 0.03,
      "exp_game": 2.07,
      "gp": 20,
      "fp": 41.0,
@@ -7704,7 +7582,7 @@
       "l15": 1.52
      },
      "cons": 1.72,
-     "dis": 0.23,
+     "dis": 0.17,
      "exp_game": 1.74,
      "gp": 18,
      "fp": 34.5,
@@ -7727,7 +7605,7 @@
       "l15": 2.38
      },
      "cons": 1.82,
-     "dis": 0.32,
+     "dis": 0.02,
      "exp_game": 1.81,
      "gp": 21,
      "fp": 37.7,
@@ -7773,7 +7651,7 @@
       "l15": 2.3
      },
      "cons": 1.89,
-     "dis": 0.23,
+     "dis": 0.02,
      "exp_game": 1.73,
      "gp": 20,
      "fp": 37.7,
@@ -7796,7 +7674,7 @@
       "l15": 1.75
      },
      "cons": 2.86,
-     "dis": 0.73,
+     "dis": 0.47,
      "exp_game": 1.77,
      "gp": 11,
      "fp": 27.4,
@@ -7819,7 +7697,7 @@
       "l15": 2.28
      },
      "cons": 1.81,
-     "dis": 0.38,
+     "dis": 0.2,
      "exp_game": 1.65,
      "gp": 20,
      "fp": 32.0,
@@ -7842,7 +7720,7 @@
       "l15": 1.32
      },
      "cons": 1.52,
-     "dis": 0.19,
+     "dis": 0.07,
      "exp_game": 1.53,
      "gp": 19,
      "fp": 28.8,
@@ -7865,7 +7743,7 @@
       "l15": 0.91
      },
      "cons": 1.59,
-     "dis": 0.47,
+     "dis": 0.05,
      "exp_game": 1.46,
      "gp": 22,
      "fp": 34.8,
@@ -7911,7 +7789,7 @@
       "l15": 2.4
      },
      "cons": 1.53,
-     "dis": 0.79,
+     "dis": 0.39,
      "exp_game": 1.14,
      "gp": 17,
      "fp": 20.2,
@@ -7965,7 +7843,7 @@
       "l15": 2.21
      },
      "cons": 2.73,
-     "dis": 0.28,
+     "dis": 0.17,
      "exp_game": 2.82,
      "gp": 22,
      "fp": 65.3,
@@ -8011,7 +7889,7 @@
       "l15": 3.03
      },
      "cons": 2.69,
-     "dis": 0.37,
+     "dis": 0.26,
      "exp_game": 2.64,
      "gp": 21,
      "fp": 57.5,
@@ -8034,7 +7912,7 @@
       "l15": 2.16
      },
      "cons": 2.43,
-     "dis": 0.17,
+     "dis": 0.11,
      "exp_game": 2.54,
      "gp": 20,
      "fp": 51.6,
@@ -8080,7 +7958,7 @@
       "l15": 2.64
      },
      "cons": 2.46,
-     "dis": 0.22,
+     "dis": 0.16,
      "exp_game": 2.43,
      "gp": 21,
      "fp": 52.3,
@@ -8126,7 +8004,7 @@
       "l15": 1.94
      },
      "cons": 2.24,
-     "dis": 0.17,
+     "dis": 0.04,
      "exp_game": 2.24,
      "gp": 20,
      "fp": 44.8,
@@ -8149,7 +8027,7 @@
       "l15": 2.31
      },
      "cons": 2.22,
-     "dis": 0.08,
+     "dis": 0.07,
      "exp_game": 2.14,
      "gp": 20,
      "fp": 42.8,
@@ -8172,7 +8050,7 @@
       "l15": 1.74
      },
      "cons": 2.14,
-     "dis": 0.26,
+     "dis": 0.08,
      "exp_game": 2.13,
      "gp": 21,
      "fp": 45.2,
@@ -8195,7 +8073,7 @@
       "l15": 1.65
      },
      "cons": 1.84,
-     "dis": 0.21,
+     "dis": 0.15,
      "exp_game": 1.86,
      "gp": 17,
      "fp": 34.5,
@@ -8218,7 +8096,7 @@
       "l15": 2.44
      },
      "cons": 1.82,
-     "dis": 0.36,
+     "dis": 0.02,
      "exp_game": 1.78,
      "gp": 17,
      "fp": 30.3,
@@ -8264,7 +8142,7 @@
       "l15": 1.05
      },
      "cons": 1.75,
-     "dis": 0.49,
+     "dis": 0.09,
      "exp_game": 1.75,
      "gp": 22,
      "fp": 38.6,
@@ -8287,7 +8165,7 @@
       "l15": 1.66
      },
      "cons": 1.83,
-     "dis": 0.22,
+     "dis": 0.14,
      "exp_game": 1.71,
      "gp": 20,
      "fp": 35.9,
@@ -8333,7 +8211,7 @@
       "l15": 1.43
      },
      "cons": 1.86,
-     "dis": 0.41,
+     "dis": 0.27,
      "exp_game": 1.64,
      "gp": 10,
      "fp": 17.1,
@@ -8356,7 +8234,7 @@
       "l15": 1.41
      },
      "cons": 1.55,
-     "dis": 0.28,
+     "dis": 0.2,
      "exp_game": 1.57,
      "gp": 21,
      "fp": 32.3,
@@ -8379,7 +8257,7 @@
       "l15": 1.32
      },
      "cons": 1.52,
-     "dis": 0.37,
+     "dis": 0.26,
      "exp_game": 1.52,
      "gp": 18,
      "fp": 26.9,
@@ -8425,7 +8303,7 @@
       "l15": 1.99
      },
      "cons": 1.71,
-     "dis": 0.28,
+     "dis": 0.22,
      "exp_game": 1.51,
      "gp": 21,
      "fp": 31.8,
@@ -8448,7 +8326,7 @@
       "l15": 1.04
      },
      "cons": 1.41,
-     "dis": 0.38,
+     "dis": 0.12,
      "exp_game": 1.42,
      "gp": 18,
      "fp": 25.4,
@@ -8555,7 +8433,7 @@
     "l15": 2.08
    },
    "cons": 1.92,
-   "dis": 0.4,
+   "dis": 0.36,
    "exp_game": 1.78,
    "gp": 19,
    "fp": 37.8,
@@ -8601,7 +8479,7 @@
     "l15": 2.17
    },
    "cons": 1.94,
-   "dis": 0.3,
+   "dis": 0.21,
    "exp_game": 1.89,
    "gp": 18,
    "fp": 35.8,
@@ -8626,7 +8504,7 @@
     "l15": 2.2
    },
    "cons": 1.83,
-   "dis": 0.36,
+   "dis": 0.19,
    "exp_game": 1.78,
    "gp": 19,
    "fp": 36.0,
@@ -8651,7 +8529,7 @@
     "l15": 1.93
    },
    "cons": 1.83,
-   "dis": 0.16,
+   "dis": 0.12,
    "exp_game": 1.8,
    "gp": 18,
    "fp": 33.6,
@@ -8676,7 +8554,7 @@
     "l15": 2.83
    },
    "cons": 1.8,
-   "dis": 0.85,
+   "dis": 0.3,
    "exp_game": 1.76,
    "gp": 19,
    "fp": 34.9,
@@ -8728,7 +8606,7 @@
     "l15": 0.71
    },
    "cons": 1.26,
-   "dis": 0.73,
+   "dis": 0.32,
    "exp_game": 1.26,
    "gp": 22,
    "fp": 27.1,
@@ -8799,7 +8677,7 @@
     "l15": 0.71
    },
    "cons": 1.26,
-   "dis": 0.73,
+   "dis": 0.32,
    "exp_game": 1.26,
    "gp": 22,
    "fp": 27.1,
@@ -8808,58 +8686,6 @@
   }
  ],
  "drop_ranking": [
-  {
-   "id": 3042020,
-   "name": "Tristan Jarry",
-   "pos": "G",
-   "group": "G",
-   "team": "EDM",
-   "injury": "",
-   "rate": 4.26,
-   "src": {
-    "sheet": 3.92,
-    "model": 4.26,
-    "espn": 3.84,
-    "pace": 4.74,
-    "l15": 6.83
-   },
-   "cons": 4.5,
-   "dis": 0.67,
-   "exp_game": 1.82,
-   "gp": 9,
-   "fp": 42.7,
-   "ros": 98.1,
-   "cost": 52.7,
-   "po_games": 6,
-   "last7": 7.2,
-   "light": 24
-  },
-  {
-   "id": 3904177,
-   "name": "Mackenzie Blackwood",
-   "pos": "G",
-   "group": "G",
-   "team": "COL",
-   "injury": "",
-   "rate": 4.44,
-   "src": {
-    "sheet": 4.34,
-    "model": 4.44,
-    "espn": 4.5,
-    "pace": 4.48,
-    "l15": 5.21
-   },
-   "cons": 4.49,
-   "dis": 0.17,
-   "exp_game": 1.9,
-   "gp": 16,
-   "fp": 71.7,
-   "ros": 100.5,
-   "cost": 65.4,
-   "po_games": 7,
-   "last7": 12.6,
-   "light": 25
-  },
   {
    "id": 5342529,
    "name": "Gavin McKenna",
@@ -8876,7 +8702,7 @@
     "l15": 0.71
    },
    "cons": 1.26,
-   "dis": 0.73,
+   "dis": 0.32,
    "exp_game": 1.26,
    "gp": 22,
    "fp": 27.1,
@@ -8954,7 +8780,7 @@
     "l15": 2.2
    },
    "cons": 1.74,
-   "dis": 0.31,
+   "dis": 0.1,
    "exp_game": 1.63,
    "gp": 21,
    "fp": 34.7,
@@ -8980,7 +8806,7 @@
     "l15": 1.56
    },
    "cons": 1.81,
-   "dis": 0.15,
+   "dis": 0.02,
    "exp_game": 1.7,
    "gp": 22,
    "fp": 40.0,
@@ -9032,7 +8858,7 @@
     "l15": 2.08
    },
    "cons": 1.92,
-   "dis": 0.4,
+   "dis": 0.36,
    "exp_game": 1.78,
    "gp": 19,
    "fp": 37.8,
@@ -9084,7 +8910,7 @@
     "l15": 2.69
    },
    "cons": 2.48,
-   "dis": 0.16,
+   "dis": 0.09,
    "exp_game": 1.98,
    "gp": 14,
    "fp": 34.9,
@@ -9110,7 +8936,7 @@
     "l15": 1.87
    },
    "cons": 2.47,
-   "dis": 0.27,
+   "dis": 0.03,
    "exp_game": 2.07,
    "gp": 21,
    "fp": 53.1,
@@ -9119,32 +8945,6 @@
    "po_games": 6,
    "last7": 3.9,
    "light": 21
-  },
-  {
-   "id": 4712036,
-   "name": "Jeremy Swayman",
-   "pos": "G",
-   "group": "G",
-   "team": "BOS",
-   "injury": "",
-   "rate": 4.31,
-   "src": {
-    "sheet": 4.18,
-    "model": 4.31,
-    "espn": 3.95,
-    "pace": 4.37,
-    "l15": 3.2
-   },
-   "cons": 4.13,
-   "dis": 0.28,
-   "exp_game": 2.89,
-   "gp": 15,
-   "fp": 65.5,
-   "ros": 156.2,
-   "cost": 122.0,
-   "po_games": 6,
-   "last7": 7.6,
-   "light": 19
   },
   {
    "id": 3114766,
@@ -9162,7 +8962,7 @@
     "l15": 1.17
    },
    "cons": 2.18,
-   "dis": 0.57,
+   "dis": 0.1,
    "exp_game": 2.18,
    "gp": 18,
    "fp": 39.3,
@@ -9188,7 +8988,7 @@
     "l15": 3.44
    },
    "cons": 2.32,
-   "dis": 0.68,
+   "dis": 0.22,
    "exp_game": 2.18,
    "gp": 19,
    "fp": 45.2,
@@ -9214,7 +9014,7 @@
     "l15": 3.04
    },
    "cons": 2.61,
-   "dis": 0.17,
+   "dis": 0.01,
    "exp_game": 2.42,
    "gp": 21,
    "fp": 54.7,
@@ -9240,7 +9040,7 @@
     "l15": 2.42
    },
    "cons": 2.27,
-   "dis": 0.11,
+   "dis": 0.05,
    "exp_game": 2.25,
    "gp": 18,
    "fp": 41.2,
@@ -9303,32 +9103,6 @@
    "light": 24
   },
   {
-   "id": 3020225,
-   "name": "Connor Hellebuyck",
-   "pos": "G",
-   "group": "G",
-   "team": "NJ",
-   "injury": "",
-   "rate": 4.88,
-   "src": {
-    "sheet": 4.51,
-    "model": 4.88,
-    "espn": 4.93,
-    "pace": 6.11,
-    "l15": 6.52
-   },
-   "cons": 5.52,
-   "dis": 0.3,
-   "exp_game": 3.27,
-   "gp": 7,
-   "fp": 42.8,
-   "ros": 173.4,
-   "cost": 154.0,
-   "po_games": 7,
-   "last7": 24.4,
-   "light": 20
-  },
-  {
    "id": 5206628,
    "name": "Macklin Celebrini",
    "pos": "C",
@@ -9344,7 +9118,7 @@
     "l15": 2.26
    },
    "cons": 2.73,
-   "dis": 0.18,
+   "dis": 0.01,
    "exp_game": 2.76,
    "gp": 20,
    "fp": 54.7,
@@ -9396,7 +9170,7 @@
     "l15": 5.63
    },
    "cons": 3.27,
-   "dis": 1.11,
+   "dis": 0.41,
    "exp_game": 3.18,
    "gp": 19,
    "fp": 63.8,
@@ -9424,7 +9198,7 @@
     "l15": 4.6
    },
    "cons": 4.04,
-   "dis": 0.24,
+   "dis": 0.1,
    "exp_game": 2.56,
    "gp": 11,
    "fp": 44.5,
@@ -9452,7 +9226,7 @@
     "l15": 4.68
    },
    "cons": 3.34,
-   "dis": 0.64,
+   "dis": 0.28,
    "exp_game": 2.15,
    "gp": 11,
    "fp": 27.9,
@@ -9480,7 +9254,7 @@
     "l15": 7.67
    },
    "cons": 5.34,
-   "dis": 0.94,
+   "dis": 0.5,
    "exp_game": 1.95,
    "gp": 10,
    "fp": 53.4,
@@ -9508,7 +9282,7 @@
     "l15": 2.55
    },
    "cons": 3.25,
-   "dis": 0.26,
+   "dis": 0.05,
    "exp_game": 1.86,
    "gp": 15,
    "fp": 49.1,
@@ -9564,7 +9338,7 @@
     "l15": 0.68
    },
    "cons": 1.5,
-   "dis": 0.97,
+   "dis": 0.43,
    "exp_game": 1.1,
    "gp": 15,
    "fp": 32.1,
@@ -9652,7 +9426,7 @@
      "l15": 4.68
     },
     "cons": 4.27,
-    "dis": 0.28,
+    "dis": 0.26,
     "exp_game": 1.21,
     "gp": 9,
     "fp": 41.2,
@@ -9676,7 +9450,7 @@
      "l15": 7.67
     },
     "cons": 5.34,
-    "dis": 0.94,
+    "dis": 0.5,
     "exp_game": 1.95,
     "gp": 10,
     "fp": 53.4,
@@ -9700,13 +9474,13 @@
      "l15": 2.83
     },
     "cons": 1.8,
-    "dis": 0.85,
+    "dis": 0.3,
     "exp_game": 1.76,
     "gp": 19,
     "fp": 34.9,
     "pts": 7.3,
     "line": "3 G, 3 SOG",
-    "own_chg": 1.9
+    "own_chg": 2.0
    },
    {
     "id": 4587952,
@@ -9724,7 +9498,7 @@
      "l15": 4.68
     },
     "cons": 3.34,
-    "dis": 0.64,
+    "dis": 0.28,
     "exp_game": 2.15,
     "gp": 11,
     "fp": 27.9,
@@ -9748,7 +9522,7 @@
      "l15": 4.6
     },
     "cons": 4.04,
-    "dis": 0.24,
+    "dis": 0.1,
     "exp_game": 2.56,
     "gp": 11,
     "fp": 44.5,
@@ -9772,13 +9546,13 @@
      "l15": 1.85
     },
     "cons": 1.62,
-    "dis": 0.32,
+    "dis": 0.19,
     "exp_game": 1.6,
     "gp": 22,
     "fp": 35.9,
     "pts": 6.3,
     "line": "1 G, 3 A, 2 SOG, 1 HIT",
-    "own_chg": 4.0
+    "own_chg": 4.1
    },
    {
     "id": 3759,
@@ -9820,7 +9594,7 @@
      "l15": 2.14
     },
     "cons": 1.54,
-    "dis": 0.62,
+    "dis": 0.33,
     "exp_game": 1.37,
     "gp": 13,
     "fp": 22.2,
@@ -9844,13 +9618,13 @@
      "l15": 4.47
     },
     "cons": 3.94,
-    "dis": 0.28,
+    "dis": 0.22,
     "exp_game": 1.56,
     "gp": 11,
     "fp": 36.8,
     "pts": 5.6,
     "line": "1 W, 28 SV, 3 GA",
-    "own_chg": -0.2
+    "own_chg": -0.3
    },
    {
     "id": 5080172,
@@ -9868,7 +9642,7 @@
      "l15": 2.44
     },
     "cons": 1.52,
-    "dis": 0.63,
+    "dis": 0.03,
     "exp_game": 1.44,
     "gp": 22,
     "fp": 33.5,
@@ -9894,7 +9668,7 @@
      "l15": 4.6
     },
     "cons": 4.04,
-    "dis": 0.24,
+    "dis": 0.1,
     "exp_game": 2.56,
     "gp": 11,
     "fp": 44.5,
@@ -9918,7 +9692,7 @@
      "l15": 7.67
     },
     "cons": 5.34,
-    "dis": 0.94,
+    "dis": 0.5,
     "exp_game": 1.95,
     "gp": 10,
     "fp": 53.4,
@@ -9942,13 +9716,13 @@
      "l15": 2.55
     },
     "cons": 3.25,
-    "dis": 0.26,
+    "dis": 0.05,
     "exp_game": 1.86,
     "gp": 15,
     "fp": 49.1,
     "pts": 15.7,
     "line": "2 W, 91 SV, 9 GA",
-    "own_chg": -0.4
+    "own_chg": -0.5
    },
    {
     "id": 4565244,
@@ -9966,13 +9740,13 @@
      "l15": 2.83
     },
     "cons": 1.8,
-    "dis": 0.85,
+    "dis": 0.3,
     "exp_game": 1.76,
     "gp": 19,
     "fp": 34.9,
     "pts": 12.8,
     "line": "4 G, 2 A, 7 SOG, 2 BLK, 1 HIT",
-    "own_chg": 1.9
+    "own_chg": 2.0
    },
    {
     "id": 4587994,
@@ -9990,7 +9764,7 @@
      "l15": 4.68
     },
     "cons": 4.27,
-    "dis": 0.28,
+    "dis": 0.26,
     "exp_game": 1.21,
     "gp": 9,
     "fp": 41.2,
@@ -10014,13 +9788,13 @@
      "l15": 2.23
     },
     "cons": 1.46,
-    "dis": 0.63,
+    "dis": 0.13,
     "exp_game": 1.44,
     "gp": 21,
     "fp": 31.2,
     "pts": 11.6,
     "line": "4 G, 10 SOG, 4 BLK, 1 HIT",
-    "own_chg": -0.3
+    "own_chg": -0.4
    },
    {
     "id": 4271575,
@@ -10038,13 +9812,13 @@
      "l15": 4.47
     },
     "cons": 3.94,
-    "dis": 0.28,
+    "dis": 0.22,
     "exp_game": 1.56,
     "gp": 11,
     "fp": 36.8,
     "pts": 11.2,
     "line": "2 W, 46 SV, 4 GA",
-    "own_chg": -0.2
+    "own_chg": -0.3
    },
    {
     "id": 3899978,
@@ -10062,7 +9836,7 @@
      "l15": 1.99
     },
     "cons": 1.7,
-    "dis": 0.28,
+    "dis": 0.21,
     "exp_game": 1.53,
     "gp": 21,
     "fp": 31.6,
@@ -11225,385 +10999,218 @@
  "accuracy": {
   "table": {
    "model": {
-    "all": 0.693,
-    "F": 0.665,
-    "D": 0.534,
-    "G": 1.895
+    "all": 0.726,
+    "F": 0.696,
+    "D": 0.567,
+    "G": 1.872
    },
    "sheet": {
-    "all": 0.679,
-    "F": 0.658,
-    "D": 0.524,
-    "G": 1.827
+    "all": 0.726,
+    "F": 0.692,
+    "D": 0.571,
+    "G": 1.9
    },
    "espn": {
-    "all": 0.754,
-    "F": 0.711,
-    "D": 0.582,
-    "G": 1.791
+    "all": 0.742,
+    "F": 0.71,
+    "D": 0.588,
+    "G": 1.883
    },
    "pace": {
-    "all": 0.76,
-    "F": 0.747,
-    "D": 0.589,
-    "G": 2.088
+    "all": 0.833,
+    "F": 0.799,
+    "D": 0.668,
+    "G": 2.052
    },
    "l15": {
-    "all": 0.799,
-    "F": 0.792,
-    "D": 0.626,
-    "G": 2.178
+    "all": 0.882,
+    "F": 0.847,
+    "D": 0.706,
+    "G": 2.18
    },
    "consensus": {
-    "all": 0.714,
-    "F": 0.69,
-    "D": 0.552,
-    "G": 1.881
+    "all": 0.762,
+    "F": 0.73,
+    "D": 0.605,
+    "G": 1.916
    }
   },
   "games": {
-   "model": 51332,
-   "sheet": 48103,
-   "espn": 34585,
-   "pace": 43766,
-   "l15": 43003,
-   "consensus": 51332
+   "model": 28449,
+   "sheet": 28449,
+   "espn": 28449,
+   "pace": 28449,
+   "l15": 28449,
+   "consensus": 28449
   },
   "windows": 38,
-  "best": "sheet",
+  "best": "model",
   "first_grade": "2026-10-08",
   "snapshots": 45
  },
  "flags": {
-  "Quinn Hughes": 0.27,
-  "Alex DeBrincat": 0.71,
   "Sidney Crosby": 0.52,
-  "Jake Sanderson": 0.28,
-  "Gabriel Vilardi": 0.48,
-  "Victor Hedman": 0.8,
-  "Filip Hronek": 0.42,
-  "Sergei Bobrovsky": 0.78,
-  "Jake McCabe": 0.28,
+  "Victor Hedman": 0.71,
+  "Sergei Bobrovsky": 0.35,
+  "Jake McCabe": 0.25,
   "Artturi Lehkonen": 0.42,
-  "Dylan Garand": 0.44,
-  "Spencer Knight": 1.08,
-  "William Nylander": 0.44,
-  "Brandon Hagel": 0.25,
+  "Spencer Knight": 0.49,
   "Juraj Slafkovsky": 0.37,
   "Rasmus Andersson": 0.36,
-  "Logan Cooley": 0.8,
-  "Charlie McAvoy": 0.58,
-  "Shayne Gostisbehere": 0.31,
-  "Jackson Blake": 0.39,
+  "Logan Cooley": 0.34,
+  "Charlie McAvoy": 0.3,
+  "Jackson Blake": 0.25,
   "Kent Johnson": 0.43,
   "Philip Broberg": 0.29,
-  "Logan Stankoven": 0.52,
-  "Cole Hutson": 0.33,
-  "Shane Pinto": 0.54,
-  "Anton Lundell": 0.36,
-  "Matthew Schaefer": 0.27,
-  "Jackson LaCombe": 0.4,
+  "Logan Stankoven": 0.45,
+  "Jackson LaCombe": 0.26,
   "Lukas Dostal": 0.61,
-  "Will Smith": 0.32,
-  "Karel Vejmelka": 0.92,
-  "Beckett Sennecke": 0.41,
-  "Brock Boeser": 0.38,
-  "Vasily Podkolzin": 0.76,
-  "Cole Perfetti": 0.5,
+  "Karel Vejmelka": 0.43,
+  "Beckett Sennecke": 0.35,
+  "Vasily Podkolzin": 0.36,
+  "Cole Perfetti": 0.39,
   "Seth Jones": 0.31,
-  "Matvei Michkov": 0.27,
-  "Arseny Gritsyuk": 0.3,
-  "Easton Cowan": 0.39,
-  "Nathan MacKinnon": 0.39,
-  "Kyle Connor": 0.42,
   "Noah Dobson": 0.63,
-  "Logan Thompson": 0.65,
-  "Drake Batherson": 0.45,
-  "John Tavares": 0.83,
+  "Logan Thompson": 0.27,
   "Travis Konecny": 0.26,
   "Linus Ullmark": 0.31,
-  "Tomas Hertl": 0.52,
-  "Morgan Rielly": 0.41,
-  "Carter Verhaeghe": 0.27,
-  "Sean Walker": 0.27,
-  "Devon Toews": 0.41,
+  "Devon Toews": 0.29,
   "Zach Hyman": 0.7,
-  "Mattias Ekholm": 0.29,
   "Evan Bouchard": 0.3,
-  "Cutter Gauthier": 1.11,
-  "Dylan Guenther": 0.42,
-  "Alex Tuch": 0.57,
-  "Jeremy Swayman": 0.28,
-  "Connor Hellebuyck": 0.3,
-  "Mark Stone": 0.27,
-  "Justin Faulk": 0.31,
-  "Gavin McKenna": 0.73,
-  "Mikael Granlund": 0.68,
-  "Charle-Edouard D'Astous": 0.4,
+  "Cutter Gauthier": 0.41,
+  "Gavin McKenna": 0.32,
+  "Charle-Edouard D'Astous": 0.36,
   "Jack Quinn": 0.39,
   "Victor Olofsson": 0.5,
-  "Tristan Jarry": 0.67,
   "Leon Draisaitl": 0.25,
-  "Mark Scheifele": 0.6,
-  "Rasmus Dahlin": 0.42,
-  "Adrian Kempe": 0.37,
-  "Vincent Trocheck": 0.98,
+  "Vincent Trocheck": 0.65,
   "Leo Carlsson": 0.26,
-  "Jesper Wallstedt": 0.42,
-  "Adam Fantilli": 0.56,
-  "Vladislav Gavrikov": 0.48,
-  "Will Cuylle": 0.54,
-  "Neal Pionk": 0.26,
   "Jack Roslovic": 0.41,
   "Joel Farabee": 0.44,
-  "Adin Hill": 0.65,
-  "Trevor Zegras": 0.47,
-  "Morgan Geekie": 0.38,
-  "Mikhail Sergachev": 0.29,
-  "Nick Schmaltz": 0.37,
-  "Andrei Svechnikov": 0.52,
-  "Ryan O'Reilly": 0.26,
-  "Juuse Saros": 1.01,
-  "Nikolaj Ehlers": 0.32,
-  "Anthony Mantha": 0.79,
-  "Thomas Harley": 0.65,
-  "Alexis Lafreniere": 0.34,
-  "Dan Vladar": 0.73,
-  "Auston Matthews": 0.28,
-  "MacKenzie Weegar": 0.26,
-  "Sebastian Aho": 0.37,
+  "Adin Hill": 0.34,
+  "Anthony Mantha": 0.39,
+  "Alexis Lafreniere": 0.33,
+  "Dan Vladar": 0.47,
+  "Sebastian Aho": 0.26,
   "Dylan Larkin": 0.29,
   "Owen Tippett": 0.6,
   "Scott Wedgewood": 0.73,
-  "Seth Jarvis": 0.41,
-  "Brayden Point": 0.36,
-  "Jacob Trouba": 0.49,
+  "Seth Jarvis": 0.27,
   "Sergei Murashov": 0.29,
-  "Sam Bennett": 0.28,
-  "Dylan Cozens": 0.28,
-  "Colton Parayko": 0.37,
-  "Luke Evangelista": 0.38,
+  "Colton Parayko": 0.26,
   "Brandon Bussi": 0.35,
-  "Timo Meier": 0.28,
-  "Alex Ovechkin": 1.77,
-  "Tom Wilson": 0.84,
-  "Dylan Strome": 0.26,
-  "Jordan Kyrou": 0.5,
-  "Alex Laferriere": 0.3,
-  "Darnell Nurse": 0.36,
-  "Patrick Kane": 0.73,
+  "Alex Ovechkin": 1.57,
+  "Tom Wilson": 0.56,
+  "Darnell Nurse": 0.26,
+  "Patrick Kane": 0.69,
   "Bowen Byram": 0.41,
-  "Luke Hughes": 0.35,
-  "Robert Thomas": 0.56,
+  "Robert Thomas": 0.41,
   "Ukko-Pekka Luukkonen": 0.63,
-  "Viktor Arvidsson": 0.71,
-  "Devon Levi": 0.94,
-  "Pavel Zacha": 0.28,
-  "John Gibson": 1.78,
+  "Devon Levi": 0.5,
+  "John Gibson": 0.99,
   "Matthew Knies": 0.28,
-  "Darcy Kuemper": 0.69,
-  "Brent Burns": 0.8,
-  "Kiefer Sherwood": 0.64,
+  "Darcy Kuemper": 0.36,
+  "Brent Burns": 0.42,
+  "Kiefer Sherwood": 0.25,
   "Jakub Dobes": 0.71,
   "Ivan Provorov": 0.27,
   "Quinton Byfield": 0.28,
   "Valeri Nichushkin": 0.43,
-  "Mason McTavish": 0.35,
-  "Jet Greaves": 1.22,
-  "Tristan Luneau": 0.29,
-  "Matty Beniers": 0.35,
-  "Anders Lee": 0.48,
-  "Matt Coronato": 0.49,
+  "Jet Greaves": 0.76,
   "Zach Benson": 0.27,
   "Tyler Bertuzzi": 1.02,
-  "Stuart Skinner": 0.58,
-  "Eeli Tolvanen": 0.4,
-  "Ryan Leonard": 0.46,
+  "Stuart Skinner": 0.34,
+  "Eeli Tolvanen": 0.37,
   "Ryan Hartman": 0.55,
-  "Bobby McMann": 0.61,
+  "Bobby McMann": 0.29,
   "Jonathan Marchessault": 0.32,
-  "Brayden Schenn": 0.36,
-  "Joey Daccord": 0.97,
-  "Elias N. Pettersson": 0.34,
+  "Joey Daccord": 0.52,
   "K'Andre Miller": 0.25,
-  "Marco Rossi": 0.61,
-  "Anthony Stolarz": 0.3,
+  "Marco Rossi": 0.45,
   "William Eklund": 0.25,
   "Anton Forsberg": 0.74,
-  "Jamie Drysdale": 0.29,
-  "Declan Carlile": 0.46,
   "Chris Kreider": 0.39,
-  "Dustin Wolf": 0.64,
-  "Arturs Silovs": 1.27,
-  "Pavel Buchnevich": 0.62,
-  "Tommy Novak": 0.56,
-  "Paul Cotter": 0.45,
-  "Yaroslav Askarov": 0.26,
+  "Dustin Wolf": 0.28,
+  "Pavel Buchnevich": 0.36,
+  "Tommy Novak": 0.33,
   "Gustav Forsling": 0.31,
   "Emmitt Finnie": 0.31,
-  "Dmitry Orlov": 0.32,
   "Michael DiPietro": 0.31,
-  "Zayne Parekh": 0.42,
-  "Frederick Gaudreau": 0.46,
-  "Boone Jenner": 0.33,
-  "Roman Kantserov": 0.26,
-  "Frank Nazar": 0.45,
-  "Joseph Woll": 0.28,
-  "Trevor Connelly": 0.31,
-  "Mats Zuccarello": 0.6,
-  "Philipp Grubauer": 0.64,
-  "Dawson Mercer": 0.63,
-  "Victor Eklund": 0.72,
-  "Jake Neighbours": 0.34,
-  "Drew Doughty": 0.34,
-  "Josh Anderson": 0.48,
-  "Michael Misa": 0.26,
+  "Mats Zuccarello": 0.57,
+  "Philipp Grubauer": 0.37,
   "Maxim Tsyplakov": 1.58,
-  "Morgan Frost": 0.28,
-  "Kailer Yamamoto": 0.45,
+  "Kailer Yamamoto": 0.42,
   "Alexander Wennberg": 0.69,
-  "Cam Talbot": 0.56,
-  "Matvei Gridin": 0.41,
-  "Denton Mateychuk": 0.37,
-  "Tim Washe": 0.43,
-  "Cam Fowler": 0.69,
-  "Chandler Stephenson": 0.45,
-  "Daniil Tarasov": 0.28,
+  "Cam Fowler": 0.54,
+  "Daniil Tarasov": 0.26,
   "Trevor Moore": 0.27,
-  "Mackie Samoskevich": 0.42,
-  "Josh Doan": 0.38,
   "Kevin Lankinen": 2.36,
+  "Josh Doan": 0.38,
   "Oliver Ekman-Larsson": 0.92,
   "Ryan Pulock": 0.25,
   "Kyle Palmieri": 0.33,
-  "Pavel Mintyukov": 0.33,
-  "Michael McCarron": 0.34,
-  "Ross Colton": 0.28,
-  "William Karlsson": 0.7,
-  "Yegor Sharangovich": 0.32,
-  "Emil Heineman": 0.33,
-  "Connor McMichael": 0.8,
-  "Christian Dvorak": 0.43,
-  "Simon Holmstrom": 0.85,
+  "William Karlsson": 0.36,
+  "Connor McMichael": 0.4,
+  "Simon Holmstrom": 0.3,
   "Jordan Binnington": 0.66,
   "Jordan Staal": 0.68,
-  "Artem Zub": 0.4,
-  "Egor Chinakhov": 0.55,
-  "Judd Caulfield": 0.47,
-  "Jean-Gabriel Pageau": 0.26,
-  "Mikael Backlund": 0.49,
+  "Artem Zub": 0.31,
+  "Egor Chinakhov": 0.4,
+  "Mikael Backlund": 0.28,
   "Sean Monahan": 0.28,
-  "Simon Nemec": 0.25,
   "Ryan Donato": 0.48,
-  "Tony DeAngelo": 0.82,
   "Frederik Andersen": 0.4,
-  "Kaapo Kakko": 0.28,
-  "Leevi Merilainen": 0.97,
+  "Tony DeAngelo": 0.44,
   "Casey DeSmith": 0.54,
-  "Jason Zucker": 1.12,
-  "Tyler Seguin": 1.1,
-  "Noah Ostlund": 0.38,
-  "Danila Yurov": 0.63,
-  "Arber Xhekaj": 0.91,
-  "Jack McBain": 0.43,
-  "Jamie Benn": 0.46,
-  "Jordan Spence": 0.26,
+  "Leevi Merilainen": 0.43,
+  "Jason Zucker": 0.88,
+  "Tyler Seguin": 0.59,
+  "Jamie Benn": 0.28,
   "Mavrik Bourque": 0.58,
-  "Pontus Holmberg": 0.29,
-  "Teuvo Teravainen": 0.74,
-  "Olen Zellweger": 0.51,
-  "Barrett Hayton": 0.29,
-  "Igor Chernyshov": 0.28,
+  "Teuvo Teravainen": 0.48,
   "Ville Husso": 0.54,
-  "Ryan McLeod": 1.27,
+  "Igor Chernyshov": 0.28,
+  "Ryan McLeod": 1.21,
   "Josh Norris": 0.39,
   "Noah Cates": 0.43,
   "Laurent Brossoit": 0.95,
-  "Collin Graf": 0.99,
-  "Erik Cernak": 0.37,
-  "Ridly Greig": 0.27,
+  "Collin Graf": 0.61,
   "Nick Jensen": 0.75,
   "Michael Bunting": 0.7,
   "Sean Couturier": 0.64,
-  "Andrew Copp": 0.52,
-  "Jordan Martinook": 0.51,
   "Conor Garland": 1.16,
-  "Samuel Ersson": 1.05,
-  "Connor Brown": 0.62,
-  "Evan Rodrigues": 0.62,
-  "Adam Lowry": 0.25,
-  "Arttu Hyry": 0.3,
+  "Connor Brown": 0.33,
   "Oliver Kapanen": 0.84,
-  "Bobby Brink": 0.45,
   "Sebastian Cossa": 0.49,
-  "Colten Ellis": 2.32,
-  "Michael Amadio": 0.7,
+  "Colten Ellis": 2.12,
   "Dmitri Voronkov": 0.69,
-  "Morgan Barron": 0.33,
   "Charlie Lindgren": 0.34,
-  "T.J. Hughes": 0.26,
   "Matias Maccelli": 0.38,
-  "Linus Karlsson": 0.33,
-  "Nicolas Roy": 0.39,
-  "Viggo Bjorck": 1.31,
-  "Drew O'Connor": 0.49,
-  "Alex Killorn": 0.81,
-  "Ilya Protas": 0.25,
-  "Zach Whitecloud": 0.3,
-  "Sam Rinzel": 0.3,
-  "Brett Kulak": 0.51,
-  "Denver Barkey": 0.67,
-  "Keegan Kolesar": 0.95,
+  "Alex Killorn": 0.38,
+  "Keegan Kolesar": 0.62,
   "Jake Walman": 0.28,
   "Carter Yakemchuk": 0.35,
   "Oliver Bonk": 0.3,
   "Luke Schenn": 0.57,
-  "Niko Mikkola": 0.36,
-  "Phillip Danault": 0.43,
-  "Corey Perry": 0.31,
-  "Alex Vlasic": 0.42,
   "Eric Pohlkamp": 0.86,
-  "Connor Dewar": 0.89,
-  "Jake Middleton": 0.31,
-  "Sandis Vilmanis": 0.91,
-  "Jayden Struble": 0.43,
+  "Corey Perry": 0.31,
+  "Connor Dewar": 0.39,
   "Justin Sourdif": 0.27,
-  "Roger McQueen": 0.64,
-  "Mathieu Joseph": 0.57,
-  "Dylan DeMelo": 0.31,
-  "Scott Laughton": 0.28,
-  "Lian Bichsel": 0.41,
-  "Michael Carcone": 0.38,
+  "Roger McQueen": 0.3,
   "Justin Brazeau": 0.64,
-  "Matthew Poitras": 0.95,
-  "Alberts Smits": 0.37,
-  "Justus Annunen": 0.52,
+  "Matthew Poitras": 0.43,
   "Max Domi": 0.3,
-  "Sam Steel": 1.31,
-  "Kirby Dach": 0.82,
-  "Marat Khusnutdinov": 0.64,
+  "Sam Steel": 0.74,
   "Axel Sandin-Pellikka": 1.25,
-  "Jesperi Kotkaniemi": 0.44,
-  "William Wallinder": 0.36,
-  "Noel Acciari": 0.3,
+  "William Wallinder": 0.27,
   "Semyon Varlamov": 1.51,
   "Marcus Foligno": 0.4,
-  "Fedor Svechkov": 0.29,
-  "Marc Gatcomb": 0.54,
   "Frederic Brunet": 0.42,
-  "Erik Gustafsson": 1.01,
-  "Nick Perbix": 0.45,
-  "Ben Meyers": 0.41,
-  "Dalibor Dvorsky": 0.36,
-  "Nick Foligno": 0.34,
-  "Florian Xhekaj": 0.96,
-  "Aydar Suniev": 0.44,
+  "Erik Gustafsson": 0.38,
+  "Florian Xhekaj": 0.68,
+  "Aydar Suniev": 0.32,
   "Connor Clifton": 1.03,
-  "Nick Cousins": 0.28,
-  "Alex Formenton": 0.64,
-  "Tyler Myers": 0.26,
-  "Juuso Valimaki": 0.95,
-  "Zach Bogosian": 0.78
+  "Juuso Valimaki": 0.59
  },
  "disagree_threshold": 0.25,
  "rosters": {
