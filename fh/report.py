@@ -199,7 +199,8 @@ def build(swid: str) -> dict:
     po_periods = [d for ps in po_weeks.values() for d in ps]
     value = advice.Valuer(lg, cal, ros_periods, po_periods)
     fa_recs = advice.free_agents(mine, fas, value, this_week, next_week)
-    stream = advice.streaming(fas, cal, this_week, next_week)
+    plan_ahead = len(this_week) <= 2 and bool(next_week)   # weekend: plan next week's streams
+    stream = advice.streaming(fas, cal, this_week, next_week, goalie_week=next_week if plan_ahead else this_week)
     adds_used = state.teams[me].adds_by_matchup.get(cm, 0)
     adds_left = max(0, config.ADDS_PER_MATCHUP - adds_used)
     plan_this = advice.stream_plan(mine, fas, value, this_week, adds_left)
@@ -309,7 +310,7 @@ def build(swid: str) -> dict:
         urgent = "Lineup today: " + fixes[0]["text"]
     elif fa_recs and fa_recs[0].score > 5:
         r = fa_recs[0]
-        urgent = "Add %s (%s), drop %s: +%.0f rest-of-season pts (playoff weeks x%g), +%.0f over the next two weeks.%s" % (
+        urgent = "Add %s (%s), drop %s: +%.0f rest-of-season pts (playoff weeks x%g), %+.0f over the next two weeks.%s" % (
             r.p.name, r.p.group, r.drop.name, r.gain, config.PLAYOFF_WEIGHT, r.week_gain, _drop_caution(r.drop, mine))
     else:
         urgent = "Nothing urgent - set tomorrow's lineup and check back."
@@ -391,7 +392,8 @@ def build(swid: str) -> dict:
                                                      "waiver": _waiver(waiver_dates.get(r.p.id), r.p.status)})
                         for r in fa_recs],
         "fa_summary": fa_text,
-        "streaming": {"schedule": _nhl_week(cal, cal.matchups.get(cm, []), today),
+        "streaming": {"schedule": _nhl_week(cal, cal.matchups.get(cm + 1 if plan_ahead else cm, []), today),
+                      "week_label": "next week" if plan_ahead else "this week",
                       "games": [{"team": t, "this": g[0], "next": g[1]} for t, g in
                                 sorted(stream["games"].items(), key=lambda kv: -(kv[1][0] + kv[1][1]))],
                       "goalies": [_pl(r["p"], extra={"exp": round(r["exp"], 1), "games": r["games"], "opps": r["opps"],
@@ -427,7 +429,7 @@ def build(swid: str) -> dict:
         "underperformers": [_pl(p, extra={"actual": round(a, 2), "proj": round(pr, 2)}) for p, a, pr in under if p.group != "G"],
         "drop_ranking": [_pl(p, cal, ros_periods, {"cost": round(c, 1), "po_games": cal.games(p.team, po_periods),
                                                    "last7": round(_last7(p, state), 1),
-                                                   "light": cal.games(p.team, light)}) for p, c in drop_rank],
+                                                   "light": cal.games(p.team, light)}) for p, c in drop_rank if p.group != "G"],
         "goalies_today": [_pl(r["p"], extra={"opp": r["opp"], "confirmed": r["confirmed"], "exp": round(r["exp"], 1),
                                              "opp_gf": round(r["opp_gf"], 2) if r["opp_gf"] else None,
                                              "win": round(r["win"], 3) if r["win"] is not None else None,

@@ -3,6 +3,8 @@
 set -uo pipefail
 cd "$(dirname "$0")/.." || exit 1
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
+# launchd fires right after wake, often before DNS works ("Could not resolve host" skipped whole builds): wait up to 3 min.
+for _ in $(seq 18); do curl -s -o /dev/null -m 5 https://github.com && break; sleep 10; done
 git pull --rebase --autostash -q || echo "git pull failed; building from local copy"
 if ! /usr/bin/python3 build.py --lineup-check; then
   # Don't fail silently: the page would just go stale.

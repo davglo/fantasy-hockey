@@ -38,7 +38,8 @@ def _load(day: date) -> dict | None:
 
 
 def evaluate(today: date) -> dict:
-    """Mean absolute error (pts per game, weighted by games played) per source, overall and by F/D/G."""
+    """Mean absolute error (pts per game, weighted by games played) per source, overall and by F/D/G,
+    over the player-windows where every source has a prediction."""
     days = sorted(date.fromisoformat(f.stem) for f in LOG_DIR.glob("*.json")) if LOG_DIR.exists() else []
     err = {s: {"all": [0.0, 0], "F": [0.0, 0], "D": [0.0, 0], "G": [0.0, 0]} for s in SOURCES}
     windows = 0
@@ -57,10 +58,10 @@ def evaluate(today: date) -> dict:
             gp = r2["cum_gp"] - r["cum_gp"]
             if gp < MIN_WINDOW_GP:
                 continue
+            if any(r.get(s) is None for s in SOURCES):
+                continue    # head to head: grade only players every source has a number for
             realized = (r2["cum_fp"] - r["cum_fp"]) / gp
             for s in SOURCES:
-                if r.get(s) is None:
-                    continue
                 for k in ("all", r["group"]):
                     err[s][k][0] += abs(r[s] - realized) * gp
                     err[s][k][1] += gp

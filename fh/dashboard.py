@@ -61,7 +61,8 @@ def _accuracy_card(ctx: dict) -> str:
             best = ' <span class="good">best</span>' if k == a["best"] else ""
             rows.append([lab + best] + [_v(t[g]) for g in ("all", "F", "D", "G")] + ["%d" % a["games"][k]])
         body = _table(["Source", "Error/game", "F", "D", "G", "Player-games"], rows) + \
-            '<p class="mute">Average miss in fantasy points per game over the following 7 days (lower is better), %d weekly windows so far.</p>' % a["windows"]
+            '<p class="mute">Average miss in fantasy points per game over the following 7 days (lower is better), %d weekly windows so far. ' \
+            'Every source is graded on the same players (those all sources project), so the ranking is head to head.</p>' % a["windows"]
     return '<div class="card"><h3>Which projection is winning</h3>%s</div>' % body
 
 
@@ -125,7 +126,7 @@ def _overview(ctx, manual):
         take=_take(manual, "overview"), adds=adds or "<li class=mute>No add clears the bar today.</li>",
         drops=drops or "<li class=mute>No skater worth cutting.</li>",
         gt=_table(["Goalie", "Team", "Opp", "Start", "Exp pts", "Win", "Opp exp G", "Opp GF", "Waivers"], gt),
-        nw=nw or "<li class=mute>No fresh news on your players in the last 72h.</li>",
+        nw=nw or "<li class=mute>No injury, lineup or role news on your players in the last 48h. Game recaps are on the Roster tab.</li>",
         sw='<h3 style="margin-top:10px">Status watch</h3><ul class="news">%s</ul>' % sw if sw else "",
         rum='<h3 style="margin-top:10px">Rumors &amp; reports</h3><ul class="news">%s</ul>' % rum if rum else "")
 
@@ -166,8 +167,10 @@ def _streaming(ctx, manual):
         blk = s[key]
         mv = [["%d" % (i + 1), _e(m["add"]) + (' <span class="tag">claim</span>' if m["waivers"] else ""), _e(m["add_pos"]),
                _e(m["add_team"]), _e(m["drop"]), "%+.1f" % m["gain"], _e(", ".join(m["days"]))] for i, m in enumerate(blk["moves"])]
-        heat = "".join('<div class="day"><div>%s</div><div class="%s">G %d</div><div class="%s">Sk %d</div></div>' % (
+        heat = "".join(('<div class="day"><div>%s</div><div class="%s">G %d</div><div class="%s">Sk %d</div></div>' % (
             _e(o["date"][:3] + " " + o["date"].split()[-1]), "hot" if o["G"] else "", o["G"], "hot" if o["skater"] >= 3 else "", o["skater"])
+            if o.get("nhl", True) else '<div class="day"><div>%s</div><div class="mute">no NHL</div><div class="mute">games</div></div>' % (
+                _e(o["date"][:3] + " " + o["date"].split()[-1])))
             for o in blk["open"])
         parts.append('<div class="card"><h3>%s</h3><div class="days">%s</div><p class="mute">Open lineup slots per day with your current roster '
                      '(G = goalie slots, Sk = skater slots). Highlighted days are where a streamer scores.</p>%s</div>' % (
@@ -180,16 +183,17 @@ def _streaming(ctx, manual):
             for t in sch["teams"])
         foot = '<tr class="sum"><td>Teams playing</td><td></td>%s</tr>' % "".join(
             '<td class="%s">%d</td>' % ("past" if d["past"] else ("hot" if d.get("light") else ""), d["n"]) for d in sch["days"])
-        parts.append('<div class="card"><h3>NHL schedule this week</h3><div class="tw"><table class="sched"><thead><tr>'
+        parts.append('<div class="card"><h3>NHL schedule ' + _e(s.get("week_label", "this week")) + '</h3><div class="tw"><table class="sched"><thead><tr>'
                      '<th>Team</th><th>G</th>%s</tr></thead><tbody>%s%s</tbody></table></div>'
                      '<p class="mute">Opponent each day: <b>BOS</b> = home vs Boston, <b>@BOS</b> = at Boston. '
-                     'Sorted by games this week. Highlighted counts are light days (half the league or less playing): '
+                     'Sorted by games that week. Highlighted counts are light days (half the league or less playing): '
                      'the easiest days to fit a streamer into your lineup. Faded columns are already played.</p></div>' % (head, rows, foot))
     gm = [[_e(g["team"]), g["this"], g["next"]] for g in s["games"][:12]]
     gs = [[_e(p["name"]) + _inj(p), _e(p["team"]), p["games"], "%.1f" % p["exp"], _e(", ".join(p["opps"]))] for p in s["goalies"]]
     parts.append('<div class="grid"><div class="card"><h3>Most games (this wk / next)</h3>%s</div>'
-                 '<div class="card"><h3>Goalie streams this week</h3>%s</div></div>' % (
-                     _table(["Team", "This", "Next"], gm), _table(["Goalie", "Team", "Games", "Exp pts", "Opponents"], gs)))
+                 '<div class="card"><h3>Goalie streams %s</h3>%s</div></div>' % (
+                     _table(["Team", "This", "Next"], gm), _e(s.get("week_label", "this week")),
+                     _table(["Goalie", "Team", "Games", "Exp pts", "Opponents"], gs)))
     return "".join(parts)
 
 
@@ -217,7 +221,7 @@ def _free_agents(ctx, manual):
 <div class="grid"><div class="card"><h3>Best free agents {yd}</h3>{pd}</div><div class="card"><h3>Best free agents, last 7 days</h3>{pw}</div></div>
 <div class="card"><h3>Best rest-of-season adds</h3><ul>{summ}</ul>{fa}
 <p class="mute">Gain = rest-of-season points added (optimal daily lineups, playoff weeks x{w:g}) with the best drop; next-best drops shown under it. {light}</p></div>
-<div class="card"><h3>Drop ranking</h3>{dr}<p class="mute">Points lost (rest of season + playoff weeks x{w:g}) if you cut each player, cheapest first. IR, injury/suspension-flagged players and your last two healthy goalies are excluded.</p></div>""".format(
+<div class="card"><h3>Drop ranking</h3>{dr}<p class="mute">Points lost (rest of season + playoff weeks x{w:g}) if you cut each player, cheapest first. Skaters only (you manage goalies). IR and injury/suspension-flagged players are excluded.</p></div>""".format(
         light=LIGHT_NOTE % ctx["light_nights"], opp=opp or "<li class=mute>No news in the last 2 days creating free-agent value.</li>",
         yd=_e(rec["yesterday"]), pd=perf(rec["day"]), pw=perf(rec["week"]),
         inj="".join(_news_li(n, ' <span class="mute">[%s, %s %s]</span>%s' % (
@@ -244,7 +248,7 @@ def _roster(ctx, manual):
         rows, "wrap") + \
         '<p class="mute">Points per game by source. Model = your spreadsheet blended with actual results (drives every recommendation). '\
         'ESPN = ESPN\'s projection scored with your league\'s rules. Pace = this season, L15 = last 15 days (shown after 3 games). '\
-        'Consensus = median of the available sources. &#9888; = sources differ by more than 25%%; hover for the numbers.</p>' + \
+        'Consensus = median of the available sources. &#9888; = Model, ESPN and Pace differ by more than 25% (L15 is left out: too noisy); hover for the numbers.</p>' + \
         ('<p class="mute">Sorted by rest-of-season points. Pts/GP blends the preseason projection with this season\'s actual '
          'results: actuals count 5%% through game 5, then %s. %s News: Rotowire via ESPN.</p></div>'
          % (", ".join("%d%% at %d" % (round(w * 100), g) for g, w in engine.ACTUAL_WEIGHT_CURVE[3:]), LIGHT_NOTE % ctx["light_nights"]))

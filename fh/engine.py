@@ -57,8 +57,9 @@ class P:
 
     @property
     def disagreement(self) -> float:
-        """Spread of the sources relative to the consensus (0.25 = sources differ by 25%)."""
-        vals = [v for k, v in (self.sources or {}).items() if v is not None and k != "sheet"]
+        """Spread of the sources relative to the consensus (0.25 = sources differ by 25%). Last-15-days is left out:
+        it's the noisiest source (worst in the accuracy tracker) and flagged half of all players on its own."""
+        vals = [v for k, v in (self.sources or {}).items() if v is not None and k not in ("sheet", "l15")]
         c = self.consensus
         return (max(vals) - min(vals)) / c if len(vals) >= 2 and c else 0.0
 

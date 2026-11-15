@@ -259,7 +259,7 @@ def free_agents(mine: list, fas: list, value: Valuer, this_week, next_week, n=25
                           score=g + trend, games_this=cal.games(fa.team, this_week),
                           games_next=cal.games(fa.team, next_week), luck=luck_flag(fa),
                           alt_drops=[(x, gx) for gx, x in opts[1:3]]))
-    recs.sort(key=lambda r: -r.score)
+    recs = sorted((r for r in recs if r.gain > 0), key=lambda r: -r.score)   # a negative-gain add isn't an add
     return recs[:n]
 
 
@@ -273,8 +273,9 @@ def open_slots(roster: list, league: League, cal: Calendar, periods) -> list:
                                    lambda p: p.exp_game() if d in cal.team_games.get(p.team, ()) and p.injury != "OUT" else 0.0)
         cnt = {g: sum(1 for p in st if p.group == g) for g in ("F", "D", "G")}
         util = sum(league.slots.get(g, 0) for g in ("F", "D", "UTIL")) - cnt["F"] - cnt["D"]
-        out.append({"period": d, "date": cal.date_of(d).strftime("%a %b %-d"), "G": league.slots.get("G", 0) - cnt["G"],
-                    "skater": max(0, util), "starts": len(st)})
+        nhl = any(d in g for g in cal.team_games.values())   # no NHL games at all: nothing to stream into
+        out.append({"period": d, "date": cal.date_of(d).strftime("%a %b %-d"), "G": league.slots.get("G", 0) - cnt["G"] if nhl else 0,
+                    "skater": max(0, util) if nhl else 0, "starts": len(st), "nhl": nhl})
     return out
 
 
@@ -315,13 +316,15 @@ def stream_plan(mine: list, fas: list, value: Valuer, periods, adds_left: int, c
     return moves
 
 
-def streaming(fas: list, cal: Calendar, this_week, next_week, n=8) -> dict:
+def streaming(fas: list, cal: Calendar, this_week, next_week, n=8, goalie_week=None) -> dict:
+    """goalie_week: the days goalie streams are ranked over (default this week)."""
+    gw = this_week if goalie_week is None else goalie_week
     teams = sorted(cal.team_games)
     games = {t: (cal.games(t, this_week), cal.games(t, next_week)) for t in teams}
     goalies = sorted((p for p in fas if p.group == "G" and p.injury in HEALTHY),
-                     key=lambda p: -(p.exp_game() * cal.games(p.team, this_week)))[:n]
-    g_rows = [{"p": p, "exp": p.exp_game() * cal.games(p.team, this_week), "games": cal.games(p.team, this_week),
-               "opps": [cal.opponents.get((p.team, d), "") for d in this_week if d in cal.team_games.get(p.team, ())]}
+                     key=lambda p: -(p.exp_game() * cal.games(p.team, gw)))[:n]
+    g_rows = [{"p": p, "exp": p.exp_game() * cal.games(p.team, gw), "games": cal.games(p.team, gw),
+               "opps": [cal.opponents.get((p.team, d), "") for d in gw if d in cal.team_games.get(p.team, ())]}
               for p in goalies]
     return {"games": games, "goalies": g_rows}
 

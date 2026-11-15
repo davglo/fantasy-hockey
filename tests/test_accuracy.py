@@ -24,15 +24,15 @@ class TestAccuracy(unittest.TestCase):
 
     def test_grades_after_a_week(self):
         # Day 0: model says 2.0/gm, ESPN 3.0/gm. Over the next week he scores 10 pts in 4 games = 2.5/gm.
-        accuracy.log_snapshot([self.player({"model": 2.0, "espn": 3.0, "pace": None}, 0.0, 0)], date(2026, 10, 1))
+        day0 = {"sheet": 2.0, "model": 2.0, "espn": 3.0, "pace": 2.5, "l15": 2.5}
+        accuracy.log_snapshot([self.player(day0, 0.0, 0)], date(2026, 10, 1))
         self.assertEqual(accuracy.evaluate(date(2026, 10, 3))["windows"], 0)          # too early to grade
-        accuracy.log_snapshot([self.player({"model": 2.0, "espn": 3.0, "pace": 2.5}, 10.0, 4)], date(2026, 10, 8))
+        accuracy.log_snapshot([self.player(day0, 10.0, 4)], date(2026, 10, 8))
         r = accuracy.evaluate(date(2026, 10, 8))
         self.assertEqual(r["windows"], 1)
         self.assertAlmostEqual(r["table"]["model"]["all"], 0.5)
         self.assertAlmostEqual(r["table"]["espn"]["F"], 0.5)
-        self.assertAlmostEqual(r["table"]["consensus"]["all"], 0.0)   # median of 2.0 and 3.0 = 2.5
-        self.assertIsNone(r["table"]["pace"]["all"])                  # no prediction on day 0
+        self.assertAlmostEqual(r["table"]["consensus"]["all"], 0.0)   # median of 2.0, 3.0, 2.5, 2.5 = 2.5
         self.assertEqual(r["games"]["model"], 4)
 
     def test_consensus_and_disagreement(self):
