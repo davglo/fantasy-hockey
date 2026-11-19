@@ -1,5 +1,5 @@
 {
- "generated": "Thu Nov 19, 8:00 AM",
+ "generated": "Thu Nov 19, 5:00 PM",
  "league": {
   "name": "The Healthy Scratches",
   "size": 8,
@@ -36,7 +36,7 @@
   "playoff_odds": 0.997,
   "posture": "Contender: hold producing starters; buy at your biggest need.",
   "headline": "Jabroni Beaters: #1 of 8 in projected strength, 100% playoff odds. Weakest group: F (#4 quality, #8 rest of season).",
-  "urgent": "Add Simon Holmstrom (F), drop Gavin McKenna: +34 rest-of-season pts (playoff weeks x2), +4 over the next two weeks."
+  "urgent": "Lineup today: Connor Bedard is starting but listed OUT."
  },
  "period": {
   "today": 52,
@@ -78,7 +78,7 @@
    "pf": 934.3,
    "pa": 929.1,
    "strength": 143.7,
-   "odds": 0.826,
+   "odds": 0.827,
    "exp_wins": 14.5
   },
   {
@@ -90,7 +90,7 @@
    "pf": 946.9,
    "pa": 988.2,
    "strength": 136.4,
-   "odds": 0.27,
+   "odds": 0.271,
    "exp_wins": 11.6
   },
   {
@@ -114,7 +114,7 @@
    "pf": 972.9,
    "pa": 1030.6,
    "strength": 138.8,
-   "odds": 0.16,
+   "odds": 0.159,
    "exp_wins": 10.7
   },
   {
@@ -147,15 +147,15 @@
   "opp_id": 7,
   "actual_me": 42.0,
   "actual_opp": 42.8,
-  "proj_me": 128.9,
+  "proj_me": 129.0,
   "proj_opp": 120.5,
-  "win_prob": 0.65,
+  "win_prob": 0.651,
   "starts_me": 40,
   "starts_opp": 37,
   "days": [
    {
     "date": "Thu Nov 19",
-    "me": 32.7,
+    "me": 32.8,
     "opp": 26.2,
     "me_starts": 16,
     "opp_starts": 13
@@ -316,6 +316,10 @@
    "period": 52,
    "issues": [
     {
+     "severity": "fix",
+     "text": "Connor Bedard is starting but listed OUT."
+    },
+    {
      "severity": "check",
      "text": "Confirm Mackenzie Blackwood starts in net (no confirmed-starter feed)."
     },
@@ -442,7 +446,7 @@
      "pos": "C/RW",
      "group": "F",
      "team": "CHI",
-     "injury": "DAY_TO_DAY",
+     "injury": "OUT",
      "rate": 2.45,
      "src": {
       "sheet": 2.41,
@@ -685,7 +689,6 @@
     "Cutter Gauthier",
     "Alex Tuch",
     "Mikael Granlund",
-    "Connor Bedard",
     "Joel Eriksson Ek",
     "Jack Quinn",
     "Mark Stone",
@@ -1038,7 +1041,7 @@
    "pos": "C/RW",
    "group": "F",
    "team": "CHI",
-   "injury": "DAY_TO_DAY",
+   "injury": "OUT",
    "rate": 2.45,
    "src": {
     "sheet": 2.41,
@@ -1406,14 +1409,14 @@
    "gp": 20,
    "fp": 36.4,
    "ros": 96.8,
-   "score": 34.3,
+   "score": 34.4,
    "gain": 34.0,
    "week_gain": 4.0,
    "drop": "Gavin McKenna",
    "g_this": 2,
    "g_next": 4,
    "po_games": 6,
-   "own_chg": 1.7,
+   "own_chg": 1.8,
    "luck": "",
    "status": "FREEAGENT",
    "light": 23,
@@ -1444,14 +1447,14 @@
    "gp": 2,
    "fp": 3.7,
    "ros": 91.0,
-   "score": 34.3,
-   "gain": 34.3,
-   "week_gain": 3.4,
+   "score": 34.2,
+   "gain": 34.2,
+   "week_gain": 3.3,
    "drop": "Gavin McKenna",
    "g_this": 2,
    "g_next": 3,
    "po_games": 7,
-   "own_chg": -0.1,
+   "own_chg": -0.0,
    "luck": "",
    "status": "FREEAGENT",
    "light": 21,
@@ -1489,7 +1492,7 @@
    "g_this": 2,
    "g_next": 4,
    "po_games": 6,
-   "own_chg": -0.2,
+   "own_chg": 0.1,
    "luck": "",
    "status": "FREEAGENT",
    "light": 23,
@@ -1520,14 +1523,14 @@
    "gp": 19,
    "fp": 37.2,
    "ros": 95.5,
-   "score": 32.7,
+   "score": 32.8,
    "gain": 32.4,
    "week_gain": 2.3,
    "drop": "Gavin McKenna",
    "g_this": 2,
    "g_next": 3,
    "po_games": 8,
-   "own_chg": 1.4,
+   "own_chg": 2.1,
    "luck": "",
    "status": "FREEAGENT",
    "light": 28,
@@ -1559,13 +1562,13 @@
    "fp": 32.4,
    "ros": 92.9,
    "score": 29.0,
-   "gain": 29.1,
+   "gain": 29.0,
    "week_gain": 2.1,
    "drop": "Gavin McKenna",
    "g_this": 2,
    "g_next": 3,
    "po_games": 8,
-   "own_chg": -0.5,
+   "own_chg": -0.3,
    "luck": "",
    "status": "FREEAGENT",
    "light": 28,
@@ -1603,7 +1606,7 @@
    "g_this": 3,
    "g_next": 3,
    "po_games": 6,
-   "own_chg": -0.4,
+   "own_chg": -0.3,
    "luck": "",
    "status": "FREEAGENT",
    "light": 23,
@@ -1636,12 +1639,12 @@
    "ros": 91.0,
    "score": 25.1,
    "gain": 25.1,
-   "week_gain": 1.8,
+   "week_gain": 1.7,
    "drop": "Gavin McKenna",
    "g_this": 2,
    "g_next": 3,
    "po_games": 6,
-   "own_chg": -0.3,
+   "own_chg": -0.2,
    "luck": "",
    "status": "FREEAGENT",
    "light": 22,
@@ -1672,14 +1675,14 @@
    "gp": 21,
    "fp": 36.2,
    "ros": 89.0,
-   "score": 23.9,
+   "score": 24.0,
    "gain": 24.0,
    "week_gain": 3.6,
    "drop": "Gavin McKenna",
    "g_this": 3,
    "g_next": 3,
    "po_games": 7,
-   "own_chg": -0.2,
+   "own_chg": 0.1,
    "luck": "hot (sh% 22) - sell-high risk",
    "status": "FREEAGENT",
    "light": 20,
@@ -1711,13 +1714,13 @@
    "fp": 6.7,
    "ros": 90.9,
    "score": 23.6,
-   "gain": 23.7,
+   "gain": 23.6,
    "week_gain": 3.7,
    "drop": "Gavin McKenna",
    "g_this": 3,
    "g_next": 3,
    "po_games": 7,
-   "own_chg": -0.1,
+   "own_chg": -0.2,
    "luck": "",
    "status": "FREEAGENT",
    "light": 28,
@@ -1749,13 +1752,13 @@
    "fp": 33.7,
    "ros": 93.5,
    "score": 23.5,
-   "gain": 23.6,
+   "gain": 23.5,
    "week_gain": 0.8,
    "drop": "Gavin McKenna",
    "g_this": 2,
    "g_next": 3,
    "po_games": 8,
-   "own_chg": -0.1,
+   "own_chg": -0.0,
    "luck": "",
    "status": "FREEAGENT",
    "light": 28,
@@ -1786,14 +1789,14 @@
    "gp": 21,
    "fp": 38.6,
    "ros": 91.1,
-   "score": 20.4,
-   "gain": 20.5,
+   "score": 20.5,
+   "gain": 20.6,
    "week_gain": 2.4,
    "drop": "Gavin McKenna",
    "g_this": 2,
    "g_next": 4,
    "po_games": 6,
-   "own_chg": -0.5,
+   "own_chg": -0.3,
    "luck": "",
    "status": "FREEAGENT",
    "light": 21,
@@ -1824,14 +1827,14 @@
    "gp": 21,
    "fp": 35.2,
    "ros": 86.0,
-   "score": 20.3,
+   "score": 20.4,
    "gain": 20.2,
    "week_gain": 3.2,
    "drop": "Gavin McKenna",
    "g_this": 3,
    "g_next": 3,
    "po_games": 7,
-   "own_chg": 0.4,
+   "own_chg": 0.7,
    "luck": "",
    "status": "FREEAGENT",
    "light": 20,
@@ -1864,7 +1867,7 @@
    "ros": 90.2,
    "score": 19.9,
    "gain": 19.9,
-   "week_gain": 3.3,
+   "week_gain": 3.2,
    "drop": "Gavin McKenna",
    "g_this": 2,
    "g_next": 4,
@@ -1900,14 +1903,14 @@
    "gp": 21,
    "fp": 35.8,
    "ros": 87.5,
-   "score": 19.3,
-   "gain": 19.3,
+   "score": 19.2,
+   "gain": 19.2,
    "week_gain": 0.1,
    "drop": "Gavin McKenna",
    "g_this": 1,
    "g_next": 3,
    "po_games": 6,
-   "own_chg": 0.3,
+   "own_chg": -0.0,
    "luck": "",
    "status": "FREEAGENT",
    "light": 18,
@@ -1945,7 +1948,7 @@
    "g_this": 2,
    "g_next": 4,
    "po_games": 6,
-   "own_chg": -0.2,
+   "own_chg": -0.1,
    "luck": "",
    "status": "FREEAGENT",
    "light": 23,
@@ -1983,7 +1986,7 @@
    "g_this": 1,
    "g_next": 4,
    "po_games": 7,
-   "own_chg": 0.7,
+   "own_chg": 0.4,
    "luck": "",
    "status": "FREEAGENT",
    "light": 19,
@@ -2021,7 +2024,7 @@
    "g_this": 2,
    "g_next": 4,
    "po_games": 7,
-   "own_chg": -0.2,
+   "own_chg": -0.1,
    "luck": "",
    "status": "FREEAGENT",
    "light": 23,
@@ -2059,7 +2062,7 @@
    "g_this": 2,
    "g_next": 3,
    "po_games": 8,
-   "own_chg": -0.6,
+   "own_chg": -0.4,
    "luck": "",
    "status": "FREEAGENT",
    "light": 28,
@@ -2092,7 +2095,7 @@
    "ros": 84.6,
    "score": 16.5,
    "gain": 16.6,
-   "week_gain": 1.6,
+   "week_gain": 1.5,
    "drop": "Gavin McKenna",
    "g_this": 2,
    "g_next": 3,
@@ -2128,7 +2131,7 @@
    "gp": 5,
    "fp": 21.2,
    "ros": 160.1,
-   "score": 8.5,
+   "score": 8.4,
    "gain": 8.5,
    "week_gain": -0.2,
    "drop": "Gavin McKenna",
@@ -2147,9 +2150,9 @@
   }
  ],
  "fa_summary": [
-  "Simon Holmstrom (F, NYI) for Gavin McKenna: +34 ROS, 6 playoff-week games, +4 next 2 wks (2+4 games), owned +1.7%.",
-  "Ivan Demidov (F, MTL) for Gavin McKenna: +34 ROS, 7 playoff-week games, +3 next 2 wks (2+3 games).",
-  "Brayden Schenn (F, NYI) for Gavin McKenna: +33 ROS, 6 playoff-week games, +4 next 2 wks (2+4 games)."
+  "Simon Holmstrom (F, NYI) for Gavin McKenna: +34 ROS, 6 playoff-week games, +4 next 2 wks (2+4 games), owned +1.8%. Caution: Connor Bedard listed OUT - check news before dropping F depth.",
+  "Ivan Demidov (F, MTL) for Gavin McKenna: +34 ROS, 7 playoff-week games, +3 next 2 wks (2+3 games). Caution: Connor Bedard listed OUT - check news before dropping F depth.",
+  "Brayden Schenn (F, NYI) for Gavin McKenna: +33 ROS, 6 playoff-week games, +4 next 2 wks (2+4 games). Caution: Connor Bedard listed OUT - check news before dropping F depth."
  ],
  "streaming": {
   "schedule": {
@@ -3019,8 +3022,8 @@
      "period": 52,
      "date": "Thu Nov 19",
      "G": 0,
-     "skater": 2,
-     "starts": 16,
+     "skater": 3,
+     "starts": 15,
      "nhl": true
     },
     {
@@ -3043,8 +3046,8 @@
      "period": 55,
      "date": "Sun Nov 22",
      "G": 1,
-     "skater": 11,
-     "starts": 6,
+     "skater": 12,
+     "starts": 5,
      "nhl": true
     }
    ],
@@ -3067,7 +3070,7 @@
      "add_pos": "F",
      "add_team": "STL",
      "drop": "Gavin McKenna",
-     "gain": 2.4,
+     "gain": 2.3,
      "days": [
       "Thu 19",
       "Sat 21",
@@ -3093,7 +3096,7 @@
      "add_pos": "F",
      "add_team": "STL",
      "drop": "Victor Olofsson",
-     "gain": 1.9,
+     "gain": 2.0,
      "days": [
       "Thu 19",
       "Sat 21",
@@ -3126,8 +3129,8 @@
      "period": 58,
      "date": "Wed Nov 25",
      "G": 0,
-     "skater": 2,
-     "starts": 16,
+     "skater": 3,
+     "starts": 15,
      "nhl": true
     },
     {
@@ -3158,8 +3161,8 @@
      "period": 62,
      "date": "Sun Nov 29",
      "G": 1,
-     "skater": 14,
-     "starts": 3,
+     "skater": 15,
+     "starts": 2,
      "nhl": true
     }
    ],
@@ -3507,7 +3510,7 @@
      154.3
     ],
     "total": 292.1,
-    "odds": 0.826
+    "odds": 0.827
    },
    {
     "name": "McDISHHH",
@@ -3517,7 +3520,7 @@
      148.6
     ],
     "total": 290.5,
-    "odds": 0.27
+    "odds": 0.271
    },
    {
     "name": "Angie\u2019s Bear Balls",
@@ -3527,7 +3530,7 @@
      148.8
     ],
     "total": 284.6,
-    "odds": 0.16
+    "odds": 0.159
    },
    {
     "name": "Matt's Monstrous Team",
@@ -4465,7 +4468,7 @@
      "pos": "LW",
      "group": "F",
      "team": "TB",
-     "injury": "DAY_TO_DAY",
+     "injury": "INJURY_RESERVE",
      "rate": 2.67,
      "src": {
       "sheet": 2.26,
@@ -4626,7 +4629,7 @@
      "pos": "D",
      "group": "D",
      "team": "OTT",
-     "injury": "DAY_TO_DAY",
+     "injury": "",
      "rate": 2.08,
      "src": {
       "sheet": 1.84,
@@ -5117,7 +5120,7 @@
      "pos": "RW",
      "group": "F",
      "team": "ANA",
-     "injury": "DAY_TO_DAY",
+     "injury": "",
      "rate": 2.52,
      "src": {
       "sheet": 2.11,
@@ -5646,7 +5649,7 @@
      "gp": 11,
      "fp": 61.8,
      "ros": 160.0,
-     "slot": "G"
+     "slot": "BE"
     },
     {
      "id": 3899952,
@@ -5738,7 +5741,7 @@
      "gp": 14,
      "fp": 44.0,
      "ros": 132.3,
-     "slot": "BE"
+     "slot": "G"
     },
     {
      "id": 4233875,
@@ -5769,7 +5772,7 @@
      "pos": "LW",
      "group": "F",
      "team": "LA",
-     "injury": "DAY_TO_DAY",
+     "injury": "OUT",
      "rate": 2.19,
      "src": {
       "sheet": 1.99,
@@ -6513,7 +6516,7 @@
      "pos": "C/RW",
      "group": "F",
      "team": "CHI",
-     "injury": "DAY_TO_DAY",
+     "injury": "OUT",
      "rate": 2.45,
      "src": {
       "sheet": 2.41,
@@ -6912,7 +6915,7 @@
      "pos": "D",
      "group": "D",
      "team": "COL",
-     "injury": "OUT",
+     "injury": "INJURY_RESERVE",
      "rate": 2.52,
      "src": {
       "sheet": 2.69,
@@ -7794,7 +7797,7 @@
      "pos": "D",
      "group": "D",
      "team": "BUF",
-     "injury": "",
+     "injury": "DAY_TO_DAY",
      "rate": 1.9,
      "src": {
       "sheet": 1.74,
@@ -8685,7 +8688,7 @@
    "gp": 2,
    "fp": 3.7,
    "ros": 91.0,
-   "gain": 34.3,
+   "gain": 34.2,
    "drop": "Gavin McKenna",
    "waiver": ""
   },
@@ -8760,7 +8763,7 @@
    "gp": 19,
    "fp": 32.4,
    "ros": 92.9,
-   "gain": 29.1,
+   "gain": 29.0,
    "drop": "Gavin McKenna",
    "waiver": ""
   }
@@ -9097,32 +9100,6 @@
    "light": 20
   },
   {
-   "id": 5149125,
-   "name": "Connor Bedard",
-   "pos": "C/RW",
-   "group": "F",
-   "team": "CHI",
-   "injury": "DAY_TO_DAY",
-   "rate": 2.45,
-   "src": {
-    "sheet": 2.41,
-    "model": 2.45,
-    "espn": 2.28,
-    "pace": 2.47,
-    "l15": 2.53
-   },
-   "cons": 2.46,
-   "dis": 0.08,
-   "exp_game": 1.98,
-   "gp": 15,
-   "fp": 37.1,
-   "ros": 104.7,
-   "cost": 118.3,
-   "po_games": 7,
-   "last7": 7.8,
-   "light": 28
-  },
-  {
    "id": 4565222,
    "name": "Jack Hughes",
    "pos": "C/LW",
@@ -9273,7 +9250,7 @@
    "gp": 19,
    "fp": 45.6,
    "ros": 129.8,
-   "cost": 148.7,
+   "cost": 148.6,
    "po_games": 7,
    "last7": 5.3,
    "light": 24
@@ -9359,143 +9336,115 @@
  ],
  "goalies_today": [
   {
-   "id": 4697686,
-   "name": "Jakub Dobes",
+   "id": 3067313,
+   "name": "Anthony Stolarz",
    "pos": "G",
    "group": "G",
-   "team": "MTL",
+   "team": "TOR",
    "injury": "",
-   "rate": 3.5,
+   "rate": 4.19,
    "src": {
-    "sheet": 4.29,
-    "model": 3.5,
-    "espn": 4.32,
-    "pace": 1.83,
-    "l15": null
+    "sheet": 4.24,
+    "model": 4.19,
+    "espn": null,
+    "pace": 4.11,
+    "l15": 1.87
    },
-   "cons": 3.5,
-   "dis": 0.71,
-   "exp_game": 2.14,
-   "gp": 8,
-   "fp": 14.6,
-   "opp": "CAR",
+   "cons": 4.11,
+   "dis": 0.02,
+   "exp_game": 1.43,
+   "gp": 9,
+   "fp": 37.0,
+   "opp": "LA",
    "confirmed": "confirmed",
-   "exp": 1.6,
-   "opp_gf": 3.97,
-   "win": 0.295,
-   "opp_goals": 4.09,
+   "exp": 5.2,
+   "opp_gf": 2.74,
+   "win": 0.522,
+   "opp_goals": 3.1,
    "waiver": ""
   },
   {
-   "id": 4894366,
-   "name": "Jet Greaves",
+   "id": 5734,
+   "name": "Cam Talbot",
    "pos": "G",
    "group": "G",
    "team": "CBJ",
    "injury": "",
-   "rate": 3.17,
+   "rate": 3.65,
    "src": {
-    "sheet": 4.49,
-    "model": 3.17,
-    "espn": 4.02,
-    "pace": 2.04,
-    "l15": 0.87
+    "sheet": null,
+    "model": 3.65,
+    "espn": 3.39,
+    "pace": 3.92,
+    "l15": 4.47
    },
-   "cons": 2.6,
-   "dis": 0.76,
-   "exp_game": 2.12,
-   "gp": 11,
-   "fp": 22.4,
+   "cons": 3.79,
+   "dis": 0.14,
+   "exp_game": 1.16,
+   "gp": 10,
+   "fp": 39.2,
    "opp": "CHI",
-   "confirmed": "",
-   "exp": 2.9,
+   "confirmed": "confirmed",
+   "exp": 4.8,
    "opp_gf": 2.52,
    "win": 0.593,
-   "opp_goals": 2.64,
+   "opp_goals": 2.62,
    "waiver": ""
   },
   {
-   "id": 3942073,
-   "name": "Joey Daccord",
+   "id": 3939714,
+   "name": "Adin Hill",
    "pos": "G",
    "group": "G",
-   "team": "SEA",
+   "team": "VGK",
    "injury": "",
-   "rate": 3.13,
+   "rate": 4.06,
    "src": {
-    "sheet": 3.9,
-    "model": 3.13,
-    "espn": 3.8,
-    "pace": 2.36,
-    "l15": 1.13
+    "sheet": 3.94,
+    "model": 4.06,
+    "espn": 3.08,
+    "pace": 4.16,
+    "l15": 4.13
    },
-   "cons": 2.74,
-   "dis": 0.52,
-   "exp_game": 1.72,
-   "gp": 10,
-   "fp": 23.6,
-   "opp": "VAN",
-   "confirmed": "",
-   "exp": 2.2,
-   "opp_gf": 2.8,
-   "win": 0.604,
-   "opp_goals": 2.97,
+   "cons": 4.1,
+   "dis": 0.26,
+   "exp_game": 1.73,
+   "gp": 11,
+   "fp": 45.8,
+   "opp": "DAL",
+   "confirmed": "confirmed",
+   "exp": 4.3,
+   "opp_gf": 3.03,
+   "win": 0.532,
+   "opp_goals": 2.71,
    "waiver": ""
   },
   {
-   "id": 3036851,
-   "name": "Anton Forsberg",
+   "id": 2610321,
+   "name": "Darcy Kuemper",
    "pos": "G",
    "group": "G",
    "team": "LA",
    "injury": "",
-   "rate": 3.55,
+   "rate": 3.69,
    "src": {
-    "sheet": 4.17,
-    "model": 3.55,
-    "espn": 4.56,
-    "pace": 2.24,
-    "l15": null
+    "sheet": 4.07,
+    "model": 3.69,
+    "espn": 3.73,
+    "pace": 3.43,
+    "l15": 4.2
    },
-   "cons": 3.55,
-   "dis": 0.65,
-   "exp_game": 1.95,
-   "gp": 8,
-   "fp": 17.9,
+   "cons": 3.71,
+   "dis": 0.08,
+   "exp_game": 1.58,
+   "gp": 12,
+   "fp": 41.1,
    "opp": "TOR",
-   "confirmed": "",
-   "exp": 2.2,
+   "confirmed": "confirmed",
+   "exp": 4.0,
    "opp_gf": 3.12,
-   "win": 0.5,
-   "opp_goals": 3.19,
-   "waiver": ""
-  },
-  {
-   "id": 4268767,
-   "name": "Stuart Skinner",
-   "pos": "G",
-   "group": "G",
-   "team": "WPG",
-   "injury": "",
-   "rate": 3.11,
-   "src": {
-    "sheet": 3.58,
-    "model": 3.11,
-    "espn": 3.98,
-    "pace": 2.94,
-    "l15": 3.28
-   },
-   "cons": 3.2,
-   "dis": 0.33,
-   "exp_game": 1.9,
-   "gp": 16,
-   "fp": 47.1,
-   "opp": "NYI",
-   "confirmed": "",
-   "exp": 2.1,
-   "opp_gf": 3.11,
-   "win": 0.511,
-   "opp_goals": 3.1,
+   "win": 0.478,
+   "opp_goals": 3.24,
    "waiver": ""
   },
   {
@@ -9519,67 +9468,95 @@
    "gp": 12,
    "fp": 36.5,
    "opp": "STL",
-   "confirmed": "",
-   "exp": 2.1,
+   "confirmed": "confirmed",
+   "exp": 3.8,
    "opp_gf": 2.94,
-   "win": 0.504,
+   "win": 0.496,
    "opp_goals": 3.2,
    "waiver": ""
   },
   {
-   "id": 4064582,
-   "name": "Carter Hart",
+   "id": 4271575,
+   "name": "Joseph Woll",
    "pos": "G",
    "group": "G",
-   "team": "VGK",
+   "team": "PHI",
    "injury": "",
-   "rate": 3.57,
+   "rate": 3.64,
    "src": {
-    "sheet": 4.1,
-    "model": 3.57,
-    "espn": 3.76,
-    "pace": 3.18,
-    "l15": 3.0
+    "sheet": 4.03,
+    "model": 3.64,
+    "espn": 4.21,
+    "pace": 3.35,
+    "l15": 4.2
    },
-   "cons": 3.38,
-   "dis": 0.17,
-   "exp_game": 1.96,
+   "cons": 3.92,
+   "dis": 0.22,
+   "exp_game": 1.55,
    "gp": 12,
-   "fp": 38.2,
-   "opp": "DAL",
-   "confirmed": "",
-   "exp": 2.1,
-   "opp_gf": 3.03,
-   "win": 0.532,
-   "opp_goals": 2.77,
+   "fp": 40.2,
+   "opp": "OTT",
+   "confirmed": "confirmed",
+   "exp": 3.5,
+   "opp_gf": 3.25,
+   "win": 0.4,
+   "opp_goals": 3.45,
    "waiver": ""
   },
   {
-   "id": 4894703,
-   "name": "Leevi Merilainen",
+   "id": 4587815,
+   "name": "Samuel Ersson",
    "pos": "G",
    "group": "G",
-   "team": "VAN",
+   "team": "OTT",
    "injury": "",
-   "rate": 1.77,
+   "rate": 2.84,
    "src": {
-    "sheet": null,
-    "model": 1.77,
-    "espn": null,
-    "pace": 2.43,
-    "l15": 1.68
+    "sheet": 3.34,
+    "model": 2.84,
+    "espn": 2.55,
+    "pace": 2.34,
+    "l15": 4.77
    },
-   "cons": 1.77,
-   "dis": 0.37,
-   "exp_game": 1.3,
-   "gp": 16,
-   "fp": 38.9,
-   "opp": "SEA",
-   "confirmed": "",
-   "exp": 2.0,
-   "opp_gf": 3.09,
-   "win": 0.396,
-   "opp_goals": 3.65,
+   "cons": 2.69,
+   "dis": 0.19,
+   "exp_game": 1.04,
+   "gp": 10,
+   "fp": 23.4,
+   "opp": "PHI",
+   "confirmed": "confirmed",
+   "exp": 2.9,
+   "opp_gf": 2.57,
+   "win": 0.6,
+   "opp_goals": 2.82,
+   "waiver": ""
+  },
+  {
+   "id": 4587952,
+   "name": "Dustin Wolf",
+   "pos": "G",
+   "group": "G",
+   "team": "CGY",
+   "injury": "",
+   "rate": 3.28,
+   "src": {
+    "sheet": 3.99,
+    "model": 3.28,
+    "espn": 3.48,
+    "pace": 2.76,
+    "l15": 4.18
+   },
+   "cons": 3.38,
+   "dis": 0.21,
+   "exp_game": 2.2,
+   "gp": 12,
+   "fp": 33.1,
+   "opp": "MIN",
+   "confirmed": "confirmed",
+   "exp": 2.5,
+   "opp_gf": 3.52,
+   "win": 0.325,
+   "opp_goals": 3.76,
    "waiver": ""
   }
  ],
@@ -9608,7 +9585,7 @@
     "fp": 26.7,
     "pts": 8.0,
     "line": "1 W, 30 SV, 1 GA",
-    "own_chg": 0.8
+    "own_chg": 0.2
    },
    {
     "id": 3899978,
@@ -9632,7 +9609,7 @@
     "fp": 35.9,
     "pts": 4.3,
     "line": "1 G, 1 A, 3 SOG, 2 BLK",
-    "own_chg": 0.7
+    "own_chg": 0.4
    },
    {
     "id": 4233575,
@@ -9656,7 +9633,7 @@
     "fp": 30.8,
     "pts": 4.1,
     "line": "1 G, 1 A, 1 SOG, 2 BLK",
-    "own_chg": 0.1
+    "own_chg": -0.1
    },
    {
     "id": 3899949,
@@ -9680,7 +9657,7 @@
     "fp": 35.8,
     "pts": 3.9,
     "line": "1 G, 1 A, 3 SOG, 1 HIT",
-    "own_chg": 0.3
+    "own_chg": -0.0
    },
    {
     "id": 5149158,
@@ -9704,7 +9681,7 @@
     "fp": 27.0,
     "pts": 3.2,
     "line": "1 G, 1 SOG, 1 BLK, 1 HIT",
-    "own_chg": 0.1
+    "own_chg": 0.0
    },
    {
     "id": 3904191,
@@ -9752,7 +9729,7 @@
     "fp": 31.6,
     "pts": 3.1,
     "line": "1 SOG, 5 BLK, 5 HIT",
-    "own_chg": 0.0
+    "own_chg": -0.1
    },
    {
     "id": 4392309,
@@ -9776,7 +9753,7 @@
     "fp": 29.4,
     "pts": 2.8,
     "line": "1 G, 2 SOG, 1 BLK, 1 HIT",
-    "own_chg": 0.1
+    "own_chg": 0.0
    },
    {
     "id": 4697438,
@@ -9800,7 +9777,7 @@
     "fp": 31.5,
     "pts": 2.7,
     "line": "1 G, 2 SOG, 1 BLK",
-    "own_chg": -0.1
+    "own_chg": -0.3
    },
    {
     "id": 3942064,
@@ -9824,7 +9801,7 @@
     "fp": 33.6,
     "pts": 2.6,
     "line": "1 SOG, 5 BLK",
-    "own_chg": 0.1
+    "own_chg": -0.0
    }
   ],
   "week": [
@@ -9850,7 +9827,7 @@
     "fp": 33.8,
     "pts": 13.8,
     "line": "5 G, 9 SOG, 2 BLK, 4 HIT",
-    "own_chg": 4.0
+    "own_chg": 5.2
    },
    {
     "id": 4565244,
@@ -9874,7 +9851,7 @@
     "fp": 36.4,
     "pts": 12.6,
     "line": "4 G, 2 A, 5 SOG, 2 BLK, 1 HIT",
-    "own_chg": 1.7
+    "own_chg": 1.8
    },
    {
     "id": 4587952,
@@ -9898,7 +9875,7 @@
     "fp": 33.1,
     "pts": 12.0,
     "line": "2 W, 50 SV, 4 GA",
-    "own_chg": 0.0
+    "own_chg": 0.1
    },
    {
     "id": 2610321,
@@ -9922,7 +9899,7 @@
     "fp": 41.1,
     "pts": 11.0,
     "line": "1 W, 45 SV, 4 GA, 1 SO",
-    "own_chg": 0.3
+    "own_chg": 0.7
    },
    {
     "id": 5080173,
@@ -9946,7 +9923,7 @@
     "fp": 27.8,
     "pts": 9.8,
     "line": "7 A, 4 SOG, 4 HIT",
-    "own_chg": 1.5
+    "own_chg": 2.2
    },
    {
     "id": 5080172,
@@ -9970,7 +9947,7 @@
     "fp": 34.1,
     "pts": 9.6,
     "line": "3 G, 1 A, 8 SOG, 3 BLK, 3 HIT",
-    "own_chg": -0.0
+    "own_chg": 0.1
    },
    {
     "id": 3899978,
@@ -9994,7 +9971,7 @@
     "fp": 35.9,
     "pts": 9.5,
     "line": "2 G, 2 A, 10 SOG, 3 BLK",
-    "own_chg": 0.7
+    "own_chg": 0.4
    },
    {
     "id": 3042056,
@@ -10018,11 +9995,22 @@
     "fp": 21.5,
     "pts": 9.3,
     "line": "3 G, 1 A, 7 SOG, 2 BLK, 1 HIT",
-    "own_chg": 0.1
+    "own_chg": 0.2
    }
   ]
  },
  "news": [
+  {
+   "player": "Connor Bedard",
+   "summary": "Bedard (shoulder) won't play during the Blackhawks' next four games while the team decides whether the center will undergo surgery, Scott Powers of The Athletic reports Thursday.",
+   "credit": "Rotowire via ESPN, citing Scott Powers (The Athletic)",
+   "link": "https://www.espn.com/nhl/player/news/_/id/5149125",
+   "insider": "",
+   "kinds": [
+    "injury"
+   ],
+   "date": "Nov 19 11:44AM"
+  },
   {
    "player": "Connor Bedard",
    "summary": "Bedard is being evaluated for a shoulder injury, Emily Kaplan of ESPN reports Wednesday.",
@@ -10048,34 +10036,65 @@
  ],
  "injuries": [
   {
+   "player": "Cale Makar",
+   "summary": "Makar (lower body) has been placed on injured reserve Thursday, per the NHL media site.",
+   "credit": "Rotowire via ESPN",
+   "link": "https://www.espn.com/nhl/player/news/_/id/4233563",
+   "insider": "",
+   "kinds": [
+    "injury"
+   ],
+   "date": "Nov 19 4:32PM",
+   "owner": "Torts Illustrated",
+   "status": "INJURY_RESERVE",
+   "group": "D",
+   "team": "COL"
+  },
+  {
+   "player": "Connor Bedard",
+   "summary": "Bedard (shoulder) won't play during the Blackhawks' next four games while the team decides whether the center will undergo surgery, Scott Powers of The Athletic reports Thursday.",
+   "credit": "Rotowire via ESPN, citing Scott Powers (The Athletic)",
+   "link": "https://www.espn.com/nhl/player/news/_/id/5149125",
+   "insider": "",
+   "kinds": [
+    "injury"
+   ],
+   "date": "Nov 19 11:44AM",
+   "owner": "Me",
+   "status": "OUT",
+   "group": "F",
+   "team": "CHI"
+  },
+  {
+   "player": "Artemi Panarin",
+   "summary": "Panarin (personal), who has been ruled out for Thursday's game against the Maple Leafs, is expected to return Saturday against the Senators, John Hoven of SiriusXM NHL Network Radio reports.",
+   "credit": "Rotowire via ESPN, citing John Hoven (SiriusXM NHL Network Radio)",
+   "link": "https://www.espn.com/nhl/player/news/_/id/3891952",
+   "insider": "",
+   "kinds": [
+    "injury",
+    "return"
+   ],
+   "date": "Nov 19 11:23AM",
+   "owner": "Matt's Monstrous Team",
+   "status": "OUT",
+   "group": "F",
+   "team": "LA"
+  },
+  {
    "player": "Brandon Hagel",
-   "summary": "Hagel is considered day-to-day due to his lower-body injury, Eduardo A. Encina of the Tampa Bay Times reports Wednesday.",
+   "summary": "Hagel (lower body) was placed on injured reserve by the Lightning on Thursday, retroactive to Nov. 15, Eduardo A. Encina of the Tampa Bay Times reports.",
    "credit": "Rotowire via ESPN, citing Eduardo A. Encina (Tampa Bay Times)",
    "link": "https://www.espn.com/nhl/player/news/_/id/4065019",
    "insider": "",
    "kinds": [
     "injury"
    ],
-   "date": "Nov 18 1:12PM",
+   "date": "Nov 19 10:54AM",
    "owner": "PuttinOnTheFoil",
-   "status": "DAY_TO_DAY",
+   "status": "INJURY_RESERVE",
    "group": "F",
    "team": "TB"
-  },
-  {
-   "player": "Connor Bedard",
-   "summary": "Bedard is being evaluated for a shoulder injury, Emily Kaplan of ESPN reports Wednesday.",
-   "credit": "Rotowire via ESPN, citing Emily Kaplan (ESPN)",
-   "link": "https://www.espn.com/nhl/player/news/_/id/5149125",
-   "insider": "",
-   "kinds": [
-    "injury"
-   ],
-   "date": "Nov 18 11:42AM",
-   "owner": "Me",
-   "status": "DAY_TO_DAY",
-   "group": "F",
-   "team": "CHI"
   },
   {
    "player": "Beckett Sennecke",
@@ -10088,7 +10107,7 @@
    ],
    "date": "Nov 17 7:58PM",
    "owner": "Mike's Magnificent Team",
-   "status": "DAY_TO_DAY",
+   "status": "ACTIVE",
    "group": "F",
    "team": "ANA"
   },
@@ -10106,35 +10125,20 @@
    "status": "INJURY_RESERVE",
    "group": "F",
    "team": "UTA"
-  },
-  {
-   "player": "Anthony Mantha",
-   "summary": "Mantha (neck) is expected to miss about one month after undergoing surgery, per Kristy Flannery of The Hockey News.",
-   "credit": "Rotowire via ESPN, citing Kristy Flannery (The Hockey News.)",
-   "link": "https://www.espn.com/nhl/player/news/_/id/3042037",
-   "insider": "",
-   "kinds": [
-    "injury"
-   ],
-   "date": "Nov 17 1:07PM",
-   "owner": "Angie\u2019s Bear Balls",
-   "status": "INJURY_RESERVE",
-   "group": "F",
-   "team": "NJ"
   }
  ],
  "status_watch": [
   {
    "player": "Connor Bedard",
-   "summary": "Bedard is being evaluated for a shoulder injury, Emily Kaplan of ESPN reports Wednesday.",
-   "credit": "Rotowire via ESPN, citing Emily Kaplan (ESPN)",
+   "summary": "Bedard (shoulder) won't play during the Blackhawks' next four games while the team decides whether the center will undergo surgery, Scott Powers of The Athletic reports Thursday.",
+   "credit": "Rotowire via ESPN, citing Scott Powers (The Athletic)",
    "link": "https://www.espn.com/nhl/player/news/_/id/5149125",
    "insider": "",
    "kinds": [
     "injury"
    ],
-   "date": "Nov 18 11:42AM",
-   "status": "DAY_TO_DAY"
+   "date": "Nov 19 11:44AM",
+   "status": "OUT"
   }
  ],
  "rumors": [
@@ -10185,77 +10189,27 @@
     "Connor Bedard"
    ],
    "date": "Nov 17"
-  },
-  {
-   "title": "Report: Maple Leafs 'Lurking In The Background' In Trade Interest For Red Wings' Simon Edvinsson",
-   "link": "https://sports.yahoo.com/articles/report-maple-leafs-lurking-background-200315292.html",
-   "players": [
-    "Simon Edvinsson"
-   ],
-   "date": "Nov 17"
   }
  ],
  "notes": [
   "Week 8 vs Angie\u2019s Bear Balls: projected 129-120, 65% to win (starts left 40 vs 37).",
-  "Opportunity: Brandon Hagel (TB) injury -> Anthony Cirelli is the free agent who gains.",
+  "Opportunity: Connor Bedard (CHI) injury -> Frank Nazar is the free agent who gains.",
   "Best rest-of-season add: Simon Holmstrom for Gavin McKenna (+34).",
-  "Vegas tonight: EDM 3.0 goals vs TB (usual 3.8, -14% skater pts), LA 3.2 goals vs TOR (usual 2.7, +11% skater pts), ANA 3.3 goals vs COL (usual 3.7, -8% skater pts), VGK 3.0 goals vs DAL (usual 3.3, -7% skater pts).",
-  "Confirmed FA goalie starts today: Jakub Dobes vs CAR."
+  "Vegas tonight: EDM 3.0 goals vs TB (usual 3.8, -15% skater pts), LA 3.1 goals vs TOR (usual 2.7, +9% skater pts), ANA 3.2 goals vs COL (usual 3.7, -8% skater pts), VGK 2.9 goals vs DAL (usual 3.3, -8% skater pts).",
+  "Confirmed FA goalie starts today: Anthony Stolarz vs LA, Cam Talbot vs CHI, Adin Hill vs DAL."
  ],
  "opportunities": [
   {
    "news": {
-    "player": "Brandon Hagel",
-    "summary": "Hagel is considered day-to-day due to his lower-body injury, Eduardo A. Encina of the Tampa Bay Times reports Wednesday.",
-    "credit": "Rotowire via ESPN, citing Eduardo A. Encina (Tampa Bay Times)",
-    "link": "https://www.espn.com/nhl/player/news/_/id/4065019",
-    "insider": "",
-    "kinds": [
-     "injury"
-    ],
-    "date": "Nov 18 1:12PM"
-   },
-   "about": "Brandon Hagel",
-   "about_team": "TB",
-   "about_group": "F",
-   "self": false,
-   "kinds": [
-    "injury"
-   ],
-   "beneficiaries": [
-    {
-     "id": 3941973,
-     "name": "Anthony Cirelli",
-     "team": "TB",
-     "pos": "C",
-     "gain": 19.0,
-     "gain_2wk": 2.8,
-     "status": "FREEAGENT",
-     "waiver": ""
-    },
-    {
-     "id": 4588205,
-     "name": "Pontus Holmberg",
-     "team": "TB",
-     "pos": "LW/RW",
-     "gain": -2.1,
-     "gain_2wk": 1.2,
-     "status": "FREEAGENT",
-     "waiver": ""
-    }
-   ]
-  },
-  {
-   "news": {
     "player": "Connor Bedard",
-    "summary": "Bedard is being evaluated for a shoulder injury, Emily Kaplan of ESPN reports Wednesday.",
-    "credit": "Rotowire via ESPN, citing Emily Kaplan (ESPN)",
+    "summary": "Bedard (shoulder) won't play during the Blackhawks' next four games while the team decides whether the center will undergo surgery, Scott Powers of The Athletic reports Thursday.",
+    "credit": "Rotowire via ESPN, citing Scott Powers (The Athletic)",
     "link": "https://www.espn.com/nhl/player/news/_/id/5149125",
     "insider": "",
     "kinds": [
      "injury"
     ],
-    "date": "Nov 18 11:42AM"
+    "date": "Nov 19 11:44AM"
    },
    "about": "Connor Bedard",
    "about_team": "CHI",
@@ -10282,6 +10236,58 @@
      "pos": "C",
      "gain": 5.3,
      "gain_2wk": 1.8,
+     "status": "FREEAGENT",
+     "waiver": ""
+    },
+    {
+     "id": 5149231,
+     "name": "Roman Kantserov",
+     "team": "CHI",
+     "pos": "RW",
+     "gain": 2.6,
+     "gain_2wk": 1.5,
+     "status": "FREEAGENT",
+     "waiver": ""
+    }
+   ]
+  },
+  {
+   "news": {
+    "player": "Brandon Hagel",
+    "summary": "Hagel (lower body) was placed on injured reserve by the Lightning on Thursday, retroactive to Nov. 15, Eduardo A. Encina of the Tampa Bay Times reports.",
+    "credit": "Rotowire via ESPN, citing Eduardo A. Encina (Tampa Bay Times)",
+    "link": "https://www.espn.com/nhl/player/news/_/id/4065019",
+    "insider": "",
+    "kinds": [
+     "injury"
+    ],
+    "date": "Nov 19 10:54AM"
+   },
+   "about": "Brandon Hagel",
+   "about_team": "TB",
+   "about_group": "F",
+   "self": false,
+   "kinds": [
+    "injury"
+   ],
+   "beneficiaries": [
+    {
+     "id": 3941973,
+     "name": "Anthony Cirelli",
+     "team": "TB",
+     "pos": "C",
+     "gain": 19.0,
+     "gain_2wk": 2.8,
+     "status": "FREEAGENT",
+     "waiver": ""
+    },
+    {
+     "id": 4588205,
+     "name": "Pontus Holmberg",
+     "team": "TB",
+     "pos": "LW/RW",
+     "gain": -2.1,
+     "gain_2wk": 1.2,
      "status": "FREEAGENT",
      "waiver": ""
     }
@@ -10324,38 +10330,6 @@
      "pos": "LW/RW",
      "gain": -0.6,
      "gain_2wk": 1.0,
-     "status": "FREEAGENT",
-     "waiver": ""
-    }
-   ]
-  },
-  {
-   "news": {
-    "player": "Anthony Mantha",
-    "summary": "Mantha (neck) is expected to miss about one month after undergoing surgery, per Kristy Flannery of The Hockey News.",
-    "credit": "Rotowire via ESPN, citing Kristy Flannery (The Hockey News.)",
-    "link": "https://www.espn.com/nhl/player/news/_/id/3042037",
-    "insider": "",
-    "kinds": [
-     "injury"
-    ],
-    "date": "Nov 17 1:07PM"
-   },
-   "about": "Anthony Mantha",
-   "about_team": "NJ",
-   "about_group": "F",
-   "self": false,
-   "kinds": [
-    "injury"
-   ],
-   "beneficiaries": [
-    {
-     "id": 3899978,
-     "name": "Timo Meier",
-     "team": "NJ",
-     "pos": "LW",
-     "gain": 17.0,
-     "gain_2wk": 1.6,
      "status": "FREEAGENT",
      "waiver": ""
     }
@@ -10570,6 +10544,17 @@
   "Connor Bedard": [
    {
     "player": "Connor Bedard",
+    "summary": "Bedard (shoulder) won't play during the Blackhawks' next four games while the team decides whether the center will undergo surgery, Scott Powers of The Athletic reports Thursday.",
+    "credit": "Rotowire via ESPN, citing Scott Powers (The Athletic)",
+    "link": "https://www.espn.com/nhl/player/news/_/id/5149125",
+    "insider": "",
+    "kinds": [
+     "injury"
+    ],
+    "date": "Nov 19 11:44AM"
+   },
+   {
+    "player": "Connor Bedard",
     "summary": "Bedard is being evaluated for a shoulder injury, Emily Kaplan of ESPN reports Wednesday.",
     "credit": "Rotowire via ESPN, citing Emily Kaplan (ESPN)",
     "link": "https://www.espn.com/nhl/player/news/_/id/5149125",
@@ -10578,17 +10563,6 @@
      "injury"
     ],
     "date": "Nov 18 11:42AM"
-   },
-   {
-    "player": "Connor Bedard",
-    "summary": "Bedard sustained an apparent injury to his right wrist or hand in Tuesday's game versus the Maple Leafs, and he's set for further evaluation Wednesday, Mark Lazerus of The Athletic reports.",
-    "credit": "Rotowire via ESPN, citing Mark Lazerus (The Athletic)",
-    "link": "https://www.espn.com/nhl/player/news/_/id/5149125",
-    "insider": "",
-    "kinds": [
-     "injury"
-    ],
-    "date": "Nov 17 10:44PM"
    }
   ],
   "Connor Hellebuyck": [
@@ -10862,21 +10836,23 @@
   "Pyotr Kochetkov": [
    {
     "player": "Pyotr Kochetkov",
+    "summary": "Kochetkov will be in goal against Montreal at home Thursday, Walt Ruff of the Hurricanes' official site reports.",
+    "credit": "Rotowire via ESPN, citing Walt Ruff (Hurricanes')",
+    "link": "https://www.espn.com/nhl/player/news/_/id/4565259",
+    "insider": "",
+    "kinds": [
+     "starting"
+    ],
+    "date": "Nov 19 4:49PM"
+   },
+   {
+    "player": "Pyotr Kochetkov",
     "summary": "Kochetkov (illness) took part in Wednesday's practice, per Walt Ruff of the Hurricanes' official site.",
     "credit": "Rotowire via ESPN, citing Walt Ruff (Hurricanes')",
     "link": "https://www.espn.com/nhl/player/news/_/id/4565259",
     "insider": "",
     "kinds": [],
     "date": "Nov 18 11:23AM"
-   },
-   {
-    "player": "Pyotr Kochetkov",
-    "summary": "Kochetkov (illness) did not practice on Tuesday, per Walt Ruff of the Hurricanes' official site.",
-    "credit": "Rotowire via ESPN, citing Walt Ruff (Hurricanes')",
-    "link": "https://www.espn.com/nhl/player/news/_/id/4565259",
-    "insider": "",
-    "kinds": [],
-    "date": "Nov 17 12:31PM"
    }
   ]
  },
@@ -11312,11 +11288,11 @@
   "Jakub Dobes": 0.71,
   "Ivan Provorov": 0.28,
   "Quinton Byfield": 0.31,
-  "Kiefer Sherwood": 0.29,
   "Valeri Nichushkin": 0.5,
+  "Kiefer Sherwood": 0.29,
   "Tristan Jarry": 0.27,
-  "Jet Greaves": 0.76,
   "Ryan Leonard": 0.25,
+  "Jet Greaves": 0.76,
   "Adin Hill": 0.26,
   "Anders Lee": 0.29,
   "Tyler Bertuzzi": 0.46,
@@ -11324,24 +11300,24 @@
   "Eeli Tolvanen": 0.4,
   "Ryan Hartman": 0.58,
   "Zach Benson": 0.28,
-  "Alex Lyon": 0.57,
   "Bobby McMann": 0.29,
+  "Alex Lyon": 0.57,
   "Joey Daccord": 0.52,
   "K'Andre Miller": 0.25,
   "Marco Rossi": 0.57,
   "William Eklund": 0.25,
   "Anton Forsberg": 0.65,
-  "Chris Kreider": 0.44,
   "Simon Holmstrom": 0.29,
+  "Chris Kreider": 0.44,
   "Pavel Buchnevich": 0.3,
   "Tommy Novak": 0.36,
-  "Kailer Yamamoto": 0.37,
   "Gustav Forsling": 0.44,
+  "Kailer Yamamoto": 0.37,
   "Emmitt Finnie": 0.28,
   "Troy Terry": 0.75,
+  "Philipp Grubauer": 0.37,
   "Joonas Korpisalo": 0.55,
   "Mats Zuccarello": 0.47,
-  "Philipp Grubauer": 0.37,
   "Maxim Tsyplakov": 1.47,
   "Alexander Wennberg": 0.83,
   "Cam Fowler": 0.49,
@@ -11352,8 +11328,8 @@
   "Kyle Palmieri": 0.39,
   "Yegor Sharangovich": 0.25,
   "Connor McMichael": 0.28,
-  "Connor Brown": 0.3,
   "Jordan Binnington": 0.57,
+  "Connor Brown": 0.3,
   "Jordan Staal": 0.68,
   "Egor Chinakhov": 0.39,
   "Artem Zub": 0.3,
@@ -11362,56 +11338,56 @@
   "Sean Monahan": 0.27,
   "Tony DeAngelo": 0.25,
   "Lenni Hameenaho": 0.6,
-  "Jason Zucker": 0.93,
   "Leevi Merilainen": 0.37,
+  "Jason Zucker": 0.93,
   "Mathieu Olivier": 0.27,
   "Tyler Seguin": 0.59,
   "Jamie Benn": 0.41,
   "Teuvo Teravainen": 0.51,
-  "Igor Chernyshov": 0.28,
   "Josh Norris": 0.46,
-  "Casey DeSmith": 0.25,
+  "Igor Chernyshov": 0.28,
   "Ryan McLeod": 1.24,
+  "Casey DeSmith": 0.25,
   "Noah Cates": 0.35,
   "Matias Maccelli": 0.32,
-  "Mavrik Bourque": 0.64,
   "Collin Graf": 0.57,
+  "Mavrik Bourque": 0.64,
+  "Logan Mailloux": 0.3,
   "Michael Bunting": 0.84,
   "Nick Jensen": 0.75,
   "Conor Garland": 1.25,
   "Sean Couturier": 0.72,
   "Oliver Kapanen": 0.94,
   "Dmitri Voronkov": 0.82,
-  "Logan Mailloux": 0.3,
   "Charlie Lindgren": 0.34,
   "Colten Ellis": 2.12,
-  "Ville Husso": 0.5,
   "Keegan Kolesar": 0.51,
+  "Erik Gustafsson": 0.34,
   "Zac Jones": 0.95,
   "Eric Pohlkamp": 0.68,
-  "Laurent Brossoit": 0.95,
+  "Ville Husso": 0.5,
   "Carter Yakemchuk": 0.35,
+  "Laurent Brossoit": 0.95,
   "Jake Walman": 0.28,
   "Corey Perry": 0.39,
   "Connor Dewar": 0.39,
-  "Erik Gustafsson": 0.34,
   "Oliver Bonk": 0.32,
   "Luke Schenn": 0.53,
   "Justin Sourdif": 0.37,
   "Michael Carcone": 0.26,
+  "Semyon Varlamov": 1.51,
   "Alberts Smits": 0.27,
   "Justin Brazeau": 0.6,
   "Max Domi": 0.3,
   "Matthew Poitras": 0.37,
-  "Marco Kasper": 0.36,
   "Sam Steel": 0.82,
+  "Marco Kasper": 0.36,
   "Axel Sandin-Pellikka": 1.25,
-  "Semyon Varlamov": 1.51,
   "William Wallinder": 0.32,
   "Frederic Brunet": 0.38,
   "Florian Xhekaj": 0.84,
-  "Connor Clifton": 0.5,
   "Sam O'Reilly": 0.95,
+  "Connor Clifton": 0.5,
   "Juuso Valimaki": 0.84
  },
  "disagree_threshold": 0.25,
