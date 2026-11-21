@@ -1,5 +1,5 @@
 {
- "generated": "Sat Nov 21, 8:12 AM",
+ "generated": "Sat Nov 21, 2:19 PM",
  "league": {
   "name": "The Healthy Scratches",
   "size": 8,
@@ -33,10 +33,10 @@
   "name": "Jabroni Beaters",
   "grade": "A",
   "rank": 1,
-  "playoff_odds": 0.996,
+  "playoff_odds": 0.998,
   "posture": "Contender: hold producing starters; buy at your biggest need.",
-  "headline": "Jabroni Beaters: #1 of 8 in projected strength, 100% playoff odds. Weakest group: F (#4 quality, #4 rest of season).",
-  "urgent": "Lineup today: Start Gavin McKenna (TOR vs CBJ) for Tristan Luneau (lower projection)."
+  "headline": "Jabroni Beaters: #1 of 8 in projected strength, 100% playoff odds. Weakest group: F (#4 quality, #3 rest of season).",
+  "urgent": "Lineup today: Start Jimmy Snuggerud (STL vs NJ) for Robert Thomas (lower projection)."
  },
  "period": {
   "today": 54,
@@ -53,9 +53,9 @@
    "t": 0,
    "pf": 1138.5,
    "pa": 951.2,
-   "strength": 153.9,
-   "odds": 0.996,
-   "exp_wins": 17.8
+   "strength": 155.3,
+   "odds": 0.998,
+   "exp_wins": 18.1
   },
   {
    "id": 4,
@@ -65,9 +65,9 @@
    "t": 0,
    "pf": 1061.8,
    "pa": 909.0,
-   "strength": 143.0,
-   "odds": 0.921,
-   "exp_wins": 15.5
+   "strength": 142.8,
+   "odds": 0.919,
+   "exp_wins": 15.4
   },
   {
    "id": 2,
@@ -77,9 +77,9 @@
    "t": 0,
    "pf": 964.4,
    "pa": 957.7,
-   "strength": 143.6,
-   "odds": 0.823,
-   "exp_wins": 14.6
+   "strength": 143.2,
+   "odds": 0.806,
+   "exp_wins": 14.4
   },
   {
    "id": 1,
@@ -89,9 +89,9 @@
    "t": 0,
    "pf": 980.0,
    "pa": 1017.4,
-   "strength": 136.1,
-   "odds": 0.254,
-   "exp_wins": 11.5
+   "strength": 136.0,
+   "odds": 0.231,
+   "exp_wins": 11.4
   },
   {
    "id": 6,
@@ -101,9 +101,9 @@
    "t": 0,
    "pf": 1107.3,
    "pa": 1060.5,
-   "strength": 141.4,
-   "odds": 0.664,
-   "exp_wins": 13.1
+   "strength": 142.7,
+   "odds": 0.736,
+   "exp_wins": 13.5
   },
   {
    "id": 7,
@@ -113,9 +113,9 @@
    "t": 0,
    "pf": 1001.2,
    "pa": 1061.7,
-   "strength": 139.6,
-   "odds": 0.2,
-   "exp_wins": 11.0
+   "strength": 139.2,
+   "odds": 0.174,
+   "exp_wins": 10.8
   },
   {
    "id": 3,
@@ -125,9 +125,9 @@
    "t": 0,
    "pf": 987.0,
    "pa": 1063.8,
-   "strength": 142.6,
-   "odds": 0.141,
-   "exp_wins": 10.1
+   "strength": 142.5,
+   "odds": 0.136,
+   "exp_wins": 10.0
   },
   {
    "id": 8,
@@ -137,9 +137,9 @@
    "t": 0,
    "pf": 896.3,
    "pa": 1115.2,
-   "strength": 129.8,
+   "strength": 129.3,
    "odds": 0.002,
-   "exp_wins": 6.4
+   "exp_wins": 6.3
   }
  ],
  "matchup": {
@@ -147,24 +147,24 @@
   "opp_id": 7,
   "actual_me": 73.1,
   "actual_opp": 71.1,
-  "proj_me": 125.4,
-  "proj_opp": 123.9,
-  "win_prob": 0.535,
-  "starts_me": 24,
+  "proj_me": 128.8,
+  "proj_opp": 123.7,
+  "win_prob": 0.614,
+  "starts_me": 26,
   "starts_opp": 24,
   "days": [
    {
     "date": "Sat Nov 21",
-    "me": 39.9,
-    "opp": 40.4,
+    "me": 40.5,
+    "opp": 40.3,
     "me_starts": 18,
     "opp_starts": 18
    },
    {
     "date": "Sun Nov 22",
-    "me": 12.4,
-    "opp": 12.4,
-    "me_starts": 6,
+    "me": 15.3,
+    "opp": 12.3,
+    "me_starts": 8,
     "opp_starts": 6
    }
   ],
@@ -175,17 +175,17 @@
   "opp_id": 3,
   "actual_me": 0.0,
   "actual_opp": 0.0,
-  "proj_me": 158.6,
-  "proj_opp": 150.1,
-  "win_prob": 0.612,
-  "starts_me": 70,
+  "proj_me": 156.9,
+  "proj_opp": 149.9,
+  "win_prob": 0.592,
+  "starts_me": 68,
   "starts_opp": 71,
   "days": [
    {
     "date": "Mon Nov 23",
-    "me": 22.6,
+    "me": 20.1,
     "opp": 23.1,
-    "me_starts": 10,
+    "me_starts": 8,
     "opp_starts": 11
    },
    {
@@ -197,9 +197,9 @@
    },
    {
     "date": "Wed Nov 25",
-    "me": 39.4,
+    "me": 38.4,
     "opp": 38.0,
-    "me_starts": 18,
+    "me_starts": 17,
     "opp_starts": 18
    },
    {
@@ -211,23 +211,23 @@
    },
    {
     "date": "Fri Nov 27",
-    "me": 42.4,
-    "opp": 39.3,
+    "me": 42.5,
+    "opp": 39.2,
     "me_starts": 18,
     "opp_starts": 18
    },
    {
     "date": "Sat Nov 28",
-    "me": 40.7,
+    "me": 40.8,
     "opp": 36.9,
     "me_starts": 18,
     "opp_starts": 17
    },
    {
     "date": "Sun Nov 29",
-    "me": 6.9,
+    "me": 8.5,
     "opp": 6.9,
-    "me_starts": 3,
+    "me_starts": 4,
     "opp_starts": 4
    }
   ],
@@ -238,59 +238,59 @@
   "opp_id": 1,
   "actual_me": 0.0,
   "actual_opp": 0.0,
-  "proj_me": 157.3,
-  "proj_opp": 146.7,
-  "win_prob": 0.639,
-  "starts_me": 73,
+  "proj_me": 161.4,
+  "proj_opp": 146.5,
+  "win_prob": 0.691,
+  "starts_me": 74,
   "starts_opp": 71,
   "days": [
    {
     "date": "Mon Nov 30",
-    "me": 8.9,
+    "me": 9.2,
     "opp": 19.3,
     "me_starts": 5,
     "opp_starts": 10
    },
    {
     "date": "Tue Dec 1",
-    "me": 39.6,
-    "opp": 24.4,
-    "me_starts": 17,
+    "me": 38.3,
+    "opp": 24.3,
+    "me_starts": 16,
     "opp_starts": 11
    },
    {
     "date": "Wed Dec 2",
-    "me": 5.3,
+    "me": 7.1,
     "opp": 8.4,
-    "me_starts": 3,
+    "me_starts": 4,
     "opp_starts": 5
    },
    {
     "date": "Thu Dec 3",
-    "me": 38.6,
+    "me": 38.9,
     "opp": 34.5,
     "me_starts": 18,
     "opp_starts": 16
    },
    {
     "date": "Fri Dec 4",
-    "me": 15.3,
+    "me": 17.4,
     "opp": 5.8,
-    "me_starts": 7,
+    "me_starts": 8,
     "opp_starts": 3
    },
    {
     "date": "Sat Dec 5",
-    "me": 31.2,
+    "me": 30.0,
     "opp": 36.4,
-    "me_starts": 15,
+    "me_starts": 14,
     "opp_starts": 18
    },
    {
     "date": "Sun Dec 6",
-    "me": 18.4,
-    "opp": 17.8,
-    "me_starts": 8,
+    "me": 20.5,
+    "opp": 17.7,
+    "me_starts": 9,
     "opp_starts": 8
    }
   ],
@@ -303,7 +303,7 @@
    "issues": [
     {
      "severity": "fix",
-     "text": "Start Gavin McKenna (TOR vs CBJ) for Tristan Luneau (lower projection)."
+     "text": "Start Jimmy Snuggerud (STL vs NJ) for Robert Thomas (lower projection)."
     },
     {
      "severity": "check",
@@ -314,7 +314,7 @@
      "text": "Confirm Connor Hellebuyck starts in net (no confirmed-starter feed)."
     }
    ],
-   "gain": 0.0,
+   "gain": 0.1,
    "playing": [
     {
      "id": 5206628,
@@ -345,19 +345,19 @@
      "group": "D",
      "team": "EDM",
      "injury": "",
-     "rate": 3.11,
+     "rate": 3.08,
      "src": {
       "sheet": 2.44,
-      "model": 3.11,
+      "model": 3.08,
       "espn": 2.41,
-      "pace": 3.16,
-      "l15": 2.24
+      "pace": 3.12,
+      "l15": 2.21
      },
-     "cons": 2.76,
-     "dis": 0.27,
-     "exp_game": 3.11,
-     "gp": 24,
-     "fp": 75.9,
+     "cons": 2.75,
+     "dis": 0.26,
+     "exp_game": 3.08,
+     "gp": 25,
+     "fp": 77.9,
      "opp": "CAR"
     },
     {
@@ -625,28 +625,6 @@
      "opp": "NYI"
     },
     {
-     "id": 5342529,
-     "name": "Gavin McKenna",
-     "pos": "LW",
-     "group": "F",
-     "team": "TOR",
-     "injury": "",
-     "rate": 1.23,
-     "src": {
-      "sheet": 1.77,
-      "model": 1.23,
-      "espn": 1.63,
-      "pace": 1.19,
-      "l15": 0.84
-     },
-     "cons": 1.21,
-     "dis": 0.37,
-     "exp_game": 1.2,
-     "gp": 24,
-     "fp": 28.5,
-     "opp": "CBJ"
-    },
-    {
      "id": 3904091,
      "name": "Joel Eriksson Ek",
      "pos": "C",
@@ -735,47 +713,25 @@
      "opp": "WPG"
     },
     {
-     "id": 5080220,
-     "name": "Tristan Luneau",
-     "pos": "D",
-     "group": "D",
-     "team": "ANA",
-     "injury": "",
-     "rate": 1.53,
-     "src": {
-      "sheet": 1.28,
-      "model": 1.53,
-      "espn": null,
-      "pace": 1.56,
-      "l15": 1.24
-     },
-     "cons": 1.53,
-     "dis": 0.02,
-     "exp_game": 1.27,
-     "gp": 23,
-     "fp": 35.8,
-     "opp": "UTA"
-    },
-    {
      "id": 4565259,
      "name": "Pyotr Kochetkov",
      "pos": "G",
      "group": "G",
      "team": "CAR",
      "injury": "",
-     "rate": 4.79,
+     "rate": 4.52,
      "src": {
       "sheet": 4.06,
-      "model": 4.79,
+      "model": 4.52,
       "espn": null,
-      "pace": 5.16,
-      "l15": 3.97
+      "pace": 4.71,
+      "l15": 2.58
      },
-     "cons": 4.79,
-     "dis": 0.08,
-     "exp_game": 2.34,
-     "gp": 14,
-     "fp": 72.3,
+     "cons": 4.52,
+     "dis": 0.04,
+     "exp_game": 2.2,
+     "gp": 15,
+     "fp": 70.7,
      "opp": "EDM"
     },
     {
@@ -799,6 +755,50 @@
      "gp": 22,
      "fp": 36.7,
      "opp": "NJ"
+    },
+    {
+     "id": 5080157,
+     "name": "Frank Nazar",
+     "pos": "C",
+     "group": "F",
+     "team": "CHI",
+     "injury": "",
+     "rate": 1.79,
+     "src": {
+      "sheet": 1.51,
+      "model": 1.79,
+      "espn": 1.54,
+      "pace": 1.85,
+      "l15": 3.46
+     },
+     "cons": 1.82,
+     "dis": 0.17,
+     "exp_game": 1.64,
+     "gp": 20,
+     "fp": 36.9,
+     "opp": "CGY"
+    },
+    {
+     "id": 5080171,
+     "name": "Jimmy Snuggerud",
+     "pos": "RW",
+     "group": "F",
+     "team": "STL",
+     "injury": "",
+     "rate": 1.85,
+     "src": {
+      "sheet": 1.87,
+      "model": 1.85,
+      "espn": 1.7,
+      "pace": 1.85,
+      "l15": 2.15
+     },
+     "cons": 1.85,
+     "dis": 0.08,
+     "exp_game": 1.78,
+     "gp": 22,
+     "fp": 40.6,
+     "opp": "NJ"
     }
    ],
    "best": [
@@ -806,20 +806,20 @@
     "Jeremy Swayman",
     "Cutter Gauthier",
     "Macklin Celebrini",
-    "Alex Tuch",
     "Jack Hughes",
-    "Joel Eriksson Ek",
+    "Alex Tuch",
     "Mikael Granlund",
+    "Joel Eriksson Ek",
     "Mark Stone",
     "Jack Quinn",
-    "Victor Olofsson",
+    "Jimmy Snuggerud",
     "Evan Bouchard",
     "Moritz Seider",
     "Brandt Clarke",
     "Jakob Chychrun",
     "Justin Faulk",
-    "Robert Thomas",
-    "Gavin McKenna"
+    "Frank Nazar",
+    "Victor Olofsson"
    ]
   },
   "tomorrow": {
@@ -836,10 +836,14 @@
     },
     {
      "severity": "fix",
-     "text": "Start Pavel Dorofeyev (NYR vs CAR) for Moritz Seider (no game)."
+     "text": "Start Jimmy Snuggerud (STL vs EDM) for Moritz Seider (no game)."
+    },
+    {
+     "severity": "fix",
+     "text": "Start Pavel Dorofeyev (NYR vs CAR) for Jack Hughes (no game)."
     }
    ],
-   "gain": 5.7,
+   "gain": 6.9,
    "playing": [
     {
      "id": 4352722,
@@ -848,19 +852,19 @@
      "group": "D",
      "team": "EDM",
      "injury": "",
-     "rate": 3.11,
+     "rate": 3.08,
      "src": {
       "sheet": 2.44,
-      "model": 3.11,
+      "model": 3.08,
       "espn": 2.41,
-      "pace": 3.16,
-      "l15": 2.24
+      "pace": 3.12,
+      "l15": 2.21
      },
-     "cons": 2.76,
-     "dis": 0.27,
-     "exp_game": 3.11,
-     "gp": 24,
-     "fp": 75.9,
+     "cons": 2.75,
+     "dis": 0.26,
+     "exp_game": 3.08,
+     "gp": 25,
+     "fp": 77.9,
      "opp": "STL"
     },
     {
@@ -891,7 +895,7 @@
      "pos": "LW/RW",
      "group": "F",
      "team": "NYR",
-     "injury": "DAY_TO_DAY",
+     "injury": "INJURY_RESERVE",
      "rate": 1.54,
      "src": {
       "sheet": 1.96,
@@ -958,19 +962,19 @@
      "group": "G",
      "team": "CAR",
      "injury": "",
-     "rate": 4.79,
+     "rate": 4.52,
      "src": {
       "sheet": 4.06,
-      "model": 4.79,
+      "model": 4.52,
       "espn": null,
-      "pace": 5.16,
-      "l15": 3.97
+      "pace": 4.71,
+      "l15": 2.58
      },
-     "cons": 4.79,
-     "dis": 0.08,
-     "exp_game": 2.34,
-     "gp": 14,
-     "fp": 72.3,
+     "cons": 4.52,
+     "dis": 0.04,
+     "exp_game": 2.2,
+     "gp": 15,
+     "fp": 70.7,
      "opp": "NYR"
     },
     {
@@ -994,11 +998,57 @@
      "gp": 22,
      "fp": 36.7,
      "opp": "EDM"
+    },
+    {
+     "id": 5080157,
+     "name": "Frank Nazar",
+     "pos": "C",
+     "group": "F",
+     "team": "CHI",
+     "injury": "",
+     "rate": 1.79,
+     "src": {
+      "sheet": 1.51,
+      "model": 1.79,
+      "espn": 1.54,
+      "pace": 1.85,
+      "l15": 3.46
+     },
+     "cons": 1.82,
+     "dis": 0.17,
+     "exp_game": 1.64,
+     "gp": 20,
+     "fp": 36.9,
+     "opp": "VAN"
+    },
+    {
+     "id": 5080171,
+     "name": "Jimmy Snuggerud",
+     "pos": "RW",
+     "group": "F",
+     "team": "STL",
+     "injury": "",
+     "rate": 1.85,
+     "src": {
+      "sheet": 1.87,
+      "model": 1.85,
+      "espn": 1.7,
+      "pace": 1.85,
+      "l15": 2.15
+     },
+     "cons": 1.85,
+     "dis": 0.08,
+     "exp_game": 1.78,
+     "gp": 22,
+     "fp": 40.6,
+     "opp": "EDM"
     }
    ],
    "best": [
     "Pyotr Kochetkov",
+    "Frank Nazar",
     "Jack Quinn",
+    "Jimmy Snuggerud",
     "Robert Thomas",
     "Pavel Dorofeyev",
     "Evan Bouchard",
@@ -1068,20 +1118,20 @@
    "group": "D",
    "team": "EDM",
    "injury": "",
-   "rate": 3.11,
+   "rate": 3.08,
    "src": {
     "sheet": 2.44,
-    "model": 3.11,
+    "model": 3.08,
     "espn": 2.41,
-    "pace": 3.16,
-    "l15": 2.24
+    "pace": 3.12,
+    "l15": 2.21
    },
-   "cons": 2.76,
-   "dis": 0.27,
-   "exp_game": 3.11,
-   "gp": 24,
-   "fp": 75.9,
-   "ros": 158.7,
+   "cons": 2.75,
+   "dis": 0.26,
+   "exp_game": 3.08,
+   "gp": 25,
+   "fp": 77.9,
+   "ros": 157.2,
    "slot": "D",
    "g_this": 2,
    "g_next": 3,
@@ -1224,33 +1274,6 @@
    "light": 28
   },
   {
-   "id": 4565259,
-   "name": "Pyotr Kochetkov",
-   "pos": "G",
-   "group": "G",
-   "team": "CAR",
-   "injury": "",
-   "rate": 4.79,
-   "src": {
-    "sheet": 4.06,
-    "model": 4.79,
-    "espn": null,
-    "pace": 5.16,
-    "l15": 3.97
-   },
-   "cons": 4.79,
-   "dis": 0.08,
-   "exp_game": 2.34,
-   "gp": 14,
-   "fp": 72.3,
-   "ros": 121.5,
-   "slot": "BE",
-   "g_this": 2,
-   "g_next": 2,
-   "luck": "",
-   "light": 23
-  },
-  {
    "id": 4565222,
    "name": "Jack Hughes",
    "pos": "C/LW",
@@ -1302,6 +1325,33 @@
    "g_this": 1,
    "g_next": 4,
    "luck": "hot (sh% 20) - sell-high risk",
+   "light": 23
+  },
+  {
+   "id": 4565259,
+   "name": "Pyotr Kochetkov",
+   "pos": "G",
+   "group": "G",
+   "team": "CAR",
+   "injury": "",
+   "rate": 4.52,
+   "src": {
+    "sheet": 4.06,
+    "model": 4.52,
+    "espn": null,
+    "pace": 4.71,
+    "l15": 2.58
+   },
+   "cons": 4.52,
+   "dis": 0.04,
+   "exp_game": 2.2,
+   "gp": 15,
+   "fp": 70.7,
+   "ros": 114.6,
+   "slot": "BE",
+   "g_this": 2,
+   "g_next": 2,
+   "luck": "",
    "light": 23
   },
   {
@@ -1521,6 +1571,33 @@
    "light": 24
   },
   {
+   "id": 5080171,
+   "name": "Jimmy Snuggerud",
+   "pos": "RW",
+   "group": "F",
+   "team": "STL",
+   "injury": "",
+   "rate": 1.85,
+   "src": {
+    "sheet": 1.87,
+    "model": 1.85,
+    "espn": 1.7,
+    "pace": 1.85,
+    "l15": 2.15
+   },
+   "cons": 1.85,
+   "dis": 0.08,
+   "exp_game": 1.78,
+   "gp": 22,
+   "fp": 40.6,
+   "ros": 92.6,
+   "slot": "BE",
+   "g_this": 2,
+   "g_next": 3,
+   "luck": "hot (sh% 24) - sell-high risk",
+   "light": 20
+  },
+  {
    "id": 4233637,
    "name": "Robert Thomas",
    "pos": "C",
@@ -1546,6 +1623,33 @@
    "g_next": 3,
    "luck": "",
    "light": 20
+  },
+  {
+   "id": 5080157,
+   "name": "Frank Nazar",
+   "pos": "C",
+   "group": "F",
+   "team": "CHI",
+   "injury": "",
+   "rate": 1.79,
+   "src": {
+    "sheet": 1.51,
+    "model": 1.79,
+    "espn": 1.54,
+    "pace": 1.85,
+    "l15": 3.46
+   },
+   "cons": 1.82,
+   "dis": 0.17,
+   "exp_game": 1.64,
+   "gp": 20,
+   "fp": 36.9,
+   "ros": 85.4,
+   "slot": "UTIL",
+   "g_this": 2,
+   "g_next": 3,
+   "luck": "hot (sh% 27) - sell-high risk",
+   "light": 28
   },
   {
    "id": 5746,
@@ -1580,7 +1684,7 @@
    "pos": "LW/RW",
    "group": "F",
    "team": "NYR",
-   "injury": "DAY_TO_DAY",
+   "injury": "INJURY_RESERVE",
    "rate": 1.54,
    "src": {
     "sheet": 1.96,
@@ -1627,253 +1731,9 @@
    "g_next": 3,
    "luck": "",
    "light": 20
-  },
-  {
-   "id": 5080220,
-   "name": "Tristan Luneau",
-   "pos": "D",
-   "group": "D",
-   "team": "ANA",
-   "injury": "",
-   "rate": 1.53,
-   "src": {
-    "sheet": 1.28,
-    "model": 1.53,
-    "espn": null,
-    "pace": 1.56,
-    "l15": 1.24
-   },
-   "cons": 1.53,
-   "dis": 0.02,
-   "exp_game": 1.27,
-   "gp": 23,
-   "fp": 35.8,
-   "ros": 66.1,
-   "slot": "UTIL",
-   "g_this": 1,
-   "g_next": 4,
-   "luck": "",
-   "light": 23
-  },
-  {
-   "id": 5342529,
-   "name": "Gavin McKenna",
-   "pos": "LW",
-   "group": "F",
-   "team": "TOR",
-   "injury": "",
-   "rate": 1.23,
-   "src": {
-    "sheet": 1.77,
-    "model": 1.23,
-    "espn": 1.63,
-    "pace": 1.19,
-    "l15": 0.84
-   },
-   "cons": 1.21,
-   "dis": 0.37,
-   "exp_game": 1.2,
-   "gp": 24,
-   "fp": 28.5,
-   "ros": 61.1,
-   "slot": "BE",
-   "g_this": 1,
-   "g_next": 3,
-   "luck": "",
-   "light": 21
   }
  ],
  "free_agents": [
-  {
-   "id": 5149172,
-   "name": "Ryan Leonard",
-   "pos": "RW",
-   "group": "F",
-   "team": "WSH",
-   "injury": "",
-   "rate": 1.99,
-   "src": {
-    "sheet": 1.68,
-    "model": 1.99,
-    "espn": 1.47,
-    "pace": 2.04,
-    "l15": 2.6
-   },
-   "cons": 2.02,
-   "dis": 0.29,
-   "exp_game": 1.84,
-   "gp": 20,
-   "fp": 40.9,
-   "ros": 97.8,
-   "score": 40.6,
-   "gain": 40.4,
-   "week_gain": 2.0,
-   "drop": "Gavin McKenna",
-   "g_this": 1,
-   "g_next": 3,
-   "po_games": 8,
-   "own_chg": 1.4,
-   "luck": "hot (sh% 16) - sell-high risk",
-   "status": "FREEAGENT",
-   "light": 28,
-   "alt_drops": [
-    "Tristan Luneau (+28)",
-    "Victor Olofsson (+23)"
-   ],
-   "waiver": ""
-  },
-  {
-   "id": 4565244,
-   "name": "Simon Holmstrom",
-   "pos": "RW",
-   "group": "F",
-   "team": "NYI",
-   "injury": "",
-   "rate": 1.78,
-   "src": {
-    "sheet": 1.42,
-    "model": 1.78,
-    "espn": 1.3,
-    "pace": 1.83,
-    "l15": 3.27
-   },
-   "cons": 1.81,
-   "dis": 0.3,
-   "exp_game": 1.78,
-   "gp": 21,
-   "fp": 38.5,
-   "ros": 96.1,
-   "score": 39.7,
-   "gain": 39.6,
-   "week_gain": 3.5,
-   "drop": "Gavin McKenna",
-   "g_this": 1,
-   "g_next": 4,
-   "po_games": 6,
-   "own_chg": 0.6,
-   "luck": "",
-   "status": "FREEAGENT",
-   "light": 23,
-   "alt_drops": [
-    "Tristan Luneau (+25)",
-    "Victor Olofsson (+19)"
-   ],
-   "waiver": ""
-  },
-  {
-   "id": 5216860,
-   "name": "Ivan Demidov",
-   "pos": "RW",
-   "group": "F",
-   "team": "MTL",
-   "injury": "INJURY_RESERVE",
-   "rate": 1.75,
-   "src": {
-    "sheet": 1.74,
-    "model": 1.75,
-    "espn": 1.39,
-    "pace": null,
-    "l15": null
-   },
-   "cons": 1.57,
-   "dis": 0.23,
-   "exp_game": 1.75,
-   "gp": 2,
-   "fp": 3.7,
-   "ros": 89.2,
-   "score": 34.6,
-   "gain": 34.6,
-   "week_gain": 3.3,
-   "drop": "Gavin McKenna",
-   "g_this": 1,
-   "g_next": 3,
-   "po_games": 7,
-   "own_chg": -0.1,
-   "luck": "",
-   "status": "FREEAGENT",
-   "light": 21,
-   "alt_drops": [
-    "Tristan Luneau (+21)",
-    "Victor Olofsson (+14)"
-   ],
-   "waiver": ""
-  },
-  {
-   "id": 5219,
-   "name": "Brayden Schenn",
-   "pos": "C/LW",
-   "group": "F",
-   "team": "NYI",
-   "injury": "",
-   "rate": 1.69,
-   "src": {
-    "sheet": 1.23,
-    "model": 1.69,
-    "espn": 1.55,
-    "pace": 1.76,
-    "l15": 1.65
-   },
-   "cons": 1.67,
-   "dis": 0.13,
-   "exp_game": 1.69,
-   "gp": 21,
-   "fp": 36.9,
-   "ros": 91.2,
-   "score": 33.6,
-   "gain": 33.6,
-   "week_gain": 3.1,
-   "drop": "Gavin McKenna",
-   "g_this": 1,
-   "g_next": 4,
-   "po_games": 6,
-   "own_chg": -0.2,
-   "luck": "",
-   "status": "FREEAGENT",
-   "light": 23,
-   "alt_drops": [
-    "Tristan Luneau (+19)",
-    "Victor Olofsson (+13)"
-   ],
-   "waiver": ""
-  },
-  {
-   "id": 4874720,
-   "name": "Simon Edvinsson",
-   "pos": "D",
-   "group": "D",
-   "team": "DET",
-   "injury": "INJURY_RESERVE",
-   "rate": 1.75,
-   "src": {
-    "sheet": 1.75,
-    "model": 1.75,
-    "espn": null,
-    "pace": null,
-    "l15": null
-   },
-   "cons": 1.75,
-   "dis": 0.0,
-   "exp_game": 1.73,
-   "gp": 0,
-   "fp": 0.0,
-   "ros": 90.1,
-   "score": 32.4,
-   "gain": 32.4,
-   "week_gain": 1.6,
-   "drop": "Gavin McKenna",
-   "g_this": 1,
-   "g_next": 3,
-   "po_games": 7,
-   "own_chg": 0.0,
-   "luck": "",
-   "status": "FREEAGENT",
-   "light": 23,
-   "alt_drops": [
-    "Tristan Luneau (+22)",
-    "Victor Olofsson (+15)"
-   ],
-   "waiver": ""
-  },
   {
    "id": 3904189,
    "name": "Vince Dunn",
@@ -1895,10 +1755,10 @@
    "gp": 19,
    "fp": 34.2,
    "ros": 94.1,
-   "score": 31.7,
-   "gain": 31.8,
-   "week_gain": 3.3,
-   "drop": "Gavin McKenna",
+   "score": 29.0,
+   "gain": 29.1,
+   "week_gain": 2.1,
+   "drop": "Victor Olofsson",
    "g_this": 1,
    "g_next": 4,
    "po_games": 6,
@@ -1907,8 +1767,46 @@
    "status": "FREEAGENT",
    "light": 23,
    "alt_drops": [
-    "Tristan Luneau (+25)",
-    "Victor Olofsson (+14)"
+    "Robert Thomas (+22)",
+    "Frank Nazar (+22)"
+   ],
+   "waiver": ""
+  },
+  {
+   "id": 5149172,
+   "name": "Ryan Leonard",
+   "pos": "RW",
+   "group": "F",
+   "team": "WSH",
+   "injury": "",
+   "rate": 1.99,
+   "src": {
+    "sheet": 1.68,
+    "model": 1.99,
+    "espn": 1.47,
+    "pace": 2.04,
+    "l15": 2.6
+   },
+   "cons": 2.02,
+   "dis": 0.29,
+   "exp_game": 1.84,
+   "gp": 20,
+   "fp": 40.9,
+   "ros": 97.8,
+   "score": 28.8,
+   "gain": 28.4,
+   "week_gain": -0.7,
+   "drop": "Victor Olofsson",
+   "g_this": 1,
+   "g_next": 3,
+   "po_games": 8,
+   "own_chg": 1.6,
+   "luck": "hot (sh% 16) - sell-high risk",
+   "status": "FREEAGENT",
+   "light": 28,
+   "alt_drops": [
+    "Robert Thomas (+20)",
+    "Frank Nazar (+18)"
    ],
    "waiver": ""
   },
@@ -1933,10 +1831,10 @@
    "gp": 20,
    "fp": 34.5,
    "ros": 90.0,
-   "score": 31.3,
-   "gain": 31.4,
-   "week_gain": 1.5,
-   "drop": "Gavin McKenna",
+   "score": 28.3,
+   "gain": 28.4,
+   "week_gain": 0.3,
+   "drop": "Victor Olofsson",
    "g_this": 1,
    "g_next": 3,
    "po_games": 8,
@@ -1945,46 +1843,8 @@
    "status": "FREEAGENT",
    "light": 28,
    "alt_drops": [
-    "Tristan Luneau (+25)",
-    "Victor Olofsson (+14)"
-   ],
-   "waiver": ""
-  },
-  {
-   "id": 5080171,
-   "name": "Jimmy Snuggerud",
-   "pos": "RW",
-   "group": "F",
-   "team": "STL",
-   "injury": "",
-   "rate": 1.85,
-   "src": {
-    "sheet": 1.87,
-    "model": 1.85,
-    "espn": 1.7,
-    "pace": 1.85,
-    "l15": 2.15
-   },
-   "cons": 1.85,
-   "dis": 0.08,
-   "exp_game": 1.78,
-   "gp": 22,
-   "fp": 40.6,
-   "ros": 92.6,
-   "score": 30.7,
-   "gain": 30.6,
-   "week_gain": 3.6,
-   "drop": "Gavin McKenna",
-   "g_this": 2,
-   "g_next": 3,
-   "po_games": 7,
-   "own_chg": 0.8,
-   "luck": "hot (sh% 24) - sell-high risk",
-   "status": "FREEAGENT",
-   "light": 20,
-   "alt_drops": [
-    "Tristan Luneau (+14)",
-    "Victor Olofsson (+14)"
+    "Robert Thomas (+23)",
+    "Frank Nazar (+20)"
    ],
    "waiver": ""
   },
@@ -2009,10 +1869,10 @@
    "gp": 6,
    "fp": 6.7,
    "ros": 89.2,
-   "score": 30.2,
-   "gain": 30.2,
-   "week_gain": 4.6,
-   "drop": "Gavin McKenna",
+   "score": 27.7,
+   "gain": 27.7,
+   "week_gain": 2.3,
+   "drop": "Victor Olofsson",
    "g_this": 2,
    "g_next": 3,
    "po_games": 7,
@@ -2021,122 +1881,122 @@
    "status": "FREEAGENT",
    "light": 28,
    "alt_drops": [
-    "Tristan Luneau (+24)",
-    "Victor Olofsson (+13)"
+    "Robert Thomas (+21)",
+    "Frank Nazar (+21)"
    ],
    "waiver": ""
   },
   {
-   "id": 2562624,
-   "name": "Ryan Nugent-Hopkins",
-   "pos": "C/LW",
-   "group": "F",
-   "team": "EDM",
-   "injury": "DAY_TO_DAY",
-   "rate": 1.81,
+   "id": 4874720,
+   "name": "Simon Edvinsson",
+   "pos": "D",
+   "group": "D",
+   "team": "DET",
+   "injury": "INJURY_RESERVE",
+   "rate": 1.75,
    "src": {
-    "sheet": 1.57,
-    "model": 1.81,
-    "espn": 1.63,
-    "pace": 1.98,
-    "l15": 0.45
+    "sheet": 1.75,
+    "model": 1.75,
+    "espn": null,
+    "pace": null,
+    "l15": null
    },
-   "cons": 1.72,
-   "dis": 0.21,
-   "exp_game": 1.81,
-   "gp": 12,
-   "fp": 23.8,
-   "ros": 92.3,
-   "score": 30.0,
-   "gain": 30.1,
-   "week_gain": 3.4,
-   "drop": "Gavin McKenna",
-   "g_this": 2,
+   "cons": 1.75,
+   "dis": 0.0,
+   "exp_game": 1.73,
+   "gp": 0,
+   "fp": 0.0,
+   "ros": 90.1,
+   "score": 25.6,
+   "gain": 25.6,
+   "week_gain": 0.5,
+   "drop": "Victor Olofsson",
+   "g_this": 1,
    "g_next": 3,
-   "po_games": 6,
-   "own_chg": -0.2,
+   "po_games": 7,
+   "own_chg": 0.0,
    "luck": "",
    "status": "FREEAGENT",
    "light": 23,
    "alt_drops": [
-    "Tristan Luneau (+16)",
-    "Victor Olofsson (+13)"
+    "Robert Thomas (+20)",
+    "Frank Nazar (+17)"
    ],
    "waiver": ""
   },
   {
-   "id": 2555315,
-   "name": "Charlie Coyle",
-   "pos": "C",
+   "id": 4565244,
+   "name": "Simon Holmstrom",
+   "pos": "RW",
    "group": "F",
-   "team": "CBJ",
+   "team": "NYI",
    "injury": "",
-   "rate": 1.67,
+   "rate": 1.78,
    "src": {
-    "sheet": 1.55,
-    "model": 1.67,
-    "espn": 1.68,
-    "pace": 1.7,
-    "l15": 1.17
+    "sheet": 1.42,
+    "model": 1.78,
+    "espn": 1.3,
+    "pace": 1.83,
+    "l15": 3.27
    },
-   "cons": 1.68,
-   "dis": 0.01,
-   "exp_game": 1.67,
-   "gp": 20,
-   "fp": 33.9,
-   "ros": 92.0,
-   "score": 29.9,
-   "gain": 29.9,
-   "week_gain": 2.8,
-   "drop": "Gavin McKenna",
+   "cons": 1.81,
+   "dis": 0.3,
+   "exp_game": 1.78,
+   "gp": 21,
+   "fp": 38.5,
+   "ros": 96.1,
+   "score": 25.4,
+   "gain": 25.2,
+   "week_gain": 0.9,
+   "drop": "Victor Olofsson",
    "g_this": 1,
-   "g_next": 3,
+   "g_next": 4,
    "po_games": 6,
-   "own_chg": -0.1,
+   "own_chg": 0.6,
    "luck": "",
    "status": "FREEAGENT",
-   "light": 22,
+   "light": 23,
    "alt_drops": [
-    "Tristan Luneau (+14)",
-    "Victor Olofsson (+10)"
+    "Robert Thomas (+17)",
+    "Frank Nazar (+12)"
    ],
    "waiver": ""
   },
   {
-   "id": 3899933,
-   "name": "Dylan Strome",
-   "pos": "C",
-   "group": "F",
-   "team": "WSH",
-   "injury": "",
-   "rate": 1.68,
+   "id": 2976851,
+   "name": "Mike Matheson",
+   "pos": "D",
+   "group": "D",
+   "team": "MTL",
+   "injury": "OUT",
+   "rate": 1.63,
    "src": {
-    "sheet": 1.79,
-    "model": 1.68,
-    "espn": 1.72,
-    "pace": 1.65,
-    "l15": 0.83
+    "sheet": 1.52,
+    "model": 1.63,
+    "espn": 2.03,
+    "pace": 1.79,
+    "l15": null
    },
-   "cons": 1.67,
-   "dis": 0.04,
-   "exp_game": 1.68,
-   "gp": 20,
-   "fp": 33.1,
-   "ros": 88.8,
-   "score": 28.6,
-   "gain": 28.7,
-   "week_gain": 1.4,
-   "drop": "Gavin McKenna",
+   "cons": 1.79,
+   "dis": 0.22,
+   "exp_game": 1.63,
+   "gp": 9,
+   "fp": 16.1,
+   "ros": 83.0,
+   "score": 22.0,
+   "gain": 22.1,
+   "week_gain": 1.7,
+   "drop": "Victor Olofsson",
    "g_this": 1,
    "g_next": 3,
-   "po_games": 8,
-   "own_chg": -0.3,
+   "po_games": 7,
+   "own_chg": -0.2,
    "luck": "",
    "status": "FREEAGENT",
-   "light": 28,
+   "light": 21,
    "alt_drops": [
-    "Tristan Luneau (+16)",
-    "Victor Olofsson (+12)"
+    "Robert Thomas (+18)",
+    "Frank Nazar (+13)"
    ],
    "waiver": ""
   },
@@ -2161,10 +2021,10 @@
    "gp": 22,
    "fp": 38.8,
    "ros": 86.6,
-   "score": 26.4,
-   "gain": 26.5,
-   "week_gain": 3.0,
-   "drop": "Gavin McKenna",
+   "score": 21.1,
+   "gain": 21.2,
+   "week_gain": 1.8,
+   "drop": "Victor Olofsson",
    "g_this": 1,
    "g_next": 4,
    "po_games": 6,
@@ -2173,160 +2033,198 @@
    "status": "FREEAGENT",
    "light": 21,
    "alt_drops": [
-    "Tristan Luneau (+18)",
-    "Victor Olofsson (+6)"
+    "Robert Thomas (+16)",
+    "Frank Nazar (+12)"
    ],
    "waiver": ""
   },
   {
-   "id": 5080157,
-   "name": "Frank Nazar",
-   "pos": "C",
+   "id": 5216860,
+   "name": "Ivan Demidov",
+   "pos": "RW",
    "group": "F",
-   "team": "CHI",
-   "injury": "",
-   "rate": 1.79,
-   "src": {
-    "sheet": 1.51,
-    "model": 1.79,
-    "espn": 1.54,
-    "pace": 1.85,
-    "l15": 3.46
-   },
-   "cons": 1.82,
-   "dis": 0.17,
-   "exp_game": 1.64,
-   "gp": 20,
-   "fp": 36.9,
-   "ros": 85.4,
-   "score": 24.8,
-   "gain": 24.3,
-   "week_gain": 4.2,
-   "drop": "Gavin McKenna",
-   "g_this": 2,
-   "g_next": 3,
-   "po_games": 7,
-   "own_chg": 2.5,
-   "luck": "hot (sh% 27) - sell-high risk",
-   "status": "FREEAGENT",
-   "light": 28,
-   "alt_drops": [
-    "Tristan Luneau (+8)",
-    "Victor Olofsson (+7)"
-   ],
-   "waiver": ""
-  },
-  {
-   "id": 4781552,
-   "name": "Matty Beniers",
-   "pos": "C",
-   "group": "F",
-   "team": "SEA",
-   "injury": "",
-   "rate": 1.62,
-   "src": {
-    "sheet": 1.67,
-    "model": 1.62,
-    "espn": 1.57,
-    "pace": 1.61,
-    "l15": 2.55
-   },
-   "cons": 1.62,
-   "dis": 0.03,
-   "exp_game": 1.62,
-   "gp": 19,
-   "fp": 30.6,
-   "ros": 89.1,
-   "score": 24.6,
-   "gain": 24.6,
-   "week_gain": 2.8,
-   "drop": "Gavin McKenna",
-   "g_this": 1,
-   "g_next": 4,
-   "po_games": 6,
-   "own_chg": 0.1,
-   "luck": "",
-   "status": "FREEAGENT",
-   "light": 23,
-   "alt_drops": [
-    "Victor Olofsson (+8)",
-    "Tristan Luneau (+7)"
-   ],
-   "waiver": ""
-  },
-  {
-   "id": 5216877,
-   "name": "Berkly Catton",
-   "pos": "C/LW",
-   "group": "F",
-   "team": "SEA",
-   "injury": "",
-   "rate": 1.72,
-   "src": {
-    "sheet": 0.96,
-    "model": 1.72,
-    "espn": null,
-    "pace": 1.88,
-    "l15": 2.77
-   },
-   "cons": 1.88,
-   "dis": 0.09,
-   "exp_game": 1.61,
-   "gp": 19,
-   "fp": 35.8,
-   "ros": 88.7,
-   "score": 24.4,
-   "gain": 24.1,
-   "week_gain": 2.8,
-   "drop": "Gavin McKenna",
-   "g_this": 1,
-   "g_next": 4,
-   "po_games": 6,
-   "own_chg": 1.3,
-   "luck": "",
-   "status": "FREEAGENT",
-   "light": 23,
-   "alt_drops": [
-    "Victor Olofsson (+7)",
-    "Tristan Luneau (+7)"
-   ],
-   "waiver": ""
-  },
-  {
-   "id": 3114777,
-   "name": "Jared McCann",
-   "pos": "LW",
-   "group": "F",
-   "team": "SEA",
+   "team": "MTL",
    "injury": "INJURY_RESERVE",
-   "rate": 1.67,
+   "rate": 1.75,
    "src": {
-    "sheet": 1.78,
-    "model": 1.67,
-    "espn": 1.81,
-    "pace": 1.58,
+    "sheet": 1.74,
+    "model": 1.75,
+    "espn": 1.39,
+    "pace": null,
     "l15": null
    },
-   "cons": 1.67,
-   "dis": 0.14,
-   "exp_game": 1.61,
-   "gp": 11,
-   "fp": 17.4,
-   "ros": 88.6,
-   "score": 23.9,
-   "gain": 23.9,
-   "week_gain": 2.8,
-   "drop": "Gavin McKenna",
+   "cons": 1.57,
+   "dis": 0.23,
+   "exp_game": 1.75,
+   "gp": 2,
+   "fp": 3.7,
+   "ros": 89.2,
+   "score": 20.0,
+   "gain": 20.0,
+   "week_gain": 0.6,
+   "drop": "Victor Olofsson",
    "g_this": 1,
-   "g_next": 4,
-   "po_games": 6,
+   "g_next": 3,
+   "po_games": 7,
    "own_chg": -0.1,
    "luck": "",
    "status": "FREEAGENT",
+   "light": 21,
+   "alt_drops": [
+    "Robert Thomas (+16)",
+    "Frank Nazar (+10)"
+   ],
+   "waiver": ""
+  },
+  {
+   "id": 5219,
+   "name": "Brayden Schenn",
+   "pos": "C/LW",
+   "group": "F",
+   "team": "NYI",
+   "injury": "",
+   "rate": 1.69,
+   "src": {
+    "sheet": 1.23,
+    "model": 1.69,
+    "espn": 1.55,
+    "pace": 1.76,
+    "l15": 1.65
+   },
+   "cons": 1.67,
+   "dis": 0.13,
+   "exp_game": 1.69,
+   "gp": 21,
+   "fp": 36.9,
+   "ros": 91.2,
+   "score": 19.4,
+   "gain": 19.5,
+   "week_gain": 0.4,
+   "drop": "Victor Olofsson",
+   "g_this": 1,
+   "g_next": 4,
+   "po_games": 6,
+   "own_chg": -0.2,
+   "luck": "",
+   "status": "FREEAGENT",
    "light": 23,
    "alt_drops": [
-    "Victor Olofsson (+7)",
-    "Tristan Luneau (+6)"
+    "Robert Thomas (+11)",
+    "Frank Nazar (+6)"
+   ],
+   "waiver": ""
+  },
+  {
+   "id": 3899933,
+   "name": "Dylan Strome",
+   "pos": "C",
+   "group": "F",
+   "team": "WSH",
+   "injury": "",
+   "rate": 1.68,
+   "src": {
+    "sheet": 1.79,
+    "model": 1.68,
+    "espn": 1.72,
+    "pace": 1.65,
+    "l15": 0.83
+   },
+   "cons": 1.67,
+   "dis": 0.04,
+   "exp_game": 1.68,
+   "gp": 20,
+   "fp": 33.1,
+   "ros": 88.8,
+   "score": 17.0,
+   "gain": 17.0,
+   "week_gain": -1.4,
+   "drop": "Victor Olofsson",
+   "g_this": 1,
+   "g_next": 3,
+   "po_games": 8,
+   "own_chg": -0.3,
+   "luck": "",
+   "status": "FREEAGENT",
+   "light": 28,
+   "alt_drops": [
+    "Robert Thomas (+9)",
+    "Frank Nazar (+7)"
+   ],
+   "waiver": ""
+  },
+  {
+   "id": 2562624,
+   "name": "Ryan Nugent-Hopkins",
+   "pos": "C/LW",
+   "group": "F",
+   "team": "EDM",
+   "injury": "OUT",
+   "rate": 1.81,
+   "src": {
+    "sheet": 1.57,
+    "model": 1.81,
+    "espn": 1.63,
+    "pace": 1.98,
+    "l15": 0.45
+   },
+   "cons": 1.72,
+   "dis": 0.21,
+   "exp_game": 1.81,
+   "gp": 12,
+   "fp": 23.8,
+   "ros": 92.3,
+   "score": 15.3,
+   "gain": 15.3,
+   "week_gain": 2.3,
+   "drop": "Victor Olofsson",
+   "g_this": 2,
+   "g_next": 3,
+   "po_games": 6,
+   "own_chg": -0.2,
+   "luck": "",
+   "status": "FREEAGENT",
+   "light": 23,
+   "alt_drops": [
+    "Robert Thomas (+10)",
+    "Frank Nazar (+7)"
+   ],
+   "waiver": ""
+  },
+  {
+   "id": 2555315,
+   "name": "Charlie Coyle",
+   "pos": "C",
+   "group": "F",
+   "team": "CBJ",
+   "injury": "",
+   "rate": 1.67,
+   "src": {
+    "sheet": 1.55,
+    "model": 1.67,
+    "espn": 1.68,
+    "pace": 1.7,
+    "l15": 1.17
+   },
+   "cons": 1.68,
+   "dis": 0.01,
+   "exp_game": 1.67,
+   "gp": 20,
+   "fp": 33.9,
+   "ros": 92.0,
+   "score": 13.7,
+   "gain": 13.7,
+   "week_gain": -1.2,
+   "drop": "Victor Olofsson",
+   "g_this": 1,
+   "g_next": 3,
+   "po_games": 6,
+   "own_chg": -0.0,
+   "luck": "",
+   "status": "FREEAGENT",
+   "light": 22,
+   "alt_drops": [
+    "Robert Thomas (+5)",
+    "Frank Nazar (+2)"
    ],
    "waiver": ""
   },
@@ -2351,10 +2249,10 @@
    "gp": 15,
    "fp": 25.8,
    "ros": 86.4,
-   "score": 23.4,
-   "gain": 23.4,
-   "week_gain": 1.6,
-   "drop": "Gavin McKenna",
+   "score": 8.8,
+   "gain": 8.8,
+   "week_gain": -1.1,
+   "drop": "Victor Olofsson",
    "g_this": 1,
    "g_next": 3,
    "po_games": 6,
@@ -2363,122 +2261,8 @@
    "status": "FREEAGENT",
    "light": 21,
    "alt_drops": [
-    "Tristan Luneau (+8)",
-    "Victor Olofsson (+6)"
-   ],
-   "waiver": ""
-  },
-  {
-   "id": 4697409,
-   "name": "Jake Neighbours",
-   "pos": "LW",
-   "group": "F",
-   "team": "STL",
-   "injury": "",
-   "rate": 1.69,
-   "src": {
-    "sheet": 1.42,
-    "model": 1.69,
-    "espn": 1.45,
-    "pace": 1.72,
-    "l15": 1.65
-   },
-   "cons": 1.67,
-   "dis": 0.16,
-   "exp_game": 1.67,
-   "gp": 22,
-   "fp": 37.9,
-   "ros": 86.8,
-   "score": 23.3,
-   "gain": 23.2,
-   "week_gain": 3.0,
-   "drop": "Gavin McKenna",
-   "g_this": 2,
-   "g_next": 3,
-   "po_games": 7,
-   "own_chg": 0.7,
-   "luck": "",
-   "status": "FREEAGENT",
-   "light": 20,
-   "alt_drops": [
-    "Tristan Luneau (+7)",
-    "Victor Olofsson (+6)"
-   ],
-   "waiver": ""
-  },
-  {
-   "id": 3899949,
-   "name": "Pavel Zacha",
-   "pos": "C",
-   "group": "F",
-   "team": "BOS",
-   "injury": "",
-   "rate": 1.68,
-   "src": {
-    "sheet": 1.54,
-    "model": 1.68,
-    "espn": 1.68,
-    "pace": 1.7,
-    "l15": 1.82
-   },
-   "cons": 1.69,
-   "dis": 0.01,
-   "exp_game": 1.68,
-   "gp": 21,
-   "fp": 35.8,
-   "ros": 87.5,
-   "score": 22.3,
-   "gain": 22.3,
-   "week_gain": 2.7,
-   "drop": "Gavin McKenna",
-   "g_this": 1,
-   "g_next": 3,
-   "po_games": 6,
-   "own_chg": 0.1,
-   "luck": "",
-   "status": "FREEAGENT",
-   "light": 18,
-   "alt_drops": [
-    "Tristan Luneau (+7)",
-    "Victor Olofsson (+5)"
-   ],
-   "waiver": ""
-  },
-  {
-   "id": 3899978,
-   "name": "Timo Meier",
-   "pos": "LW",
-   "group": "F",
-   "team": "NJ",
-   "injury": "",
-   "rate": 1.64,
-   "src": {
-    "sheet": 1.73,
-    "model": 1.64,
-    "espn": 1.86,
-    "pace": 1.63,
-    "l15": 2.82
-   },
-   "cons": 1.75,
-   "dis": 0.13,
-   "exp_game": 1.64,
-   "gp": 22,
-   "fp": 35.9,
-   "ros": 85.4,
-   "score": 21.5,
-   "gain": 21.5,
-   "week_gain": 2.9,
-   "drop": "Gavin McKenna",
-   "g_this": 1,
-   "g_next": 4,
-   "po_games": 7,
-   "own_chg": 0.1,
-   "luck": "",
-   "status": "FREEAGENT",
-   "light": 19,
-   "alt_drops": [
-    "Tristan Luneau (+5)",
-    "Victor Olofsson (+4)"
+    "Robert Thomas (+0)",
+    "Frank Nazar (-3)"
    ],
    "waiver": ""
   },
@@ -2503,28 +2287,256 @@
    "gp": 5,
    "fp": 21.2,
    "ros": 160.1,
-   "score": 14.0,
-   "gain": 14.0,
-   "week_gain": 2.4,
-   "drop": "Gavin McKenna",
+   "score": 8.0,
+   "gain": 8.0,
+   "week_gain": -0.1,
+   "drop": "Victor Olofsson",
    "g_this": 1,
    "g_next": 3,
    "po_games": 6,
-   "own_chg": -0.0,
+   "own_chg": -0.1,
    "luck": "",
    "status": "FREEAGENT",
    "light": 25,
    "alt_drops": [
-    "Tristan Luneau (+4)",
-    "Victor Olofsson (-7)"
+    "Robert Thomas (+3)",
+    "Frank Nazar (+1)"
+   ],
+   "waiver": ""
+  },
+  {
+   "id": 4781552,
+   "name": "Matty Beniers",
+   "pos": "C",
+   "group": "F",
+   "team": "SEA",
+   "injury": "",
+   "rate": 1.62,
+   "src": {
+    "sheet": 1.67,
+    "model": 1.62,
+    "espn": 1.57,
+    "pace": 1.61,
+    "l15": 2.55
+   },
+   "cons": 1.62,
+   "dis": 0.03,
+   "exp_game": 1.62,
+   "gp": 19,
+   "fp": 30.6,
+   "ros": 89.1,
+   "score": 7.3,
+   "gain": 7.3,
+   "week_gain": 0.1,
+   "drop": "Victor Olofsson",
+   "g_this": 1,
+   "g_next": 4,
+   "po_games": 6,
+   "own_chg": 0.2,
+   "luck": "",
+   "status": "FREEAGENT",
+   "light": 23,
+   "alt_drops": [
+    "Robert Thomas (-1)",
+    "Frank Nazar (-3)"
+   ],
+   "waiver": ""
+  },
+  {
+   "id": 5216877,
+   "name": "Berkly Catton",
+   "pos": "C/LW",
+   "group": "F",
+   "team": "SEA",
+   "injury": "",
+   "rate": 1.72,
+   "src": {
+    "sheet": 0.96,
+    "model": 1.72,
+    "espn": null,
+    "pace": 1.88,
+    "l15": 2.77
+   },
+   "cons": 1.88,
+   "dis": 0.09,
+   "exp_game": 1.61,
+   "gp": 19,
+   "fp": 35.8,
+   "ros": 88.7,
+   "score": 7.2,
+   "gain": 6.9,
+   "week_gain": 0.1,
+   "drop": "Victor Olofsson",
+   "g_this": 1,
+   "g_next": 4,
+   "po_games": 6,
+   "own_chg": 1.4,
+   "luck": "",
+   "status": "FREEAGENT",
+   "light": 23,
+   "alt_drops": [
+    "Robert Thomas (-1)",
+    "Frank Nazar (-3)"
+   ],
+   "waiver": ""
+  },
+  {
+   "id": 3899978,
+   "name": "Timo Meier",
+   "pos": "LW",
+   "group": "F",
+   "team": "NJ",
+   "injury": "",
+   "rate": 1.64,
+   "src": {
+    "sheet": 1.73,
+    "model": 1.64,
+    "espn": 1.86,
+    "pace": 1.63,
+    "l15": 2.82
+   },
+   "cons": 1.75,
+   "dis": 0.13,
+   "exp_game": 1.64,
+   "gp": 22,
+   "fp": 35.9,
+   "ros": 85.4,
+   "score": 7.0,
+   "gain": 6.9,
+   "week_gain": 0.2,
+   "drop": "Victor Olofsson",
+   "g_this": 1,
+   "g_next": 4,
+   "po_games": 7,
+   "own_chg": 0.2,
+   "luck": "",
+   "status": "FREEAGENT",
+   "light": 19,
+   "alt_drops": [
+    "Robert Thomas (-1)",
+    "Frank Nazar (-3)"
+   ],
+   "waiver": ""
+  },
+  {
+   "id": 3114777,
+   "name": "Jared McCann",
+   "pos": "LW",
+   "group": "F",
+   "team": "SEA",
+   "injury": "INJURY_RESERVE",
+   "rate": 1.67,
+   "src": {
+    "sheet": 1.78,
+    "model": 1.67,
+    "espn": 1.82,
+    "pace": 1.58,
+    "l15": null
+   },
+   "cons": 1.67,
+   "dis": 0.14,
+   "exp_game": 1.61,
+   "gp": 11,
+   "fp": 17.4,
+   "ros": 88.6,
+   "score": 6.7,
+   "gain": 6.7,
+   "week_gain": 0.1,
+   "drop": "Victor Olofsson",
+   "g_this": 1,
+   "g_next": 4,
+   "po_games": 6,
+   "own_chg": -0.1,
+   "luck": "",
+   "status": "FREEAGENT",
+   "light": 23,
+   "alt_drops": [
+    "Robert Thomas (-2)",
+    "Frank Nazar (-3)"
+   ],
+   "waiver": ""
+  },
+  {
+   "id": 3899949,
+   "name": "Pavel Zacha",
+   "pos": "C",
+   "group": "F",
+   "team": "BOS",
+   "injury": "",
+   "rate": 1.68,
+   "src": {
+    "sheet": 1.54,
+    "model": 1.68,
+    "espn": 1.68,
+    "pace": 1.7,
+    "l15": 1.82
+   },
+   "cons": 1.69,
+   "dis": 0.01,
+   "exp_game": 1.68,
+   "gp": 21,
+   "fp": 35.8,
+   "ros": 87.5,
+   "score": 5.9,
+   "gain": 5.9,
+   "week_gain": -1.3,
+   "drop": "Victor Olofsson",
+   "g_this": 1,
+   "g_next": 3,
+   "po_games": 6,
+   "own_chg": 0.1,
+   "luck": "",
+   "status": "FREEAGENT",
+   "light": 18,
+   "alt_drops": [
+    "Robert Thomas (+1)",
+    "Frank Nazar (-4)"
+   ],
+   "waiver": ""
+  },
+  {
+   "id": 4697409,
+   "name": "Jake Neighbours",
+   "pos": "LW",
+   "group": "F",
+   "team": "STL",
+   "injury": "",
+   "rate": 1.69,
+   "src": {
+    "sheet": 1.42,
+    "model": 1.69,
+    "espn": 1.45,
+    "pace": 1.72,
+    "l15": 1.65
+   },
+   "cons": 1.67,
+   "dis": 0.16,
+   "exp_game": 1.67,
+   "gp": 22,
+   "fp": 37.9,
+   "ros": 86.8,
+   "score": 5.5,
+   "gain": 5.3,
+   "week_gain": 0.3,
+   "drop": "Victor Olofsson",
+   "g_this": 2,
+   "g_next": 3,
+   "po_games": 7,
+   "own_chg": 0.8,
+   "luck": "",
+   "status": "FREEAGENT",
+   "light": 20,
+   "alt_drops": [
+    "Robert Thomas (+2)",
+    "Jimmy Snuggerud (-7)"
    ],
    "waiver": ""
   }
  ],
  "fa_summary": [
-  "Ryan Leonard (F, WSH) for Gavin McKenna: +40 ROS, 8 playoff-week games, +2 next 2 wks (1+3 games), owned +1.4%, hot (sh% 16) - sell-high risk.",
-  "Simon Holmstrom (F, NYI) for Gavin McKenna: +40 ROS, 6 playoff-week games, +4 next 2 wks (1+4 games).",
-  "Ivan Demidov (F, MTL) for Gavin McKenna: +35 ROS, 7 playoff-week games, +3 next 2 wks (1+3 games)."
+  "Vince Dunn (D, SEA) for Victor Olofsson: +29 ROS, 6 playoff-week games, +2 next 2 wks (1+4 games). Caution: Pavel Dorofeyev listed INJURY_RESERVE - check news before dropping F depth.",
+  "Ryan Leonard (F, WSH) for Victor Olofsson: +28 ROS, 8 playoff-week games, owned +1.6%, hot (sh% 16) - sell-high risk. Caution: Pavel Dorofeyev listed INJURY_RESERVE - check news before dropping F depth.",
+  "Martin Fehervary (D, WSH) for Victor Olofsson: +28 ROS, 8 playoff-week games. Caution: Pavel Dorofeyev listed INJURY_RESERVE - check news before dropping F depth."
  ],
  "streaming": {
   "schedule": {
@@ -3156,36 +3168,6 @@
   ],
   "goalies": [
    {
-    "id": 4587952,
-    "name": "Dustin Wolf",
-    "pos": "G",
-    "group": "G",
-    "team": "CGY",
-    "injury": "",
-    "rate": 3.11,
-    "src": {
-     "sheet": 3.99,
-     "model": 3.11,
-     "espn": 3.48,
-     "pace": 2.58,
-     "l15": 3.3
-    },
-    "cons": 3.21,
-    "dis": 0.28,
-    "exp_game": 2.09,
-    "gp": 13,
-    "fp": 33.5,
-    "exp": 8.4,
-    "games": 4,
-    "opps": [
-     "OTT",
-     "PIT",
-     "NJ",
-     "NYR"
-    ],
-    "status": "FREEAGENT"
-   },
-   {
     "id": 5111,
     "name": "Jake Allen",
     "pos": "G",
@@ -3392,9 +3374,39 @@
      "DET"
     ],
     "status": "FREEAGENT"
+   },
+   {
+    "id": 4697683,
+    "name": "Nico Daws",
+    "pos": "G",
+    "group": "G",
+    "team": "WPG",
+    "injury": "",
+    "rate": 3.56,
+    "src": {
+     "sheet": 3.85,
+     "model": 3.56,
+     "espn": null,
+     "pace": 3.13,
+     "l15": 4.6
+    },
+    "cons": 3.56,
+    "dis": 0.12,
+    "exp_game": 1.52,
+    "gp": 9,
+    "fp": 28.2,
+    "exp": 6.1,
+    "games": 4,
+    "opps": [
+     "UTA",
+     "BOS",
+     "NYI",
+     "NJ"
+    ],
+    "status": "FREEAGENT"
    }
   ],
-  "adds_used": 2,
+  "adds_used": 4,
   "adds_limit": 6,
   "this": {
    "label": "Matchup 8 (Nov 21-Nov 22)",
@@ -3411,42 +3423,18 @@
      "period": 55,
      "date": "Sun Nov 22",
      "G": 1,
-     "skater": 11,
-     "starts": 6,
+     "skater": 9,
+     "starts": 8,
      "nhl": true
     }
    ],
    "moves": [
     {
-     "add": "Jimmy Snuggerud",
-     "add_pos": "F",
-     "add_team": "STL",
-     "drop": "Gavin McKenna",
-     "gain": 2.3,
-     "days": [
-      "Sat 21",
-      "Sun 22"
-     ],
-     "waivers": false
-    },
-    {
-     "add": "Tristan Jarry",
+     "add": "Leevi Merilainen",
      "add_pos": "G",
-     "add_team": "EDM",
-     "drop": "Tristan Luneau",
-     "gain": 1.9,
-     "days": [
-      "Sat 21",
-      "Sun 22"
-     ],
-     "waivers": false
-    },
-    {
-     "add": "Frank Nazar",
-     "add_pos": "F",
-     "add_team": "CHI",
+     "add_team": "VAN",
      "drop": "Victor Olofsson",
-     "gain": 1.7,
+     "gain": 2.8,
      "days": [
       "Sat 21",
       "Sun 22"
@@ -3458,7 +3446,7 @@
      "add_pos": "D",
      "add_team": "BUF",
      "drop": "Justin Faulk",
-     "gain": 1.5,
+     "gain": 1.4,
      "days": [
       "Sat 21",
       "Sun 22"
@@ -3474,8 +3462,8 @@
      "period": 56,
      "date": "Mon Nov 23",
      "G": 1,
-     "skater": 8,
-     "starts": 9,
+     "skater": 10,
+     "starts": 7,
      "nhl": true
     },
     {
@@ -3490,8 +3478,8 @@
      "period": 58,
      "date": "Wed Nov 25",
      "G": 0,
-     "skater": 2,
-     "starts": 16,
+     "skater": 1,
+     "starts": 17,
      "nhl": true
     },
     {
@@ -3522,32 +3510,18 @@
      "period": 62,
      "date": "Sun Nov 29",
      "G": 1,
-     "skater": 15,
-     "starts": 2,
+     "skater": 14,
+     "starts": 3,
      "nhl": true
     }
    ],
    "moves": [
     {
-     "add": "Jared Spurgeon",
-     "add_pos": "D",
-     "add_team": "MIN",
-     "drop": "Gavin McKenna",
-     "gain": 3.8,
-     "days": [
-      "Mon 23",
-      "Wed 25",
-      "Fri 27",
-      "Sun 29"
-     ],
-     "waivers": false
-    },
-    {
      "add": "Simon Holmstrom",
      "add_pos": "F",
      "add_team": "NYI",
-     "drop": "Pavel Dorofeyev",
-     "gain": 2.5,
+     "drop": "Robert Thomas",
+     "gain": 2.2,
      "days": [
       "Mon 23",
       "Wed 25",
@@ -3560,7 +3534,7 @@
      "add": "Vince Dunn",
      "add_pos": "D",
      "add_team": "SEA",
-     "drop": "Justin Faulk",
+     "drop": "Victor Olofsson",
      "gain": 2.0,
      "days": [
       "Mon 23",
@@ -3571,16 +3545,30 @@
      "waivers": false
     },
     {
-     "add": "Brayden Schenn",
-     "add_pos": "F",
-     "add_team": "NYI",
-     "drop": "Victor Olofsson",
-     "gain": 1.9,
+     "add": "Tyler Kleven",
+     "add_pos": "D",
+     "add_team": "OTT",
+     "drop": "Justin Faulk",
+     "gain": 1.8,
      "days": [
       "Mon 23",
       "Wed 25",
       "Fri 27",
       "Sat 28"
+     ],
+     "waivers": false
+    },
+    {
+     "add": "Jared Spurgeon",
+     "add_pos": "D",
+     "add_team": "MIN",
+     "drop": "Frank Nazar",
+     "gain": 1.6,
+     "days": [
+      "Mon 23",
+      "Wed 25",
+      "Fri 27",
+      "Sun 29"
      ],
      "waivers": false
     }
@@ -3592,6 +3580,819 @@
    "Wk 26 (Mar 22-Mar 28)",
    "Wk 27 (Mar 29-Apr 4)"
   ],
+  "schedule": {
+   "days": [
+    {
+     "date": "Mon 22",
+     "past": false,
+     "n": 6,
+     "light": true
+    },
+    {
+     "date": "Tue 23",
+     "past": false,
+     "n": 24,
+     "light": false
+    },
+    {
+     "date": "Wed 24",
+     "past": false,
+     "n": 6,
+     "light": true
+    },
+    {
+     "date": "Thu 25",
+     "past": false,
+     "n": 26,
+     "light": false
+    },
+    {
+     "date": "Fri 26",
+     "past": false,
+     "n": 6,
+     "light": true
+    },
+    {
+     "date": "Sat 27",
+     "past": false,
+     "n": 26,
+     "light": false
+    },
+    {
+     "date": "Sun 28",
+     "past": false,
+     "n": 8,
+     "light": true
+    },
+    {
+     "date": "Mon 29",
+     "past": false,
+     "n": 8,
+     "light": true
+    },
+    {
+     "date": "Tue 30",
+     "past": false,
+     "n": 22,
+     "light": false
+    },
+    {
+     "date": "Wed 31",
+     "past": false,
+     "n": 8,
+     "light": true
+    },
+    {
+     "date": "Thu 1",
+     "past": false,
+     "n": 18,
+     "light": false
+    },
+    {
+     "date": "Fri 2",
+     "past": false,
+     "n": 10,
+     "light": true
+    },
+    {
+     "date": "Sat 3",
+     "past": false,
+     "n": 26,
+     "light": false
+    },
+    {
+     "date": "Sun 4",
+     "past": false,
+     "n": 12,
+     "light": true
+    }
+   ],
+   "teams": [
+    {
+     "team": "WSH",
+     "games": 8,
+     "cells": [
+      "",
+      "DET",
+      "@DET",
+      "",
+      "BOS",
+      "",
+      "@TOR",
+      "",
+      "CHI",
+      "",
+      "@PHI",
+      "",
+      "CBJ",
+      "PIT"
+     ]
+    },
+    {
+     "team": "ANA",
+     "games": 7,
+     "cells": [
+      "SJ",
+      "",
+      "@SJ",
+      "@SEA",
+      "",
+      "@VAN",
+      "",
+      "",
+      "COL",
+      "",
+      "@UTA",
+      "",
+      "EDM",
+      ""
+     ]
+    },
+    {
+     "team": "CAR",
+     "games": 7,
+     "cells": [
+      "",
+      "@DAL",
+      "",
+      "DAL",
+      "",
+      "@PIT",
+      "",
+      "@NJ",
+      "@NYI",
+      "",
+      "",
+      "@DET",
+      "NJ",
+      ""
+     ]
+    },
+    {
+     "team": "CHI",
+     "games": 7,
+     "cells": [
+      "",
+      "@MIN",
+      "",
+      "@CBJ",
+      "NSH",
+      "",
+      "SEA",
+      "",
+      "@WSH",
+      "",
+      "@NSH",
+      "",
+      "@DAL",
+      ""
+     ]
+    },
+    {
+     "team": "COL",
+     "games": 7,
+     "cells": [
+      "",
+      "UTA",
+      "",
+      "@WPG",
+      "",
+      "WPG",
+      "",
+      "@SJ",
+      "@ANA",
+      "",
+      "",
+      "LA",
+      "",
+      "@MIN"
+     ]
+    },
+    {
+     "team": "DET",
+     "games": 7,
+     "cells": [
+      "",
+      "@WSH",
+      "WSH",
+      "",
+      "",
+      "@NYI",
+      "@MTL",
+      "",
+      "OTT",
+      "",
+      "",
+      "CAR",
+      "",
+      "@OTT"
+     ]
+    },
+    {
+     "team": "FLA",
+     "games": 7,
+     "cells": [
+      "",
+      "@TB",
+      "",
+      "NYR",
+      "",
+      "PHI",
+      "",
+      "",
+      "CBJ",
+      "",
+      "TOR",
+      "",
+      "@NYR",
+      "@NJ"
+     ]
+    },
+    {
+     "team": "LA",
+     "games": 7,
+     "cells": [
+      "",
+      "@VAN",
+      "",
+      "@CGY",
+      "",
+      "@EDM",
+      "",
+      "VAN",
+      "",
+      "WPG",
+      "",
+      "@COL",
+      "STL",
+      ""
+     ]
+    },
+    {
+     "team": "MIN",
+     "games": 7,
+     "cells": [
+      "",
+      "CHI",
+      "",
+      "EDM",
+      "",
+      "SEA",
+      "",
+      "@NYR",
+      "",
+      "@NJ",
+      "",
+      "DAL",
+      "",
+      "COL"
+     ]
+    },
+    {
+     "team": "MTL",
+     "games": 7,
+     "cells": [
+      "TOR",
+      "",
+      "OTT",
+      "",
+      "",
+      "NJ",
+      "DET",
+      "",
+      "@BOS",
+      "",
+      "NYR",
+      "",
+      "",
+      "@NYI"
+     ]
+    },
+    {
+     "team": "NJ",
+     "games": 7,
+     "cells": [
+      "",
+      "PHI",
+      "",
+      "@PIT",
+      "",
+      "@MTL",
+      "",
+      "CAR",
+      "",
+      "MIN",
+      "",
+      "",
+      "@CAR",
+      "FLA"
+     ]
+    },
+    {
+     "team": "PIT",
+     "games": 7,
+     "cells": [
+      "CBJ",
+      "",
+      "",
+      "NJ",
+      "",
+      "CAR",
+      "",
+      "",
+      "@PHI",
+      "",
+      "NYI",
+      "",
+      "PHI",
+      "@WSH"
+     ]
+    },
+    {
+     "team": "SJ",
+     "games": 7,
+     "cells": [
+      "@ANA",
+      "",
+      "ANA",
+      "",
+      "@UTA",
+      "",
+      "",
+      "COL",
+      "",
+      "@EDM",
+      "",
+      "",
+      "@VAN",
+      "STL"
+     ]
+    },
+    {
+     "team": "STL",
+     "games": 7,
+     "cells": [
+      "",
+      "@WPG",
+      "",
+      "NYI",
+      "",
+      "@CBJ",
+      "BUF",
+      "",
+      "",
+      "",
+      "CGY",
+      "",
+      "@LA",
+      "@SJ"
+     ]
+    },
+    {
+     "team": "TOR",
+     "games": 7,
+     "cells": [
+      "@MTL",
+      "",
+      "",
+      "@BUF",
+      "",
+      "OTT",
+      "WSH",
+      "",
+      "@TB",
+      "",
+      "@FLA",
+      "",
+      "BUF",
+      ""
+     ]
+    },
+    {
+     "team": "BOS",
+     "games": 6,
+     "cells": [
+      "",
+      "BUF",
+      "",
+      "OTT",
+      "@WSH",
+      "",
+      "",
+      "",
+      "MTL",
+      "",
+      "@BUF",
+      "",
+      "TB",
+      ""
+     ]
+    },
+    {
+     "team": "BUF",
+     "games": 6,
+     "cells": [
+      "",
+      "@BOS",
+      "",
+      "TOR",
+      "",
+      "",
+      "@STL",
+      "",
+      "@NSH",
+      "",
+      "BOS",
+      "",
+      "@TOR",
+      ""
+     ]
+    },
+    {
+     "team": "CBJ",
+     "games": 6,
+     "cells": [
+      "@PIT",
+      "",
+      "",
+      "CHI",
+      "",
+      "STL",
+      "",
+      "",
+      "@FLA",
+      "",
+      "@TB",
+      "",
+      "@WSH",
+      ""
+     ]
+    },
+    {
+     "team": "CGY",
+     "games": 6,
+     "cells": [
+      "",
+      "EDM",
+      "",
+      "LA",
+      "",
+      "VGK",
+      "",
+      "",
+      "@DAL",
+      "",
+      "@STL",
+      "",
+      "@NSH",
+      ""
+     ]
+    },
+    {
+     "team": "DAL",
+     "games": 6,
+     "cells": [
+      "",
+      "CAR",
+      "",
+      "@CAR",
+      "",
+      "NSH",
+      "",
+      "",
+      "CGY",
+      "",
+      "",
+      "@MIN",
+      "CHI",
+      ""
+     ]
+    },
+    {
+     "team": "EDM",
+     "games": 6,
+     "cells": [
+      "",
+      "@CGY",
+      "",
+      "@MIN",
+      "",
+      "LA",
+      "",
+      "",
+      "",
+      "SJ",
+      "",
+      "@VGK",
+      "@ANA",
+      ""
+     ]
+    },
+    {
+     "team": "NSH",
+     "games": 6,
+     "cells": [
+      "",
+      "NYR",
+      "",
+      "",
+      "@CHI",
+      "@DAL",
+      "",
+      "",
+      "BUF",
+      "",
+      "CHI",
+      "",
+      "CGY",
+      ""
+     ]
+    },
+    {
+     "team": "NYI",
+     "games": 6,
+     "cells": [
+      "",
+      "",
+      "",
+      "@STL",
+      "",
+      "DET",
+      "",
+      "",
+      "CAR",
+      "",
+      "@PIT",
+      "OTT",
+      "",
+      "MTL"
+     ]
+    },
+    {
+     "team": "NYR",
+     "games": 6,
+     "cells": [
+      "",
+      "@NSH",
+      "",
+      "@FLA",
+      "",
+      "@TB",
+      "",
+      "MIN",
+      "",
+      "",
+      "@MTL",
+      "",
+      "FLA",
+      ""
+     ]
+    },
+    {
+     "team": "OTT",
+     "games": 6,
+     "cells": [
+      "",
+      "",
+      "@MTL",
+      "@BOS",
+      "",
+      "@TOR",
+      "",
+      "",
+      "@DET",
+      "",
+      "",
+      "@NYI",
+      "",
+      "DET"
+     ]
+    },
+    {
+     "team": "PHI",
+     "games": 6,
+     "cells": [
+      "",
+      "@NJ",
+      "",
+      "@TB",
+      "",
+      "@FLA",
+      "",
+      "",
+      "PIT",
+      "",
+      "WSH",
+      "",
+      "@PIT",
+      ""
+     ]
+    },
+    {
+     "team": "SEA",
+     "games": 6,
+     "cells": [
+      "",
+      "VGK",
+      "",
+      "ANA",
+      "",
+      "@MIN",
+      "@CHI",
+      "",
+      "UTA",
+      "",
+      "",
+      "",
+      "WPG",
+      ""
+     ]
+    },
+    {
+     "team": "TB",
+     "games": 6,
+     "cells": [
+      "",
+      "FLA",
+      "",
+      "PHI",
+      "",
+      "NYR",
+      "",
+      "",
+      "TOR",
+      "",
+      "CBJ",
+      "",
+      "@BOS",
+      ""
+     ]
+    },
+    {
+     "team": "VAN",
+     "games": 6,
+     "cells": [
+      "",
+      "LA",
+      "",
+      "VGK",
+      "",
+      "ANA",
+      "",
+      "@LA",
+      "",
+      "@VGK",
+      "",
+      "",
+      "SJ",
+      ""
+     ]
+    },
+    {
+     "team": "VGK",
+     "games": 6,
+     "cells": [
+      "",
+      "@SEA",
+      "",
+      "@VAN",
+      "",
+      "@CGY",
+      "",
+      "",
+      "",
+      "VAN",
+      "",
+      "EDM",
+      "@UTA",
+      ""
+     ]
+    },
+    {
+     "team": "UTA",
+     "games": 5,
+     "cells": [
+      "",
+      "@COL",
+      "",
+      "",
+      "SJ",
+      "",
+      "",
+      "",
+      "@SEA",
+      "",
+      "ANA",
+      "",
+      "VGK",
+      ""
+     ]
+    },
+    {
+     "team": "WPG",
+     "games": 5,
+     "cells": [
+      "",
+      "STL",
+      "",
+      "COL",
+      "",
+      "@COL",
+      "",
+      "",
+      "",
+      "@LA",
+      "",
+      "",
+      "@SEA",
+      ""
+     ]
+    }
+   ],
+   "week_starts": [
+    175,
+    182
+   ],
+   "mine": {
+    "CHI": [
+     "Bedard",
+     "Nazar"
+    ],
+    "NYR": [
+     "Dorofeyev"
+    ],
+    "BOS": [
+     "Swayman"
+    ],
+    "SJ": [
+     "Celebrini"
+    ],
+    "UTA": [
+     "Guenther"
+    ],
+    "MIN": [
+     "Ek"
+    ],
+    "TB": [
+     "D'Astous"
+    ],
+    "BUF": [
+     "Quinn"
+    ],
+    "ANA": [
+     "Gauthier",
+     "Granlund"
+    ],
+    "VGK": [
+     "Olofsson",
+     "Stone"
+    ],
+    "STL": [
+     "Snuggerud",
+     "Thomas"
+    ],
+    "NJ": [
+     "Hellebuyck",
+     "Hughes"
+    ],
+    "WSH": [
+     "Chychrun",
+     "Tuch"
+    ],
+    "CAR": [
+     "Kochetkov"
+    ],
+    "COL": [
+     "Blackwood"
+    ],
+    "LA": [
+     "Clarke"
+    ],
+    "EDM": [
+     "Bouchard"
+    ],
+    "DET": [
+     "Faulk",
+     "Seider"
+    ]
+   },
+   "my_playing": [
+    3,
+    20,
+    7,
+    18,
+    5,
+    17,
+    8,
+    8,
+    12,
+    8,
+    11,
+    9,
+    19,
+    11
+   ]
+  },
   "weight": 2.0,
   "nhl": [
    {
@@ -3857,81 +4658,81 @@
     "name": "Jabroni Beaters",
     "me": true,
     "weeks": [
-     157.8,
-     165.0
+     161.4,
+     165.9
     ],
-    "total": 322.8,
-    "odds": 0.996
+    "total": 327.3,
+    "odds": 0.998
    },
    {
     "name": "PuttinOnTheFoil",
     "me": false,
     "weeks": [
-     137.7,
-     154.2
+     137.3,
+     153.6
     ],
-    "total": 291.9,
-    "odds": 0.823
+    "total": 290.9,
+    "odds": 0.806
    },
    {
     "name": "McDISHHH",
     "me": false,
     "weeks": [
-     141.7,
-     148.4
+     141.5,
+     148.2
     ],
-    "total": 290.0,
-    "odds": 0.254
+    "total": 289.7,
+    "odds": 0.231
    },
    {
     "name": "Angie\u2019s Bear Balls",
     "me": false,
     "weeks": [
-     136.8,
-     149.5
+     136.4,
+     149.0
     ],
-    "total": 286.3,
-    "odds": 0.2
+    "total": 285.4,
+    "odds": 0.174
+   },
+   {
+    "name": "Mike's Magnificent Team",
+    "me": false,
+    "weeks": [
+     131.2,
+     149.0
+    ],
+    "total": 280.2,
+    "odds": 0.136
    },
    {
     "name": "Timmy's Tenacious Team",
     "me": false,
     "weeks": [
-     136.8,
-     142.9
+     136.3,
+     142.3
     ],
-    "total": 279.6,
+    "total": 278.6,
     "odds": 0.002
    },
    {
     "name": "Matt's Monstrous Team",
     "me": false,
     "weeks": [
-     135.4,
-     143.1
+     135.3,
+     143.0
     ],
-    "total": 278.5,
-    "odds": 0.921
-   },
-   {
-    "name": "Mike's Magnificent Team",
-    "me": false,
-    "weeks": [
-     126.5,
-     148.5
-    ],
-    "total": 275.0,
-    "odds": 0.141
+    "total": 278.3,
+    "odds": 0.919
    },
    {
     "name": "Torts Illustrated",
     "me": false,
     "weeks": [
-     134.2,
-     134.7
+     131.7,
+     137.3
     ],
-    "total": 268.9,
-    "odds": 0.664
+    "total": 269.0,
+    "odds": 0.736
    }
   ],
   "mine": [
@@ -4096,16 +4897,6 @@
     "total": 7
    },
    {
-    "name": "Gavin McKenna",
-    "group": "F",
-    "team": "TOR",
-    "weeks": [
-     4,
-     3
-    ],
-    "total": 7
-   },
-   {
     "name": "Joel Eriksson Ek",
     "group": "F",
     "team": "MIN",
@@ -4136,16 +4927,6 @@
     "total": 7
    },
    {
-    "name": "Tristan Luneau",
-    "group": "D",
-    "team": "ANA",
-    "weeks": [
-     4,
-     3
-    ],
-    "total": 7
-   },
-   {
     "name": "Pyotr Kochetkov",
     "group": "G",
     "team": "CAR",
@@ -4157,6 +4938,26 @@
    },
    {
     "name": "Robert Thomas",
+    "group": "F",
+    "team": "STL",
+    "weeks": [
+     4,
+     3
+    ],
+    "total": 7
+   },
+   {
+    "name": "Frank Nazar",
+    "group": "F",
+    "team": "CHI",
+    "weeks": [
+     4,
+     3
+    ],
+    "total": 7
+   },
+   {
+    "name": "Jimmy Snuggerud",
     "group": "F",
     "team": "STL",
     "weeks": [
@@ -4198,7 +4999,7 @@
     "F": {
      "q": 1,
      "ros": 6,
-     "ros_pts": 1426
+     "ros_pts": 1424
     },
     "D": {
      "q": 4,
@@ -4213,7 +5014,7 @@
     "Total": {
      "q": 4,
      "ros": 7,
-     "ros_pts": 2368
+     "ros_pts": 2366
     }
    },
    "players": [
@@ -4224,20 +5025,20 @@
      "group": "F",
      "team": "EDM",
      "injury": "",
-     "rate": 3.93,
+     "rate": 3.88,
      "src": {
       "sheet": 3.01,
-      "model": 3.93,
+      "model": 3.88,
       "espn": 3.19,
-      "pace": 4.0,
-      "l15": 3.07
+      "pace": 3.92,
+      "l15": 2.95
      },
-     "cons": 3.56,
-     "dis": 0.23,
-     "exp_game": 3.88,
-     "gp": 24,
-     "fp": 96.0,
-     "ros": 198.0,
+     "cons": 3.53,
+     "dis": 0.21,
+     "exp_game": 3.83,
+     "gp": 25,
+     "fp": 98.1,
+     "ros": 195.4,
      "slot": "F"
     },
     {
@@ -4269,7 +5070,7 @@
      "pos": "D",
      "group": "D",
      "team": "MIN",
-     "injury": "DAY_TO_DAY",
+     "injury": "OUT",
      "rate": 2.69,
      "src": {
       "sheet": 2.46,
@@ -4756,24 +5557,24 @@
    "surplus": "F",
    "ranks": {
     "F": {
-     "q": 2,
+     "q": 3,
      "ros": 1,
-     "ros_pts": 1663
+     "ros_pts": 1660
     },
     "D": {
      "q": 8,
-     "ros": 6,
-     "ros_pts": 508
+     "ros": 7,
+     "ros_pts": 505
     },
     "G": {
      "q": 3,
-     "ros": 5,
+     "ros": 6,
      "ros_pts": 324
     },
     "Total": {
      "q": 7,
      "ros": 2,
-     "ros_pts": 2496
+     "ros_pts": 2489
     }
    },
    "players": [
@@ -4945,20 +5746,20 @@
      "group": "F",
      "team": "CAR",
      "injury": "",
-     "rate": 2.16,
+     "rate": 2.13,
      "src": {
       "sheet": 1.47,
-      "model": 2.16,
+      "model": 2.13,
       "espn": 1.27,
-      "pace": 2.25,
-      "l15": 1.55
+      "pace": 2.2,
+      "l15": 1.46
      },
-     "cons": 1.85,
-     "dis": 0.53,
-     "exp_game": 2.16,
-     "gp": 22,
-     "fp": 49.4,
-     "ros": 112.3,
+     "cons": 1.8,
+     "dis": 0.52,
+     "exp_game": 2.13,
+     "gp": 23,
+     "fp": 50.5,
+     "ros": 110.8,
      "slot": "F"
     },
     {
@@ -5100,29 +5901,6 @@
      "slot": "D"
     },
     {
-     "id": 5103645,
-     "name": "Jackson Blake",
-     "pos": "RW",
-     "group": "F",
-     "team": "CAR",
-     "injury": "",
-     "rate": 1.82,
-     "src": {
-      "sheet": 1.58,
-      "model": 1.82,
-      "espn": 1.44,
-      "pace": 1.85,
-      "l15": 1.9
-     },
-     "cons": 1.84,
-     "dis": 0.23,
-     "exp_game": 1.82,
-     "gp": 22,
-     "fp": 40.8,
-     "ros": 94.9,
-     "slot": "F"
-    },
-    {
      "id": 3904183,
      "name": "Roope Hintz",
      "pos": "C",
@@ -5166,6 +5944,29 @@
      "gp": 23,
      "fp": 44.2,
      "ros": 92.8,
+     "slot": "F"
+    },
+    {
+     "id": 5103645,
+     "name": "Jackson Blake",
+     "pos": "RW",
+     "group": "F",
+     "team": "CAR",
+     "injury": "",
+     "rate": 1.78,
+     "src": {
+      "sheet": 1.58,
+      "model": 1.78,
+      "espn": 1.44,
+      "pace": 1.8,
+      "l15": 1.62
+     },
+     "cons": 1.7,
+     "dis": 0.21,
+     "exp_game": 1.78,
+     "gp": 23,
+     "fp": 41.3,
+     "ros": 92.4,
      "slot": "F"
     },
     {
@@ -5284,29 +6085,6 @@
      "slot": "D"
     },
     {
-     "id": 3025662,
-     "name": "Shayne Gostisbehere",
-     "pos": "D",
-     "group": "D",
-     "team": "CAR",
-     "injury": "",
-     "rate": 1.6,
-     "src": {
-      "sheet": 1.73,
-      "model": 1.6,
-      "espn": 1.96,
-      "pace": 1.59,
-      "l15": 1.85
-     },
-     "cons": 1.73,
-     "dis": 0.22,
-     "exp_game": 1.5,
-     "gp": 22,
-     "fp": 34.9,
-     "ros": 78.2,
-     "slot": "D"
-    },
-    {
      "id": 3904186,
      "name": "Rasmus Andersson",
      "pos": "D",
@@ -5328,6 +6106,29 @@
      "fp": 35.1,
      "ros": 75.5,
      "slot": "BE"
+    },
+    {
+     "id": 3025662,
+     "name": "Shayne Gostisbehere",
+     "pos": "D",
+     "group": "D",
+     "team": "CAR",
+     "injury": "",
+     "rate": 1.54,
+     "src": {
+      "sheet": 1.73,
+      "model": 1.54,
+      "espn": 1.96,
+      "pace": 1.52,
+      "l15": 1.48
+     },
+     "cons": 1.53,
+     "dis": 0.29,
+     "exp_game": 1.44,
+     "gp": 23,
+     "fp": 34.9,
+     "ros": 75.0,
+     "slot": "D"
     },
     {
      "id": 4319911,
@@ -5363,8 +6164,8 @@
    "ranks": {
     "F": {
      "q": 8,
-     "ros": 3,
-     "ros_pts": 1472
+     "ros": 4,
+     "ros_pts": 1470
     },
     "D": {
      "q": 3,
@@ -5378,8 +6179,8 @@
     },
     "Total": {
      "q": 3,
-     "ros": 4,
-     "ros_pts": 2471
+     "ros": 5,
+     "ros_pts": 2469
     }
    },
    "players": [
@@ -5481,7 +6282,7 @@
      "pos": "RW",
      "group": "F",
      "team": "ANA",
-     "injury": "",
+     "injury": "INJURY_RESERVE",
      "rate": 2.42,
      "src": {
       "sheet": 2.11,
@@ -5496,7 +6297,7 @@
      "gp": 22,
      "fp": 54.2,
      "ros": 126.1,
-     "slot": "IR"
+     "slot": "F"
     },
     {
      "id": 3648002,
@@ -5666,20 +6467,20 @@
      "group": "F",
      "team": "EDM",
      "injury": "",
-     "rate": 2.13,
+     "rate": 2.09,
      "src": {
       "sheet": 1.39,
-      "model": 2.13,
+      "model": 2.09,
       "espn": 1.39,
-      "pace": 2.18,
-      "l15": 1.91
+      "pace": 2.12,
+      "l15": 1.76
      },
-     "cons": 2.02,
-     "dis": 0.39,
-     "exp_game": 2.02,
-     "gp": 24,
-     "fp": 52.4,
-     "ros": 103.2,
+     "cons": 1.92,
+     "dis": 0.38,
+     "exp_game": 1.99,
+     "gp": 25,
+     "fp": 53.1,
+     "ros": 101.3,
      "slot": "F"
     },
     {
@@ -5772,7 +6573,7 @@
      "gp": 19,
      "fp": 33.4,
      "ros": 87.6,
-     "slot": "F"
+     "slot": "IR"
     },
     {
      "id": 5149155,
@@ -5968,24 +6769,24 @@
    "surplus": "F",
    "ranks": {
     "F": {
-     "q": 3,
+     "q": 2,
      "ros": 2,
-     "ros_pts": 1632
+     "ros_pts": 1630
     },
     "D": {
      "q": 7,
      "ros": 8,
-     "ros_pts": 452
+     "ros_pts": 451
     },
     "G": {
      "q": 5,
      "ros": 2,
-     "ros_pts": 396
+     "ros_pts": 397
     },
     "Total": {
      "q": 6,
-     "ros": 3,
-     "ros_pts": 2480
+     "ros": 4,
+     "ros_pts": 2477
     }
    },
    "players": [
@@ -6133,7 +6934,7 @@
      "pos": "LW",
      "group": "F",
      "team": "LA",
-     "injury": "DAY_TO_DAY",
+     "injury": "OUT",
      "rate": 2.19,
      "src": {
       "sheet": 1.99,
@@ -6226,20 +7027,20 @@
      "group": "G",
      "team": "EDM",
      "injury": "",
-     "rate": 2.85,
+     "rate": 2.88,
      "src": {
       "sheet": null,
-      "model": 2.85,
+      "model": 2.88,
       "espn": null,
-      "pace": 4.92,
-      "l15": 5.72
+      "pace": 4.65,
+      "l15": 5.0
      },
-     "cons": 4.92,
-     "dis": 0.42,
-     "exp_game": 2.09,
-     "gp": 12,
-     "fp": 59.0,
-     "ros": 106.4,
+     "cons": 4.65,
+     "dis": 0.38,
+     "exp_game": 2.11,
+     "gp": 13,
+     "fp": 60.4,
+     "ros": 107.5,
      "slot": "BE"
     },
     {
@@ -6266,6 +7067,29 @@
      "slot": "D"
     },
     {
+     "id": 4272905,
+     "name": "Sean Walker",
+     "pos": "D",
+     "group": "D",
+     "team": "CAR",
+     "injury": "",
+     "rate": 1.96,
+     "src": {
+      "sheet": 1.42,
+      "model": 1.96,
+      "espn": 1.61,
+      "pace": 2.01,
+      "l15": 1.46
+     },
+     "cons": 1.78,
+     "dis": 0.23,
+     "exp_game": 1.96,
+     "gp": 23,
+     "fp": 46.3,
+     "ros": 101.9,
+     "slot": "D"
+    },
+    {
      "id": 3096249,
      "name": "Devon Toews",
      "pos": "D",
@@ -6286,29 +7110,6 @@
      "gp": 23,
      "fp": 47.1,
      "ros": 100.1,
-     "slot": "D"
-    },
-    {
-     "id": 4272905,
-     "name": "Sean Walker",
-     "pos": "D",
-     "group": "D",
-     "team": "CAR",
-     "injury": "",
-     "rate": 1.92,
-     "src": {
-      "sheet": 1.42,
-      "model": 1.92,
-      "espn": 1.61,
-      "pace": 1.99,
-      "l15": 1.18
-     },
-     "cons": 1.77,
-     "dis": 0.21,
-     "exp_game": 1.92,
-     "gp": 22,
-     "fp": 43.7,
-     "ros": 100.0,
      "slot": "D"
     },
     {
@@ -6502,20 +7303,20 @@
      "group": "D",
      "team": "EDM",
      "injury": "",
-     "rate": 1.44,
+     "rate": 1.38,
      "src": {
       "sheet": 1.43,
-      "model": 1.44,
+      "model": 1.38,
       "espn": 1.58,
-      "pace": 1.44,
-      "l15": 1.77
+      "pace": 1.38,
+      "l15": 1.55
      },
-     "cons": 1.51,
-     "dis": 0.09,
-     "exp_game": 1.42,
-     "gp": 22,
+     "cons": 1.47,
+     "dis": 0.14,
+     "exp_game": 1.37,
+     "gp": 23,
      "fp": 31.7,
-     "ros": 72.5,
+     "ros": 69.7,
      "slot": "D"
     },
     {
@@ -6525,20 +7326,20 @@
      "group": "F",
      "team": "EDM",
      "injury": "",
-     "rate": 1.47,
+     "rate": 1.4,
      "src": {
       "sheet": 1.96,
-      "model": 1.47,
+      "model": 1.4,
       "espn": 2.15,
-      "pace": 1.16,
-      "l15": 1.56
+      "pace": 1.11,
+      "l15": 1.42
      },
-     "cons": 1.51,
-     "dis": 0.65,
-     "exp_game": 1.39,
-     "gp": 13,
-     "fp": 15.1,
-     "ros": 71.1,
+     "cons": 1.41,
+     "dis": 0.73,
+     "exp_game": 1.33,
+     "gp": 14,
+     "fp": 15.6,
+     "ros": 68.0,
      "slot": "F"
     },
     {
@@ -6575,23 +7376,23 @@
    "ranks": {
     "F": {
      "q": 4,
-     "ros": 4,
-     "ros_pts": 1465
+     "ros": 3,
+     "ros_pts": 1564
     },
     "D": {
      "q": 1,
-     "ros": 2,
-     "ros_pts": 756
+     "ros": 3,
+     "ros_pts": 691
     },
     "G": {
      "q": 1,
      "ros": 1,
-     "ros_pts": 450
+     "ros_pts": 446
     },
     "Total": {
      "q": 1,
      "ros": 1,
-     "ros_pts": 2672
+     "ros_pts": 2701
     }
    },
    "players": [
@@ -6648,20 +7449,20 @@
      "group": "D",
      "team": "EDM",
      "injury": "",
-     "rate": 3.11,
+     "rate": 3.08,
      "src": {
       "sheet": 2.44,
-      "model": 3.11,
+      "model": 3.08,
       "espn": 2.41,
-      "pace": 3.16,
-      "l15": 2.24
+      "pace": 3.12,
+      "l15": 2.21
      },
-     "cons": 2.76,
-     "dis": 0.27,
-     "exp_game": 3.11,
-     "gp": 24,
-     "fp": 75.9,
-     "ros": 158.7,
+     "cons": 2.75,
+     "dis": 0.26,
+     "exp_game": 3.08,
+     "gp": 25,
+     "fp": 77.9,
+     "ros": 157.2,
      "slot": "D"
     },
     {
@@ -6780,29 +7581,6 @@
      "slot": "F"
     },
     {
-     "id": 4565259,
-     "name": "Pyotr Kochetkov",
-     "pos": "G",
-     "group": "G",
-     "team": "CAR",
-     "injury": "",
-     "rate": 4.79,
-     "src": {
-      "sheet": 4.06,
-      "model": 4.79,
-      "espn": null,
-      "pace": 5.16,
-      "l15": 3.97
-     },
-     "cons": 4.79,
-     "dis": 0.08,
-     "exp_game": 2.34,
-     "gp": 14,
-     "fp": 72.3,
-     "ros": 121.5,
-     "slot": "BE"
-    },
-    {
      "id": 4565222,
      "name": "Jack Hughes",
      "pos": "C/LW",
@@ -6847,6 +7625,29 @@
      "fp": 54.0,
      "ros": 118.9,
      "slot": "F"
+    },
+    {
+     "id": 4565259,
+     "name": "Pyotr Kochetkov",
+     "pos": "G",
+     "group": "G",
+     "team": "CAR",
+     "injury": "",
+     "rate": 4.52,
+     "src": {
+      "sheet": 4.06,
+      "model": 4.52,
+      "espn": null,
+      "pace": 4.71,
+      "l15": 2.58
+     },
+     "cons": 4.52,
+     "dis": 0.04,
+     "exp_game": 2.2,
+     "gp": 15,
+     "fp": 70.7,
+     "ros": 114.6,
+     "slot": "BE"
     },
     {
      "id": 4024950,
@@ -7033,6 +7834,29 @@
      "slot": "BE"
     },
     {
+     "id": 5080171,
+     "name": "Jimmy Snuggerud",
+     "pos": "RW",
+     "group": "F",
+     "team": "STL",
+     "injury": "",
+     "rate": 1.85,
+     "src": {
+      "sheet": 1.87,
+      "model": 1.85,
+      "espn": 1.7,
+      "pace": 1.85,
+      "l15": 2.15
+     },
+     "cons": 1.85,
+     "dis": 0.08,
+     "exp_game": 1.78,
+     "gp": 22,
+     "fp": 40.6,
+     "ros": 92.6,
+     "slot": "BE"
+    },
+    {
      "id": 4233637,
      "name": "Robert Thomas",
      "pos": "C",
@@ -7052,6 +7876,29 @@
      "exp_game": 1.64,
      "gp": 22,
      "fp": 36.7,
+     "ros": 85.4,
+     "slot": "UTIL"
+    },
+    {
+     "id": 5080157,
+     "name": "Frank Nazar",
+     "pos": "C",
+     "group": "F",
+     "team": "CHI",
+     "injury": "",
+     "rate": 1.79,
+     "src": {
+      "sheet": 1.51,
+      "model": 1.79,
+      "espn": 1.54,
+      "pace": 1.85,
+      "l15": 3.46
+     },
+     "cons": 1.82,
+     "dis": 0.17,
+     "exp_game": 1.64,
+     "gp": 20,
+     "fp": 36.9,
      "ros": 85.4,
      "slot": "UTIL"
     },
@@ -7084,7 +7931,7 @@
      "pos": "LW/RW",
      "group": "F",
      "team": "NYR",
-     "injury": "DAY_TO_DAY",
+     "injury": "INJURY_RESERVE",
      "rate": 1.54,
      "src": {
       "sheet": 1.96,
@@ -7123,52 +7970,6 @@
      "fp": 26.3,
      "ros": 81.8,
      "slot": "F"
-    },
-    {
-     "id": 5080220,
-     "name": "Tristan Luneau",
-     "pos": "D",
-     "group": "D",
-     "team": "ANA",
-     "injury": "",
-     "rate": 1.53,
-     "src": {
-      "sheet": 1.28,
-      "model": 1.53,
-      "espn": null,
-      "pace": 1.56,
-      "l15": 1.24
-     },
-     "cons": 1.53,
-     "dis": 0.02,
-     "exp_game": 1.27,
-     "gp": 23,
-     "fp": 35.8,
-     "ros": 66.1,
-     "slot": "UTIL"
-    },
-    {
-     "id": 5342529,
-     "name": "Gavin McKenna",
-     "pos": "LW",
-     "group": "F",
-     "team": "TOR",
-     "injury": "",
-     "rate": 1.23,
-     "src": {
-      "sheet": 1.77,
-      "model": 1.23,
-      "espn": 1.63,
-      "pace": 1.19,
-      "l15": 0.84
-     },
-     "cons": 1.21,
-     "dis": 0.37,
-     "exp_game": 1.2,
-     "gp": 24,
-     "fp": 28.5,
-     "ros": 61.1,
-     "slot": "BE"
     }
    ]
   },
@@ -7186,18 +7987,18 @@
     },
     "D": {
      "q": 5,
-     "ros": 3,
+     "ros": 2,
      "ros_pts": 698
     },
     "G": {
      "q": 2,
-     "ros": 6,
-     "ros_pts": 321
+     "ros": 5,
+     "ros_pts": 345
     },
     "Total": {
      "q": 5,
-     "ros": 5,
-     "ros_pts": 2454
+     "ros": 3,
+     "ros_pts": 2477
     }
    },
    "players": [
@@ -7208,20 +8009,20 @@
      "group": "F",
      "team": "EDM",
      "injury": "",
-     "rate": 3.58,
+     "rate": 3.57,
      "src": {
       "sheet": 2.78,
-      "model": 3.58,
+      "model": 3.57,
       "espn": 2.65,
-      "pace": 3.64,
-      "l15": 4.0
+      "pace": 3.61,
+      "l15": 3.85
      },
-     "cons": 3.61,
+     "cons": 3.59,
      "dis": 0.27,
-     "exp_game": 3.45,
-     "gp": 24,
-     "fp": 87.4,
-     "ros": 176.0,
+     "exp_game": 3.44,
+     "gp": 25,
+     "fp": 90.2,
+     "ros": 175.3,
      "slot": "F"
     },
     {
@@ -7453,6 +8254,29 @@
      "fp": 38.4,
      "ros": 109.1,
      "slot": "D"
+    },
+    {
+     "id": 4587952,
+     "name": "Dustin Wolf",
+     "pos": "G",
+     "group": "G",
+     "team": "CGY",
+     "injury": "",
+     "rate": 3.11,
+     "src": {
+      "sheet": 3.99,
+      "model": 3.11,
+      "espn": 3.48,
+      "pace": 2.58,
+      "l15": 3.3
+     },
+     "cons": 3.21,
+     "dis": 0.28,
+     "exp_game": 2.09,
+     "gp": 13,
+     "fp": 33.5,
+     "ros": 108.6,
+     "slot": "G"
     },
     {
      "id": 3114802,
@@ -7752,29 +8576,6 @@
      "fp": 31.7,
      "ros": 64.4,
      "slot": "D"
-    },
-    {
-     "id": 4587994,
-     "name": "Daniil Tarasov",
-     "pos": "G",
-     "group": "G",
-     "team": "DET",
-     "injury": "",
-     "rate": 3.96,
-     "src": {
-      "sheet": 3.53,
-      "model": 3.96,
-      "espn": 3.49,
-      "pace": 4.38,
-      "l15": 5.27
-     },
-     "cons": 4.17,
-     "dis": 0.21,
-     "exp_game": 1.21,
-     "gp": 10,
-     "fp": 43.8,
-     "ros": 62.7,
-     "slot": "G"
     }
    ]
   },
@@ -7788,7 +8589,7 @@
     "F": {
      "q": 5,
      "ros": 7,
-     "ros_pts": 1403
+     "ros_pts": 1397
     },
     "D": {
      "q": 2,
@@ -7803,7 +8604,7 @@
     "Total": {
      "q": 2,
      "ros": 6,
-     "ros_pts": 2424
+     "ros_pts": 2418
     }
    },
    "players": [
@@ -8020,7 +8821,7 @@
      "pos": "C",
      "group": "F",
      "team": "VAN",
-     "injury": "",
+     "injury": "OUT",
      "rate": 2.34,
      "src": {
       "sheet": 2.16,
@@ -8090,20 +8891,20 @@
      "group": "F",
      "team": "CAR",
      "injury": "",
-     "rate": 2.2,
+     "rate": 2.14,
      "src": {
       "sheet": 1.93,
-      "model": 2.2,
+      "model": 2.14,
       "espn": 1.92,
-      "pace": 2.24,
-      "l15": 3.1
+      "pace": 2.16,
+      "l15": 2.58
      },
-     "cons": 2.22,
-     "dis": 0.14,
-     "exp_game": 2.15,
-     "gp": 22,
-     "fp": 49.2,
-     "ros": 111.7,
+     "cons": 2.15,
+     "dis": 0.11,
+     "exp_game": 2.09,
+     "gp": 23,
+     "fp": 49.7,
+     "ros": 108.6,
      "slot": "F"
     },
     {
@@ -8127,29 +8928,6 @@
      "gp": 19,
      "fp": 37.3,
      "ros": 98.1,
-     "slot": "F"
-    },
-    {
-     "id": 3114741,
-     "name": "Nikolaj Ehlers",
-     "pos": "LW",
-     "group": "F",
-     "team": "CAR",
-     "injury": "",
-     "rate": 1.83,
-     "src": {
-      "sheet": 1.89,
-      "model": 1.83,
-      "espn": 1.83,
-      "pace": 1.82,
-      "l15": 3.0
-     },
-     "cons": 1.83,
-     "dis": 0.0,
-     "exp_game": 1.83,
-     "gp": 22,
-     "fp": 40.1,
-     "ros": 95.2,
      "slot": "F"
     },
     {
@@ -8197,6 +8975,29 @@
      "fp": 46.7,
      "ros": 92.7,
      "slot": "D"
+    },
+    {
+     "id": 3114741,
+     "name": "Nikolaj Ehlers",
+     "pos": "LW",
+     "group": "F",
+     "team": "CAR",
+     "injury": "",
+     "rate": 1.76,
+     "src": {
+      "sheet": 1.89,
+      "model": 1.76,
+      "espn": 1.83,
+      "pace": 1.75,
+      "l15": 2.42
+     },
+     "cons": 1.8,
+     "dis": 0.05,
+     "exp_game": 1.76,
+     "gp": 23,
+     "fp": 40.2,
+     "ros": 91.6,
+     "slot": "F"
     },
     {
      "id": 4268466,
@@ -8348,11 +9149,11 @@
     "F": {
      "q": 7,
      "ros": 8,
-     "ros_pts": 1398
+     "ros_pts": 1390
     },
     "D": {
      "q": 6,
-     "ros": 7,
+     "ros": 6,
      "ros_pts": 506
     },
     "G": {
@@ -8363,7 +9164,7 @@
     "Total": {
      "q": 8,
      "ros": 8,
-     "ros_pts": 2259
+     "ros_pts": 2251
     }
    },
    "players": [
@@ -8443,20 +9244,20 @@
      "group": "F",
      "team": "CAR",
      "injury": "",
-     "rate": 2.56,
+     "rate": 2.48,
      "src": {
       "sheet": 2.02,
-      "model": 2.56,
+      "model": 2.48,
       "espn": 2.03,
-      "pace": 2.62,
-      "l15": 2.88
+      "pace": 2.53,
+      "l15": 2.4
      },
-     "cons": 2.59,
-     "dis": 0.23,
-     "exp_game": 2.56,
-     "gp": 22,
-     "fp": 57.7,
-     "ros": 132.9,
+     "cons": 2.44,
+     "dis": 0.2,
+     "exp_game": 2.48,
+     "gp": 23,
+     "fp": 58.2,
+     "ros": 129.2,
      "slot": "F"
     },
     {
@@ -8759,29 +9560,6 @@
      "slot": "F"
     },
     {
-     "id": 4697396,
-     "name": "Seth Jarvis",
-     "pos": "RW",
-     "group": "F",
-     "team": "CAR",
-     "injury": "",
-     "rate": 1.93,
-     "src": {
-      "sheet": 2.3,
-      "model": 1.93,
-      "espn": 2.2,
-      "pace": 1.62,
-      "l15": 1.1
-     },
-     "cons": 1.77,
-     "dis": 0.33,
-     "exp_game": 1.58,
-     "gp": 11,
-     "fp": 17.8,
-     "ros": 82.0,
-     "slot": "F"
-    },
-    {
      "id": 5188366,
      "name": "Sergei Murashov",
      "pos": "G",
@@ -8803,6 +9581,29 @@
      "fp": 24.3,
      "ros": 79.9,
      "slot": "G"
+    },
+    {
+     "id": 4697396,
+     "name": "Seth Jarvis",
+     "pos": "RW",
+     "group": "F",
+     "team": "CAR",
+     "injury": "",
+     "rate": 1.83,
+     "src": {
+      "sheet": 2.3,
+      "model": 1.83,
+      "espn": 2.2,
+      "pace": 1.49,
+      "l15": 0.9
+     },
+     "cons": 1.66,
+     "dis": 0.43,
+     "exp_game": 1.5,
+     "gp": 12,
+     "fp": 17.9,
+     "ros": 77.8,
+     "slot": "F"
     },
     {
      "id": 3069341,
@@ -8904,59 +9705,37 @@
   "F": {
    "quality": 20.9,
    "quality_rank": 4,
-   "ros": 1465.5,
-   "ros_rank": 4,
-   "ros_best": 1663.5,
+   "ros": 1563.8,
+   "ros_rank": 3,
+   "ros_best": 1659.5,
    "cons_rank": 1
   },
   "D": {
    "quality": 11.8,
    "quality_rank": 1,
-   "ros": 756.4,
-   "ros_rank": 2,
+   "ros": 691.3,
+   "ros_rank": 3,
    "ros_best": 764.5,
    "cons_rank": 1
   },
   "G": {
    "quality": 6.2,
    "quality_rank": 1,
-   "ros": 450.2,
+   "ros": 445.7,
    "ros_rank": 1,
-   "ros_best": 450.2,
+   "ros_best": 445.7,
    "cons_rank": 2
   },
   "Total": {
    "quality": 38.9,
    "quality_rank": 1,
-   "ros": 2672.1,
+   "ros": 2700.8,
    "ros_rank": 1,
-   "ros_best": 2672.1,
+   "ros_best": 2700.8,
    "cons_rank": 1
   }
  },
  "weakest_starters": [
-  {
-   "id": 4233637,
-   "name": "Robert Thomas",
-   "pos": "C",
-   "group": "F",
-   "team": "STL",
-   "injury": "",
-   "rate": 1.7,
-   "src": {
-    "sheet": 2.0,
-    "model": 1.7,
-    "espn": 2.08,
-    "pace": 1.67,
-    "l15": 1.95
-   },
-   "cons": 1.83,
-   "dis": 0.23,
-   "exp_game": 1.64,
-   "gp": 22,
-   "fp": 36.7,
-   "ros": 85.4
-  },
   {
    "id": 4874723,
    "name": "Dylan Guenther",
@@ -9000,9 +9779,56 @@
    "gp": 21,
    "fp": 42.0,
    "ros": 95.0
+  },
+  {
+   "id": 5080171,
+   "name": "Jimmy Snuggerud",
+   "pos": "RW",
+   "group": "F",
+   "team": "STL",
+   "injury": "",
+   "rate": 1.85,
+   "src": {
+    "sheet": 1.87,
+    "model": 1.85,
+    "espn": 1.7,
+    "pace": 1.85,
+    "l15": 2.15
+   },
+   "cons": 1.85,
+   "dis": 0.08,
+   "exp_game": 1.78,
+   "gp": 22,
+   "fp": 40.6,
+   "ros": 92.6
   }
  ],
  "add_alerts": [
+  {
+   "id": 3904189,
+   "name": "Vince Dunn",
+   "pos": "D",
+   "group": "D",
+   "team": "SEA",
+   "injury": "",
+   "rate": 1.78,
+   "src": {
+    "sheet": 1.66,
+    "model": 1.78,
+    "espn": 1.64,
+    "pace": 1.8,
+    "l15": 1.75
+   },
+   "cons": 1.76,
+   "dis": 0.09,
+   "exp_game": 1.71,
+   "gp": 19,
+   "fp": 34.2,
+   "ros": 94.1,
+   "gain": 29.1,
+   "drop": "Victor Olofsson",
+   "waiver": ""
+  },
   {
    "id": 5149172,
    "name": "Ryan Leonard",
@@ -9024,83 +9850,58 @@
    "gp": 20,
    "fp": 40.9,
    "ros": 97.8,
-   "gain": 40.4,
-   "drop": "Gavin McKenna",
+   "gain": 28.4,
+   "drop": "Victor Olofsson",
    "waiver": ""
   },
   {
-   "id": 4565244,
-   "name": "Simon Holmstrom",
-   "pos": "RW",
-   "group": "F",
-   "team": "NYI",
+   "id": 4378677,
+   "name": "Martin Fehervary",
+   "pos": "D",
+   "group": "D",
+   "team": "WSH",
    "injury": "",
-   "rate": 1.78,
+   "rate": 1.7,
    "src": {
-    "sheet": 1.42,
-    "model": 1.78,
-    "espn": 1.3,
-    "pace": 1.83,
-    "l15": 3.27
-   },
-   "cons": 1.81,
-   "dis": 0.3,
-   "exp_game": 1.78,
-   "gp": 21,
-   "fp": 38.5,
-   "ros": 96.1,
-   "gain": 39.6,
-   "drop": "Gavin McKenna",
-   "waiver": ""
-  },
-  {
-   "id": 5216860,
-   "name": "Ivan Demidov",
-   "pos": "RW",
-   "group": "F",
-   "team": "MTL",
-   "injury": "INJURY_RESERVE",
-   "rate": 1.75,
-   "src": {
-    "sheet": 1.74,
-    "model": 1.75,
-    "espn": 1.39,
-    "pace": null,
-    "l15": null
-   },
-   "cons": 1.57,
-   "dis": 0.23,
-   "exp_game": 1.75,
-   "gp": 2,
-   "fp": 3.7,
-   "ros": 89.2,
-   "gain": 34.6,
-   "drop": "Gavin McKenna",
-   "waiver": ""
-  },
-  {
-   "id": 5219,
-   "name": "Brayden Schenn",
-   "pos": "C/LW",
-   "group": "F",
-   "team": "NYI",
-   "injury": "",
-   "rate": 1.69,
-   "src": {
-    "sheet": 1.23,
-    "model": 1.69,
-    "espn": 1.55,
-    "pace": 1.76,
-    "l15": 1.65
+    "sheet": 1.54,
+    "model": 1.7,
+    "espn": 1.64,
+    "pace": 1.73,
+    "l15": 1.58
    },
    "cons": 1.67,
-   "dis": 0.13,
-   "exp_game": 1.69,
-   "gp": 21,
-   "fp": 36.9,
-   "ros": 91.2,
-   "gain": 33.6,
-   "drop": "Gavin McKenna",
+   "dis": 0.05,
+   "exp_game": 1.7,
+   "gp": 20,
+   "fp": 34.5,
+   "ros": 90.0,
+   "gain": 28.4,
+   "drop": "Victor Olofsson",
+   "waiver": ""
+  },
+  {
+   "id": 4565225,
+   "name": "Bowen Byram",
+   "pos": "D",
+   "group": "D",
+   "team": "CHI",
+   "injury": "INJURY_RESERVE",
+   "rate": 1.71,
+   "src": {
+    "sheet": 1.81,
+    "model": 1.71,
+    "espn": 1.82,
+    "pace": 1.12,
+    "l15": null
+   },
+   "cons": 1.71,
+   "dis": 0.41,
+   "exp_game": 1.71,
+   "gp": 6,
+   "fp": 6.7,
+   "ros": 89.2,
+   "gain": 27.7,
+   "drop": "Victor Olofsson",
    "waiver": ""
   },
   {
@@ -9124,59 +9925,13 @@
    "gp": 0,
    "fp": 0.0,
    "ros": 90.1,
-   "gain": 32.4,
-   "drop": "Gavin McKenna",
+   "gain": 25.6,
+   "drop": "Victor Olofsson",
    "waiver": ""
   }
  ],
  "drop_watch": [
   {
-   "id": 5342529,
-   "name": "Gavin McKenna",
-   "pos": "LW",
-   "group": "F",
-   "team": "TOR",
-   "injury": "",
-   "rate": 1.23,
-   "src": {
-    "sheet": 1.77,
-    "model": 1.23,
-    "espn": 1.63,
-    "pace": 1.19,
-    "l15": 0.84
-   },
-   "cons": 1.21,
-   "dis": 0.37,
-   "exp_game": 1.2,
-   "gp": 24,
-   "fp": 28.5,
-   "ros": 61.1,
-   "cost": 63.5
-  },
-  {
-   "id": 5080220,
-   "name": "Tristan Luneau",
-   "pos": "D",
-   "group": "D",
-   "team": "ANA",
-   "injury": "",
-   "rate": 1.53,
-   "src": {
-    "sheet": 1.28,
-    "model": 1.53,
-    "espn": null,
-    "pace": 1.56,
-    "l15": 1.24
-   },
-   "cons": 1.53,
-   "dis": 0.02,
-   "exp_game": 1.27,
-   "gp": 23,
-   "fp": 35.8,
-   "ros": 66.1,
-   "cost": 73.8
-  },
-  {
    "id": 3151096,
    "name": "Victor Olofsson",
    "pos": "RW",
@@ -9197,138 +9952,7 @@
    "gp": 11,
    "fp": 26.3,
    "ros": 81.8,
-   "cost": 84.8
-  }
- ],
- "underperformers": [
-  {
-   "id": 5342529,
-   "name": "Gavin McKenna",
-   "pos": "LW",
-   "group": "F",
-   "team": "TOR",
-   "injury": "",
-   "rate": 1.23,
-   "src": {
-    "sheet": 1.77,
-    "model": 1.23,
-    "espn": 1.63,
-    "pace": 1.19,
-    "l15": 0.84
-   },
-   "cons": 1.21,
-   "dis": 0.37,
-   "exp_game": 1.2,
-   "gp": 24,
-   "fp": 28.5,
-   "actual": 1.19,
-   "proj": 1.77
-  }
- ],
- "drop_ranking": [
-  {
-   "id": 5342529,
-   "name": "Gavin McKenna",
-   "pos": "LW",
-   "group": "F",
-   "team": "TOR",
-   "injury": "",
-   "rate": 1.23,
-   "src": {
-    "sheet": 1.77,
-    "model": 1.23,
-    "espn": 1.63,
-    "pace": 1.19,
-    "l15": 0.84
-   },
-   "cons": 1.21,
-   "dis": 0.37,
-   "exp_game": 1.2,
-   "gp": 24,
-   "fp": 28.5,
-   "ros": 61.1,
-   "cost": 63.5,
-   "po_games": 7,
-   "last7": 1.4,
-   "light": 21
-  },
-  {
-   "id": 5080220,
-   "name": "Tristan Luneau",
-   "pos": "D",
-   "group": "D",
-   "team": "ANA",
-   "injury": "",
-   "rate": 1.53,
-   "src": {
-    "sheet": 1.28,
-    "model": 1.53,
-    "espn": null,
-    "pace": 1.56,
-    "l15": 1.24
-   },
-   "cons": 1.53,
-   "dis": 0.02,
-   "exp_game": 1.27,
-   "gp": 23,
-   "fp": 35.8,
-   "ros": 66.1,
-   "cost": 73.8,
-   "po_games": 7,
-   "last7": 2.6,
-   "light": 23
-  },
-  {
-   "id": 3151096,
-   "name": "Victor Olofsson",
-   "pos": "RW",
-   "group": "F",
-   "team": "VGK",
-   "injury": "",
-   "rate": 1.71,
-   "src": {
-    "sheet": 0.91,
-    "model": 1.71,
-    "espn": null,
-    "pace": 2.39,
-    "l15": 2.27
-   },
-   "cons": 2.27,
-   "dis": 0.3,
-   "exp_game": 1.6,
-   "gp": 11,
-   "fp": 26.3,
-   "ros": 81.8,
-   "cost": 84.8,
-   "po_games": 6,
-   "last7": 5.9,
-   "light": 20
-  },
-  {
-   "id": 4587588,
-   "name": "Pavel Dorofeyev",
-   "pos": "LW/RW",
-   "group": "F",
-   "team": "NYR",
-   "injury": "DAY_TO_DAY",
-   "rate": 1.54,
-   "src": {
-    "sheet": 1.96,
-    "model": 1.54,
-    "espn": 1.86,
-    "pace": 1.48,
-    "l15": 1.42
-   },
-   "cons": 1.51,
-   "dis": 0.25,
-   "exp_game": 1.52,
-   "gp": 21,
-   "fp": 31.1,
-   "ros": 82.3,
-   "cost": 89.3,
-   "po_games": 6,
-   "last7": 0,
-   "light": 25
+   "cost": 70.9
   },
   {
    "id": 4233637,
@@ -9351,9 +9975,136 @@
    "gp": 22,
    "fp": 36.7,
    "ros": 85.4,
-   "cost": 90.9,
+   "cost": 76.3
+  },
+  {
+   "id": 5080157,
+   "name": "Frank Nazar",
+   "pos": "C",
+   "group": "F",
+   "team": "CHI",
+   "injury": "",
+   "rate": 1.79,
+   "src": {
+    "sheet": 1.51,
+    "model": 1.79,
+    "espn": 1.54,
+    "pace": 1.85,
+    "l15": 3.46
+   },
+   "cons": 1.82,
+   "dis": 0.17,
+   "exp_game": 1.64,
+   "gp": 20,
+   "fp": 36.9,
+   "ros": 85.4,
+   "cost": 78.0
+  }
+ ],
+ "underperformers": [],
+ "drop_ranking": [
+  {
+   "id": 3151096,
+   "name": "Victor Olofsson",
+   "pos": "RW",
+   "group": "F",
+   "team": "VGK",
+   "injury": "",
+   "rate": 1.71,
+   "src": {
+    "sheet": 0.91,
+    "model": 1.71,
+    "espn": null,
+    "pace": 2.39,
+    "l15": 2.27
+   },
+   "cons": 2.27,
+   "dis": 0.3,
+   "exp_game": 1.6,
+   "gp": 11,
+   "fp": 26.3,
+   "ros": 81.8,
+   "cost": 70.9,
+   "po_games": 6,
+   "last7": 5.9,
+   "light": 20
+  },
+  {
+   "id": 4233637,
+   "name": "Robert Thomas",
+   "pos": "C",
+   "group": "F",
+   "team": "STL",
+   "injury": "",
+   "rate": 1.7,
+   "src": {
+    "sheet": 2.0,
+    "model": 1.7,
+    "espn": 2.08,
+    "pace": 1.67,
+    "l15": 1.95
+   },
+   "cons": 1.83,
+   "dis": 0.23,
+   "exp_game": 1.64,
+   "gp": 22,
+   "fp": 36.7,
+   "ros": 85.4,
+   "cost": 76.3,
    "po_games": 7,
    "last7": 7.5,
+   "light": 20
+  },
+  {
+   "id": 5080157,
+   "name": "Frank Nazar",
+   "pos": "C",
+   "group": "F",
+   "team": "CHI",
+   "injury": "",
+   "rate": 1.79,
+   "src": {
+    "sheet": 1.51,
+    "model": 1.79,
+    "espn": 1.54,
+    "pace": 1.85,
+    "l15": 3.46
+   },
+   "cons": 1.82,
+   "dis": 0.17,
+   "exp_game": 1.64,
+   "gp": 20,
+   "fp": 36.9,
+   "ros": 85.4,
+   "cost": 78.0,
+   "po_games": 7,
+   "last7": 11.1,
+   "light": 28
+  },
+  {
+   "id": 5080171,
+   "name": "Jimmy Snuggerud",
+   "pos": "RW",
+   "group": "F",
+   "team": "STL",
+   "injury": "",
+   "rate": 1.85,
+   "src": {
+    "sheet": 1.87,
+    "model": 1.85,
+    "espn": 1.7,
+    "pace": 1.85,
+    "l15": 2.15
+   },
+   "cons": 1.85,
+   "dis": 0.08,
+   "exp_game": 1.78,
+   "gp": 22,
+   "fp": 40.6,
+   "ros": 92.6,
+   "cost": 85.4,
+   "po_games": 7,
+   "last7": 6.4,
    "light": 20
   },
   {
@@ -9377,36 +10128,10 @@
    "gp": 22,
    "fp": 35.9,
    "ros": 83.9,
-   "cost": 94.0,
+   "cost": 93.7,
    "po_games": 7,
    "last7": 1.4,
    "light": 23
-  },
-  {
-   "id": 4588175,
-   "name": "Charle-Edouard D'Astous",
-   "pos": "D",
-   "group": "D",
-   "team": "TB",
-   "injury": "",
-   "rate": 1.9,
-   "src": {
-    "sheet": 1.2,
-    "model": 1.9,
-    "espn": 1.3,
-    "pace": 2.0,
-    "l15": 2.27
-   },
-   "cons": 1.95,
-   "dis": 0.36,
-   "exp_game": 1.83,
-   "gp": 21,
-   "fp": 42.0,
-   "ros": 95.0,
-   "cost": 105.5,
-   "po_games": 6,
-   "last7": 4.7,
-   "light": 19
   },
   {
    "id": 5545,
@@ -9429,7 +10154,7 @@
    "gp": 24,
    "fp": 57.7,
    "ros": 101.2,
-   "cost": 108.8,
+   "cost": 94.6,
    "po_games": 6,
    "last7": 4.6,
    "light": 20
@@ -9455,7 +10180,7 @@
    "gp": 24,
    "fp": 50.1,
    "ros": 96.4,
-   "cost": 112.7,
+   "cost": 99.3,
    "po_games": 7,
    "last7": 10.3,
    "light": 17
@@ -9481,36 +10206,36 @@
    "gp": 22,
    "fp": 47.9,
    "ros": 104.4,
-   "cost": 112.9,
+   "cost": 100.3,
    "po_games": 6,
    "last7": 7.4,
    "light": 20
   },
   {
-   "id": 4024950,
-   "name": "Jakob Chychrun",
+   "id": 4588175,
+   "name": "Charle-Edouard D'Astous",
    "pos": "D",
    "group": "D",
-   "team": "WSH",
+   "team": "TB",
    "injury": "",
-   "rate": 2.12,
+   "rate": 1.9,
    "src": {
-    "sheet": 2.09,
-    "model": 2.12,
-    "espn": 2.17,
-    "pace": 2.12,
-    "l15": 1.38
+    "sheet": 1.2,
+    "model": 1.9,
+    "espn": 1.3,
+    "pace": 2.0,
+    "l15": 2.27
    },
-   "cons": 2.12,
-   "dis": 0.02,
-   "exp_game": 2.12,
-   "gp": 20,
-   "fp": 42.5,
-   "ros": 112.4,
-   "cost": 133.7,
-   "po_games": 8,
-   "last7": 2.5,
-   "light": 28
+   "cons": 1.95,
+   "dis": 0.36,
+   "exp_game": 1.83,
+   "gp": 21,
+   "fp": 42.0,
+   "ros": 95.0,
+   "cost": 104.1,
+   "po_games": 6,
+   "last7": 4.7,
+   "light": 19
   },
   {
    "id": 5831,
@@ -9533,7 +10258,7 @@
    "gp": 22,
    "fp": 54.0,
    "ros": 118.9,
-   "cost": 134.5,
+   "cost": 123.5,
    "po_games": 7,
    "last7": 9.9,
    "light": 23
@@ -9559,7 +10284,7 @@
    "gp": 22,
    "fp": 55.1,
    "ros": 121.4,
-   "cost": 136.6,
+   "cost": 125.1,
    "po_games": 7,
    "last7": 0.6,
    "light": 19
@@ -9585,9 +10310,35 @@
    "gp": 20,
    "fp": 46.4,
    "ros": 121.6,
-   "cost": 140.8,
+   "cost": 132.3,
    "po_games": 8,
    "last7": 8.8,
+   "light": 28
+  },
+  {
+   "id": 4024950,
+   "name": "Jakob Chychrun",
+   "pos": "D",
+   "group": "D",
+   "team": "WSH",
+   "injury": "",
+   "rate": 2.12,
+   "src": {
+    "sheet": 2.09,
+    "model": 2.12,
+    "espn": 2.17,
+    "pace": 2.12,
+    "l15": 1.38
+   },
+   "cons": 2.12,
+   "dis": 0.02,
+   "exp_game": 2.12,
+   "gp": 20,
+   "fp": 42.5,
+   "ros": 112.4,
+   "cost": 133.4,
+   "po_games": 8,
+   "last7": 2.5,
    "light": 28
   },
   {
@@ -9611,7 +10362,7 @@
    "gp": 22,
    "fp": 52.6,
    "ros": 124.7,
-   "cost": 145.8,
+   "cost": 145.5,
    "po_games": 7,
    "last7": 2.0,
    "light": 23
@@ -9637,7 +10388,7 @@
    "gp": 20,
    "fp": 47.3,
    "ros": 126.2,
-   "cost": 146.2,
+   "cost": 145.9,
    "po_games": 7,
    "last7": 5.3,
    "light": 24
@@ -9663,7 +10414,7 @@
    "gp": 22,
    "fp": 59.7,
    "ros": 139.4,
-   "cost": 162.1,
+   "cost": 155.3,
    "po_games": 7,
    "last7": 6.6,
    "light": 21
@@ -9675,23 +10426,23 @@
    "group": "D",
    "team": "EDM",
    "injury": "",
-   "rate": 3.11,
+   "rate": 3.08,
    "src": {
     "sheet": 2.44,
-    "model": 3.11,
+    "model": 3.08,
     "espn": 2.41,
-    "pace": 3.16,
-    "l15": 2.24
+    "pace": 3.12,
+    "l15": 2.21
    },
-   "cons": 2.76,
-   "dis": 0.27,
-   "exp_game": 3.11,
-   "gp": 24,
-   "fp": 75.9,
-   "ros": 158.7,
-   "cost": 184.4,
+   "cons": 2.75,
+   "dis": 0.26,
+   "exp_game": 3.08,
+   "gp": 25,
+   "fp": 77.9,
+   "ros": 157.2,
+   "cost": 180.8,
    "po_games": 6,
-   "last7": 8.7,
+   "last7": 10.7,
    "light": 23
   },
   {
@@ -9715,13 +10466,181 @@
    "gp": 22,
    "fp": 77.2,
    "ros": 175.8,
-   "cost": 206.6,
+   "cost": 195.6,
    "po_games": 7,
    "last7": 15.8,
    "light": 23
   }
  ],
  "goalies_today": [
+  {
+   "id": 3067313,
+   "name": "Anthony Stolarz",
+   "pos": "G",
+   "group": "G",
+   "team": "TOR",
+   "injury": "",
+   "rate": 4.09,
+   "src": {
+    "sheet": 4.24,
+    "model": 4.09,
+    "espn": null,
+    "pace": 3.93,
+    "l15": 1.98
+   },
+   "cons": 3.93,
+   "dis": 0.04,
+   "exp_game": 1.39,
+   "gp": 10,
+   "fp": 39.3,
+   "opp": "CBJ",
+   "confirmed": "confirmed",
+   "exp": 5.1,
+   "opp_gf": 2.7,
+   "win": 0.517,
+   "opp_goals": 3.11,
+   "waiver": ""
+  },
+  {
+   "id": 4874732,
+   "name": "Sebastian Cossa",
+   "pos": "G",
+   "group": "G",
+   "team": "UTA",
+   "injury": "",
+   "rate": 3.66,
+   "src": {
+    "sheet": 4.15,
+    "model": 3.66,
+    "espn": null,
+    "pace": 2.97,
+    "l15": null
+   },
+   "cons": 3.32,
+   "dis": 0.21,
+   "exp_game": 1.12,
+   "gp": 9,
+   "fp": 26.7,
+   "opp": "ANA",
+   "confirmed": "confirmed",
+   "exp": 4.1,
+   "opp_gf": 3.58,
+   "win": 0.593,
+   "opp_goals": 3.16,
+   "waiver": ""
+  },
+  {
+   "id": 5734,
+   "name": "Cam Talbot",
+   "pos": "G",
+   "group": "G",
+   "team": "CBJ",
+   "injury": "",
+   "rate": 3.76,
+   "src": {
+    "sheet": null,
+    "model": 3.76,
+    "espn": 3.39,
+    "pace": 4.07,
+    "l15": 3.6
+   },
+   "cons": 3.68,
+   "dis": 0.19,
+   "exp_game": 1.19,
+   "gp": 11,
+   "fp": 44.8,
+   "opp": "TOR",
+   "confirmed": "confirmed",
+   "exp": 3.9,
+   "opp_gf": 3.11,
+   "win": 0.483,
+   "opp_goals": 3.22,
+   "waiver": ""
+  },
+  {
+   "id": 3036851,
+   "name": "Anton Forsberg",
+   "pos": "G",
+   "group": "G",
+   "team": "LA",
+   "injury": "",
+   "rate": 3.55,
+   "src": {
+    "sheet": 4.17,
+    "model": 3.55,
+    "espn": 4.56,
+    "pace": 2.24,
+    "l15": null
+   },
+   "cons": 3.55,
+   "dis": 0.65,
+   "exp_game": 1.95,
+   "gp": 8,
+   "fp": 17.9,
+   "opp": "OTT",
+   "confirmed": "confirmed",
+   "exp": 3.6,
+   "opp_gf": 3.3,
+   "win": 0.378,
+   "opp_goals": 3.18,
+   "waiver": ""
+  },
+  {
+   "id": 3095975,
+   "name": "Charlie Lindgren",
+   "pos": "G",
+   "group": "G",
+   "team": "WSH",
+   "injury": "",
+   "rate": 3.34,
+   "src": {
+    "sheet": 3.69,
+    "model": 3.34,
+    "espn": null,
+    "pace": 2.17,
+    "l15": null
+   },
+   "cons": 2.76,
+   "dis": 0.42,
+   "exp_game": 1.02,
+   "gp": 7,
+   "fp": 15.2,
+   "opp": "BOS",
+   "confirmed": "confirmed",
+   "exp": 3.2,
+   "opp_gf": 3.41,
+   "win": 0.449,
+   "opp_goals": 3.47,
+   "waiver": ""
+  },
+  {
+   "id": 4268767,
+   "name": "Stuart Skinner",
+   "pos": "G",
+   "group": "G",
+   "team": "WPG",
+   "injury": "",
+   "rate": 3.11,
+   "src": {
+    "sheet": 3.58,
+    "model": 3.11,
+    "espn": 3.98,
+    "pace": 2.94,
+    "l15": 2.65
+   },
+   "cons": 3.03,
+   "dis": 0.34,
+   "exp_game": 1.9,
+   "gp": 16,
+   "fp": 47.1,
+   "opp": "VGK",
+   "confirmed": "confirmed",
+   "exp": 3.0,
+   "opp_gf": 3.3,
+   "win": 0.449,
+   "opp_goals": 3.4,
+   "waiver": ""
+  },
   {
    "id": 2590824,
    "name": "John Gibson",
@@ -9744,38 +10663,10 @@
    "fp": 22.7,
    "opp": "NYI",
    "confirmed": "confirmed",
-   "exp": 3.0,
+   "exp": 2.9,
    "opp_gf": 3.11,
-   "win": 0.474,
-   "opp_goals": 2.95,
-   "waiver": ""
-  },
-  {
-   "id": 4587952,
-   "name": "Dustin Wolf",
-   "pos": "G",
-   "group": "G",
-   "team": "CGY",
-   "injury": "",
-   "rate": 3.11,
-   "src": {
-    "sheet": 3.99,
-    "model": 3.11,
-    "espn": 3.48,
-    "pace": 2.58,
-    "l15": 3.3
-   },
-   "cons": 3.21,
-   "dis": 0.28,
-   "exp_game": 2.09,
-   "gp": 13,
-   "fp": 33.5,
-   "opp": "CHI",
-   "confirmed": "",
-   "exp": 3.0,
-   "opp_gf": 2.5,
-   "win": 0.593,
-   "opp_goals": 2.59,
+   "win": 0.457,
+   "opp_goals": 3.06,
    "waiver": ""
   },
   {
@@ -9802,154 +10693,255 @@
    "confirmed": "",
    "exp": 2.4,
    "opp_gf": 2.67,
-   "win": 0.6,
-   "opp_goals": 2.57,
-   "waiver": ""
-  },
-  {
-   "id": 4894366,
-   "name": "Jet Greaves",
-   "pos": "G",
-   "group": "G",
-   "team": "CBJ",
-   "injury": "",
-   "rate": 3.17,
-   "src": {
-    "sheet": 4.49,
-    "model": 3.17,
-    "espn": 4.02,
-    "pace": 2.04,
-    "l15": 0.87
-   },
-   "cons": 2.6,
-   "dis": 0.76,
-   "exp_game": 2.12,
-   "gp": 11,
-   "fp": 22.4,
-   "opp": "TOR",
-   "confirmed": "",
-   "exp": 2.2,
-   "opp_gf": 3.11,
-   "win": 0.474,
-   "opp_goals": 3.25,
-   "waiver": ""
-  },
-  {
-   "id": 4697394,
-   "name": "Yaroslav Askarov",
-   "pos": "G",
-   "group": "G",
-   "team": "SJ",
-   "injury": "",
-   "rate": 3.27,
-   "src": {
-    "sheet": 3.68,
-    "model": 3.27,
-    "espn": 3.22,
-    "pace": 3.12,
-    "l15": 3.46
-   },
-   "cons": 3.25,
-   "dis": 0.05,
-   "exp_game": 1.79,
-   "gp": 16,
-   "fp": 49.9,
-   "opp": "SEA",
-   "confirmed": "",
-   "exp": 2.1,
-   "opp_gf": 3.16,
-   "win": 0.517,
-   "opp_goals": 3.2,
-   "waiver": ""
-  },
-  {
-   "id": 3036851,
-   "name": "Anton Forsberg",
-   "pos": "G",
-   "group": "G",
-   "team": "LA",
-   "injury": "",
-   "rate": 3.55,
-   "src": {
-    "sheet": 4.17,
-    "model": 3.55,
-    "espn": 4.56,
-    "pace": 2.24,
-    "l15": null
-   },
-   "cons": 3.55,
-   "dis": 0.65,
-   "exp_game": 1.95,
-   "gp": 8,
-   "fp": 17.9,
-   "opp": "OTT",
-   "confirmed": "",
-   "exp": 2.0,
-   "opp_gf": 3.3,
-   "win": 0.391,
-   "opp_goals": 3.19,
-   "waiver": ""
-  },
-  {
-   "id": 3114994,
-   "name": "Alex Nedeljkovic",
-   "pos": "G",
-   "group": "G",
-   "team": "SJ",
-   "injury": "",
-   "rate": 3.97,
-   "src": {
-    "sheet": 3.87,
-    "model": 3.97,
-    "espn": 3.85,
-    "pace": 4.19,
-    "l15": null
-   },
-   "cons": 3.97,
-   "dis": 0.09,
-   "exp_game": 1.69,
-   "gp": 8,
-   "fp": 33.5,
-   "opp": "SEA",
-   "confirmed": "",
-   "exp": 2.0,
-   "opp_gf": 3.16,
-   "win": 0.517,
-   "opp_goals": 3.2,
-   "waiver": ""
-  },
-  {
-   "id": 4064582,
-   "name": "Carter Hart",
-   "pos": "G",
-   "group": "G",
-   "team": "VGK",
-   "injury": "",
-   "rate": 3.57,
-   "src": {
-    "sheet": 4.1,
-    "model": 3.57,
-    "espn": 3.76,
-    "pace": 3.18,
-    "l15": null
-   },
-   "cons": 3.57,
-   "dis": 0.16,
-   "exp_game": 1.96,
-   "gp": 12,
-   "fp": 38.2,
-   "opp": "WPG",
-   "confirmed": "",
-   "exp": 2.0,
-   "opp_gf": 3.01,
-   "win": 0.551,
-   "opp_goals": 3.07,
+   "win": 0.593,
+   "opp_goals": 2.58,
    "waiver": ""
   }
  ],
  "recent": {
-  "yesterday": "Fri Nov 20",
-  "day": [],
+  "yesterday": "Thu Nov 19",
+  "day": [
+   {
+    "id": 5216877,
+    "name": "Berkly Catton",
+    "pos": "C/LW",
+    "group": "F",
+    "team": "SEA",
+    "injury": "",
+    "rate": 1.72,
+    "src": {
+     "sheet": 0.96,
+     "model": 1.72,
+     "espn": null,
+     "pace": 1.88,
+     "l15": 2.77
+    },
+    "cons": 1.88,
+    "dis": 0.09,
+    "exp_game": 1.61,
+    "gp": 19,
+    "fp": 35.8,
+    "pts": 7.9,
+    "line": "3 G, 4 SOG",
+    "own_chg": 1.4
+   },
+   {
+    "id": 4697686,
+    "name": "Jakub Dobes",
+    "pos": "G",
+    "group": "G",
+    "team": "MTL",
+    "injury": "",
+    "rate": 3.53,
+    "src": {
+     "sheet": 4.29,
+     "model": 3.53,
+     "espn": 4.32,
+     "pace": 2.42,
+     "l15": null
+    },
+    "cons": 3.53,
+    "dis": 0.54,
+    "exp_game": 2.15,
+    "gp": 9,
+    "fp": 21.8,
+    "pts": 7.2,
+    "line": "1 W, 26 SV, 1 GA",
+    "own_chg": -0.1
+   },
+   {
+    "id": 4233889,
+    "name": "Ukko-Pekka Luukkonen",
+    "pos": "G",
+    "group": "G",
+    "team": "BUF",
+    "injury": "",
+    "rate": 3.2,
+    "src": {
+     "sheet": 3.96,
+     "model": 3.2,
+     "espn": 4.29,
+     "pace": 2.73,
+     "l15": 3.13
+    },
+    "cons": 3.17,
+    "dis": 0.49,
+    "exp_game": 1.75,
+    "gp": 13,
+    "fp": 35.5,
+    "pts": 6.8,
+    "line": "1 W, 34 SV, 3 GA",
+    "own_chg": -0.1
+   },
+   {
+    "id": 4565235,
+    "name": "Cam York",
+    "pos": "D",
+    "group": "D",
+    "team": "PHI",
+    "injury": "",
+    "rate": 1.44,
+    "src": {
+     "sheet": 1.59,
+     "model": 1.44,
+     "espn": null,
+     "pace": 1.39,
+     "l15": 1.7
+    },
+    "cons": 1.44,
+    "dis": 0.03,
+    "exp_game": 1.4,
+    "gp": 17,
+    "fp": 23.6,
+    "pts": 6.5,
+    "line": "2 G, 3 SOG, 3 BLK, 2 HIT",
+    "own_chg": 0.0
+   },
+   {
+    "id": 5657,
+    "name": "Philipp Grubauer",
+    "pos": "G",
+    "group": "G",
+    "team": "SEA",
+    "injury": "",
+    "rate": 3.42,
+    "src": {
+     "sheet": 3.6,
+     "model": 3.42,
+     "espn": 4.23,
+     "pace": 3.32,
+     "l15": 3.25
+    },
+    "cons": 3.37,
+    "dis": 0.27,
+    "exp_game": 1.46,
+    "gp": 13,
+    "fp": 43.1,
+    "pts": 6.4,
+    "line": "1 W, 22 SV, 1 GA",
+    "own_chg": 0.2
+   },
+   {
+    "id": 3900169,
+    "name": "Travis Konecny",
+    "pos": "RW",
+    "group": "F",
+    "team": "PHI",
+    "injury": "",
+    "rate": 1.73,
+    "src": {
+     "sheet": 1.75,
+     "model": 1.73,
+     "espn": 1.93,
+     "pace": 1.72,
+     "l15": 2.01
+    },
+    "cons": 1.83,
+    "dis": 0.11,
+    "exp_game": 1.73,
+    "gp": 15,
+    "fp": 25.8,
+    "pts": 6.1,
+    "line": "1 G, 3 A, 2 SOG, 4 HIT",
+    "own_chg": 0.2
+   },
+   {
+    "id": 5734,
+    "name": "Cam Talbot",
+    "pos": "G",
+    "group": "G",
+    "team": "CBJ",
+    "injury": "",
+    "rate": 3.76,
+    "src": {
+     "sheet": null,
+     "model": 3.76,
+     "espn": 3.39,
+     "pace": 4.07,
+     "l15": 3.6
+    },
+    "cons": 3.68,
+    "dis": 0.19,
+    "exp_game": 1.19,
+    "gp": 11,
+    "fp": 44.8,
+    "pts": 5.6,
+    "line": "1 W, 23 SV, 2 GA",
+    "own_chg": 0.1
+   },
+   {
+    "id": 4697406,
+    "name": "Tyson Foerster",
+    "pos": "LW/RW",
+    "group": "F",
+    "team": "PHI",
+    "injury": "",
+    "rate": 1.41,
+    "src": {
+     "sheet": 1.68,
+     "model": 1.41,
+     "espn": null,
+     "pace": 1.39,
+     "l15": 1.69
+    },
+    "cons": 1.41,
+    "dis": 0.01,
+    "exp_game": 1.27,
+    "gp": 24,
+    "fp": 33.4,
+    "pts": 5.5,
+    "line": "1 G, 2 A, 2 SOG, 1 BLK, 3 HIT",
+    "own_chg": 0.1
+   },
+   {
+    "id": 4874919,
+    "name": "Matthew Knies",
+    "pos": "LW",
+    "group": "F",
+    "team": "CBJ",
+    "injury": "",
+    "rate": 1.43,
+    "src": {
+     "sheet": 1.82,
+     "model": 1.43,
+     "espn": 1.59,
+     "pace": 1.36,
+     "l15": 2.23
+    },
+    "cons": 1.51,
+    "dis": 0.15,
+    "exp_game": 1.43,
+    "gp": 20,
+    "fp": 27.3,
+    "pts": 5.3,
+    "line": "1 G, 2 A, 4 SOG, 4 HIT",
+    "own_chg": 0.4
+   },
+   {
+    "id": 4697387,
+    "name": "Jamie Drysdale",
+    "pos": "D",
+    "group": "D",
+    "team": "PHI",
+    "injury": "",
+    "rate": 1.81,
+    "src": {
+     "sheet": 1.54,
+     "model": 1.81,
+     "espn": null,
+     "pace": 1.83,
+     "l15": 2.54
+    },
+    "cons": 1.83,
+    "dis": 0.01,
+    "exp_game": 1.7,
+    "gp": 25,
+    "fp": 45.7,
+    "pts": 5.1,
+    "line": "1 G, 2 A, 1 SOG, 2 BLK",
+    "own_chg": 3.5
+   }
+  ],
   "week": [
    {
     "id": 2610321,
@@ -9976,6 +10968,30 @@
     "own_chg": 0.2
    },
    {
+    "id": 4587994,
+    "name": "Daniil Tarasov",
+    "pos": "G",
+    "group": "G",
+    "team": "DET",
+    "injury": "",
+    "rate": 3.96,
+    "src": {
+     "sheet": 3.53,
+     "model": 3.96,
+     "espn": 3.49,
+     "pace": 4.38,
+     "l15": 5.27
+    },
+    "cons": 4.17,
+    "dis": 0.21,
+    "exp_game": 1.21,
+    "gp": 10,
+    "fp": 43.8,
+    "pts": 14.8,
+    "line": "1 W, 59 SV, 3 GA, 1 SO",
+    "own_chg": -0.3
+   },
+   {
     "id": 4697387,
     "name": "Jamie Drysdale",
     "pos": "D",
@@ -9997,31 +11013,7 @@
     "fp": 45.7,
     "pts": 13.1,
     "line": "2 G, 4 A, 6 SOG, 8 BLK",
-    "own_chg": 2.8
-   },
-   {
-    "id": 4587952,
-    "name": "Dustin Wolf",
-    "pos": "G",
-    "group": "G",
-    "team": "CGY",
-    "injury": "",
-    "rate": 3.11,
-    "src": {
-     "sheet": 3.99,
-     "model": 3.11,
-     "espn": 3.48,
-     "pace": 2.58,
-     "l15": 3.3
-    },
-    "cons": 3.21,
-    "dis": 0.28,
-    "exp_game": 2.09,
-    "gp": 13,
-    "fp": 33.5,
-    "pts": 12.4,
-    "line": "2 W, 67 SV, 7 GA",
-    "own_chg": 0.1
+    "own_chg": 3.5
    },
    {
     "id": 4271575,
@@ -10045,31 +11037,7 @@
     "fp": 42.4,
     "pts": 11.2,
     "line": "3 W, 66 SV, 11 GA",
-    "own_chg": -0.0
-   },
-   {
-    "id": 5080157,
-    "name": "Frank Nazar",
-    "pos": "C",
-    "group": "F",
-    "team": "CHI",
-    "injury": "",
-    "rate": 1.79,
-    "src": {
-     "sheet": 1.51,
-     "model": 1.79,
-     "espn": 1.54,
-     "pace": 1.85,
-     "l15": 3.46
-    },
-    "cons": 1.82,
-    "dis": 0.17,
-    "exp_game": 1.64,
-    "gp": 20,
-    "fp": 36.9,
-    "pts": 11.1,
-    "line": "4 G, 8 SOG, 1 BLK, 3 HIT",
-    "own_chg": 2.5
+    "own_chg": -0.1
    },
    {
     "id": 4565244,
@@ -10117,7 +11085,7 @@
     "fp": 31.2,
     "pts": 10.8,
     "line": "7 A, 5 SOG, 1 BLK, 3 HIT",
-    "own_chg": 2.0
+    "own_chg": 2.3
    },
    {
     "id": 4894703,
@@ -10142,10 +11110,45 @@
     "pts": 10.6,
     "line": "1 W, 73 SV, 7 GA",
     "own_chg": 0.0
+   },
+   {
+    "id": 4915344,
+    "name": "Simon Nemec",
+    "pos": "D",
+    "group": "D",
+    "team": "CGY",
+    "injury": "",
+    "rate": 1.47,
+    "src": {
+     "sheet": 1.8,
+     "model": 1.47,
+     "espn": null,
+     "pace": 1.44,
+     "l15": 2.24
+    },
+    "cons": 1.47,
+    "dis": 0.02,
+    "exp_game": 1.29,
+    "gp": 23,
+    "fp": 33.1,
+    "pts": 10.2,
+    "line": "2 G, 6 SOG, 10 BLK, 1 HIT",
+    "own_chg": 0.2
    }
   ]
  },
  "news": [
+  {
+   "player": "Pavel Dorofeyev",
+   "summary": "Dorofeyev (lower body) was placed on injured reserve on Saturday, per Peter Baugh of The Athletic.",
+   "credit": "Rotowire via ESPN, citing Peter Baugh (The Athletic.)",
+   "link": "https://www.espn.com/nhl/player/news/_/id/4587588",
+   "insider": "",
+   "kinds": [
+    "injury"
+   ],
+   "date": "Nov 21 11:10AM"
+  },
   {
    "player": "Dylan Guenther",
    "summary": "Guenther (upper body) was upgraded to day-to-day ahead of Saturday's matchup with Anaheim, Cole Bagley of KSL Sports reports.",
@@ -10156,20 +11159,114 @@
     "injury"
    ],
    "date": "Nov 20 2:59PM"
-  },
+  }
+ ],
+ "injuries": [
   {
-   "player": "Connor Bedard",
-   "summary": "Bedard (shoulder) won't play during the Blackhawks' next four games while the team decides whether the center will undergo surgery, Scott Powers of The Athletic reports Thursday.",
+   "player": "Bowen Byram",
+   "summary": "Byram (upper body) won't play against Calgary on Saturday, Scott Powers of The Athletic reports.",
    "credit": "Rotowire via ESPN, citing Scott Powers (The Athletic)",
-   "link": "https://www.espn.com/nhl/player/news/_/id/5149125",
+   "link": "https://www.espn.com/nhl/player/news/_/id/4565225",
    "insider": "",
    "kinds": [
     "injury"
    ],
-   "date": "Nov 19 11:44AM"
-  }
- ],
- "injuries": [
+   "date": "Nov 21 2:01PM",
+   "owner": "FA",
+   "status": "INJURY_RESERVE",
+   "group": "D",
+   "team": "CHI"
+  },
+  {
+   "player": "Artemi Panarin",
+   "summary": "Panarin (personal) will be sidelined for Saturday's road clash agasint the Senators, per Zach Dooley of the Kings' official site.",
+   "credit": "Rotowire via ESPN, citing Zach Dooley (Kings')",
+   "link": "https://www.espn.com/nhl/player/news/_/id/3891952",
+   "insider": "",
+   "kinds": [
+    "injury"
+   ],
+   "date": "Nov 21 1:19PM",
+   "owner": "Matt's Monstrous Team",
+   "status": "OUT",
+   "group": "F",
+   "team": "LA"
+  },
+  {
+   "player": "Ryan Nugent-Hopkins",
+   "summary": "Nugent-Hopkins (undisclosed) won't play against Carolina on Saturday, Oilers play-by-play announcer Jack Michaels reports.",
+   "credit": "Rotowire via ESPN",
+   "link": "https://www.espn.com/nhl/player/news/_/id/2562624",
+   "insider": "",
+   "kinds": [
+    "injury"
+   ],
+   "date": "Nov 21 12:42PM",
+   "owner": "FA",
+   "status": "OUT",
+   "group": "F",
+   "team": "EDM"
+  },
+  {
+   "player": "Pavel Dorofeyev",
+   "summary": "Dorofeyev (lower body) was placed on injured reserve on Saturday, per Peter Baugh of The Athletic.",
+   "credit": "Rotowire via ESPN, citing Peter Baugh (The Athletic.)",
+   "link": "https://www.espn.com/nhl/player/news/_/id/4587588",
+   "insider": "",
+   "kinds": [
+    "injury"
+   ],
+   "date": "Nov 21 11:10AM",
+   "owner": "Me",
+   "status": "INJURY_RESERVE",
+   "group": "F",
+   "team": "NYR"
+  },
+  {
+   "player": "Brad Marchand",
+   "summary": "Marchand (knee) is close to returning to the lineup, but he won't play against Buffalo on Saturday, per Jameson Olive of the Panthers' official site.",
+   "credit": "Rotowire via ESPN, citing Jameson Olive (Panthers')",
+   "link": "https://www.espn.com/nhl/player/news/_/id/3852",
+   "insider": "",
+   "kinds": [
+    "injury"
+   ],
+   "date": "Nov 21 11:06AM",
+   "owner": "Torts Illustrated",
+   "status": "INJURY_RESERVE",
+   "group": "F",
+   "team": "FLA"
+  },
+  {
+   "player": "Aleksander Barkov",
+   "summary": "Barkov (knee) won't play against Buffalo on Saturday, but he could return within Florida's next three games, Jameson Olive of the Panthers' official site reports.",
+   "credit": "Rotowire via ESPN, citing Jameson Olive (Panthers')",
+   "link": "https://www.espn.com/nhl/player/news/_/id/3041970",
+   "insider": "",
+   "kinds": [
+    "injury"
+   ],
+   "date": "Nov 21 10:57AM",
+   "owner": "Mike's Magnificent Team",
+   "status": "INJURY_RESERVE",
+   "group": "F",
+   "team": "FLA"
+  },
+  {
+   "player": "Kirill Marchenko",
+   "summary": "Marchenko (lower body) is day-to-day, according to David Alter of The Hockey News on Saturday.",
+   "credit": "Rotowire via ESPN, citing David Alter (The Hockey News)",
+   "link": "https://www.espn.com/nhl/player/news/_/id/4587996",
+   "insider": "",
+   "kinds": [
+    "injury"
+   ],
+   "date": "Nov 21 10:14AM",
+   "owner": "Matt's Monstrous Team",
+   "status": "INJURY_RESERVE",
+   "group": "F",
+   "team": "TOR"
+  },
   {
    "player": "Dylan Guenther",
    "summary": "Guenther (upper body) was upgraded to day-to-day ahead of Saturday's matchup with Anaheim, Cole Bagley of KSL Sports reports.",
@@ -10226,24 +11323,9 @@
    ],
    "date": "Nov 19 11:13PM",
    "owner": "McDISHHH",
-   "status": "DAY_TO_DAY",
+   "status": "OUT",
    "group": "D",
    "team": "MIN"
-  },
-  {
-   "player": "Ryan Nugent-Hopkins",
-   "summary": "Nugent-Hopkins (undisclosed) won't play Thursday versus Tampa Bay, per the NHL media site.",
-   "credit": "Rotowire via ESPN",
-   "link": "https://www.espn.com/nhl/player/news/_/id/2562624",
-   "insider": "",
-   "kinds": [
-    "injury"
-   ],
-   "date": "Nov 19 7:26PM",
-   "owner": "FA",
-   "status": "DAY_TO_DAY",
-   "group": "F",
-   "team": "EDM"
   },
   {
    "player": "Cale Makar",
@@ -10259,52 +11341,6 @@
    "status": "INJURY_RESERVE",
    "group": "D",
    "team": "COL"
-  },
-  {
-   "player": "Connor Bedard",
-   "summary": "Bedard (shoulder) won't play during the Blackhawks' next four games while the team decides whether the center will undergo surgery, Scott Powers of The Athletic reports Thursday.",
-   "credit": "Rotowire via ESPN, citing Scott Powers (The Athletic)",
-   "link": "https://www.espn.com/nhl/player/news/_/id/5149125",
-   "insider": "",
-   "kinds": [
-    "injury"
-   ],
-   "date": "Nov 19 11:44AM",
-   "owner": "Me",
-   "status": "OUT",
-   "group": "F",
-   "team": "CHI"
-  },
-  {
-   "player": "Artemi Panarin",
-   "summary": "Panarin (personal), who has been ruled out for Thursday's game against the Maple Leafs, is expected to return Saturday against the Senators, John Hoven of SiriusXM NHL Network Radio reports.",
-   "credit": "Rotowire via ESPN, citing John Hoven (SiriusXM NHL Network Radio)",
-   "link": "https://www.espn.com/nhl/player/news/_/id/3891952",
-   "insider": "",
-   "kinds": [
-    "injury",
-    "return"
-   ],
-   "date": "Nov 19 11:23AM",
-   "owner": "Matt's Monstrous Team",
-   "status": "DAY_TO_DAY",
-   "group": "F",
-   "team": "LA"
-  },
-  {
-   "player": "Brandon Hagel",
-   "summary": "Hagel (lower body) was placed on injured reserve by the Lightning on Thursday, retroactive to Nov. 15, Eduardo A. Encina of the Tampa Bay Times reports.",
-   "credit": "Rotowire via ESPN, citing Eduardo A. Encina (Tampa Bay Times)",
-   "link": "https://www.espn.com/nhl/player/news/_/id/4065019",
-   "insider": "",
-   "kinds": [
-    "injury"
-   ],
-   "date": "Nov 19 10:54AM",
-   "owner": "PuttinOnTheFoil",
-   "status": "INJURY_RESERVE",
-   "group": "F",
-   "team": "TB"
   }
  ],
  "status_watch": [
@@ -10321,50 +11357,51 @@
    "status": "INJURY_RESERVE"
   },
   {
-   "player": "Connor Bedard",
-   "summary": "Bedard (shoulder) won't play during the Blackhawks' next four games while the team decides whether the center will undergo surgery, Scott Powers of The Athletic reports Thursday.",
-   "credit": "Rotowire via ESPN, citing Scott Powers (The Athletic)",
-   "link": "https://www.espn.com/nhl/player/news/_/id/5149125",
+   "player": "Pavel Dorofeyev",
+   "summary": "Dorofeyev (lower body) was placed on injured reserve on Saturday, per Peter Baugh of The Athletic.",
+   "credit": "Rotowire via ESPN, citing Peter Baugh (The Athletic.)",
+   "link": "https://www.espn.com/nhl/player/news/_/id/4587588",
    "insider": "",
    "kinds": [
     "injury"
    ],
-   "date": "Nov 19 11:44AM",
-   "status": "OUT"
+   "date": "Nov 21 11:10AM",
+   "status": "INJURY_RESERVE"
   }
  ],
  "rumors": [
   {
-   "title": "'He'll Get Out There Eventually': Maple Leafs Coach Jim Hiller Explains Why Gavin McKenna Has Yet To Take A Shift In Overtime This Season",
-   "link": "https://sports.yahoo.com/articles/hell-eventually-maple-leafs-coach-120311028.html",
+   "title": "Flyers Will Have to 'Get Serious' to Pull Off Simon Edvinsson Trade",
+   "link": "https://sports.yahoo.com/articles/flyers-serious-pull-off-simon-020624680.html",
    "players": [
-    "Gavin McKenna"
+    "Simon Edvinsson"
    ],
    "date": "Nov 20"
   }
  ],
  "notes": [
-  "Week 8 vs Angie\u2019s Bear Balls: projected 125-124, 54% to win (starts left 24 vs 24).",
-  "Opportunity: Dylan Guenther (UTA) injury -> Lawson Crouse is the free agent who gains.",
-  "Best rest-of-season add: Ryan Leonard for Gavin McKenna (+40).",
-  "Vegas tonight: EDM 2.7 goals vs CAR (usual 3.7, -18% skater pts), SJ 3.3 goals vs SEA (usual 2.8, +11% skater pts), ANA 3.1 goals vs UTA (usual 3.6, -9% skater pts), MIN 4.0 goals vs VAN (usual 3.5, +8% skater pts).",
-  "Confirmed FA goalie starts today: John Gibson vs NYI."
+  "Week 8 vs Angie\u2019s Bear Balls: projected 129-124, 61% to win (starts left 26 vs 24).",
+  "Next week (Nov 23 - Nov 29) vs Mike's Magnificent Team: projected 157-150, 59% to win (starts 68 vs 71).",
+  "Opportunity: Artemi Panarin (LA) injury -> Kevin Fiala is the free agent who gains.",
+  "Best rest-of-season add: Vince Dunn for Victor Olofsson (+29).",
+  "Vegas tonight: EDM 2.5 goals vs CAR (usual 3.7, -21% skater pts), SJ 3.3 goals vs SEA (usual 2.8, +11% skater pts), LA 2.4 goals vs OTT (usual 2.8, -8% skater pts), ANA 3.2 goals vs UTA (usual 3.6, -8% skater pts).",
+  "Confirmed FA goalie starts today: Anthony Stolarz vs CBJ, Sebastian Cossa vs ANA, Cam Talbot vs TOR."
  ],
  "opportunities": [
   {
    "news": {
-    "player": "Dylan Guenther",
-    "summary": "Guenther (upper body) was upgraded to day-to-day ahead of Saturday's matchup with Anaheim, Cole Bagley of KSL Sports reports.",
-    "credit": "Rotowire via ESPN, citing Cole Bagley (KSL Sports)",
-    "link": "https://www.espn.com/nhl/player/news/_/id/4874723",
+    "player": "Artemi Panarin",
+    "summary": "Panarin (personal) will be sidelined for Saturday's road clash agasint the Senators, per Zach Dooley of the Kings' official site.",
+    "credit": "Rotowire via ESPN, citing Zach Dooley (Kings')",
+    "link": "https://www.espn.com/nhl/player/news/_/id/3891952",
     "insider": "",
     "kinds": [
      "injury"
     ],
-    "date": "Nov 20 2:59PM"
+    "date": "Nov 21 1:19PM"
    },
-   "about": "Dylan Guenther",
-   "about_team": "UTA",
+   "about": "Artemi Panarin",
+   "about_team": "LA",
    "about_group": "F",
    "self": false,
    "kinds": [
@@ -10372,22 +11409,108 @@
    ],
    "beneficiaries": [
     {
-     "id": 3899951,
-     "name": "Lawson Crouse",
-     "team": "UTA",
-     "pos": "RW",
-     "gain": -0.6,
-     "gain_2wk": 1.4,
+     "id": 3114743,
+     "name": "Kevin Fiala",
+     "team": "LA",
+     "pos": "LW",
+     "gain": 3.3,
+     "gain_2wk": -0.3,
      "status": "FREEAGENT",
      "waiver": ""
-    },
+    }
+   ]
+  },
+  {
+   "news": {
+    "player": "Pavel Dorofeyev",
+    "summary": "Dorofeyev (lower body) was placed on injured reserve on Saturday, per Peter Baugh of The Athletic.",
+    "credit": "Rotowire via ESPN, citing Peter Baugh (The Athletic.)",
+    "link": "https://www.espn.com/nhl/player/news/_/id/4587588",
+    "insider": "",
+    "kinds": [
+     "injury"
+    ],
+    "date": "Nov 21 11:10AM"
+   },
+   "about": "Pavel Dorofeyev",
+   "about_team": "NYR",
+   "about_group": "F",
+   "self": false,
+   "kinds": [
+    "injury"
+   ],
+   "beneficiaries": [
     {
-     "id": 4352699,
-     "name": "Barrett Hayton",
-     "team": "UTA",
+     "id": 4588750,
+     "name": "Tye Kartye",
+     "team": "NYR",
+     "pos": "LW",
+     "gain": 2.0,
+     "gain_2wk": -0.4,
+     "status": "FREEAGENT",
+     "waiver": ""
+    }
+   ]
+  },
+  {
+   "news": {
+    "player": "Brad Marchand",
+    "summary": "Marchand (knee) is close to returning to the lineup, but he won't play against Buffalo on Saturday, per Jameson Olive of the Panthers' official site.",
+    "credit": "Rotowire via ESPN, citing Jameson Olive (Panthers')",
+    "link": "https://www.espn.com/nhl/player/news/_/id/3852",
+    "insider": "",
+    "kinds": [
+     "injury"
+    ],
+    "date": "Nov 21 11:06AM"
+   },
+   "about": "Brad Marchand",
+   "about_team": "FLA",
+   "about_group": "F",
+   "self": false,
+   "kinds": [
+    "injury"
+   ],
+   "beneficiaries": [
+    {
+     "id": 4697395,
+     "name": "Anton Lundell",
+     "team": "FLA",
      "pos": "C",
-     "gain": -1.7,
-     "gain_2wk": 1.4,
+     "gain": 4.6,
+     "gain_2wk": -1.6,
+     "status": "FREEAGENT",
+     "waiver": ""
+    }
+   ]
+  },
+  {
+   "news": {
+    "player": "Aleksander Barkov",
+    "summary": "Barkov (knee) won't play against Buffalo on Saturday, but he could return within Florida's next three games, Jameson Olive of the Panthers' official site reports.",
+    "credit": "Rotowire via ESPN, citing Jameson Olive (Panthers')",
+    "link": "https://www.espn.com/nhl/player/news/_/id/3041970",
+    "insider": "",
+    "kinds": [
+     "injury"
+    ],
+    "date": "Nov 21 10:57AM"
+   },
+   "about": "Aleksander Barkov",
+   "about_team": "FLA",
+   "about_group": "F",
+   "self": false,
+   "kinds": [
+    "injury"
+   ],
+   "beneficiaries": [
+    {
+     "id": 4697395,
+     "name": "Anton Lundell",
+     "team": "FLA",
+     "pos": "C",
+     "gain": 4.6,
+     "gain_2wk": -1.6,
      "status": "FREEAGENT",
      "waiver": ""
     }
@@ -10418,8 +11541,8 @@
      "name": "Brayden McNabb",
      "team": "VGK",
      "pos": "D",
-     "gain": 5.7,
-     "gain_2wk": 0.4,
+     "gain": 2.1,
+     "gain_2wk": -0.5,
      "status": "FREEAGENT",
      "waiver": ""
     }
@@ -10450,8 +11573,8 @@
      "name": "Tommy Novak",
      "team": "PIT",
      "pos": "C/LW",
-     "gain": 22.2,
-     "gain_2wk": 2.3,
+     "gain": 8.3,
+     "gain_2wk": -0.3,
      "status": "FREEAGENT",
      "waiver": ""
     },
@@ -10460,8 +11583,8 @@
      "name": "Ben Kindel",
      "team": "PIT",
      "pos": "C/RW",
-     "gain": 17.4,
-     "gain_2wk": 2.0,
+     "gain": 3.9,
+     "gain_2wk": -0.5,
      "status": "FREEAGENT",
      "waiver": ""
     }
@@ -10492,18 +11615,8 @@
      "name": "Jared Spurgeon",
      "team": "MIN",
      "pos": "D",
-     "gain": 26.1,
-     "gain_2wk": 4.3,
-     "status": "FREEAGENT",
-     "waiver": ""
-    },
-    {
-     "id": 5073306,
-     "name": "Adam Klapka",
-     "team": "CGY",
-     "pos": "RW",
-     "gain": -6.7,
-     "gain_2wk": 1.1,
+     "gain": 19.6,
+     "gain_2wk": 1.8,
      "status": "FREEAGENT",
      "waiver": ""
     }
@@ -10534,112 +11647,8 @@
      "name": "Sam Malinski",
      "team": "COL",
      "pos": "D",
-     "gain": 11.5,
-     "gain_2wk": 0.3,
-     "status": "FREEAGENT",
-     "waiver": ""
-    },
-    {
-     "id": 2590829,
-     "name": "Josh Manson",
-     "team": "COL",
-     "pos": "D",
-     "gain": 5.3,
-     "gain_2wk": 0.0,
-     "status": "FREEAGENT",
-     "waiver": ""
-    }
-   ]
-  },
-  {
-   "news": {
-    "player": "Connor Bedard",
-    "summary": "Bedard (shoulder) won't play during the Blackhawks' next four games while the team decides whether the center will undergo surgery, Scott Powers of The Athletic reports Thursday.",
-    "credit": "Rotowire via ESPN, citing Scott Powers (The Athletic)",
-    "link": "https://www.espn.com/nhl/player/news/_/id/5149125",
-    "insider": "",
-    "kinds": [
-     "injury"
-    ],
-    "date": "Nov 19 11:44AM"
-   },
-   "about": "Connor Bedard",
-   "about_team": "CHI",
-   "about_group": "F",
-   "self": false,
-   "kinds": [
-    "injury"
-   ],
-   "beneficiaries": [
-    {
-     "id": 5080157,
-     "name": "Frank Nazar",
-     "team": "CHI",
-     "pos": "C",
-     "gain": 24.3,
-     "gain_2wk": 4.2,
-     "status": "FREEAGENT",
-     "waiver": ""
-    },
-    {
-     "id": 5291935,
-     "name": "Anton Frondell",
-     "team": "CHI",
-     "pos": "C",
-     "gain": 7.8,
-     "gain_2wk": 3.0,
-     "status": "FREEAGENT",
-     "waiver": ""
-    },
-    {
-     "id": 5149231,
-     "name": "Roman Kantserov",
-     "team": "CHI",
-     "pos": "RW",
-     "gain": 5.5,
-     "gain_2wk": 2.8,
-     "status": "FREEAGENT",
-     "waiver": ""
-    }
-   ]
-  },
-  {
-   "news": {
-    "player": "Brandon Hagel",
-    "summary": "Hagel (lower body) was placed on injured reserve by the Lightning on Thursday, retroactive to Nov. 15, Eduardo A. Encina of the Tampa Bay Times reports.",
-    "credit": "Rotowire via ESPN, citing Eduardo A. Encina (Tampa Bay Times)",
-    "link": "https://www.espn.com/nhl/player/news/_/id/4065019",
-    "insider": "",
-    "kinds": [
-     "injury"
-    ],
-    "date": "Nov 19 10:54AM"
-   },
-   "about": "Brandon Hagel",
-   "about_team": "TB",
-   "about_group": "F",
-   "self": false,
-   "kinds": [
-    "injury"
-   ],
-   "beneficiaries": [
-    {
-     "id": 3941973,
-     "name": "Anthony Cirelli",
-     "team": "TB",
-     "pos": "C",
-     "gain": 16.7,
-     "gain_2wk": 2.3,
-     "status": "FREEAGENT",
-     "waiver": ""
-    },
-    {
-     "id": 4588205,
-     "name": "Pontus Holmberg",
-     "team": "TB",
-     "pos": "LW/RW",
-     "gain": -1.5,
-     "gain_2wk": 1.2,
+     "gain": 6.6,
+     "gain_2wk": -0.4,
      "status": "FREEAGENT",
      "waiver": ""
     }
@@ -10878,26 +11887,37 @@
   "Connor Hellebuyck": [
    {
     "player": "Connor Hellebuyck",
-    "summary": "Hellebuyck stopped 25 of 28 shots in Wednesday's 3-2 loss to the Canadiens.",
-    "credit": "Rotowire via ESPN",
-    "link": "https://www.espn.com/nhl/player/news/_/id/3020225",
-    "insider": "",
-    "kinds": [],
-    "date": "Nov 19 2:30AM"
-   },
-   {
-    "player": "Connor Hellebuyck",
-    "summary": "Hellebuyck is slated to start Wednesday's home game against the Canadiens, Amanda Stein of the Devils' official site reports.",
+    "summary": "Hellebuyck will guard the road goal in Saturday's clash against the Blues, per Amanda Stein of the Devils' official site.",
     "credit": "Rotowire via ESPN, citing Amanda Stein (Devils')",
     "link": "https://www.espn.com/nhl/player/news/_/id/3020225",
     "insider": "",
     "kinds": [
      "starting"
     ],
-    "date": "Nov 18 10:45AM"
+    "date": "Nov 21 11:38AM"
+   },
+   {
+    "player": "Connor Hellebuyck",
+    "summary": "Hellebuyck stopped 25 of 28 shots in Wednesday's 3-2 loss to the Canadiens.",
+    "credit": "Rotowire via ESPN",
+    "link": "https://www.espn.com/nhl/player/news/_/id/3020225",
+    "insider": "",
+    "kinds": [],
+    "date": "Nov 19 2:30AM"
    }
   ],
   "Pavel Dorofeyev": [
+   {
+    "player": "Pavel Dorofeyev",
+    "summary": "Dorofeyev (lower body) was placed on injured reserve on Saturday, per Peter Baugh of The Athletic.",
+    "credit": "Rotowire via ESPN, citing Peter Baugh (The Athletic.)",
+    "link": "https://www.espn.com/nhl/player/news/_/id/4587588",
+    "insider": "",
+    "kinds": [
+     "injury"
+    ],
+    "date": "Nov 21 11:10AM"
+   },
    {
     "player": "Pavel Dorofeyev",
     "summary": "Dorofeyev (lower body) will miss Monday's home clash against the Canadiens, per Dan Rosen of NHL.com.",
@@ -10908,15 +11928,6 @@
      "injury"
     ],
     "date": "Nov 16 7:11PM"
-   },
-   {
-    "player": "Pavel Dorofeyev",
-    "summary": "Dorofeyev tallied the game-winning goal and fired three shots on net in Saturday's 4-3 win over the Kraken.",
-    "credit": "Rotowire via ESPN",
-    "link": "https://www.espn.com/nhl/player/news/_/id/4587588",
-    "insider": "",
-    "kinds": [],
-    "date": "Nov 8 9:31AM"
    }
   ],
   "Mark Stone": [
@@ -10957,26 +11968,6 @@
     "insider": "",
     "kinds": [],
     "date": "Oct 18 2:01PM"
-   }
-  ],
-  "Gavin McKenna": [
-   {
-    "player": "Gavin McKenna",
-    "summary": "McKenna scored a goal on four shots in a 4-2 loss to Montreal on Saturday.",
-    "credit": "Rotowire via ESPN",
-    "link": "https://www.espn.com/nhl/player/news/_/id/5342529",
-    "insider": "",
-    "kinds": [],
-    "date": "Nov 8 1:59AM"
-   },
-   {
-    "player": "Gavin McKenna",
-    "summary": "McKenna scored two power-play goals, dished an assist and added two PIM in Wednesday's 5-4 loss to the Kraken.",
-    "credit": "Rotowire via ESPN",
-    "link": "https://www.espn.com/nhl/player/news/_/id/5342529",
-    "insider": "",
-    "kinds": [],
-    "date": "Oct 29 2:29AM"
    }
   ],
   "Joel Eriksson Ek": [
@@ -11101,27 +12092,18 @@
     "date": "Nov 16 1:22AM"
    }
   ],
-  "Tristan Luneau": [
-   {
-    "player": "Tristan Luneau",
-    "summary": "Luneau scored a power-play goal on two shots and added two PIM in Sunday's 5-2 win over the Penguins.",
-    "credit": "Rotowire via ESPN",
-    "link": "https://www.espn.com/nhl/player/news/_/id/5080220",
-    "insider": "",
-    "kinds": [],
-    "date": "Nov 9 1:06AM"
-   },
-   {
-    "player": "Tristan Luneau",
-    "summary": "Luneau scored a goal on three shots in Friday's 5-3 win over the Flames.",
-    "credit": "Rotowire via ESPN",
-    "link": "https://www.espn.com/nhl/player/news/_/id/5080220",
-    "insider": "",
-    "kinds": [],
-    "date": "Nov 6 11:59PM"
-   }
-  ],
   "Pyotr Kochetkov": [
+   {
+    "player": "Pyotr Kochetkov",
+    "summary": "Kochetkov will start Saturday's home matchup against Edmonton, according to Cory Lavalette of the North State Journal.",
+    "credit": "Rotowire via ESPN, citing Cory Lavalette (North State Journal.)",
+    "link": "https://www.espn.com/nhl/player/news/_/id/4565259",
+    "insider": "",
+    "kinds": [
+     "starting"
+    ],
+    "date": "Nov 21 12:32PM"
+   },
    {
     "player": "Pyotr Kochetkov",
     "summary": "Kochetkov stopped 22 of 24 shots in Thursday's 2-1 overtime loss to the Canadiens.",
@@ -11130,17 +12112,6 @@
     "insider": "",
     "kinds": [],
     "date": "Nov 20 11:38AM"
-   },
-   {
-    "player": "Pyotr Kochetkov",
-    "summary": "Kochetkov will be in goal against Montreal at home Thursday, Walt Ruff of the Hurricanes' official site reports.",
-    "credit": "Rotowire via ESPN, citing Walt Ruff (Hurricanes')",
-    "link": "https://www.espn.com/nhl/player/news/_/id/4565259",
-    "insider": "",
-    "kinds": [
-     "starting"
-    ],
-    "date": "Nov 19 4:49PM"
    }
   ],
   "Robert Thomas": [
@@ -11162,6 +12133,46 @@
     "kinds": [],
     "date": "Nov 18 12:56AM"
    }
+  ],
+  "Frank Nazar": [
+   {
+    "player": "Frank Nazar",
+    "summary": "Nazar scored a power-play goal on four shots and added two hits in Thursday's 4-2 loss to the Blue Jackets.",
+    "credit": "Rotowire via ESPN",
+    "link": "https://www.espn.com/nhl/player/news/_/id/5080157",
+    "insider": "",
+    "kinds": [],
+    "date": "Nov 20 2:12AM"
+   },
+   {
+    "player": "Frank Nazar",
+    "summary": "Nazar scored twice Tuesday in a 6-3 win over Toronto.",
+    "credit": "Rotowire via ESPN",
+    "link": "https://www.espn.com/nhl/player/news/_/id/5080157",
+    "insider": "",
+    "kinds": [],
+    "date": "Nov 17 11:18PM"
+   }
+  ],
+  "Jimmy Snuggerud": [
+   {
+    "player": "Jimmy Snuggerud",
+    "summary": "Snuggerud scored two goals, one the game-winner, in Thursday's 5-2 win over the Penguins.",
+    "credit": "Rotowire via ESPN",
+    "link": "https://www.espn.com/nhl/player/news/_/id/5080171",
+    "insider": "",
+    "kinds": [],
+    "date": "Nov 20 10:02AM"
+   },
+   {
+    "player": "Jimmy Snuggerud",
+    "summary": "Snuggerud scored a goal on three shots and added an assist in Tuesday's 3-2 win over the Red Wings.",
+    "credit": "Rotowire via ESPN",
+    "link": "https://www.espn.com/nhl/player/news/_/id/5080171",
+    "insider": "",
+    "kinds": [],
+    "date": "Nov 11 1:59AM"
+   }
   ]
  },
  "playoff_usable": {
@@ -11169,28 +12180,28 @@
    {
     "period": 175,
     "date": "Mon Mar 22",
-    "playing": 5,
-    "used": 5,
+    "playing": 3,
+    "used": 3,
     "wasted": 0,
-    "empty_sk": 11,
+    "empty_sk": 13,
     "empty_g": 2
    },
    {
     "period": 176,
     "date": "Tue Mar 23",
-    "playing": 18,
-    "used": 16,
+    "playing": 20,
+    "used": 18,
     "wasted": 2,
-    "empty_sk": 2,
+    "empty_sk": 0,
     "empty_g": 0
    },
    {
     "period": 177,
     "date": "Wed Mar 24",
-    "playing": 8,
-    "used": 8,
+    "playing": 7,
+    "used": 7,
     "wasted": 0,
-    "empty_sk": 8,
+    "empty_sk": 9,
     "empty_g": 2
    },
    {
@@ -11205,28 +12216,28 @@
    {
     "period": 179,
     "date": "Fri Mar 26",
-    "playing": 4,
-    "used": 4,
+    "playing": 5,
+    "used": 5,
     "wasted": 0,
-    "empty_sk": 13,
+    "empty_sk": 12,
     "empty_g": 1
    },
    {
     "period": 180,
     "date": "Sat Mar 27",
-    "playing": 18,
-    "used": 17,
+    "playing": 17,
+    "used": 16,
     "wasted": 1,
-    "empty_sk": 1,
+    "empty_sk": 2,
     "empty_g": 0
    },
    {
     "period": 181,
     "date": "Sun Mar 28",
-    "playing": 7,
-    "used": 7,
+    "playing": 8,
+    "used": 8,
     "wasted": 0,
-    "empty_sk": 9,
+    "empty_sk": 8,
     "empty_g": 2
    },
    {
@@ -11241,10 +12252,10 @@
    {
     "period": 183,
     "date": "Tue Mar 30",
-    "playing": 13,
-    "used": 12,
+    "playing": 12,
+    "used": 11,
     "wasted": 1,
-    "empty_sk": 6,
+    "empty_sk": 7,
     "empty_g": 0
    },
    {
@@ -11278,25 +12289,25 @@
     "period": 187,
     "date": "Sat Apr 3",
     "playing": 19,
-    "used": 18,
-    "wasted": 1,
-    "empty_sk": 0,
+    "used": 17,
+    "wasted": 2,
+    "empty_sk": 1,
     "empty_g": 0
    },
    {
     "period": 188,
     "date": "Sun Apr 4",
-    "playing": 10,
-    "used": 10,
+    "playing": 11,
+    "used": 11,
     "wasted": 0,
-    "empty_sk": 8,
+    "empty_sk": 7,
     "empty_g": 0
    }
   ],
   "totals": {
-   "used": 148,
-   "wasted": 8,
-   "empty_sk": 95,
+   "used": 147,
+   "wasted": 9,
+   "empty_sk": 96,
    "empty_g": 9
   },
   "targets": {
@@ -11322,16 +12333,6 @@
      "tradeable": false
     },
     {
-     "name": "Simon Edvinsson",
-     "team": "DET",
-     "group": "D",
-     "fit": 7,
-     "games": 7,
-     "usable_pts": 12.1,
-     "owner": "FA",
-     "tradeable": false
-    },
-    {
      "name": "Martin Fehervary",
      "team": "WSH",
      "group": "D",
@@ -11352,16 +12353,6 @@
      "tradeable": false
     },
     {
-     "name": "Jared Spurgeon",
-     "team": "MIN",
-     "group": "D",
-     "fit": 7,
-     "games": 7,
-     "usable_pts": 11.5,
-     "owner": "FA",
-     "tradeable": false
-    },
-    {
      "name": "Mike Matheson",
      "team": "MTL",
      "group": "D",
@@ -11372,12 +12363,32 @@
      "tradeable": false
     },
     {
-     "name": "Blake Coleman",
-     "team": "MIN",
-     "group": "F",
+     "name": "Pavel Mintyukov",
+     "team": "ANA",
+     "group": "D",
      "fit": 7,
      "games": 7,
      "usable_pts": 11.1,
+     "owner": "FA",
+     "tradeable": false
+    },
+    {
+     "name": "Dmitry Orlov",
+     "team": "SJ",
+     "group": "D",
+     "fit": 7,
+     "games": 7,
+     "usable_pts": 11.0,
+     "owner": "FA",
+     "tradeable": false
+    },
+    {
+     "name": "Josh Anderson",
+     "team": "MTL",
+     "group": "F",
+     "fit": 7,
+     "games": 7,
+     "usable_pts": 10.8,
      "owner": "FA",
      "tradeable": false
     }
@@ -11394,43 +12405,13 @@
      "tradeable": true
     },
     {
-     "name": "Artturi Lehkonen",
-     "team": "COL",
+     "name": "Leo Carlsson",
+     "team": "ANA",
      "group": "F",
      "fit": 7,
      "games": 7,
-     "usable_pts": 14.9,
-     "owner": "McDISHHH",
-     "tradeable": true
-    },
-    {
-     "name": "Lucas Raymond",
-     "team": "DET",
-     "group": "F",
-     "fit": 7,
-     "games": 7,
-     "usable_pts": 14.7,
-     "owner": "McDISHHH",
-     "tradeable": true
-    },
-    {
-     "name": "Devon Toews",
-     "team": "COL",
-     "group": "D",
-     "fit": 7,
-     "games": 7,
-     "usable_pts": 13.7,
-     "owner": "Matt's Monstrous Team",
-     "tradeable": true
-    },
-    {
-     "name": "Brock Faber",
-     "team": "MIN",
-     "group": "D",
-     "fit": 7,
-     "games": 7,
-     "usable_pts": 13.1,
-     "owner": "Mike's Magnificent Team",
+     "usable_pts": 15.0,
+     "owner": "Torts Illustrated",
      "tradeable": true
     },
     {
@@ -11444,10 +12425,10 @@
      "tradeable": true
     },
     {
-     "name": "Logan Stankoven",
-     "team": "CAR",
+     "name": "Bryan Rust",
+     "team": "PIT",
      "group": "F",
-     "fit": 6,
+     "fit": 7,
      "games": 7,
      "usable_pts": 13.0,
      "owner": "PuttinOnTheFoil",
@@ -11460,6 +12441,36 @@
      "fit": 6,
      "games": 7,
      "usable_pts": 13.0,
+     "owner": "Mike's Magnificent Team",
+     "tradeable": true
+    },
+    {
+     "name": "Artturi Lehkonen",
+     "team": "COL",
+     "group": "F",
+     "fit": 6,
+     "games": 7,
+     "usable_pts": 12.8,
+     "owner": "McDISHHH",
+     "tradeable": true
+    },
+    {
+     "name": "Logan Stankoven",
+     "team": "CAR",
+     "group": "F",
+     "fit": 6,
+     "games": 7,
+     "usable_pts": 12.8,
+     "owner": "PuttinOnTheFoil",
+     "tradeable": true
+    },
+    {
+     "name": "Aleksander Barkov",
+     "team": "FLA",
+     "group": "F",
+     "fit": 6,
+     "games": 7,
+     "usable_pts": 12.8,
      "owner": "Mike's Magnificent Team",
      "tradeable": true
     }
@@ -11476,49 +12487,49 @@
  "accuracy": {
   "table": {
    "model": {
-    "all": 0.725,
-    "F": 0.694,
+    "all": 0.726,
+    "F": 0.695,
     "D": 0.568,
     "G": 1.868
    },
    "sheet": {
     "all": 0.724,
     "F": 0.69,
-    "D": 0.569,
+    "D": 0.57,
     "G": 1.894
    },
    "espn": {
-    "all": 0.741,
+    "all": 0.742,
     "F": 0.708,
-    "D": 0.592,
+    "D": 0.593,
     "G": 1.872
    },
    "pace": {
     "all": 0.818,
     "F": 0.784,
-    "D": 0.656,
+    "D": 0.657,
     "G": 2.021
    },
    "l15": {
-    "all": 0.88,
+    "all": 0.881,
     "F": 0.846,
-    "D": 0.704,
+    "D": 0.705,
     "G": 2.154
    },
    "consensus": {
     "all": 0.757,
     "F": 0.725,
-    "D": 0.601,
+    "D": 0.602,
     "G": 1.897
    }
   },
   "games": {
-   "model": 33459,
-   "sheet": 33459,
-   "espn": 33459,
-   "pace": 33459,
-   "l15": 33459,
-   "consensus": 33459
+   "model": 33486,
+   "sheet": 33486,
+   "espn": 33486,
+   "pace": 33486,
+   "l15": 33486,
+   "consensus": 33486
   },
   "windows": 44,
   "best": "sheet",
@@ -11538,27 +12549,27 @@
   "Logan Cooley": 0.36,
   "Charlie McAvoy": 0.38,
   "J.T. Miller": 0.26,
+  "Shayne Gostisbehere": 0.29,
   "Kent Johnson": 0.42,
   "Philip Broberg": 0.35,
-  "Logan Stankoven": 0.53,
+  "Logan Stankoven": 0.52,
   "Jackson LaCombe": 0.25,
   "Lukas Dostal": 0.92,
   "Brock Faber": 0.26,
   "Karel Vejmelka": 0.48,
   "Beckett Sennecke": 0.41,
-  "Vasily Podkolzin": 0.39,
+  "Vasily Podkolzin": 0.38,
   "Cole Perfetti": 0.38,
   "Seth Jones": 0.29,
   "Noah Dobson": 0.7,
   "Logan Thompson": 0.53,
   "Linus Ullmark": 0.3,
   "Devon Toews": 0.32,
-  "Zach Hyman": 0.65,
-  "Devon Levi": 0.42,
+  "Zach Hyman": 0.73,
+  "Devon Levi": 0.38,
   "Tom Wilson": 0.6,
-  "Evan Bouchard": 0.27,
+  "Evan Bouchard": 0.26,
   "Cutter Gauthier": 0.44,
-  "Gavin McKenna": 0.37,
   "Charle-Edouard D'Astous": 0.36,
   "Jack Quinn": 0.41,
   "Victor Olofsson": 0.3,
@@ -11567,32 +12578,32 @@
   "Jack Roslovic": 0.44,
   "Joel Farabee": 0.41,
   "Esa Lindell": 0.29,
+  "Dustin Wolf": 0.28,
   "Anthony Mantha": 0.47,
   "Alexis Lafreniere": 0.27,
   "Dan Vladar": 0.62,
   "Dylan Larkin": 0.29,
   "Owen Tippett": 0.34,
   "Scott Wedgewood": 0.4,
-  "Seth Jarvis": 0.33,
+  "Seth Jarvis": 0.43,
   "Sergei Murashov": 0.28,
   "Colton Parayko": 0.31,
   "Brandon Bussi": 0.35,
   "Alex Ovechkin": 1.6,
+  "Gavin McKenna": 0.37,
   "Darnell Nurse": 0.3,
-  "Patrick Kane": 0.49,
   "Bowen Byram": 0.41,
   "Kevin Fiala": 1.14,
   "Ukko-Pekka Luukkonen": 0.49,
   "John Gibson": 0.82,
   "Brent Burns": 0.41,
-  "Alexander Nikishin": 0.36,
   "Jakub Dobes": 0.54,
   "Ryan Leonard": 0.29,
   "Ivan Provorov": 0.36,
   "Quinton Byfield": 0.4,
   "Valeri Nichushkin": 0.43,
-  "Kiefer Sherwood": 0.29,
   "Tristan Jarry": 0.27,
+  "Kiefer Sherwood": 0.29,
   "Jet Greaves": 0.76,
   "Anders Lee": 0.29,
   "Tyler Bertuzzi": 0.48,
@@ -11603,12 +12614,11 @@
   "Bobby McMann": 0.33,
   "Alex Lyon": 0.57,
   "Joey Daccord": 0.46,
-  "K'Andre Miller": 0.3,
+  "K'Andre Miller": 0.36,
   "Marco Rossi": 0.63,
   "William Eklund": 0.25,
   "Anton Forsberg": 0.65,
   "Simon Holmstrom": 0.3,
-  "Dustin Wolf": 0.28,
   "Chris Kreider": 0.44,
   "Pavel Buchnevich": 0.27,
   "Tommy Novak": 0.31,
@@ -11630,7 +12640,7 @@
   "Yegor Sharangovich": 0.3,
   "Connor McMichael": 0.27,
   "Jordan Binnington": 0.57,
-  "Jordan Staal": 0.68,
+  "Jordan Staal": 1.01,
   "Connor Brown": 0.28,
   "Egor Chinakhov": 0.41,
   "Artem Zub": 0.27,
@@ -11649,16 +12659,16 @@
   "Ryan McLeod": 1.18,
   "Matias Maccelli": 0.25,
   "Noah Cates": 0.27,
-  "Samuel Ersson": 0.31,
   "Collin Graf": 0.57,
   "Mavrik Bourque": 0.61,
+  "Samuel Ersson": 0.31,
   "Michael Bunting": 0.84,
   "Conor Garland": 1.25,
   "Sean Couturier": 0.59,
   "Nick Jensen": 0.75,
   "Oliver Kapanen": 1.02,
-  "Dmitri Voronkov": 0.78,
   "Erik Gustafsson": 0.3,
+  "Dmitri Voronkov": 0.78,
   "Charlie Lindgren": 0.42,
   "Colten Ellis": 1.03,
   "Keegan Kolesar": 0.51,
@@ -11667,15 +12677,15 @@
   "Eric Pohlkamp": 0.68,
   "Jake Walman": 0.28,
   "Corey Perry": 0.44,
-  "Laurent Brossoit": 1.81,
   "Connor Dewar": 0.39,
+  "Laurent Brossoit": 1.81,
   "Luke Schenn": 0.53,
-  "Ville Husso": 0.5,
   "Oliver Bonk": 0.27,
   "Justin Sourdif": 0.43,
-  "Semyon Varlamov": 1.25,
+  "Ville Husso": 0.5,
   "Yanni Gourde": 0.32,
   "Michael Carcone": 0.26,
+  "Semyon Varlamov": 1.25,
   "Alberts Smits": 0.27,
   "Justin Brazeau": 0.66,
   "Max Domi": 0.3,
@@ -11731,16 +12741,16 @@
    "Bryan Rust",
    "Thomas Chabot",
    "Philip Broberg",
-   "Jackson Blake",
    "Roope Hintz",
    "Shane Pinto",
+   "Jackson Blake",
    "Cole Hutson",
    "J.T. Miller",
    "Juraj Slafkovsky",
    "James Hagens",
    "Charlie McAvoy",
-   "Shayne Gostisbehere",
    "Rasmus Andersson",
+   "Shayne Gostisbehere",
    "Devin Cooley"
   ],
   "Mike's Magnificent Team": [
@@ -11783,8 +12793,8 @@
    "Mika Zibanejad",
    "Devon Levi",
    "Josh Morrissey",
-   "Devon Toews",
    "Sean Walker",
+   "Devon Toews",
    "Carter Verhaeghe",
    "Tomas Hertl",
    "Nico Hischier",
@@ -11806,9 +12816,9 @@
    "Brandt Clarke",
    "Moritz Seider",
    "Alex Tuch",
-   "Pyotr Kochetkov",
    "Jack Hughes",
    "Mikael Granlund",
+   "Pyotr Kochetkov",
    "Jakob Chychrun",
    "Jack Quinn",
    "Connor Bedard",
@@ -11817,12 +12827,12 @@
    "Joel Eriksson Ek",
    "Charle-Edouard D'Astous",
    "Mackenzie Blackwood",
+   "Jimmy Snuggerud",
    "Robert Thomas",
+   "Frank Nazar",
    "Justin Faulk",
    "Pavel Dorofeyev",
-   "Victor Olofsson",
-   "Tristan Luneau",
-   "Gavin McKenna"
+   "Victor Olofsson"
   ],
   "Torts Illustrated": [
    "Leon Draisaitl",
@@ -11836,6 +12846,7 @@
    "John Carlson",
    "Joel Farabee",
    "Rasmus Dahlin",
+   "Dustin Wolf",
    "Adrian Kempe",
    "Adam Fantilli",
    "Jack Roslovic",
@@ -11848,8 +12859,7 @@
    "Dougie Hamilton",
    "Esa Lindell",
    "Brad Marchand",
-   "Shea Theodore",
-   "Daniil Tarasov"
+   "Shea Theodore"
   ],
   "Angie\u2019s Bear Balls": [
    "Juuse Saros",
@@ -11866,9 +12876,9 @@
    "Thomas Harley",
    "Andrei Svechnikov",
    "Jordan Eberle",
-   "Nikolaj Ehlers",
    "Mattias Samuelsson",
    "Travis Sanheim",
+   "Nikolaj Ehlers",
    "Morgan Geekie",
    "Dan Vladar",
    "Noah Hanifin",
@@ -11894,8 +12904,8 @@
    "Brandon Bussi",
    "Jacob Trouba",
    "Dylan Cozens",
-   "Seth Jarvis",
    "Sergei Murashov",
+   "Seth Jarvis",
    "Colton Parayko",
    "Sam Bennett",
    "Luke Evangelista",
