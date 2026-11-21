@@ -6,7 +6,7 @@ from __future__ import annotations
 
 import logging
 import math
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 
 from fh import espn
 from fh.rankings import norm_team
@@ -26,6 +26,8 @@ class Line:
     opp_goals: float   # opponent's implied goals
     win: float         # implied win probability (incl. OT/SO), vig removed
     opp: str
+    ml: float | None = None      # this team's posted moneyline (American odds)
+    total: float | None = None   # posted game over/under
 
 
 @dataclass
@@ -88,7 +90,8 @@ def _game_line(event_id: str) -> dict | None:
         return None
     hg, ag, ph = implied_goals(pc["overUnder"], pc.get("overOdds"), pc.get("underOdds"),
                                pc["homeTeamOdds"]["moneyLine"], pc["awayTeamOdds"]["moneyLine"])
-    return {teams["home"]: Line(hg, ag, ph, teams["away"]), teams["away"]: Line(ag, hg, 1 - ph, teams["home"])}
+    ml_h, ml_a, tot = pc["homeTeamOdds"]["moneyLine"], pc["awayTeamOdds"]["moneyLine"], pc["overUnder"]
+    return {teams["home"]: Line(hg, ag, ph, teams["away"], ml_h, tot), teams["away"]: Line(ag, hg, 1 - ph, teams["home"], ml_a, tot)}
 
 
 def fetch_lines(day) -> dict:
@@ -115,7 +118,7 @@ def adjustments(lines: dict, rates: dict, scoring: dict) -> dict:
     out = {}
     for team, ln in lines.items():
         r = rates[team]
-        ln = Line(ln.goals * k, ln.opp_goals * k, ln.win, ln.opp)
+        ln = replace(ln, goals=ln.goals * k, opp_goals=ln.opp_goals * k)
         sk = {g: min(max(1 + s * (ln.goals / r["gf"] - 1), MULT_RANGE[0]), MULT_RANGE[1]) for g, s in GOAL_SHARE.items()}
         # Goalie: wins vs his team's usual win rate, goals against vs his team's usual goals against.
         g_delta = w_pts * (ln.win - r["win"]) + ga_pts * (ln.opp_goals - r["ga"])

@@ -197,7 +197,8 @@ def goalies_today(fas: list, cal: Calendar, period: int, starting: dict, opp_gf:
         rate = max(0.0, p.rate + adj.g_delta) if adj else p.rate
         exp = rate if st in ("confirmed", "expected") else 0.0 if st == "backup" else rate * p.share
         out.append({"p": p, "opp": opp, "confirmed": st, "opp_gf": opp_gf.get(opp), "exp": exp,
-                    "win": adj.line.win if adj else None, "opp_goals": adj.line.opp_goals if adj else None})
+                    "win": adj.line.win if adj else None, "opp_goals": adj.line.opp_goals if adj else None,
+                    "ml": adj.line.ml if adj else None, "total": adj.line.total if adj else None})
     order = {"confirmed": 0, "expected": 1, "": 2, "backup": 3}
     return sorted(out, key=lambda r: (order[r["confirmed"]], -r["exp"]))
 

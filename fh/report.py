@@ -443,7 +443,7 @@ def build(swid: str) -> dict:
                                                    "light": cal.games(p.team, light)}) for p, c in drop_rank if p.group != "G"],
         "goalies_today": [_pl(r["p"], extra={"opp": r["opp"], "confirmed": r["confirmed"], "exp": round(r["exp"], 1),
                                              "opp_gf": round(r["opp_gf"], 2) if r["opp_gf"] else None,
-                                             "win": round(r["win"], 3) if r["win"] is not None else None,
+                                             "win": round(r["win"], 3) if r["win"] is not None else None, "ml": r["ml"], "total": r["total"],
                                              "opp_goals": round(r["opp_goals"], 2) if r["opp_goals"] is not None else None,
                                              "waiver": _waiver(waiver_dates.get(r["p"].id), r["p"].status)})
                           for r in g_today],
