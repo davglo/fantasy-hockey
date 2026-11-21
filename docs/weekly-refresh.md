@@ -12,7 +12,7 @@ build commits `state/context.json`; the routine writes takes from it and re-rend
 
 1. `git pull origin main`. Check `state/context.json` `generated` is from today; if it's older than
    24h, still write the takes but say so in the session summary (the Mac build is failing).
-2. Read `state/context.json` (keys below) and the current `state/ai_manual.json`.
+2. Read `state/digest.json` (about 6 KB: matchups, ranks, add/drop alerts, streams, news, roster flags) and the current `state/ai_manual.json`. Do NOT read `state/context.json` (230 KB); it exists for rendering only.
 3. Rewrite `state/ai_manual.json` per the rules in step 4 of the Mac version below.
 4. `python3 build.py --render-only && cp output/index.html site/index.html`
 5. `git add state/ai_manual.json site/index.html && git commit -m "Analysis <date>"`, then

@@ -42,11 +42,6 @@ def _flag(p: dict, ctx: dict) -> str:
     return ' <span class="flag" title="Sources disagree by %d%%: %s">&#9888;</span>' % (round(p["dis"] * 100), _e(tip))
 
 
-def _name_flag(name: str, ctx: dict) -> str:
-    d = ctx.get("flags", {}).get(name)
-    return ' <span class="flag" title="Projection sources disagree by %d%%">&#9888;</span>' % round(d * 100) if d else ""
-
-
 def _accuracy_card(ctx: dict) -> str:
     a = ctx["accuracy"]
     names = {"model": "Model (sheet + actuals)", "sheet": "Spreadsheet only", "espn": "ESPN projection",
@@ -93,7 +88,7 @@ def _rec(p: dict) -> str:
 
 
 def _overview(ctx, manual):
-    me, myid = ctx["me"], ctx["me"]["id"]
+    me = ctx["me"]
     size = ctx["league"]["size"]
     rum = "".join('<li><b>%s</b>: <a href="%s" target="_blank" rel="noopener">%s</a> <span class="cred">Yahoo Sports &middot; %s</span></li>' % (
         _e(", ".join(r["players"])), _e(r["link"]), _e(r["title"]), _e(r["date"])) for r in ctx.get("rumors", []))

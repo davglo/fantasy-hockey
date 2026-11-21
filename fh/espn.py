@@ -115,14 +115,6 @@ class League:
     drafted: bool = False
     picks: list = field(default_factory=list)  # [(overall, teamId, playerId)] made so far
 
-    @property
-    def my_picks(self) -> list:
-        return [i + 1 for i, t in enumerate(self.pick_teams) if t == self.my_team_id]
-
-    @property
-    def my_slot(self) -> int | None:
-        return self.my_picks[0] if self.my_picks else None
-
 
 def snake_order(order: list, rounds: int, snake: bool = True) -> list:
     out = []

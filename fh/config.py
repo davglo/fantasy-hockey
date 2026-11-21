@@ -28,8 +28,6 @@ STAT_NAMES = {
     34: "GP", 38: "PPP", 39: "SHP",
 }
 
-POLL_SECONDS = 5
-
 # Scoring changes agreed in the league but not yet reflected in ESPN settings (statId -> points).
 # 2026-09-28: back to ESPN's settings (saves 0.2) until the commissioner changes them.
 SCORING_OVERRIDES = {}

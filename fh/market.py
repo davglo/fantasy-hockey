@@ -11,16 +11,6 @@ RATER_FULL_GP = 25        # games played for the rater to reach full weight
 REPLACEMENT_RANK = 160    # ~ players rostered as starters + key bench across the league
 
 
-def rater_ranks(pool: list) -> dict:
-    """playerId -> ESPN season player-rater total ranking (from the leaguedefaults pool)."""
-    out = {}
-    for e in pool:
-        r = ((e.get("ratings") or {}).get("0") or {}).get("totalRanking")
-        if r:
-            out[e["player"]["id"]] = r
-    return out
-
-
 def market_rank(p, rater: dict) -> float:
     pre = p.base.market                      # ESPN ADP, else ESPN rank, else 400
     r = rater.get(p.id)

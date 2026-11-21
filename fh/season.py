@@ -175,11 +175,6 @@ def split_stats(entry: dict, split: int) -> dict:
                  and s.get("statSourceId") == 0 and s.get("statSplitTypeId") == split), {}) or {}
 
 
-def fetch_goals_for() -> dict:
-    """NHL team -> goals for per game (see fetch_team_rates)."""
-    return {t: r["gf"] for t, r in fetch_team_rates().items()}
-
-
 def fetch_team_rates() -> dict:
     """NHL team -> {"gf", "ga", "win"} per game, this season blended with last season (worth 10 games) for stability."""
     from fh.rankings import norm_team

@@ -34,10 +34,6 @@ class Player:
     espn_gp: float | None = None    # ESPN's projected games (for its per-game rate)
 
     @property
-    def fp_per_gp(self) -> float | None:
-        return self.fp / self.gp if self.gp else None
-
-    @property
     def market(self) -> float:
         """Expected overall pick in this league: ESPN ADP (what leaguemates' draft room shows)."""
         if self.espn_adp and self.espn_adp > 0:

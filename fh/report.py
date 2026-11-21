@@ -477,6 +477,31 @@ def build(swid: str) -> dict:
     return ctx
 
 
+def digest(ctx: dict) -> dict:
+    """Compact slice of the context (~5 KB vs ~230 KB) holding everything the written takes cite.
+    The cloud routine reads only this, so a weekly refresh costs a few thousand tokens, not ~60k."""
+    def mt(m):
+        return m and {k: m[k] for k in ("opp", "dates", "actual_me", "actual_opp", "proj_me", "proj_opp", "win_prob",
+                                        "starts_me", "starts_opp")}
+    pick = lambda rows, keys: [{k: r.get(k) for k in keys} for r in rows]
+    mine = ctx["roster"]
+    return {
+        "generated": ctx["generated"], "date": ctx["period"]["date"], "me": ctx["me"], "matchup": mt(ctx["matchup"]),
+        "next_matchup": mt(ctx["next_matchup"]), "where_you_rank": ctx["where_you_rank"],
+        "standings": pick(ctx["standings"][:4], ("name", "w", "l", "odds", "strength")),
+        "add_alerts": pick(ctx["add_alerts"], ("name", "pos", "team", "gain", "drop", "injury")),
+        "drop_watch": pick(ctx["drop_watch"], ("name", "cost")), "underperformers": ctx["underperformers"],
+        "stream_next": ctx["streaming"]["next"]["moves"][:3], "stream_this": ctx["streaming"]["this"]["moves"][:3],
+        "status_watch": pick(ctx["status_watch"], ("player", "status", "summary", "credit")),
+        "news": pick(ctx["news"][:4], ("player", "summary", "credit")),
+        "opportunities": [{"about": o["about"], "kinds": o["kinds"], "gainers": [b["name"] for b in o["beneficiaries"][:2]]}
+                          for o in ctx["opportunities"][:3]],
+        "roster": [{"name": r["name"], "pos": r["pos"], "slot": r["slot"], "injury": r["injury"], "luck": r["luck"]} for r in mine],
+        "days_to_deadline": ctx["days_to_deadline"],
+    }
+
+
 def write_context(ctx: dict) -> None:
     config.STATE.mkdir(exist_ok=True)
     (config.STATE / "context.json").write_text(json.dumps(ctx, indent=1))
+    (config.STATE / "digest.json").write_text(json.dumps(digest(ctx), separators=(",", ":")))

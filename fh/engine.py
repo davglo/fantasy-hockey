@@ -172,16 +172,6 @@ def season_value(players: list, league: League, cal: Calendar, periods, ros: dic
     return total + BENCH_WEIGHT * sum(bench[:league.slots.get("BE", 0)])
 
 
-def games_started(players: list, league: League, cal: Calendar, periods) -> int:
-    """Player-games that would fill lineup slots (the 'games played edge')."""
-    act = active(players)
-    n = 0
-    for d in periods:
-        n += len(best_lineup(act, league.slots,
-                             lambda p: p.exp_game() if d in cal.team_games.get(p.team, ()) else 0.0)[1])
-    return n
-
-
 # ---- matchups & playoff odds --------------------------------------------
 
 REF_WEEK_PTS = 130.0   # typical full-week team score: a full week varies TEAM_WEEK_SD (15%) around it

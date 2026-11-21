@@ -8,9 +8,6 @@ from fh import config, engine
 from fh.espn import League
 from fh.season import BENCH_SLOT, IR_SLOT, Calendar
 
-SLOT_GROUP = {3: "F", 4: "D", 5: "G", 6: "UTIL", 0: "F", 1: "F", 2: "F"}
-
-
 # ---- lineup helper ---------------------------------------------------------
 
 @dataclass
