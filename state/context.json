@@ -1,5 +1,5 @@
 {
- "generated": "Sat Nov 21, 3:40 PM",
+ "generated": "Sat Nov 21, 3:50 PM",
  "league": {
   "name": "The Healthy Scratches",
   "size": 8,
@@ -172,66 +172,6 @@
     "swing": true
    }
   ],
-  "health_me": [
-   {
-    "name": "Connor Bedard",
-    "pos": "C/RW",
-    "team": "CHI",
-    "status": "OUT",
-    "note": "back after 4 games per note of Nov 19",
-    "counted": true
-   },
-   {
-    "name": "Dylan Guenther",
-    "pos": "RW",
-    "team": "UTA",
-    "status": "INJURY_RESERVE",
-    "note": "return date unknown",
-    "counted": true
-   },
-   {
-    "name": "Pavel Dorofeyev",
-    "pos": "LW/RW",
-    "team": "NYR",
-    "status": "INJURY_RESERVE",
-    "note": "return date unknown",
-    "counted": true
-   }
-  ],
-  "health_opp": [
-   {
-    "name": "Elias Pettersson",
-    "pos": "C",
-    "team": "VAN",
-    "status": "OUT",
-    "note": "return date unknown",
-    "counted": false
-   },
-   {
-    "name": "Nick Schmaltz",
-    "pos": "C/RW",
-    "team": "UTA",
-    "status": "INJURY_RESERVE",
-    "note": "return date unknown",
-    "counted": true
-   },
-   {
-    "name": "Noah Hanifin",
-    "pos": "D",
-    "team": "VGK",
-    "status": "INJURY_RESERVE",
-    "note": "return date unknown",
-    "counted": true
-   },
-   {
-    "name": "Anthony Mantha",
-    "pos": "RW",
-    "team": "NJ",
-    "status": "INJURY_RESERVE",
-    "note": "back ~Dec 17 per note of Nov 17",
-    "counted": true
-   }
-  ],
   "dates": "Nov 16 - Nov 22"
  },
  "next_matchup": {
@@ -304,58 +244,6 @@
     "stake": 14.5
    }
   ],
-  "health_me": [
-   {
-    "name": "Connor Bedard",
-    "pos": "C/RW",
-    "team": "CHI",
-    "status": "OUT",
-    "note": "back after 4 games per note of Nov 19",
-    "counted": true
-   },
-   {
-    "name": "Dylan Guenther",
-    "pos": "RW",
-    "team": "UTA",
-    "status": "INJURY_RESERVE",
-    "note": "return date unknown",
-    "counted": true
-   },
-   {
-    "name": "Pavel Dorofeyev",
-    "pos": "LW/RW",
-    "team": "NYR",
-    "status": "INJURY_RESERVE",
-    "note": "return date unknown",
-    "counted": true
-   }
-  ],
-  "health_opp": [
-   {
-    "name": "Aleksander Barkov",
-    "pos": "C",
-    "team": "FLA",
-    "status": "INJURY_RESERVE",
-    "note": "back after 3 games per note of Nov 21",
-    "counted": true
-   },
-   {
-    "name": "Beckett Sennecke",
-    "pos": "RW",
-    "team": "ANA",
-    "status": "INJURY_RESERVE",
-    "note": "return date unknown",
-    "counted": true
-   },
-   {
-    "name": "Evgeni Malkin",
-    "pos": "C/LW",
-    "team": "PIT",
-    "status": "OUT",
-    "note": "back after 2 games per note of Nov 20",
-    "counted": true
-   }
-  ],
   "dates": "Nov 23 - Nov 29"
  },
  "after_matchup": {
@@ -426,42 +314,6 @@
     "me_starts": 9,
     "opp_starts": 8,
     "stake": 36.5
-   }
-  ],
-  "health_me": [
-   {
-    "name": "Connor Bedard",
-    "pos": "C/RW",
-    "team": "CHI",
-    "status": "OUT",
-    "note": "back after 4 games per note of Nov 19",
-    "counted": true
-   },
-   {
-    "name": "Dylan Guenther",
-    "pos": "RW",
-    "team": "UTA",
-    "status": "INJURY_RESERVE",
-    "note": "return date unknown",
-    "counted": true
-   },
-   {
-    "name": "Pavel Dorofeyev",
-    "pos": "LW/RW",
-    "team": "NYR",
-    "status": "INJURY_RESERVE",
-    "note": "return date unknown",
-    "counted": true
-   }
-  ],
-  "health_opp": [
-   {
-    "name": "Quinn Hughes",
-    "pos": "D",
-    "team": "MIN",
-    "status": "OUT",
-    "note": "return date unknown",
-    "counted": false
    }
   ],
   "dates": "Nov 30 - Dec 6"
@@ -5241,11 +5093,49 @@
     182
    ],
    "mine": {
-    "LA": [
-     "Clarke"
+    "CHI": [
+     "Bedard",
+     "Nazar"
+    ],
+    "VGK": [
+     "Olofsson",
+     "Stone"
     ],
     "SJ": [
      "Celebrini"
+    ],
+    "UTA": [
+     "Guenther"
+    ],
+    "BOS": [
+     "Swayman"
+    ],
+    "BUF": [
+     "Quinn"
+    ],
+    "WSH": [
+     "Chychrun",
+     "Tuch"
+    ],
+    "NYR": [
+     "Dorofeyev"
+    ],
+    "NJ": [
+     "Hellebuyck",
+     "Hughes"
+    ],
+    "DET": [
+     "Faulk",
+     "Seider"
+    ],
+    "COL": [
+     "Blackwood"
+    ],
+    "MIN": [
+     "Ek"
+    ],
+    "LA": [
+     "Clarke"
     ],
     "CAR": [
      "Kochetkov"
@@ -5254,53 +5144,15 @@
      "Gauthier",
      "Granlund"
     ],
-    "DET": [
-     "Faulk",
-     "Seider"
-    ],
-    "NJ": [
-     "Hellebuyck",
-     "Hughes"
+    "EDM": [
+     "Bouchard"
     ],
     "STL": [
      "Snuggerud",
      "Thomas"
     ],
-    "VGK": [
-     "Olofsson",
-     "Stone"
-    ],
-    "WSH": [
-     "Chychrun",
-     "Tuch"
-    ],
-    "EDM": [
-     "Bouchard"
-    ],
-    "CHI": [
-     "Bedard",
-     "Nazar"
-    ],
-    "MIN": [
-     "Ek"
-    ],
     "TB": [
      "D'Astous"
-    ],
-    "BUF": [
-     "Quinn"
-    ],
-    "COL": [
-     "Blackwood"
-    ],
-    "UTA": [
-     "Guenther"
-    ],
-    "NYR": [
-     "Dorofeyev"
-    ],
-    "BOS": [
-     "Swayman"
     ]
    },
    "my_playing": [
@@ -12336,36 +12188,6 @@
       "status": ""
      }
     ]
-   }
-  ]
- },
- "recap": {
-  "matchup": 7,
-  "opp": "Matt's Monstrous Team",
-  "mine": 140.0,
-  "opp_pts": 132.8,
-  "result": "W",
-  "left_on_bench": 12.4,
-  "days": [
-   {
-    "date": "Thu 12",
-    "left": 1.4
-   },
-   {
-    "date": "Sat 14",
-    "left": 11.0
-   }
-  ],
-  "top_bench": [
-   {
-    "name": "Devon Levi",
-    "date": "Sat 14",
-    "pts": 9.8
-   },
-   {
-    "name": "Mackenzie Blackwood",
-    "date": "Sat 14",
-    "pts": 7.0
    }
   ]
  },
