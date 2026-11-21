@@ -41,6 +41,33 @@ class P:
     slot: int | None = None
     status: str = ""     # FREEAGENT / WAIVERS for free agents
     sources: dict = None # per-game points by source: sheet / model / espn / pace / l15 (None = not enough data)
+    form: dict = None    # actual pts/GP over the last 7 / 15 / 30 days and the season: key -> (rate, games)
+    out_until: object = None   # date he's first available again (from a reported timeline), None = no stated absence
+    out_note: str = ""         # "back ~Dec 3 per note of Nov 19" / "return date unknown"
+
+    def is_out(self, cal, period: int) -> bool:
+        return self.out_until is not None and cal.date_of(period) < self.out_until
+
+    def form_list(self) -> list:
+        """[L7, L15, L30] pts/GP, None when the sample is too small."""
+        return [None if self.form_rate(k, g) is None else round(self.form_rate(k, g), 2)
+                for k, g in (("l7", 2), ("l15", 4), ("l30", 6))]
+
+    def form_rate(self, key: str, min_gp: int) -> float | None:
+        r, gp = (self.form or {}).get(key, (None, 0))
+        return r if gp >= min_gp else None
+
+    def is_hot(self) -> bool:
+        """On a heater: last 15 days (6+ games) or last 30 (10+) at least 25% above his model rate. Skaters only."""
+        if self.group == "G" or self.rate <= 0:
+            return False
+        return any(r is not None and r >= HOT_RATIO * self.rate
+                   for r in (self.form_rate("l15", 6), self.form_rate("l30", 10)))
+
+    def stream_rate(self) -> float:
+        """Rate used to pick streamers: the average of the model and recent form (last 15 / 30 days)."""
+        parts = [self.rate] + [r for r in (self.form_rate("l15", 5), self.form_rate("l30", 8)) if r is not None]
+        return sum(parts) / len(parts)
 
     @property
     def consensus(self) -> float | None:
@@ -75,7 +102,7 @@ class P:
 
     def exp_day(self, cal: Calendar, period: int) -> float:
         """Expected points on one scoring period: 0 without a game; betting lines adjust it when posted."""
-        if period not in cal.team_games.get(self.team, ()):
+        if period not in cal.team_games.get(self.team, ()) or self.is_out(cal, period):
             return 0.0
         adj = cal.vegas.get((self.team, period))
         if adj is None:
@@ -85,9 +112,10 @@ class P:
         return self.exp_game() * adj.sk_mult[self.group]
 
     def ros(self, cal: Calendar, periods) -> float:
-        return self.exp_game() * cal.games(self.team, periods)
+        return self.exp_game() * sum(1 for d in periods if d in cal.team_games.get(self.team, ()) and not self.is_out(cal, d))
 
 
+HOT_RATIO = 1.25         # recent pts/GP vs model rate that counts as a heater
 MIN_SAMPLE_GP = 3       # actual-results sources need this many games before they're shown
 
 
@@ -122,6 +150,11 @@ def make_players(entries: list, base_players: list, league: League, owners: dict
         o = (owners or {}).get(pl["id"], (None, None))
         l15 = _split(pl, 2)
         l15_gp = int(l15.get("30") or l15.get("34") or 0)
+        def rate_gp(st):
+            g = int(st.get("30") or st.get("34") or 0)
+            return (fantasy_points(st, league.scoring) / g if g else 0.0, g)
+        form = {"l7": rate_gp(_split(pl, 1)), "l15": rate_gp(l15), "l30": rate_gp(_split(pl, 3)),
+                "season": (afp / gp if gp else 0.0, gp)}
         sources = {
             "sheet": pre_rate if b.source == "sheet" else None,
             "model": rate,
@@ -131,7 +164,7 @@ def make_players(entries: list, base_players: list, league: League, owners: dict
         }
         out.append(P(base=b, rate=rate, share=min(1.0, pre_gp / NHL_GAMES), act_gp=gp, act_fp=afp,
                      act_g=act.get("13", 0.0), act_sog=act.get("29", 0.0), pct_change=own.get("percentChange", 0.0),
-                     owner=o[0], slot=o[1], status=e.get("status", ""), sources=sources))
+                     owner=o[0], slot=o[1], status=e.get("status", ""), sources=sources, form=form))
     return out
 
 
@@ -150,7 +183,8 @@ def best_lineup(players: list, slots: dict, value) -> tuple:
 
 
 def active(players: list) -> list:
-    return [p for p in players if p.slot != IR_SLOT]
+    """Players who can be in a lineup now: not in an IR slot and not carrying ESPN's injured-reserve status."""
+    return [p for p in players if p.slot != IR_SLOT and p.injury != "INJURY_RESERVE"]
 
 
 def projected_points(players: list, league: League, cal: Calendar, periods, include_ir: bool = False) -> float:

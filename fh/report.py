@@ -4,8 +4,9 @@ from __future__ import annotations
 import json
 import logging
 from datetime import datetime
+from types import SimpleNamespace
 
-from fh import accuracy, advice, config, engine, espn, news, rankings, rumors, season, valuation, vegas
+from fh import absence, accuracy, advice, config, engine, espn, news, rankings, season, valuation, vegas
 from fh.espn import fantasy_points
 from fh.config import ET
 
@@ -15,13 +16,24 @@ GRADES = ["A", "A-", "B+", "B", "C+", "C", "D+", "D"]
 DISAGREE = 0.25   # flag a player when his projection sources differ by more than this share of the consensus
 
 
+HOT_WINDOWS = (("l7", 3), ("l15", 6), ("l30", 10), ("season", 10))   # (form key, minimum games)
+
+
+def _health(ps: list) -> list:
+    """Flagged players (injured / IR / suspended) with whether a stated return date is already in the projection."""
+    return [{"name": p.name, "pos": p.base.positions, "team": p.team, "status": p.injury if p.injury != "ACTIVE" else "IR slot",
+             "note": p.out_note, "counted": bool(p.out_until) or p.slot == season.IR_SLOT or p.injury == "INJURY_RESERVE"}
+            for p in sorted(ps, key=lambda p: -p.rate) if p.injury not in ("ACTIVE", "DAY_TO_DAY") or p.slot == season.IR_SLOT]
+
+
 def _pl(p, cal=None, periods=None, extra=None) -> dict:
     src = p.sources or {}
     d = {"id": p.id, "name": p.name, "pos": p.base.positions, "group": p.group, "team": p.team,
          "injury": "" if p.injury == "ACTIVE" else p.injury, "rate": round(p.rate, 2),
          "src": {k: (round(v, 2) if v is not None else None) for k, v in src.items()},
          "cons": round(p.consensus, 2) if p.consensus is not None else None, "dis": round(p.disagreement, 2),
-         "exp_game": round(p.exp_game(), 2), "gp": p.act_gp, "fp": round(p.act_fp, 1)}
+         "exp_game": round(p.exp_game(), 2), "gp": p.act_gp, "fp": round(p.act_fp, 1), "f": p.form_list(), "hot": p.is_hot(),
+         "out": p.out_note}
     if cal is not None:
         d["ros"] = round(p.ros(cal, periods), 1)
     d.update(extra or {})
@@ -69,11 +81,6 @@ STAT_LINE = (("13", "G"), ("14", "A"), ("29", "SOG"), ("32", "BLK"), ("31", "HIT
 def _perf(p, st: dict, pts: float) -> dict:
     line = ", ".join("%d %s" % (st[k], lab) for k, lab in STAT_LINE if st.get(k))
     return _pl(p, extra={"pts": round(pts, 1), "line": line, "own_chg": round(p.pct_change, 1)})
-
-
-def _last7(p, state) -> float:
-    ent = next((e for t in state.teams.values() for e, _ in t.roster if e["player"]["id"] == p.id), None)
-    return fantasy_points(season.split_stats(ent, 1), state.league.scoring) if ent else 0.0
 
 
 def _po_targets(fas, players, me, teams, cal, po_periods, state) -> list:
@@ -139,6 +146,10 @@ def build(swid: str) -> dict:
     fas = engine.make_players(state.free_agents, base, lg)
     rosters = {tid: [p for p in players if p.owner == tid] for tid in state.teams}
     mine = rosters[me]
+    # Reported absences: games a player is stated to miss come out of every projection (mine and rivals').
+    flagged = {p.id: p.name for p in players + fas if p.injury in absence.UNKNOWN_STATUS or p.slot == season.IR_SLOT}
+    n_dated = absence.apply(players + fas, news.fetch_many(flagged), cal, cal.date_of(state.today_period))
+    log.info("absences: %d flagged players, %d with a reported return date", len(flagged), n_dated)
     accuracy.log_snapshot(players + fas, cal.date_of(state.today_period))
     acc = accuracy.evaluate(cal.date_of(state.today_period))
 
@@ -170,12 +181,14 @@ def build(swid: str) -> dict:
             a, sa = engine.best_lineup(pool(mine), lg.slots, f)
             b, sb = engine.best_lineup(pool(rosters[opp]), lg.slots, f)
             days.append({"date": cal.date_of(d).strftime("%a %b %-d"), "me": round(a, 1), "opp": round(b, 1),
-                         "me_starts": len(sa), "opp_starts": len(sb)})
+                         "me_starts": len(sa), "opp_starts": len(sb), "stake": round(a + b, 1)})
+        for d in sorted(days, key=lambda x: -x["stake"])[:2]:
+            d["swing"] = True      # the two days with the most projected points at stake
         return {"opp": state.teams[opp].name, "opp_id": opp, "actual_me": my_pts, "actual_opp": opp_pts,
                 "proj_me": round(mu_me, 1), "proj_opp": round(mu_opp, 1),
                 "win_prob": round(engine.win_prob(mu_me, mu_opp, my_pts, opp_pts), 3),
                 "starts_me": sum(d["me_starts"] for d in days), "starts_opp": sum(d["opp_starts"] for d in days),
-                "days": days,
+                "days": days, "health_me": _health(mine), "health_opp": _health(rosters[opp]),
                 "dates": "%s - %s" % (cal.date_of(cal.matchups[m][0]).strftime("%b %-d"),
                                       cal.date_of(cal.matchups[m][-1]).strftime("%b %-d"))}
 
@@ -183,6 +196,46 @@ def build(swid: str) -> dict:
     next_matchup = _matchup(cm + 1, next_week) if next_week else None
     week_after = cal.matchups.get(cm + 2, [])
     after_matchup = _matchup(cm + 2, week_after) if week_after else None
+
+    def _recap(m):
+        """Last finished matchup: result plus points left on my bench (actual lineups vs the best lineup in hindsight)."""
+        mt = next((x for x in state.schedule if x.period == m and me in (x.home, x.away)), None)
+        if not mt or mt.winner == "UNDECIDED":
+            return None
+        opp = mt.away if mt.home == me else mt.home
+        mine_pts, opp_pts = (mt.home_pts, mt.away_pts) if mt.home == me else (mt.away_pts, mt.home_pts)
+        won = {"HOME": mt.home, "AWAY": mt.away}.get(mt.winner)
+        started = best_total = 0.0
+        bench, days = [], []
+        for d in cal.matchups[m]:
+            rows = season.fetch_roster_day(me, d, lg.scoring, past=d < today)
+            objs = [SimpleNamespace(id=i, name=n, group=g, slot=s, pts=pts) for i, (n, g, s, pts) in enumerate(rows)]
+            got = sum(o.pts for o in objs if o.slot not in (season.BENCH_SLOT, season.IR_SLOT))
+            best, _ = engine.best_lineup(objs, lg.slots, lambda o: o.pts)
+            started, best_total = started + got, best_total + best
+            days.append({"date": cal.date_of(d).strftime("%a %-d"), "left": round(max(0.0, best - got), 1)})
+            bench += [(o.name, cal.date_of(d).strftime("%a %-d"), o.pts) for o in objs if o.slot == season.BENCH_SLOT and o.pts > 0]
+        return {"matchup": m, "opp": state.teams[opp].name, "mine": round(mine_pts, 1), "opp_pts": round(opp_pts, 1),
+                "result": "W" if won == me else "L" if won is not None else "T", "left_on_bench": round(max(0.0, best_total - started), 1),
+                "days": [d for d in days if d["left"] > 0],
+                "top_bench": [{"name": n, "date": d, "pts": round(pts, 1)} for n, d, pts in sorted(bench, key=lambda b: -b[2])[:3]]}
+    recap = _recap(cm - 1) if cm > 1 else None
+
+    def _trend(m, prob):
+        """Win-chance history for the live matchup (one point per build, kept locally)."""
+        path = config.STATE / "winprob_log.json"
+        try:
+            hist = json.loads(path.read_text())
+        except (FileNotFoundError, ValueError):
+            hist = []
+        now_et = datetime.now(ET)
+        hist = [h for h in hist if h["m"] == m]
+        if hist and (now_et - datetime.fromisoformat(hist[-1]["t"])).total_seconds() < 2 * 3600:
+            hist.pop()      # same slot (a manual re-run): replace
+        hist = (hist + [{"m": m, "t": now_et.isoformat(), "p": prob}])[-40:]
+        path.write_text(json.dumps(hist))
+        return [{"label": datetime.fromisoformat(h["t"]).strftime("%a %-I%p"), "p": h["p"]} for h in hist]
+    trend = _trend(cm, matchup["win_prob"]) if matchup else []
 
     # Lineup helper: today and tomorrow
     lineup = {}
@@ -198,7 +251,7 @@ def build(swid: str) -> dict:
     po_weeks = {m: cal.matchups[m] for m in sorted(cal.matchups) if m > state.regular_matchups}
     po_periods = [d for ps in po_weeks.values() for d in ps]
     value = advice.Valuer(lg, cal, ros_periods, po_periods)
-    fa_recs = advice.free_agents(mine, fas, value, this_week, next_week)
+    fa_recs = advice.free_agents(mine, [f for f in fas if f.group != "G"], value, this_week, next_week)   # skaters: goalies are managed separately
     plan_ahead = len(this_week) <= 2 and bool(next_week)   # weekend: plan next week's streams
     stream = advice.streaming(fas, cal, this_week, next_week, goalie_week=next_week if plan_ahead else this_week)
     adds_used = state.teams[me].adds_by_matchup.get(cm, 0)
@@ -254,55 +307,25 @@ def build(swid: str) -> dict:
         if f.group == "G" and not starting.get(f.id) and f.team in confirmed_teams:
             starting[f.id] = "backup"
     g_today = advice.goalies_today(fas, cal, today, starting, {t: r["gf"] for t, r in team_rates.items()})[:8]
-    opps = news.opportunities(nws, {p.id: p for p in players + fas}, fas, now)
-    news.save_snapshot(players)
-    drops3 = advice.droppable(mine, value, k=3)
-    base_val = value(mine)
-
-    short = list(this_week) + list(next_week)
-    base_short = engine.projected_points(mine, lg, cal, short)
-
-    def fa_gain(f):
-        return max((value([q for q in mine if q.id != d.id] + [f]) - base_val for d in drops3), default=0.0)
-
-    def fa_gain_short(f):
-        return max((engine.projected_points([q for q in mine if q.id != d.id] + [f], lg, cal, short) - base_short
-                    for d in drops3), default=0.0)
-
-    def opp_row(f):
-        return {"id": f.id, "name": f.name, "team": f.team, "pos": f.base.positions, "gain": round(fa_gain(f), 1),
-                "gain_2wk": round(fa_gain_short(f), 1), "status": f.status,
-                "waiver": _waiver(waiver_dates.get(f.id), f.status)}
-    opp_rows = []
-    for o in opps:
-        bens = [r for r in (opp_row(f) for f in o.beneficiaries) if r["gain"] >= 2 or r["gain_2wk"] >= 1]
-        if bens:
-            opp_rows.append((o, sorted(bens, key=lambda r: -max(r["gain"], r["gain_2wk"]))))
-    my_news = news.top([i for p in mine for i in nws.get(p.id, [])], now, 8)
-    # Injury news around the league: anyone rostered in this league, or a free agent owned >= 10% in ESPN leagues
+    # Hottest free-agent skaters by window (the Streaming tab re-sorts them by L7 / L15 / L30 / season)
+    fmt_form = lambda p: {k: [round(r, 2), g] for k, (r, g) in (p.form or {}).items()}
+    pool_fa = [f for f in fas if f.group != "G" and f.injury in ("ACTIVE", "DAY_TO_DAY") and cal.games(f.team, list(this_week) + list(next_week))]
+    hot_pick = {}
+    for key, min_gp in HOT_WINDOWS:
+        for f in sorted((f for f in pool_fa if f.form_rate(key, min_gp) is not None), key=lambda f: -f.form_rate(key, min_gp))[:12]:
+            hot_pick[f.id] = f
+    trending = sorted((f for f in fas if f.pct_change >= 1.0), key=lambda f: -f.pct_change)[:8]
+    # Goalie starts by day for the matchup week: who plays when (start status is only known for today)
+    my_goalies = [p for p in engine.active(mine) if p.group == "G"]
+    goalie_days = {"days": [cal.date_of(d).strftime("%a %-d") for d in this_week],
+                   "rows": [{"name": g.name, "team": g.team, "out": g.out_note,
+                             "cells": [{"opp": cal.opponents.get((g.team, d), "") if d in cal.team_games.get(g.team, ()) and not g.is_out(cal, d) else "",
+                                        "status": starting.get(g.id, "") if d == today else ""} for d in this_week]} for g in my_goalies]}
+    # League news: my players, big news on everyone else rostered here, and league-wide headlines
     by_id_all = {p.id: p for p in players + fas}
-    notable = {p.id for p in players} | {p.id for p in fas if p.base.pct_owned >= 10}
-    injury_news = []
-    for pid, items in nws.items():
-        if pid not in notable or pid not in by_id_all:
-            continue
-        it = next((i for i in items if i.kinds & {"injury", "season_over", "suspension"}
-                   and i.age_hours(now) <= news.MAX_AGE_H), None)
-        if it:
-            injury_news.append((by_id_all[pid], it))
-    injury_news.sort(key=lambda t: -news.relevance(t[1], now))
-    rumor_names = [p.name for p in mine] + [r.p.name for r in fa_recs[:8]]
-    known = [e["player"]["fullName"] for e in espn.fetch_pool()] + [p.name for p in players + fas]
-    rumor_items = [r for r in rumors.refresh(rumor_names, known)
-                   if (now - datetime.fromisoformat(r["date"])).total_seconds() <= news.MAX_AGE_H * 3600][:8]
-    # Flagged players on my roster: always show their latest item, however old (the saga matters).
-    status_watch = []
-    for p in mine:
-        if p.injury == "ACTIVE":
-            continue
-        latest = next((i for i in nws.get(p.id, []) if news.newsworthy(i)), None)
-        if latest and latest.age_hours(now) <= news.MAX_AGE_H:
-            status_watch.append((p, latest))
+    my_items = news.mine_items(mine, nws, now)
+    around = news.around_items(nws, players + fas, {p.id for p in mine}, now)
+    headlines = news.league_headlines(now)
     ADD_ALERT = 15.0
 
     my_odds = proj.playoff_odds[me]
@@ -346,15 +369,6 @@ def build(swid: str) -> dict:
         notes.append("Next week (%s) vs %s: projected %.0f-%.0f, %.0f%% to win (starts %d vs %d)." % (
             next_matchup["dates"], next_matchup["opp"], next_matchup["proj_me"], next_matchup["proj_opp"],
             next_matchup["win_prob"] * 100, next_matchup["starts_me"], next_matchup["starts_opp"]))
-    if opp_rows:
-        o, bens = opp_rows[0]
-        if o.about.id == bens[0]["id"]:
-            notes.append("Opportunity: free agent %s (%s) - %s." % (o.about.name, o.about.team, o.item.summary[:120]))
-        else:
-            notes.append("Opportunity: %s (%s) %s -> %s is the free agent who gains." % (
-                o.about.name, o.about.team, "/".join(sorted(o.item.kinds & news.NEGATIVE)), bens[0]["name"]))
-    if fa_recs and fa_recs[0].gain >= ADD_ALERT:
-        notes.append("Best rest-of-season add: %s for %s (+%.0f)." % (fa_recs[0].p.name, fa_recs[0].drop.name, fa_recs[0].gain))
     # Betting lines: my teams tonight whose implied goals differ most from their usual scoring
     tonight = sorted({p.team: cal.vegas[(p.team, today)] for p in engine.active(mine) if (p.team, today) in cal.vegas
                       and p.group != "G"}.items(), key=lambda ta: -abs(ta[1].line.goals / ta[1].base_gf - 1))
@@ -436,10 +450,15 @@ def build(swid: str) -> dict:
         "add_alerts": [_pl(r.p, cal, ros_periods, {"gain": round(r.gain, 1), "drop": r.drop.name,
                                                    "waiver": _waiver(waiver_dates.get(r.p.id), r.p.status)})
                        for r in fa_recs if r.gain >= ADD_ALERT][:5],
+        "goalie_days": goalie_days,
+        "recap": recap, "winprob_trend": trend,
+        "trending": [_pl(f, extra={"own": round(f.base.pct_owned, 1), "own_chg": round(f.pct_change, 1),
+                                   "waiver": _waiver(waiver_dates.get(f.id), f.status)}) for f in trending],
+        "hot_fas": [_pl(f, extra={"form": fmt_form(f), "g_this": cal.games(f.team, this_week), "g_next": cal.games(f.team, next_week),
+                                  "waiver": _waiver(waiver_dates.get(f.id), f.status)}) for f in hot_pick.values()],
         "drop_watch": [_pl(p, cal, ros_periods, {"cost": round(c, 1)}) for p, c in drop_rank if p.group != "G"][:3],
         "underperformers": [_pl(p, extra={"actual": round(a, 2), "proj": round(pr, 2)}) for p, a, pr in under if p.group != "G"],
         "drop_ranking": [_pl(p, cal, ros_periods, {"cost": round(c, 1), "po_games": cal.games(p.team, po_periods),
-                                                   "last7": round(_last7(p, state), 1),
                                                    "light": cal.games(p.team, light)}) for p, c in drop_rank if p.group != "G"],
         "goalies_today": [_pl(r["p"], extra={"opp": r["opp"], "confirmed": r["confirmed"], "exp": round(r["exp"], 1),
                                              "opp_gf": round(r["opp_gf"], 2) if r["opp_gf"] else None,
@@ -450,17 +469,14 @@ def build(swid: str) -> dict:
         "recent": {"yesterday": cal.date_of(yday).strftime("%a %b %-d") if yday >= 1 else "",
                    "day": [_perf(f, st, pts) for pts, f, st in perf_day if pts > 0],
                    "week": [_perf(f, st, pts) for pts, f, st in perf_7 if pts > 0]},
-        "news": [_news(i) for i in my_news],
-        "injuries": [dict(_news(i), owner=("Me" if p.owner == me else state.teams[p.owner].name if p.owner else "FA"),
-                          status=p.injury, group=p.group, team=p.team) for p, i in injury_news[:15]],
-        "status_watch": [dict(_news(i), status=p.injury) for p, i in status_watch],
-        "rumors": [{"title": r["title"], "link": r["link"], "players": r["players"],
-                    "date": datetime.fromisoformat(r["date"]).astimezone(ET).strftime("%b %-d")} for r in rumor_items],
+        "league_news": {
+            "mine": [dict(_news(i), status=by_id_all[i.player_id].injury if by_id_all[i.player_id].injury != "ACTIVE" else "")
+                     for i in my_items],
+            "around": [dict(_news(i), owner=state.teams[p.owner].name if p.owner else "FA", team=p.team, group=p.group,
+                            status=p.injury if p.injury != "ACTIVE" else "") for p, i in around],
+            "headlines": [{"title": h["title"], "link": h["link"], "source": h["source"],
+                           "date": h["published"].astimezone(ET).strftime("%b %-d")} for h in headlines]},
         "notes": notes,
-        "opportunities": [{"news": _news(o.item), "about": o.about.name, "about_team": o.about.team,
-                           "about_group": o.about.group, "self": o.about.id == bens[0]["id"],
-                           "kinds": sorted(o.item.kinds & (news.NEGATIVE | news.POSITIVE)),
-                           "beneficiaries": bens} for o, bens in opp_rows[:8]],
         "player_news": {p.name: [_news(i) for i in nws.get(p.id, [])[:2]] for p in mine},
         "playoff_usable": {"days": usable["days"], "totals": {k: sum(d[k] for d in usable["days"]) for k in ("used", "wasted", "empty_sk", "empty_g")},
                            "targets": _po_targets(fas, players, me, usable["teams"], cal, po_periods, state)},
@@ -488,15 +504,18 @@ def digest(ctx: dict) -> dict:
     return {
         "generated": ctx["generated"], "date": ctx["period"]["date"], "me": ctx["me"], "matchup": mt(ctx["matchup"]),
         "next_matchup": mt(ctx["next_matchup"]), "where_you_rank": ctx["where_you_rank"],
+        "swing_days": [d["date"] for d in (ctx["matchup"] or {}).get("days", []) if d.get("swing")],
+        "health_me": [(h["name"], h["status"], h["note"]) for h in (ctx["matchup"] or {}).get("health_me", [])],
+        "health_opp": [(h["name"], h["status"], h["note"]) for h in (ctx["matchup"] or {}).get("health_opp", [])],
+        "recap": ctx["recap"],
+        "playoff_weeks": [(t["name"], t["total"]) for t in ctx["playoffs"]["teams"][:4]],
+        "teams": [{"name": t["name"], "need": t["need"], "surplus": t["surplus"]} for t in ctx["league_teams"]],
         "standings": pick(ctx["standings"][:4], ("name", "w", "l", "odds", "strength")),
-        "add_alerts": pick(ctx["add_alerts"], ("name", "pos", "team", "gain", "drop", "injury")),
-        "drop_watch": pick(ctx["drop_watch"], ("name", "cost")), "underperformers": ctx["underperformers"],
-        "stream_next": ctx["streaming"]["next"]["moves"][:3], "stream_this": ctx["streaming"]["this"]["moves"][:3],
-        "status_watch": pick(ctx["status_watch"], ("player", "status", "summary", "credit")),
-        "news": pick(ctx["news"][:4], ("player", "summary", "credit")),
-        "opportunities": [{"about": o["about"], "kinds": o["kinds"], "gainers": [b["name"] for b in o["beneficiaries"][:2]]}
-                          for o in ctx["opportunities"][:3]],
-        "roster": [{"name": r["name"], "pos": r["pos"], "slot": r["slot"], "injury": r["injury"], "luck": r["luck"]} for r in mine],
+        "league_news": {"mine": pick(ctx["league_news"]["mine"][:4], ("player", "summary", "credit", "status")),
+                        "around": pick(ctx["league_news"]["around"][:4], ("player", "owner", "summary", "credit")),
+                        "headlines": [h["title"] for h in ctx["league_news"]["headlines"][:4]]},
+        "roster": [{"name": r["name"], "pos": r["pos"], "slot": r["slot"], "injury": r["injury"], "out": r["out"], "luck": r["luck"],
+                    "l7_l15_l30": r["f"]} for r in mine],
         "days_to_deadline": ctx["days_to_deadline"],
     }
 

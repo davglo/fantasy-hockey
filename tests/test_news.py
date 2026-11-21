@@ -50,26 +50,6 @@ class TestParse(unittest.TestCase):
         self.assertNotIn("B", [i.player for i in news.top(items, NOW, 5)])   # no fantasy-relevant tag -> dropped
 
 
-class TestOpportunities(unittest.TestCase):
-    def test_backup_goalie_benefits(self):
-        starter = pl(1, "G", team="COL", rate=3.0)
-        starter.owner = 3
-        backup = pl(2, "G", team="COL", rate=1.5, slot=None)
-        backup.owner = None
-        other = pl(3, "G", team="BOS", rate=2.5, slot=None)
-        it = news.parse(raw("Wedgewood will miss the rest of the season after knee surgery."), 1, "Scott Wedgewood")
-        opps = news.opportunities({1: [it]}, {1: starter, 2: backup, 3: other}, [backup, other], NOW)
-        self.assertEqual(len(opps), 1)
-        self.assertEqual([b.id for b in opps[0].beneficiaries], [2])
-        self.assertIn("season_over", opps[0].item.kinds)
-
-    def test_return_news_not_an_opportunity(self):
-        p = pl(1, "F", team="CHI")
-        p.owner = 3
-        it = news.parse(raw("Bedard was activated from injured reserve Thursday."), 1, "Connor Bedard")
-        self.assertEqual(news.opportunities({1: [it]}, {1: p}, [pl(2, "F", team="CHI", slot=None)], NOW), [])
-
-
 class TestPlayoffAndDrops(unittest.TestCase):
     def setUp(self):
         self.lg = espn.parse_league(raw_league(), SWID)
@@ -98,40 +78,13 @@ if __name__ == "__main__":
     unittest.main()
 
 
-class TestRumors(unittest.TestCase):
-    def setUp(self):
-        import tempfile
-        from pathlib import Path
-        from fh import rumors
-        self.rumors = rumors
-        self.tmp = Path(tempfile.mkdtemp()) / "arch.json"
-        self.orig_arch, self.orig_fetch = rumors.ARCHIVE, rumors._fetch_feed
-        rumors.ARCHIVE = self.tmp
-        now = datetime.now(timezone.utc)
-        rumors._fetch_feed = lambda: [
-            {"title": "Oilers trade pitch adds Connor Hellebuyck", "link": "https://x/1", "date": now.isoformat()},
-            {"title": "Hellebuyck trade saga takes a turn", "link": "https://x/2", "date": now.isoformat()},
-            {"title": "Islanders release jersey schedule", "link": "https://x/3", "date": now.isoformat()},
-            {"title": "Old Hellebuyck trade note", "link": "https://x/4", "date": (now - timedelta(days=20)).isoformat()}]
-
-    def tearDown(self):
-        self.rumors.ARCHIVE, self.rumors._fetch_feed = self.orig_arch, self.orig_fetch
-
-    def test_matches_names_and_keeps_archive(self):
-        out = self.rumors.refresh(["Connor Hellebuyck"], ["Connor Hellebuyck"])
-        self.assertEqual([r["link"] for r in out], ["https://x/1", "https://x/2"])   # last-name match; old item expired
-        self.rumors._fetch_feed = lambda: []                                         # feed rolled over
-        self.assertEqual(len(self.rumors.refresh(["Connor Hellebuyck"], [])), 2)      # still shown from archive
-
-    def test_shared_last_name_needs_first_name(self):
-        known = ["Jack Hughes", "Quinn Hughes", "Luke Hughes", "Connor Hellebuyck"]
-        m = lambda t, n: self.rumors._mentions(t, n, {"Hughes": 3, "Hellebuyck": 1})
-        self.assertFalse(m("TJ Hughes trade rumors heat up", "Jack Hughes"))
-        self.assertFalse(m("Hughes requests trade", "Jack Hughes"))          # which Hughes? ambiguous
-        self.assertTrue(m("Devils star Jack Hughes injured", "Jack Hughes"))
-        self.assertTrue(m("Why the Hellebuyck saga drags on", "Connor Hellebuyck"))
-        self.assertFalse(m("T.J. Hellebuyck signs", "Connor Hellebuyck"))
-        del known
+class TestHeadlines(unittest.TestCase):
+    def test_filter_keeps_transactions_drops_noise(self):
+        keep, skip = news.HEADLINE_KEEP, news.HEADLINE_SKIP
+        self.assertTrue(keep.search("Canucks Trade Sasson To The Rangers") and not skip.search("Canucks Trade Sasson To The Rangers"))
+        self.assertTrue(keep.search("Robertson to IR, Malkin out for weekend") or keep.search("Malkin injured"))
+        self.assertTrue(skip.search("NHL Power Rankings: Updated poll"))
+        self.assertTrue(skip.search("Ranking the Penguins best trade assets"))
 
 
 class TestGoaliesToday(unittest.TestCase):

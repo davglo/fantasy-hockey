@@ -62,8 +62,6 @@ def sanity(ctx: dict) -> list:
     chk(not any(d["injury"] not in ("", "DAY_TO_DAY") for d in ctx["drop_ranking"]), "flagged player in drop ranking")
     chk(not any(g["injury"] not in ("", "DAY_TO_DAY") for g in ctx["goalies_today"] + ctx["streaming"]["goalies"]),
         "injured goalie suggested")
-    for o in ctx["opportunities"]:
-        chk(all(b["name"] not in rostered for b in o["beneficiaries"]), "opportunity names a rostered player")
     for d in ctx["playoff_usable"]["days"]:
         chk(d["used"] + d["empty_sk"] + d["empty_g"] == slots, "usable-games slots don't add up on %s" % d["date"])
     for k in ("this", "next"):

@@ -2,17 +2,19 @@
 
 Public-page rules: show the one-line summary, credit Rotowire/ESPN and the cited reporter, and link to the
 player's ESPN news page. Never republish the full story text (it's only parsed, for keywords and names).
-ESPN has no league-wide feed, so we crawl a bounded watch set chosen by `watch_set`."""
+ESPN's fantasy feed is per player, so we crawl a bounded watch set chosen by `watch_set`; league headlines
+come from ESPN's NHL news feed (headline + link only)."""
 from __future__ import annotations
 
-import json
+import html
 import logging
 import re
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 
-from fh import config, espn
+from fh import espn
 
 log = logging.getLogger(__name__)
 
@@ -47,8 +49,7 @@ KINDS = {
             r"expanded role|bigger role|increased (?:role|ice time)|(?:quarterback|run) the (?:top|first) unit)",
     "starting": START_CONFIRMED + "|" + START_EXPECTED,
 }
-NEGATIVE = {"injury", "suspension", "season_over", "trade", "demotion"}
-POSITIVE = {"role", "return", "trade"}   # good news about a free agent himself
+BIG = {"injury", "suspension", "season_over", "trade", "demotion", "return", "role"}   # kinds worth a league-news slot
 REPORTER = re.compile(r"((?:[A-Z][\w'.-]+ ){1,2}[A-Z][\w'.-]+) of (?:the )?([A-Z][\w.'&-]+(?: [A-Z][\w.'&-]+)*)")
 
 
@@ -165,66 +166,16 @@ def starting_goalies(players: list) -> dict:
     return out
 
 
-def load_snapshot() -> dict:
-    try:
-        return json.loads((config.STATE / "status_snapshot.json").read_text())
-    except (FileNotFoundError, ValueError):
-        return {}
-
-
-def save_snapshot(players: list) -> None:
-    (config.STATE / "status_snapshot.json").write_text(json.dumps({str(p.id): p.injury for p in players}))
-
 
 def watch_set(mine: list, rostered: list, fas: list, add_targets: list, goalie_cands: list, top_fas: int = 40) -> dict:
-    """Who to crawl: my roster, my add targets + stream goalies, every team's starting goalie, any rostered
-    player whose ESPN status changed since last build or isn't ACTIVE, FAs whose ownership is spiking, and the
-    top free agents by projection (for promotions / call-ups / new roles)."""
-    snap = load_snapshot()
+    """Who to crawl: my roster, my add targets + stream goalies, every team's starting goalie, every player
+    rostered in this league, FAs whose ownership is spiking, and the top free agents by projection."""
     ws = {p.id: p.name for p in list(mine) + list(add_targets) + list(goalie_cands)}
     ws.update({p.id: p.name for p in sorted(fas, key=lambda p: -p.exp_game())[:top_fas]})
     ws.update({p.id: p.name for p in starting_goalies(rostered + fas).values()})
-    ws.update({p.id: p.name for p in rostered
-               if p.injury != "ACTIVE" or snap.get(str(p.id), p.injury) != p.injury})
+    ws.update({p.id: p.name for p in rostered})   # everyone rostered in this league: the league-news section covers them all
     ws.update({p.id: p.name for p in fas if p.pct_change >= 5})
     return ws
-
-
-@dataclass
-class Opportunity:
-    item: Item
-    about: object         # the player the news is about
-    beneficiaries: list   # FAs who gain
-
-
-def opportunities(news: dict, by_id: dict, fas: list, now: datetime, max_age_h: float = MAX_AGE_H) -> list:
-    """Negative news about a non-FA player -> FAs who stand to gain: FAs named in the blurb first, then FAs on
-    the same NHL team in the same group (for goalies: that team's FA backup)."""
-    fa_ids = {p.id for p in fas}
-    out = []
-    for pid, items in news.items():
-        p = by_id.get(pid)
-        if p is None or pid in fa_ids:
-            continue
-        for it in items:
-            if it.age_hours(now) > max_age_h or not (it.kinds & NEGATIVE) or "return" in it.kinds:
-                continue
-            named = [f for f in fas if f.name in it.text or (len(f.name.split()) > 1 and
-                     re.search(r"\b%s\b" % re.escape(f.name.split()[-1]), it.text) and f.team == p.team)]
-            same = sorted((f for f in fas if f.team == p.team and f.group == p.group and f not in named),
-                          key=lambda f: -f.exp_game())[:1 if p.group == "G" else 2]
-            bens = named + same
-            if bens:
-                out.append(Opportunity(item=it, about=p, beneficiaries=bens))
-            break   # newest qualifying item per player
-    # Good news about free agents themselves: promotions, call-ups, new starting jobs, returns, trades.
-    for f in fas:
-        for it in news.get(f.id, []):
-            if it.age_hours(now) > max_age_h or not (it.kinds & POSITIVE) or (it.kinds & (NEGATIVE - {"trade"})):
-                continue
-            out.append(Opportunity(item=it, about=f, beneficiaries=[f]))
-            break
-    return sorted(out, key=lambda o: -relevance(o.item, now))
 
 
 def credit(it: Item) -> str:
@@ -238,3 +189,81 @@ def credit(it: Item) -> str:
 
 def now_utc() -> datetime:
     return datetime.now(timezone.utc)
+
+
+HEADLINES = "https://site.api.espn.com/apis/site/v2/sports/hockey/nhl/news?limit=60"
+YAHOO = "https://sports.yahoo.com/nhl/rss.xml"
+HEADLINE_KEEP = re.compile(r"\b(trade[sd]?|injur\w*|suspen\w*|surgery|out for|sidelined|waive[sd]?|signs?|extension|fired|hires?|"
+                           r"resign\w*|contract|return\w*|call[- ]?up|demot\w*|scratch\w*|hospital\w*|concussion)\b", re.I)
+HEADLINE_SKIP = re.compile(r"(power rankings|what to watch|highlights|vs\.|scoring tracker|most |which |all-time|"
+                           r"mock draft|odds|picks|predictions?|fantasy hockey|ranking|trade targets|trade assets|can explore)", re.I)
+
+
+def _yahoo_items() -> list:
+    def get():
+        items = []
+        for block in re.findall(r"<item>(.*?)</item>", espn._curl_text(YAHOO), re.S):
+            title = re.search(r"<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?</title>", block, re.S)
+            link = re.search(r"<link>(.*?)</link>", block, re.S)
+            date = re.search(r"<pubDate>(.*?)</pubDate>", block, re.S)
+            if title and link and date:
+                items.append({"title": html.unescape(title.group(1).strip()), "link": link.group(1).strip(),
+                              "date": parsedate_to_datetime(date.group(1).strip()).astimezone(timezone.utc).isoformat()})
+        return {"items": items}
+    try:
+        return espn.cached("yahoo_nhl_rss", 3600, get)["items"]
+    except espn.FetchError as e:
+        log.info("Yahoo NHL feed unavailable (%s)", e)
+        return []
+
+
+def league_headlines(now: datetime, max_age_h: float = 72, n: int = 10) -> list:
+    """League-wide NHL headlines (injuries, trades, signings, call-ups, coaching moves) from ESPN's news feed and
+    Yahoo Sports' RSS. Headline + link only, credited to the outlet - never article text."""
+    out = []
+    try:
+        espn_items = espn.cached("espn_headlines", 3600, lambda: espn._curl(HEADLINES, timeout=10)).get("articles", [])
+    except espn.FetchError as e:
+        log.info("ESPN headlines unavailable (%s)", e)
+        espn_items = []
+    cands = []
+    for a in espn_items:
+        if a.get("type") not in ("HeadlineNews", "Story") or a.get("premium"):
+            continue
+        try:
+            pub = datetime.strptime(a["published"][:19], "%Y-%m-%dT%H:%M:%S").replace(tzinfo=timezone.utc)
+        except (KeyError, ValueError):
+            continue
+        cands.append({"title": (a.get("headline") or "").strip(), "published": pub, "source": "ESPN",
+                      "link": ((a.get("links") or {}).get("web") or {}).get("href", "")})
+    for y in _yahoo_items():
+        cands.append({"title": y["title"], "link": y["link"], "source": "Yahoo Sports",
+                      "published": datetime.fromisoformat(y["date"])})
+    seen = set()
+    for c in sorted(cands, key=lambda x: x["published"], reverse=True):
+        t = c["title"]
+        if (not t or not c["link"] or HEADLINE_SKIP.search(t) or "podcast" in t.lower() or not HEADLINE_KEEP.search(t)
+                or (now - c["published"]).total_seconds() > max_age_h * 3600 or t.lower() in seen):
+            continue
+        seen.add(t.lower())
+        out.append(c)
+    return out[:n]
+
+
+def mine_items(mine: list, nws: dict, now: datetime, n: int = 8) -> list:
+    """Newest fantasy-relevant item per player on my roster (injury, role, trade, insider reports), last 48h."""
+    best = [top(nws.get(p.id, []), now, 1)[:1] for p in mine]
+    return top([i for b in best for i in b], now, n)
+
+
+def around_items(nws: dict, players: list, my_ids: set, now: datetime, n: int = 12, max_age_h: float = 72) -> list:
+    """[(player, item)] for big news (injury, trade, role change...) on players rostered by other teams in this league
+    or owned in 25%+ of ESPN leagues. One item per player, most relevant first."""
+    out = []
+    for p in players:
+        if p.id in my_ids or (p.owner is None and p.base.pct_owned < 25):
+            continue
+        it = next((i for i in nws.get(p.id, []) if i.kinds & BIG and i.age_hours(now) <= max_age_h), None)
+        if it:
+            out.append((p, it))
+    return sorted(out, key=lambda t: -relevance(t[1], now))[:n]

@@ -53,7 +53,7 @@ class TestAccuracyHeadToHead(unittest.TestCase):
 class TestSanity(unittest.TestCase):
     def ctx(self, injury):
         return {"league": {"slots": {"F": 1}, "playoff_teams": 1}, "standings": [{"odds": 1.0}], "matchup": None,
-                "roster": [], "rosters": {}, "free_agents": [], "drop_ranking": [], "trades": [], "opportunities": [],
+                "roster": [], "rosters": {}, "free_agents": [], "drop_ranking": [], "trades": [],
                 "goalies_today": [{"injury": injury}], "playoff_usable": {"days": []},
                 "streaming": {"goalies": [], "this": {"moves": []}, "next": {"moves": []}}}
 

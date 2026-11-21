@@ -13,6 +13,7 @@ state/*.log
 state/status_snapshot.json
 state/rumors_archive.json
 state/projection_log/
+state/winprob_log.json
 output/
 
 # Licensed projections workbook - keep local

@@ -1,6 +1,7 @@
 """Advice from engine numbers: lineup problems, needs, free agents, streaming, trades, buy/sell posture."""
 from __future__ import annotations
 
+import dataclasses
 from dataclasses import dataclass
 from itertools import combinations
 
@@ -220,15 +221,28 @@ class FARec:
 
 
 def luck_flag(p) -> str:
-    """Shooting-% luck vs his projection-implied rate, once there's a real sample."""
-    if p.group == "G" or p.act_sog < 40:
+    """Trade-timing tag from shooting luck (goals / shots vs ~10%) and recent form (L15 pts/GP vs model rate)."""
+    if p.group == "G":
         return ""
-    sh = p.act_g / p.act_sog if p.act_sog else 0
-    exp_sh = 0.10
-    if sh > exp_sh * 1.6:
-        return "hot (sh%% %.0f) - sell-high risk" % (sh * 100)
-    if sh < exp_sh * 0.5:
-        return "cold (sh%% %.0f) - buy-low" % (sh * 100)
+    sh = p.act_g / p.act_sog if p.act_sog >= 40 else None
+    l15 = p.form_rate("l15", 6)
+    chg = (l15 / p.rate - 1) if l15 is not None and p.rate > 0 else None
+    hot_sh, cold_sh = sh is not None and sh > 0.16, sh is not None and sh < 0.05
+    hot_f, cold_f = chg is not None and chg >= 0.25, chg is not None and chg <= -0.25
+    detail = ", ".join(x for x in ("%.0f%% sh" % (sh * 100) if sh is not None and (hot_sh or cold_sh) else "",
+                                  "L15 %+.0f%% vs model" % (chg * 100) if hot_f or cold_f else "") if x)
+    if hot_sh and hot_f:
+        return "SELL HIGH: %s" % detail
+    if cold_sh and cold_f:
+        return "BUY LOW: %s" % detail
+    if hot_sh:
+        return "Sell-high risk: %s" % detail
+    if cold_sh:
+        return "Buy-low: %s" % detail
+    if hot_f:
+        return "Hot streak: %s" % detail
+    if cold_f:
+        return "Cold streak: %s" % detail
     return ""
 
 
@@ -289,6 +303,8 @@ def stream_plan(mine: list, fas: list, value: Valuer, periods, adds_left: int, c
     """Greedy adds for one matchup: each step picks the (free agent, drop) pair that adds the most projected
     points over `periods`. My top `core` players (ROS + playoffs) are never dropped. Waiver players need a claim."""
     lg, cal = value.league, value.cal
+    # Streamers are ranked on a blend of the model and recent form (last 15 / 30 days), so heaters surface.
+    fas = [dataclasses.replace(p, rate=p.stream_rate()) if p.group != "G" else p for p in fas]
     pool = sorted((p for p in fas if p.injury in HEALTHY), key=lambda p: -(p.exp_game() * cal.games(p.team, periods)))[:40]
     roster, moves, used = list(mine), [], set()
     for _ in range(min(adds_left, steps)):

@@ -12,11 +12,20 @@ build commits `state/context.json`; the routine writes takes from it and re-rend
 
 1. `git pull origin main`. Check `state/context.json` `generated` is from today; if it's older than
    24h, still write the takes but say so in the session summary (the Mac build is failing).
-2. Read `state/digest.json` (about 6 KB: matchups, ranks, add/drop alerts, streams, news, roster flags) and the current `state/ai_manual.json`. Do NOT read `state/context.json` (230 KB); it exists for rendering only.
+2. Read `state/digest.json` (about 8 KB: matchups, swing days, recap, health, ranks, rivals, league news, roster tags) and the current `state/ai_manual.json`. Do NOT read `state/context.json` (230 KB); it exists for rendering only.
 3. Rewrite `state/ai_manual.json` per the rules in step 4 of the Mac version below.
 4. `python3 build.py --render-only && cp output/index.html site/index.html`
 5. `git add state/ai_manual.json site/index.html && git commit -m "Analysis <date>"`, then
    `git pull --rebase origin main && git push origin main` (retry the pull+push if rejected).
+
+## What the takes cover (Dave, 2026-11-21)
+
+Exactly three takes, 2-4 sentences each, naming real players, numbers only from `state/digest.json`:
+- `overview`: season outlook (record, odds, strength, rivals) and league landscape (what rivals' injuries/news mean).
+- `matchup`: this week (win chance, swing days, last week's recap) and playoff outlook (projected playoff-week points).
+- `roster`: trade-market view (SELL HIGH / BUY LOW tags, which rivals need what) and flagged injuries.
+Never say who to add, drop or stream; the page's tables show that. Injury statuses are flagged ("check news"), credit the reporter,
+and a return date is only cited when a report states one (`out` field in the digest). Goalies: no drop or trade advice.
 
 ## Mac version (fallback)
 
