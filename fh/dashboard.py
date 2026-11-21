@@ -49,7 +49,7 @@ def _name_flag(name: str, ctx: dict) -> str:
 
 def _accuracy_card(ctx: dict) -> str:
     a = ctx["accuracy"]
-    names = {"model": "Model (sheet + curve)", "sheet": "Spreadsheet only", "espn": "ESPN projection",
+    names = {"model": "Model (sheet + actuals)", "sheet": "Spreadsheet only", "espn": "ESPN projection",
              "pace": "Season pace", "l15": "Last 15 days", "consensus": "Consensus"}
     if not a["windows"]:
         body = ('<p>Collecting data: snapshot %d logged. First grades on <b>%s</b> (each prediction is checked against the '
@@ -258,8 +258,9 @@ def _roster(ctx, manual):
         'ESPN = ESPN\'s projection scored with your league\'s rules. Pace = this season, L15 = last 15 days (shown after 3 games). '\
         'Consensus = median of the available sources. &#9888; = Model, ESPN and Pace differ by more than 25% (L15 is left out: too noisy); hover for the numbers.</p>' + \
         ('<p class="mute">Sorted by rest-of-season points. Pts/GP blends the preseason projection with this season\'s actual '
-         'results: actuals count 5%% through game 5, then %s. %s News: Rotowire via ESPN.</p></div>'
-         % (", ".join("%d%% at %d" % (round(w * 100), g) for g, w in engine.ACTUAL_WEIGHT_CURVE[3:]), LIGHT_NOTE % ctx["light_nights"]))
+         'results, weighted by games played and fit to this league\'s own accuracy data: at 20 games, actuals count %s. %s News: Rotowire via ESPN.</p></div>'
+         % (", ".join("%d%% for %s" % (round(engine.actual_weight(20, g) * 100), n) for g, n in (("F", "forwards"), ("D", "defensemen"), ("G", "goalies"))),
+            LIGHT_NOTE % ctx["light_nights"]))
 
 
 def _po_schedule(po: dict, slots: int) -> str:

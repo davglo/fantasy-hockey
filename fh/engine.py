@@ -12,19 +12,14 @@ from fh.season import IR_SLOT, Calendar, LeagueState
 
 log = logging.getLogger(__name__)
 
-# Weight on this season's actual pts/GP vs the preseason projection, by games played (Dave, 2026-10-12):
-# 5% through game 5, then 50% @10, 70% @15, 85% @20, 95% from 25 on. Linear between.
-ACTUAL_WEIGHT_CURVE = [(0, 0.0), (1, 0.05), (5, 0.05), (10, 0.50), (15, 0.70), (20, 0.85), (25, 0.95)]
+# Weight on this season's actual pts/GP vs the preseason projection: gp / (gp + K), K fit to this league's
+# accuracy-tracker snapshots by squared error (Dave chose the data-fit weights, 2026-11-21). Forwards' scoring is
+# the noisiest, so they need the most games before actual results dominate.
+ACTUAL_WEIGHT_K = {"F": 56, "D": 38, "G": 26}
 
 
-def actual_weight(gp: int) -> float:
-    pts = ACTUAL_WEIGHT_CURVE
-    if gp >= pts[-1][0]:
-        return pts[-1][1]
-    for (x0, y0), (x1, y1) in zip(pts, pts[1:]):
-        if x0 <= gp <= x1:
-            return y0 + (y1 - y0) * (gp - x0) / (x1 - x0)
-    return 0.0
+def actual_weight(gp: int, group: str = "F") -> float:
+    return gp / (gp + ACTUAL_WEIGHT_K[group]) if gp > 0 else 0.0
 TEAM_WEEK_SD = 0.15     # sd of a team's weekly score as a share of its projection
 SIMS = 4000
 BENCH_WEIGHT = 0.35     # season-level: a bench skater fills some off-day slots
@@ -121,7 +116,7 @@ def make_players(entries: list, base_players: list, league: League, owners: dict
         afp = fantasy_points(act, league.scoring) if act else 0.0
         pre_gp = b.gp or (60 if b.group == "G" else 78)
         pre_rate = b.fp / pre_gp if pre_gp else 0.0
-        w = actual_weight(gp)
+        w = actual_weight(gp, b.group)
         rate = (1 - w) * pre_rate + w * (afp / gp if gp else pre_rate)
         own = pl.get("ownership", {}) or {}
         o = (owners or {}).get(pl["id"], (None, None))

@@ -82,11 +82,12 @@ class TestMalformedEspnStats(unittest.TestCase):
 
 
 class TestBlend(unittest.TestCase):
-    def test_actual_weight_curve(self):
+    def test_actual_weight_data_fit(self):
         w = engine.actual_weight
-        self.assertEqual([round(w(g), 2) for g in (0, 1, 3, 5, 10, 15, 20, 25, 30, 82)],
-                         [0, 0.05, 0.05, 0.05, 0.50, 0.70, 0.85, 0.95, 0.95, 0.95])
-        self.assertAlmostEqual(w(12), 0.58)
+        self.assertEqual(w(0, "F"), 0.0)
+        self.assertEqual([round(w(20, g), 2) for g in ("F", "D", "G")], [0.26, 0.34, 0.43])
+        self.assertLess(w(82, "F"), 0.6)                          # forwards never fully trust a hot/cold season
+        self.assertGreater(w(20, "G"), w(20, "D"))
 
 
 class TestLineups(unittest.TestCase):
