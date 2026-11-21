@@ -1,6 +1,8 @@
 """In-season dashboard: one self-contained dark HTML page with tabs, rendered from the context dict."""
 from __future__ import annotations
 
+from datetime import date
+
 import html
 
 from fh import engine
@@ -66,10 +68,16 @@ def _accuracy_card(ctx: dict) -> str:
     return '<div class="card"><h3>Which projection is winning</h3>%s</div>' % body
 
 
+STALE_TAKE_DAYS = 4   # written takes older than this contradict the live numbers (e.g. last week's matchup)
+
+
 def _take(manual: dict, key: str) -> str:
     t = (manual.get("takes") or {}).get(key)
     if not t:
         return ""
+    if manual.get("stale_days") is not None:
+        return ('<div class="take"><p class="mute">Written analysis from %s is %d days old and hidden until it\'s refreshed - '
+                'the numbers and notes on this page are current.</p></div>' % (_e(manual.get("date", "")), manual["stale_days"]))
     return '<div class="take"><p>%s</p><div class="stamp">Analysis %s</div></div>' % (
         _e(t), _e(manual.get("date", "")))
 
@@ -254,6 +262,36 @@ def _roster(ctx, manual):
          % (", ".join("%d%% at %d" % (round(w * 100), g) for g, w in engine.ACTUAL_WEIGHT_CURVE[3:]), LIGHT_NOTE % ctx["light_nights"]))
 
 
+def _po_schedule(po: dict, slots: int) -> str:
+    """Every NHL team's games across both playoff weeks; my players' teams highlighted, light days marked."""
+    sch = po.get("schedule")
+    if not sch or not sch["days"]:
+        return ""
+    wk_hdr = "".join('<th colspan="%d" class="wk">%s</th>' % (n, _e(w.split(" (")[0])) for w, n in zip(
+        po["weeks"], [7, len(sch["days"]) - 7]))
+    head = "".join('<th class="%s">%s</th>' % ("wk" if i == 7 else "", _e(d["date"])) for i, d in enumerate(sch["days"]))
+    rows = []
+    for t in sch["teams"]:
+        mine = sch["mine"].get(t["team"], [])
+        w1 = sum(1 for c in t["cells"][:7] if c)
+        rows.append('<tr class="%s"><td><b>%s</b>%s</td><td>%d</td><td>%d</td><td>%d</td>%s</tr>' % (
+            "minerow" if mine else "", _e(t["team"]), ' <span class="mute">%s</span>' % _e(", ".join(mine)) if mine else "",
+            w1, t["games"] - w1, t["games"],
+            "".join('<td class="%s">%s</td>' % ("wk" if i == 7 else "", _e(c)) for i, c in enumerate(t["cells"]))))
+    foot = ('<tr class="sum"><td>Teams playing</td><td></td><td></td><td></td>%s</tr>' % "".join(
+                '<td class="%s">%d</td>' % (" ".join(x for x in ("hot" if d.get("light") else "", "wk" if i == 7 else "") if x), d["n"])
+                for i, d in enumerate(sch["days"]))
+            + '<tr class="sum"><td>My players playing</td><td></td><td></td><td></td>%s</tr>' % "".join(
+                '<td class="%s">%d</td>' % ("wk" if i == 7 else "", n) for i, n in enumerate(sch["my_playing"])))
+    return ('<div class="card"><h3>Playoff schedule, both weeks</h3><div class="tw"><table class="sched"><thead>'
+            '<tr><th></th><th colspan="3">Games</th>%s</tr><tr><th>Team</th><th>W1</th><th>W2</th><th>Tot</th>%s</tr></thead>'
+            '<tbody>%s%s</tbody></table></div><p class="mute">Every NHL team\'s games in your two playoff weeks, most games first. '
+            '<b>BOS</b> = home vs Boston, <b>@BOS</b> = at Boston. Highlighted rows are teams you roster (your players named); '
+            'highlighted counts are light nights (half the NHL or fewer playing), when your open slots are easiest to fill. '
+            'My players playing counts active players (IR excluded) against your %d-man daily lineup.</p></div>') % (
+        wk_hdr, head, "".join(rows), foot, slots)
+
+
 def _playoffs(ctx, manual):
     po, pu = ctx["playoffs"], ctx["playoff_usable"]
     wk_h = [w.split(" (")[0] for w in po["weeks"]]
@@ -269,6 +307,7 @@ def _playoffs(ctx, manual):
           ['<span class="%s">%d</span>' % ("bad" if r["total"] < po["avg_games"] - 0.5 else "good" if r["total"] > po["avg_games"] + 0.5 else "", r["total"])]
           for r in po["mine"]]
     return """<p class="mute">Fantasy playoffs: {weeks}. Every add on this site already counts playoff-week points x{w:g}.</p>
+{sched}
 <div class="card"><h3>Usable games, day by day (current roster)</h3><div class="days">{days}</div>
 <p>Starts filled <b>{used}</b> &middot; games wasted on the bench <b>{wasted}</b> &middot; open skater slots <b>{esk}</b> &middot; open goalie slots <b>{eg}</b></p>
 <p class="mute">Raw games don't win playoff weeks - filled slots do. Wasted = more of your players play that day than you have slots. Open = slots nobody fills. Targets below play on your open days.</p></div>
@@ -276,7 +315,7 @@ def _playoffs(ctx, manual):
 <div class="card"><h3>Trade targets who fill your open playoff days</h3>{ttr}</div></div>
 <div class="card"><h3>Projected playoff-week points (current rosters)</h3>{pt}</div>
 <div class="card"><h3>My players' playoff games (avg {avg})</h3>{pm}</div>""".format(
-        weeks=_e(", ".join(po["weeks"])), w=po["weight"], days=days, used=tot["used"],
+        weeks=_e(", ".join(po["weeks"])), w=po["weight"], sched=_po_schedule(po, sum(v for k, v in ctx["league"]["slots"].items() if k not in ("BE", "IR"))), days=days, used=tot["used"],
         wasted=tot["wasted"], esk=tot["empty_sk"], eg=tot["empty_g"], tfa=tg(pu["targets"]["fa"]), ttr=tg(pu["targets"]["trade"]),
         pt=_table(["Team"] + wk_h + ["Total", "Playoff odds"], pt), avg=po["avg_games"],
         pm=_table(["Player", "Pos", "Team"] + wk_h + ["Total"], pm))
@@ -335,6 +374,9 @@ TABS = [("overview", "Overview", _overview), ("week", "Matchup", _week), ("strea
 
 def render(ctx: dict, manual: dict) -> str:
     me = ctx["me"]
+    if manual.get("date"):
+        age = (date.fromisoformat(ctx["period"]["date"]) - date.fromisoformat(manual["date"])).days
+        manual = dict(manual, stale_days=age if age > STALE_TAKE_DAYS else None)
     nav = "".join('<button data-t="%s">%s</button>' % (k, _e(n)) for k, n, _ in TABS)
     panes = "".join('<section id="t-%s">%s</section>' % (k, fn(ctx, manual)) for k, _, fn in TABS)
     return PAGE.replace("{{NAV}}", nav).replace("{{PANES}}", panes).replace("{{LEAGUE}}", _e(ctx["league"]["name"])).replace(
@@ -354,7 +396,7 @@ nav button.on{background:var(--acc);border-color:var(--acc);color:#081018;font-w
 main{padding:12px 16px 40px;max-width:1100px;margin:0 auto}section{display:none}section.on{display:block}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:0 0 12px}
 h3{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}
-table.sched td,table.sched th{text-align:center;white-space:nowrap}table.sched td:first-child{text-align:left}.past{opacity:.4}table.sched td.hot{color:var(--good);font-weight:700}tr.sum td{font-weight:600;border-top:2px solid var(--line)}
+table.sched td,table.sched th{text-align:center;white-space:nowrap}table.sched td:first-child{text-align:left}.past{opacity:.4}table.sched td.hot{color:var(--good);font-weight:700}tr.sum td{font-weight:600;border-top:2px solid var(--line)}table.sched .wk{border-left:2px solid var(--acc)}tr.minerow td{background:rgba(90,169,255,.10)}
 h3.sec{margin:22px 0 6px;font-size:14px;color:var(--fg)}
 .grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}.grid .card{margin:0 0 12px}
 .hero{display:flex;gap:14px;align-items:center;margin:4px 0 14px}.grade{font-size:34px;font-weight:800;min-width:70px;text-align:center;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px}

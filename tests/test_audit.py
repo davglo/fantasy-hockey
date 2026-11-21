@@ -71,5 +71,20 @@ class TestRender(unittest.TestCase):
         self.assertNotIn("%%", html)
 
 
+    def test_stale_takes_hidden_fresh_shown(self):
+        ctx = json.loads((config.STATE / "context.json").read_text())
+        manual = {"date": ctx["period"]["date"], "takes": {"overview": "FRESH TAKE TEXT"}}
+        self.assertIn("FRESH TAKE TEXT", dashboard.render(ctx, manual))
+        manual["date"] = "2026-01-01"
+        html = dashboard.render(ctx, manual)
+        self.assertNotIn("FRESH TAKE TEXT", html)
+        self.assertIn("hidden until it", html)
+
+    def test_playoff_schedule_card(self):
+        ctx = json.loads((config.STATE / "context.json").read_text())
+        if ctx["playoffs"].get("schedule"):
+            self.assertIn("Playoff schedule, both weeks", dashboard.render(ctx, {}))
+
+
 if __name__ == "__main__":
     unittest.main()

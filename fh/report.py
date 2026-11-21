@@ -222,6 +222,8 @@ def build(swid: str) -> dict:
 
     # Recent free-agent performers: yesterday + last 7 days
     yday = today - 1
+    while yday > 1 and not any(yday in g for g in cal.team_games.values()):
+        yday -= 1     # no NHL games that day (e.g. Thanksgiving): show the last day with games
     fa_by_id = {p.id: p for p in fas}
     waiver_dates = {e["player"]["id"]: e.get("waiverProcessDate") for e in state.free_agents}
     perf_day, perf_7 = [], []
@@ -340,6 +342,10 @@ def build(swid: str) -> dict:
         notes.append("Week %d vs %s: projected %.0f-%.0f, %.0f%% to win (starts left %d vs %d)." % (
             cm, matchup["opp"], matchup["proj_me"], matchup["proj_opp"], matchup["win_prob"] * 100,
             matchup["starts_me"], matchup["starts_opp"]))
+    if next_matchup and len(this_week) <= 2:
+        notes.append("Next week (%s) vs %s: projected %.0f-%.0f, %.0f%% to win (starts %d vs %d)." % (
+            next_matchup["dates"], next_matchup["opp"], next_matchup["proj_me"], next_matchup["proj_opp"],
+            next_matchup["win_prob"] * 100, next_matchup["starts_me"], next_matchup["starts_opp"]))
     if opp_rows:
         o, bens = opp_rows[0]
         if o.about.id == bens[0]["id"]:
@@ -405,6 +411,11 @@ def build(swid: str) -> dict:
                       "next": {"label": "Matchup %d (%s)" % (cm + 1, _span(cal, next_week)), "open": advice.open_slots(mine, lg, cal, next_week),
                                "moves": [_move(m) for m in plan_next]}},
         "playoffs": {"weeks": ["Wk %d (%s)" % (m, _span(cal, ps)) for m, ps in po_weeks.items()],
+                     "schedule": dict(_nhl_week(cal, po_periods, today), week_starts=[ps[0] for ps in po_weeks.values()],
+                                      mine={t: sorted(p.name.split()[-1] for p in mine if p.team == t)
+                                            for t in {p.team for p in mine}},
+                                      my_playing=[sum(1 for p in engine.active(mine) if d in cal.team_games.get(p.team, ()))
+                                                  for d in po_periods]),
                      "weight": config.PLAYOFF_WEIGHT,
                      "nhl": po["nhl"], "avg_games": round(po["avg_games"], 1),
                      "teams": sorted([{"name": state.teams[tid].name, "me": tid == me, "weeks": [round(x, 1) for x in wk],
