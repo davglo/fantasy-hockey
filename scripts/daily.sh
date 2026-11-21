@@ -14,7 +14,7 @@ fi
 mkdir -p site && cp output/index.html site/index.html
 # Per-day/per-game caches are never reread after a few days; prune them (they accumulated ~180 MB by Nov).
 find state -maxdepth 1 \( -name 'odds_*_cache.json' -o -name 'scoreboard_*_cache.json' -o -name 'fa_day_*_cache.json' -o -name 'news_*_cache.json' \) -mtime +2 -delete
-git add site/index.html state/context.json   # context: cloud analysis refresh re-renders from it
+git add site/index.html state/context.json state/digest.json   # context: cloud analysis refresh re-renders from it
 if ! git diff --cached --quiet; then
   git commit -qm "Daily build $(date +%F)"
   pushed=0
