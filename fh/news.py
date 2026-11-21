@@ -131,7 +131,7 @@ def top(items: list, now: datetime, n: int, max_age_h: float = MAX_AGE_H) -> lis
 def start_status(items: list, game_day) -> str:
     """'confirmed' / 'expected' / '' for a goalie on game_day (a date, ET). A start note counts when it names
     that weekday (teams often announce the day before) or, with no weekday named, was posted on game day."""
-    from fh.board import ET
+    from fh.config import ET
     best = ""
     for i in items:
         if "starting" not in i.kinds:

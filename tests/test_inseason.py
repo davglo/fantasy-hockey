@@ -5,7 +5,7 @@ from datetime import date
 
 from fh import advice, analysis, engine, espn, market, season
 from fh.engine import P
-from tests.test_draft import SWID, mk, raw_league
+from tests.helpers import SWID, mk, raw_league
 
 
 def pro_raw():

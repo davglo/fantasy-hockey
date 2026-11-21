@@ -7,7 +7,7 @@ from datetime import datetime
 
 from fh import accuracy, advice, config, engine, espn, news, rankings, rumors, season, valuation, vegas
 from fh.espn import fantasy_points
-from fh.board import ET
+from fh.config import ET
 
 log = logging.getLogger(__name__)
 

@@ -9,7 +9,7 @@ from pathlib import Path
 from unittest import mock
 
 from fh import accuracy, advice, analysis, config, dashboard, espn, season
-from tests.test_draft import SWID, raw_league
+from tests.helpers import SWID, raw_league
 from tests.test_inseason import pl, pro_raw
 
 

@@ -4,7 +4,7 @@ import unittest
 from datetime import datetime, timedelta, timezone
 
 from fh import advice, espn, news, season
-from tests.test_draft import SWID, raw_league
+from tests.helpers import SWID, raw_league
 from tests.test_inseason import pl, pro_raw
 
 NOW = datetime(2026, 10, 1, 18, 0, tzinfo=timezone.utc)

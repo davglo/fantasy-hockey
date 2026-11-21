@@ -103,22 +103,3 @@ def sheet_scoring(path: Path = config.RANKINGS_XLSX) -> dict:
             sheet[LABEL_TO_STAT[label.strip().lower()]] = float(pts) if isinstance(pts, (int, float)) else 0.0
     return sheet
 
-
-def check_scoring(league_scoring: dict, path: Path = config.RANKINGS_XLSX) -> list:
-    """Compare the workbook's Points column with ESPN league scoring. Returns human-readable issues."""
-    if not path.exists():
-        return ["rankings workbook not found"]
-    try:
-        sheet = sheet_scoring(path)
-    except Exception as e:  # noqa: BLE001
-        return ["could not read Settings sheet: %s" % e]
-    issues = []
-    for stat in sorted(set(sheet) | set(league_scoring)):
-        want, have = float(league_scoring.get(stat, 0)), sheet.get(stat)
-        name = config.STAT_NAMES.get(stat, str(stat))
-        if have is None:
-            if want:
-                issues.append("%s: league scores %g, workbook can't model it" % (name, want))
-        elif abs(want - have) > 1e-9:
-            issues.append("%s: league %g vs workbook %g" % (name, want, have))
-    return issues

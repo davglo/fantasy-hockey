@@ -7,7 +7,7 @@ from dataclasses import dataclass, field
 from datetime import date, datetime, timedelta
 
 from fh import config, espn
-from fh.board import ET
+from fh.config import ET
 
 log = logging.getLogger(__name__)
 

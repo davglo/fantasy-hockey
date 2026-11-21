@@ -81,28 +81,12 @@ def cached(name: str, ttl: float, fn):
     return data
 
 
-def fetch_league(views: tuple = ("mSettings", "mTeam", "mDraftDetail", "mStatus"), ttl: float = 600) -> dict:
-    q = "&".join("view=" + v for v in views)
-    return cached("league", ttl, lambda: _curl(config.LEAGUE_URL + "?" + q, auth=True))
-
-
-def fetch_draft_live() -> dict:
-    """Uncached: draft picks + settings (pick order is re-randomized before the draft)."""
-    return _curl(config.LEAGUE_URL + "?view=mDraftDetail&view=mSettings&view=mTeam", auth=True, timeout=8)
-
-
 def fetch_pool(limit: int = 1200, ttl: float = 6 * 3600) -> list:
     # Sorted by % owned: the draft-rank sort leaves out many rosterable D (Slavin, Chiarot...).
     flt = {"players": {"limit": limit, "sortPercOwned": {"sortPriority": 1, "sortAsc": False}}}
     data = cached("pool", ttl, lambda: _curl(config.POOL_URL + "?view=kona_player_info",
                                              headers={"X-Fantasy-Filter": json.dumps(flt)}))
     return data["players"]
-
-
-def fetch_players_by_id(ids: list) -> list:
-    flt = {"players": {"filterIds": {"value": list(ids)}, "limit": len(ids)}}
-    return _curl(config.POOL_URL + "?view=kona_player_info",
-                 headers={"X-Fantasy-Filter": json.dumps(flt)})["players"]
 
 
 def fetch_pro_teams(ttl: float = 7 * 86400) -> dict:

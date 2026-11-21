@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parent.parent
 STATE = ROOT / "state"
@@ -42,3 +43,5 @@ ADDS_PER_MATCHUP = 6
 
 # Playoff-week points count this many times a regular-season point when valuing moves.
 PLAYOFF_WEIGHT = 2.0
+
+ET = ZoneInfo("America/New_York")
