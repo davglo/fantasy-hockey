@@ -153,31 +153,6 @@ def _overview(ctx, manual):
         lnews=_league_news(ln))
 
 
-def _health_card(m: dict) -> str:
-    def rows(hs):
-        return "".join("<li><b>%s</b> (%s, %s) <span class=\"inj\">%s</span> %s</li>" % (
-            _e(h["name"]), _e(h["pos"]), _e(h["team"]), _e(h["status"]),
-            ('<span class="good">%s</span>' % _e(h["note"])) if h["note"] and h["note"] != "return date unknown" and h["counted"]
-            else '<span class="mute">%s</span>' % _e(h["note"] or ("out of this week's projection" if h["counted"] else "")))
-            for h in hs) or "<li class=mute>None flagged.</li>"
-    return ('<div class="grid"><div class="card"><h3>My injuries</h3><ul>%s</ul></div>'
-            '<div class="card"><h3>%s injuries</h3><ul>%s</ul></div></div>'
-            '<p class="mute">Games a player is reported to miss are removed from both teams\' projections. '
-            'IR-status players are out of the current week; OUT/IR with no stated return date is labeled and left in the later weeks.</p>') % (
-        rows(m["health_me"]), _e(m["opp"]), rows(m["health_opp"]))
-
-
-def _recap_card(r: dict | None) -> str:
-    if not r:
-        return ""
-    bench = ", ".join("%s %.1f (%s)" % (_e(b["name"]), b["pts"], _e(b["date"])) for b in r["top_bench"])
-    return ('<div class="card"><h3>Last week: %s %.1f - %.1f vs %s</h3><p>Points left on the bench: <b>%.1f</b> vs the best lineup in hindsight%s.</p>'
-            '<p class="mute">Biggest benched scorers: %s</p></div>') % (
-        {"W": "Won", "L": "Lost", "T": "Tied"}[r["result"]], r["mine"], r["opp_pts"], _e(r["opp"]), r["left_on_bench"],
-        " (worst days: %s)" % ", ".join("%s %.1f" % (d["date"], d["left"]) for d in sorted(r["days"], key=lambda d: -d["left"])[:2]) if r["days"] else "",
-        bench or "none")
-
-
 def _goalie_card(g: dict) -> str:
     if not g["rows"]:
         return ""
@@ -208,8 +183,7 @@ def _matchup_block(m, take, now=True):
 <span>Starts{left} <b>{sm}</b> vs <b>{so}</b></span></div></div></div>
 {take}
 <div class="card"><h3>Day by day (optimal lineups)</h3>{days}<p class="mute">Swing = the two days with the most projected points at stake; the margin column is my edge that day.</p></div>
-{health}
-""".format(health=_health_card(m), wp=_pct(m["win_prob"]), opp=_e(m["opp"]), dates=_e(m["dates"]), score=score, left=" left" if now else "",
+""".format(wp=_pct(m["win_prob"]), opp=_e(m["opp"]), dates=_e(m["dates"]), score=score, left=" left" if now else "",
            pm=m["proj_me"], po=m["proj_opp"], sm=m["starts_me"], so=m["starts_opp"], take=take,
            days=_table(["Day", "Me", "Opp", "Margin", "At stake", "Starts me / opp"], days))
 
@@ -217,7 +191,7 @@ def _matchup_block(m, take, now=True):
 def _week(ctx, manual):
     m, n = ctx.get("matchup"), ctx.get("next_matchup")
     parts = [_matchup_block(m, _take(manual, "matchup")) if m else '<div class="card"><p>No matchup this week.</p></div>']
-    parts.append(_trend_line(ctx.get("winprob_trend", [])) + _goalie_card(ctx["goalie_days"]) + _recap_card(ctx.get("recap")))
+    parts.append(_trend_line(ctx.get("winprob_trend", [])) + _goalie_card(ctx["goalie_days"]))
     if n:
         parts.append('<h3 class="sec">Next week</h3>' + _matchup_block(n, "", now=False))
     a = ctx.get("after_matchup")
@@ -254,7 +228,7 @@ def _streaming(ctx, manual):
              'projected points for that matchup; your top 14 players are never dropped.</p>' % (s["adds_used"], s["adds_limit"])]
     for key in ("this", "next"):
         blk = s[key]
-        mv = [["%d" % (i + 1), _e(m["add"]) + (' <span class="tag">claim</span>' if m["waivers"] else ""), _e(m["add_pos"]),
+        mv = [["%d. " % (i + 1) + _e(m["add"]) + (' <span class="tag">claim</span>' if m["waivers"] else ""), _e(m["add_pos"]),
                _e(m["add_team"]), _e(m["drop"]), "%+.1f" % m["gain"], _e(", ".join(m["days"]))] for i, m in enumerate(blk["moves"])]
         heat = "".join(('<div class="day"><div>%s</div><div class="%s">G %d</div><div class="%s">Sk %d</div></div>' % (
             _e(o["date"][:3] + " " + o["date"].split()[-1]), "hot" if o["G"] else "", o["G"], "hot" if o["skater"] >= 3 else "", o["skater"])
@@ -263,7 +237,7 @@ def _streaming(ctx, manual):
             for o in blk["open"])
         parts.append('<div class="card"><h3>%s</h3><div class="days">%s</div><p class="mute">Open lineup slots per day with your current roster '
                      '(G = goalie slots, Sk = skater slots). Highlighted days are where a streamer scores.</p>%s</div>' % (
-                         _e(blk["label"]), heat, _table(["#", "Add", "Pos", "Team", "Drop", "Gain", "Game days"], mv)))
+                         _e(blk["label"]), heat, _table(["Add", "Pos", "Team", "Drop", "Gain", "Game days"], mv)))
     sch = s.get("schedule")
     if sch and sch["days"]:
         head = "".join('<th class="%s">%s</th>' % ("past" if d["past"] else "", _e(d["date"])) for d in sch["days"])
@@ -299,7 +273,7 @@ def _free_agents(ctx, manual):
     tr = _table(["Player", "Pos", "Team", "Owned", "Change", "L7", "L15", "Waivers"], [
         [_e(p["name"]) + _inj(p), _e(p["pos"]), _e(p["team"]), "%.0f%%" % p["own"], "%+.1f" % p["own_chg"]] + _f3(p)[:2] + [_e(p["waiver"])]
         for p in ctx["trending"]])
-    dr = [["%d" % (i + 1), _e(d["name"]) + _flag(d, ctx), d["group"], _e(d["team"]), "%.0f" % d["cost"], "%.0f" % d["ros"],
+    dr = [["%d. " % (i + 1) + _e(d["name"]) + _flag(d, ctx), d["group"], _e(d["team"]), "%.0f" % d["cost"], "%.0f" % d["ros"],
            _v(d["src"].get("model")), _v(d["cons"])] + _f3(d) + [d["light"], d["po_games"]]
           for i, d in enumerate(ctx["drop_ranking"])]
     return """<div class="grid"><div class="card"><h3>Best free agents {yd}</h3>{pd}</div><div class="card"><h3>Best free agents, last 7 days</h3>{pw}</div></div>
@@ -311,7 +285,7 @@ def _free_agents(ctx, manual):
         yd=_e(rec["yesterday"]), pd=perf(rec["day"]), pw=perf(rec["week"]),
         summ="".join("<li>%s</li>" % _e(t) for t in ctx["fa_summary"]), w=ctx["playoffs"]["weight"],
         fa=_table(["Player", "Pos", "Team", "Gain", "Model/gm", "L7", "L15", "Consensus", "Light nights", "Playoff gms", "Next 2 wks", "Own chg", "Drop", "Signal"], fa),
-        dr=_table(["#", "Player", "Pos", "Team", "Pts lost", "ROS", "Model/gm", "Consensus", "L7", "L15", "L30", "Light nights", "Playoff gms"], dr))
+        dr=_table(["Player", "Pos", "Team", "Pts lost", "ROS", "Model/gm", "Consensus", "L7", "L15", "L30", "Light nights", "Playoff gms"], dr))
 
 
 def _roster(ctx, manual):
@@ -472,7 +446,7 @@ main{padding:12px 16px 40px;max-width:1100px;margin:0 auto}section{display:none}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:0 0 12px}
 h3{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}
 table.sched td,table.sched th{text-align:center;white-space:nowrap}table.sched td:first-child{text-align:left}.past{opacity:.4}table.sched td.hot{color:var(--good);font-weight:700}tr.sum td{font-weight:600;border-top:2px solid var(--line)}table.sched .wk{border-left:2px solid var(--acc)}tr.minerow td{background:rgba(90,169,255,.10)}
-table.sched th:first-child,table.sched td:first-child{position:sticky;left:0;z-index:1;background:var(--panel);box-shadow:1px 0 0 var(--line)}
+.tw th:first-child,.tw td:first-child{position:sticky;left:0;z-index:1;background:var(--panel);box-shadow:1px 0 0 var(--line)}
 tr.minerow td:first-child{background:#1a2740}td.mine{white-space:normal;min-width:120px;font-size:12px;color:var(--mute)}
 .hotbar{display:flex;gap:6px;margin:0 0 10px;flex-wrap:wrap}.hotbar button{background:none;border:1px solid var(--line);color:var(--mute);padding:5px 10px;border-radius:999px;font:inherit;font-size:13px;cursor:pointer}.hotbar button.on{background:var(--acc);border-color:var(--acc);color:#081018;font-weight:600}
 h3.sec{margin:22px 0 6px;font-size:14px;color:var(--fg)}

@@ -4,7 +4,6 @@ from __future__ import annotations
 import json
 import logging
 from datetime import datetime
-from types import SimpleNamespace
 
 from fh import absence, accuracy, advice, config, engine, espn, news, rankings, season, valuation, vegas
 from fh.espn import fantasy_points
@@ -17,13 +16,6 @@ DISAGREE = 0.25   # flag a player when his projection sources differ by more tha
 
 
 HOT_WINDOWS = (("l7", 3), ("l15", 6), ("l30", 10), ("season", 10))   # (form key, minimum games)
-
-
-def _health(ps: list) -> list:
-    """Flagged players (injured / IR / suspended) with whether a stated return date is already in the projection."""
-    return [{"name": p.name, "pos": p.base.positions, "team": p.team, "status": p.injury if p.injury != "ACTIVE" else "IR slot",
-             "note": p.out_note, "counted": bool(p.out_until) or p.slot == season.IR_SLOT or p.injury == "INJURY_RESERVE"}
-            for p in sorted(ps, key=lambda p: -p.rate) if p.injury not in ("ACTIVE", "DAY_TO_DAY") or p.slot == season.IR_SLOT]
 
 
 def _pl(p, cal=None, periods=None, extra=None) -> dict:
@@ -188,7 +180,7 @@ def build(swid: str) -> dict:
                 "proj_me": round(mu_me, 1), "proj_opp": round(mu_opp, 1),
                 "win_prob": round(engine.win_prob(mu_me, mu_opp, my_pts, opp_pts), 3),
                 "starts_me": sum(d["me_starts"] for d in days), "starts_opp": sum(d["opp_starts"] for d in days),
-                "days": days, "health_me": _health(mine), "health_opp": _health(rosters[opp]),
+                "days": days,
                 "dates": "%s - %s" % (cal.date_of(cal.matchups[m][0]).strftime("%b %-d"),
                                       cal.date_of(cal.matchups[m][-1]).strftime("%b %-d"))}
 
@@ -197,29 +189,6 @@ def build(swid: str) -> dict:
     week_after = cal.matchups.get(cm + 2, [])
     after_matchup = _matchup(cm + 2, week_after) if week_after else None
 
-    def _recap(m):
-        """Last finished matchup: result plus points left on my bench (actual lineups vs the best lineup in hindsight)."""
-        mt = next((x for x in state.schedule if x.period == m and me in (x.home, x.away)), None)
-        if not mt or mt.winner == "UNDECIDED":
-            return None
-        opp = mt.away if mt.home == me else mt.home
-        mine_pts, opp_pts = (mt.home_pts, mt.away_pts) if mt.home == me else (mt.away_pts, mt.home_pts)
-        won = {"HOME": mt.home, "AWAY": mt.away}.get(mt.winner)
-        started = best_total = 0.0
-        bench, days = [], []
-        for d in cal.matchups[m]:
-            rows = season.fetch_roster_day(me, d, lg.scoring, past=d < today)
-            objs = [SimpleNamespace(id=i, name=n, group=g, slot=s, pts=pts) for i, (n, g, s, pts) in enumerate(rows)]
-            got = sum(o.pts for o in objs if o.slot not in (season.BENCH_SLOT, season.IR_SLOT))
-            best, _ = engine.best_lineup(objs, lg.slots, lambda o: o.pts)
-            started, best_total = started + got, best_total + best
-            days.append({"date": cal.date_of(d).strftime("%a %-d"), "left": round(max(0.0, best - got), 1)})
-            bench += [(o.name, cal.date_of(d).strftime("%a %-d"), o.pts) for o in objs if o.slot == season.BENCH_SLOT and o.pts > 0]
-        return {"matchup": m, "opp": state.teams[opp].name, "mine": round(mine_pts, 1), "opp_pts": round(opp_pts, 1),
-                "result": "W" if won == me else "L" if won is not None else "T", "left_on_bench": round(max(0.0, best_total - started), 1),
-                "days": [d for d in days if d["left"] > 0],
-                "top_bench": [{"name": n, "date": d, "pts": round(pts, 1)} for n, d, pts in sorted(bench, key=lambda b: -b[2])[:3]]}
-    recap = _recap(cm - 1) if cm > 1 else None
 
     def _trend(m, prob):
         """Win-chance history for the live matchup (one point per build, kept locally)."""
@@ -451,7 +420,7 @@ def build(swid: str) -> dict:
                                                    "waiver": _waiver(waiver_dates.get(r.p.id), r.p.status)})
                        for r in fa_recs if r.gain >= ADD_ALERT][:5],
         "goalie_days": goalie_days,
-        "recap": recap, "winprob_trend": trend,
+        "winprob_trend": trend,
         "trending": [_pl(f, extra={"own": round(f.base.pct_owned, 1), "own_chg": round(f.pct_change, 1),
                                    "waiver": _waiver(waiver_dates.get(f.id), f.status)}) for f in trending],
         "hot_fas": [_pl(f, extra={"form": fmt_form(f), "g_this": cal.games(f.team, this_week), "g_next": cal.games(f.team, next_week),
@@ -505,9 +474,6 @@ def digest(ctx: dict) -> dict:
         "generated": ctx["generated"], "date": ctx["period"]["date"], "me": ctx["me"], "matchup": mt(ctx["matchup"]),
         "next_matchup": mt(ctx["next_matchup"]), "where_you_rank": ctx["where_you_rank"],
         "swing_days": [d["date"] for d in (ctx["matchup"] or {}).get("days", []) if d.get("swing")],
-        "health_me": [(h["name"], h["status"], h["note"]) for h in (ctx["matchup"] or {}).get("health_me", [])],
-        "health_opp": [(h["name"], h["status"], h["note"]) for h in (ctx["matchup"] or {}).get("health_opp", [])],
-        "recap": ctx["recap"],
         "playoff_weeks": [(t["name"], t["total"]) for t in ctx["playoffs"]["teams"][:4]],
         "teams": [{"name": t["name"], "need": t["need"], "surplus": t["surplus"]} for t in ctx["league_teams"]],
         "standings": pick(ctx["standings"][:4], ("name", "w", "l", "odds", "strength")),

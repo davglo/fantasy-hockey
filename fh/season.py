@@ -164,20 +164,6 @@ def fetch_fa_day(period: int) -> list:
     return data["players"]
 
 
-def fetch_roster_day(team_id: int, period: int, scoring: dict, past: bool) -> list:
-    """[(name, group, lineup slot, fantasy points)] for one team on one past scoring period (cached for good once played)."""
-    from fh.valuation import _group
-    raw = espn.cached("roster_day_%d_%d" % (team_id, period), 10 ** 9 if past else 3600, lambda: espn._curl(
-        config.LEAGUE_URL + "?view=mRoster&scoringPeriodId=%d" % period, auth=True))
-    t = next(t for t in raw["teams"] if t["id"] == team_id)
-    out = []
-    for e in t["roster"]["entries"]:
-        pl = e["playerPoolEntry"]["player"]
-        pts = espn.fantasy_points(day_stats({"player": pl}, period), scoring)
-        out.append((pl["fullName"], _group(pl.get("eligibleSlots", []), pl.get("defaultPositionId")), e["lineupSlotId"], pts))
-    return out
-
-
 def day_stats(entry: dict, period: int) -> dict:
     return next((s.get("stats") or {} for s in entry["player"].get("stats", []) if s.get("statSplitTypeId") == 5
                  and s.get("statSourceId") == 0 and s.get("scoringPeriodId") == period), {}) or {}

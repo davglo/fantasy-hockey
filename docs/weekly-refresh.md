@@ -22,7 +22,7 @@ build commits `state/context.json`; the routine writes takes from it and re-rend
 
 Exactly three takes, 2-4 sentences each, naming real players, numbers only from `state/digest.json`:
 - `overview`: season outlook (record, odds, strength, rivals) and league landscape (what rivals' injuries/news mean).
-- `matchup`: this week (win chance, swing days, last week's recap) and playoff outlook (projected playoff-week points).
+- `matchup`: this week (win chance, swing days) and playoff outlook (projected playoff-week points).
 - `roster`: trade-market view (SELL HIGH / BUY LOW tags, which rivals need what) and flagged injuries.
 Never say who to add, drop or stream; the page's tables show that. Injury statuses are flagged ("check news"), credit the reporter,
 and a return date is only cited when a report states one (`out` field in the digest). Goalies: no drop or trade advice.
