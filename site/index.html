@@ -85,3 +85,5 @@ bs.forEach(b=>b.onclick=()=>show(b.dataset.t));let k='overview';try{k=localStora
 show(bs.some(b=>b.dataset.t===k)?k:'overview');
 document.querySelectorAll('.hotbar').forEach(bar=>{const t=document.getElementById(bar.dataset.for);const set=key=>{bar.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.k===key));const rows=[...t.tBodies[0].rows].sort((a,b)=>b.dataset[key]-a.dataset[key]);let n=0;rows.forEach(r=>{t.tBodies[0].appendChild(r);const ok=+r.dataset[key]>=0&&n<10;r.style.display=ok?'':'none';if(ok)n++;});};bar.querySelectorAll('button').forEach(b=>b.onclick=()=>set(b.dataset.k));set('l15');});
 </script></body></html>
+
+<!-- redeploy 2026-11-26T18:10:05 -->
